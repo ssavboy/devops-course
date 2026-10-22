@@ -1,0 +1,2944 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Бесплатный практический курс по DevOps для разработчиков и джунов">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../1_git/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Linux, сети и автоматизация на Bash - DevOps Курс для начинающих</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux-bash" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-header__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Курс для начинающих
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linux, сети и автоматизация на Bash
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на темную тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на темную тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-nav__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DevOps Курс для начинающих
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux, сети и автоматизация на Bash
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux, сети и автоматизация на Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Устройство и администрирование Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Устройство и администрирование Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-kernel-space-vs-user-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Архитектура ОС: Kernel Space vs User Space
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-fhs-filesystem-hierarchy-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Файловая система FHS (Filesystem Hierarchy Standard)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2. Файловая система FHS (Filesystem Hierarchy Standard)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Иноды (Inodes) — классическая ловушка на сервере
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-chmod-chown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Пользователи и права доступа (chmod, chown)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Пользователи и права доступа (chmod, chown)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разбор строки прав доступа
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-ps-tophtop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Диагностика процессов (ps, top/htop, сигналы)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4. Диагностика процессов (ps, top/htop, сигналы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ps-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Состояния процессов (в выводе ps и top):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-average-la" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Показатель Load Average (LA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Таблица сигналов ядра
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-systemd-journalctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. Системные службы (systemd и journalctl)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5. Системные службы (systemd и journalctl)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-ready-etcsystemdsystemmyappservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Шаблон production-ready юнита (/etc/systemd/system/myapp.service)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Сети и сетевые протоколы
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Сети и сетевые протоколы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-tcpip-osi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Стек TCP/IP и модель OSI на практике
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Стек TCP/IP и модель OSI на практике">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipv4-rfc-1918-cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Приватные диапазоны IPv4 (RFC 1918) и CIDR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-3-way-handshake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Трехэтапное рукопожатие TCP (3-Way Handshake)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ip-iproute2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Маршрутизация и утилита ip (пакет iproute2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-dns-dig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. DNS: Разрешение доменных имен (dig)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-http-ss-curl-nc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Порты, сокеты и отладка HTTP (ss, curl, nc)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4. Порты, сокеты и отладка HTTP (ss, curl, nc)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ss-socket-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Анализ портов утилитой ss (Socket Statistics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curl-nc-netcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Диагностика с помощью curl и nc (Netcat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-tcpdump-iptables-nftables-ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Перехват трафика (tcpdump) и фаервол (iptables / nftables / ufw)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5. Перехват трафика (tcpdump) и фаервол (iptables / nftables / ufw)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcpdump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Перехват пакетов через tcpdump
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netfilter-iptables-nftables-ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Межсетевой экран: Netfilter (iptables, nftables, ufw)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Программирование и автоматизация на Bash
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Программирование и автоматизация на Bash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Потоки ввода/вывода, пайпы и коды возврата
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-bash-safe-bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Золотой стандарт надежного Bash-скрипта (Safe Bash)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Переменные, условия, циклы и функции
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Переменные, условия, циклы и функции">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разница кавычек и подстановка
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Шпаргалка по условиям [[ ... ]]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-for-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример конструкции if, цикла for, while и функций
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-grep-sed-awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Текстовый конвейер: grep, sed, awk
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Текстовый конвейер: grep, sed, awk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. grep — поиск и фильтрация строк по регулярным выражениям
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. sed — потоковый редактор (замена и удаление текста на лету)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. awk — работа со столбцами и аналитика
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Виртуализация и основы изоляции
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Виртуализация и основы изоляции">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Классификация гипервизоров и контейнеров
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-kvm-qemu-libvirt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Связка KVM + QEMU + libvirt (основа всех облаков)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-linux-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Основы изоляции в ядре Linux (предвестник Docker)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Развёртывание тестового стенда (кроссплатформенно)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hardening-ssh-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Базовый Hardening (SSH + Firewall)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 2. Базовый Hardening (SSH + Firewall)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ed25519-ssh-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. На твоем рабочем компьютере (Хосте) сгенерируй ED25519 SSH-ключ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Внутри виртуальной машины (Сервера) создай пользователя и добавь ключ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ssh-etcsshsshd_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Защити демон SSH (/etc/ssh/sshd_config):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Настрой фаервол ufw:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sys-auditor-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Разработка демона аудита сервера (sys-auditor) и упаковка в systemd
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 3. Разработка демона аудита сервера (sys-auditor) и упаковка в systemd">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-usrlocalbinsys-auditorsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Создай скрипт /usr/local/bin/sys-auditor.sh:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-systemd-etcsystemdsystemsys-auditorservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Создай systemd-юнит /etc/systemd/system/sys-auditor.service:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-etclogrotatedsys-auditor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Настрой ротацию логов /etc/logrotate.d/sys-auditor (чтобы лог не забил диск):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Запусти и протестируй сервис:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение в DevOps и системы контроля версий (Git)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контейнеризация приложений (Docker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оркестрация многоконтейнерных приложений (Docker Compose & Nginx)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Наблюдаемость (Observability) и мониторинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизация сборки и CI (Continuous Integration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_continuous_delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continuous Delivery и безопасность внедрения (CD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_iac_terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инфраструктура как код (IaC) — Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_scm_ansible/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Управление конфигурацией (SCM) — Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_kubernetes_k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes (K8s) и оркестрация контейнеров в продакшене
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Итоговый дипломный проект DevOps - Production-Ready Платформа «CloudOrder»
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Устройство и администрирование Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Устройство и администрирование Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-kernel-space-vs-user-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Архитектура ОС: Kernel Space vs User Space
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-fhs-filesystem-hierarchy-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Файловая система FHS (Filesystem Hierarchy Standard)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2. Файловая система FHS (Filesystem Hierarchy Standard)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Иноды (Inodes) — классическая ловушка на сервере
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-chmod-chown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Пользователи и права доступа (chmod, chown)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Пользователи и права доступа (chmod, chown)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разбор строки прав доступа
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-ps-tophtop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Диагностика процессов (ps, top/htop, сигналы)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4. Диагностика процессов (ps, top/htop, сигналы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ps-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Состояния процессов (в выводе ps и top):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-average-la" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Показатель Load Average (LA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Таблица сигналов ядра
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-systemd-journalctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. Системные службы (systemd и journalctl)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5. Системные службы (systemd и journalctl)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-ready-etcsystemdsystemmyappservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Шаблон production-ready юнита (/etc/systemd/system/myapp.service)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Сети и сетевые протоколы
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Сети и сетевые протоколы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-tcpip-osi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Стек TCP/IP и модель OSI на практике
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Стек TCP/IP и модель OSI на практике">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipv4-rfc-1918-cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Приватные диапазоны IPv4 (RFC 1918) и CIDR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-3-way-handshake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Трехэтапное рукопожатие TCP (3-Way Handshake)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ip-iproute2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Маршрутизация и утилита ip (пакет iproute2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-dns-dig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. DNS: Разрешение доменных имен (dig)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-http-ss-curl-nc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Порты, сокеты и отладка HTTP (ss, curl, nc)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4. Порты, сокеты и отладка HTTP (ss, curl, nc)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ss-socket-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Анализ портов утилитой ss (Socket Statistics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curl-nc-netcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Диагностика с помощью curl и nc (Netcat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-tcpdump-iptables-nftables-ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Перехват трафика (tcpdump) и фаервол (iptables / nftables / ufw)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5. Перехват трафика (tcpdump) и фаервол (iptables / nftables / ufw)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcpdump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Перехват пакетов через tcpdump
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netfilter-iptables-nftables-ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Межсетевой экран: Netfilter (iptables, nftables, ufw)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Программирование и автоматизация на Bash
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Программирование и автоматизация на Bash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Потоки ввода/вывода, пайпы и коды возврата
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-bash-safe-bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Золотой стандарт надежного Bash-скрипта (Safe Bash)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Переменные, условия, циклы и функции
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Переменные, условия, циклы и функции">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разница кавычек и подстановка
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Шпаргалка по условиям [[ ... ]]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-for-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример конструкции if, цикла for, while и функций
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-grep-sed-awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Текстовый конвейер: grep, sed, awk
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Текстовый конвейер: grep, sed, awk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. grep — поиск и фильтрация строк по регулярным выражениям
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. sed — потоковый редактор (замена и удаление текста на лету)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. awk — работа со столбцами и аналитика
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Виртуализация и основы изоляции
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Виртуализация и основы изоляции">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Классификация гипервизоров и контейнеров
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-kvm-qemu-libvirt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Связка KVM + QEMU + libvirt (основа всех облаков)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-linux-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Основы изоляции в ядре Linux (предвестник Docker)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Развёртывание тестового стенда (кроссплатформенно)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hardening-ssh-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Базовый Hardening (SSH + Firewall)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 2. Базовый Hardening (SSH + Firewall)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ed25519-ssh-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. На твоем рабочем компьютере (Хосте) сгенерируй ED25519 SSH-ключ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Внутри виртуальной машины (Сервера) создай пользователя и добавь ключ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ssh-etcsshsshd_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Защити демон SSH (/etc/ssh/sshd_config):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ufw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Настрой фаервол ufw:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sys-auditor-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Разработка демона аудита сервера (sys-auditor) и упаковка в systemd
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 3. Разработка демона аудита сервера (sys-auditor) и упаковка в systemd">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-usrlocalbinsys-auditorsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Создай скрипт /usr/local/bin/sys-auditor.sh:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-systemd-etcsystemdsystemsys-auditorservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Создай systemd-юнит /etc/systemd/system/sys-auditor.service:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-etclogrotatedsys-auditor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Настрой ротацию логов /etc/logrotate.d/sys-auditor (чтобы лог не забил диск):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Запусти и протестируй сервис:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="linux-bash">Linux, сети и автоматизация на Bash</h1>
+<p>Этот модуль закладывает системный фундамент. Без понимания того, как ядро управляет процессами, куда пишутся логи, почему порт закрыт фаерволом и как автоматизировать рутину на Bash, работа с Docker, Ansible и Kubernetes превращается в «гадание по YAML-файлам».</p>
+<hr />
+<h2 id="1-linux">Блок 1. Устройство и администрирование Linux</h2>
+<h3 id="11-kernel-space-vs-user-space">1.1. Архитектура ОС: Kernel Space vs User Space</h3>
+<p>Операционная система Linux разделена на два уровня привилегий:</p>
+<ul>
+<li><strong>Kernel Space (Пространство ядра):</strong> Имеет прямой доступ к железу (CPU, RAM, диски, сетевые карты). Управляет планировщиком процессов, виртуальной памятью и драйверами.</li>
+<li><strong>User Space (Пространство пользователя):</strong> Здесь работают все приложения (Nginx, Python, базы данных, ваш терминал). Приложения не могут напрямую обратиться к диску или сетевой карте — они делают это через <strong>системные вызовы (syscalls)</strong> к ядру (например, <code>open()</code>, <code>read()</code>, <code>write()</code>, <code>fork()</code>, <code>socket()</code>).</li>
+</ul>
+<hr />
+<h3 id="12-fhs-filesystem-hierarchy-standard">1.2. Файловая система FHS (Filesystem Hierarchy Standard)</h3>
+<p>В Linux действует принцип <strong>«Everything is a file»</strong> (всё есть файл: обычные файлы, директории, жесткие диски, сокеты, пайпы и даже информация о процессах).</p>
+<table>
+<thead>
+<tr>
+<th>Директория</th>
+<th>Назначение в работе DevOps-инженера</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>Корневая директория (Root), начало всей иерархии.</td>
+</tr>
+<tr>
+<td><code>/bin</code>, <code>/sbin</code></td>
+<td>Базовые бинарные утилиты (<code>ls</code>, <code>cp</code>, <code>bash</code>) и системные утилиты администратора (<code>iptables</code>, <code>fdisk</code>). В современных ОС часто являются симлинками на <code>/usr/bin</code> и <code>/usr/sbin</code>.</td>
+</tr>
+<tr>
+<td><code>/etc</code></td>
+<td><strong>Конфигурационные файлы</strong> всей системы и установленных сервисов (<code>/etc/nginx/</code>, <code>/etc/ssh/sshd_config</code>, <code>/etc/hosts</code>).</td>
+</tr>
+<tr>
+<td><code>/var</code></td>
+<td>Изменяемые данные (Variable): логи (<code>/var/log</code>), базы данных (<code>/var/lib/postgresql</code>), слои и тома Docker (<code>/var/lib/docker</code>). Чаще всего именно <code>/var</code> переполняется в продакшене.</td>
+</tr>
+<tr>
+<td><code>/proc</code></td>
+<td>Псевдофайловая система в RAM. Хранит информацию о текущих процессах и параметрах ядра в реальном времени (<code>/proc/cpuinfo</code>, <code>/proc/meminfo</code>, <code>/proc/&lt;PID&gt;/</code>).</td>
+</tr>
+<tr>
+<td><code>/sys</code></td>
+<td>Псевдофайловая система с информацией об оборудовании, драйверах и <code>cgroups</code> (<code>/sys/fs/cgroup</code>).</td>
+</tr>
+<tr>
+<td><code>/dev</code></td>
+<td>Файлы устройств: диски (<code>/dev/sda</code>, <code>/dev/nvme0n1</code>), псевдоустройства (<code>/dev/null</code> — «черная дыра», <code>/dev/urandom</code> — генератор случайных байт).</td>
+</tr>
+<tr>
+<td><code>/tmp</code></td>
+<td>Временные файлы. Очищается при перезагрузке.</td>
+</tr>
+<tr>
+<td><code>/opt</code></td>
+<td>Стороннее проприетарное или самописное ПО, не входящее в стандартные репозитории.</td>
+</tr>
+<tr>
+<td><code>/home</code>, <code>/root</code></td>
+<td>Домашние каталоги обычных пользователей и суперпользователя <code>root</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="inodes">Иноды (Inodes) — классическая ловушка на сервере</h4>
+<p>Каждый файл имеет две составляющие: блоки данных на диске и метаданные в структуре <strong>inode</strong> (владелец, права, размер, таймстемпы, указатели на блоки данных). Имя файла хранится в директории и просто ссылается на номер inode.</p>
+<blockquote>
+<p><strong>Кейс из продакшена:</strong> Команда <code>df -h</code> показывает, что на диске свободно 40 ГБ, но сервер выдает ошибку <code>No space left on device</code>. Причина: миллионы мелких файлов (например, сессии PHP или мелкие логи) исчерпали таблицу инодов.</p>
+</blockquote>
+<p><strong>Диагностика дисков и инодов:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Свободное место на примонтированных разделах в человекочитаемом виде</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>df<span class="w"> </span>-h
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Проверка использования инодов (Inodes)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>df<span class="w"> </span>-i
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Размер конкретной папки и её подпапок (топ-10 самых тяжелых в /var)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>du<span class="w"> </span>-h<span class="w"> </span>--max-depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>/var<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-hr<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
+</span></code></pre></div>
+<hr />
+<h3 id="13-chmod-chown">1.3. Пользователи и права доступа (<code>chmod</code>, <code>chown</code>)</h3>
+<p>Безопасность Linux строится на разграничении пользователей (UID) и групп (GID).</p>
+<ul>
+<li>Конфигурация пользователей: <code>/etc/passwd</code> (имя, UID, GID, домашняя папка, оболочка shell). Для сервисных аккаунтов (например, <code>nginx</code>), которым не нужен интерактивный вход, ставят оболочку <code>/usr/sbin/nologin</code> или <code>/bin/false</code>.</li>
+<li>Пароли (хэши): <code>/etc/shadow</code>.</li>
+<li>Группы: <code>/etc/group</code>.</li>
+</ul>
+<h4 id="_1">Разбор строки прав доступа</h4>
+<p>Выполнив <code>ls -la</code>, мы видим строку вида: <code>-rwxr-xr-- 1 deploy www-data 4096 Oct 18 12:00 app.sh</code></p>
+<ol>
+<li><strong>Первый символ — тип файла:</strong> <code>-</code> (обычный файл), <code>d</code> (директория), <code>l</code> (симлинк).</li>
+<li><strong>Три триады прав:</strong></li>
+<li>Первая (<code>rwx</code>) — для владельца (<strong>User / u</strong>).</li>
+<li>Вторая (<code>r-x</code>) — для группы (<strong>Group / g</strong>).</li>
+<li>Третья (<code>r--</code>) — для всех остальных (<strong>Others / o</strong>).</li>
+</ol>
+<p><strong>Веса прав (восьмеричная система):</strong></p>
+<ul>
+<li><code>r</code> (read — чтение) = <strong>4</strong></li>
+<li><code>w</code> (write — запись) = <strong>2</strong></li>
+<li><code>x</code> (execute — исполнение / вход в директорию) = <strong>1</strong></li>
+<li><code>-</code> (отсутствие прав) = <strong>0</strong></li>
+</ul>
+<p>Складывая числа для каждой триады, получаем стандартные комбинации:</p>
+<ul>
+<li><code>755</code> (<code>rwxr-xr-x</code>) — стандарт для исполняемых скриптов и публичных папок (владелец может всё, остальные — читать и запускать).</li>
+<li><code>644</code> (<code>rw-r--r--</code>) — стандарт для обычных конфигурационных файлов.</li>
+<li><code>600</code> (<code>rw-------</code>) — <strong>обязательный стандарт для приватных SSH-ключей</strong> и файлов с секретами (доступ только у владельца).</li>
+</ul>
+<p><strong>Специальные биты:</strong></p>
+<ul>
+<li><strong>SUID (4000):</strong> Файл запускается с правами его владельца, а не того, кто запустил (классический пример — <code>/usr/bin/passwd</code>, который должен менять <code>/etc/shadow</code>, принадлежащий <code>root</code>).</li>
+<li><strong>SGID (2000):</strong> На директории заставляет все новые файлы внутри наследовать группу этой директории (удобно для командной работы).</li>
+<li><strong>Sticky Bit (1000):</strong> На директории (например, <code>/tmp</code> с правами <code>1777</code>) запрещает удалять чужие файлы, даже если у всех есть права на запись в папку.</li>
+</ul>
+<p><strong>Команды управления:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Создать системного пользователя без права входа в шелл и с домашней папкой</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>-r<span class="w"> </span>-m<span class="w"> </span>-d<span class="w"> </span>/opt/myservice<span class="w"> </span>-s<span class="w"> </span>/usr/sbin/nologin<span class="w"> </span>myservice
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Изменить владельца и группу рекурсивно (-R)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>myservice:myservice<span class="w"> </span>/opt/myservice
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Выдать права 750 на директорию и 640 на конфиг</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">750</span><span class="w"> </span>/opt/myservice
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span>/opt/myservice/config.env
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># Сделать скрипт исполняемым</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>chmod<span class="w"> </span>+x<span class="w"> </span>deploy.sh
+</span></code></pre></div>
+<hr />
+<h3 id="14-ps-tophtop">1.4. Диагностика процессов (<code>ps</code>, <code>top</code>/<code>htop</code>, сигналы)</h3>
+<p>Каждый процесс имеет <strong>PID</strong> (Process ID) и родителя <strong>PPID</strong> (Parent PID).</p>
+<h4 id="ps-top">Состояния процессов (в выводе <code>ps</code> и <code>top</code>):</h4>
+<ul>
+<li><strong><code>R</code> (Running / Runnable):</strong> Выполняется на ядре CPU или ждет в очереди планировщика.</li>
+<li><strong><code>S</code> (Interruptible Sleep):</strong> Спит в ожидании события (например, веб-сервер ждет сетевого пакета от клиента).</li>
+<li><strong><code>D</code> (Uninterruptible Sleep):</strong> Ждет ответа от оборудования (чаще всего дискового ввода/вывода — Disk I/O). **Такой процесс нельзя убить даже через <code>kill -9**</code>, пока не завершится системный вызов к диску.</li>
+<li><strong><code>Z</code> (Zombie):</strong> Процесс уже завершился, но его родитель еще не прочитал код его завершения (exit status) через вызов <code>wait()</code>. Ресурсов (RAM/CPU) не потребляет, занимает только строчку в таблице PID.</li>
+<li><strong><code>T</code> (Stopped):</strong> Приостановлен сигналом (<code>SIGSTOP</code> или комбинацией <code>Ctrl+Z</code>).</li>
+</ul>
+<h4 id="load-average-la">Показатель Load Average (LA)</h4>
+<p>В <code>top</code>, <code>htop</code> или <code>uptime</code> отображаются 3 числа (например, <code>Load average: 1.50, 0.80, 0.45</code>) — средняя нагрузка за <strong>1, 5 и 15 минут</strong>.</p>
+<ul>
+<li>В Linux LA показывает среднее количество процессов в состояниях <strong><code>R</code> (работают на CPU)</strong> и <strong><code>D</code> (ждут диска)</strong>.</li>
+<li>Если у вас 4 ядра CPU, то LA = <code>4.00</code> означает, что система загружена ровно на 100%. Если LA = <code>12.00</code> на 4 ядрах — процессы стоят в трехкратной очереди (либо не хватает CPU, либо «умер» диск и процессы зависли в статусе <code>D</code>).</li>
+</ul>
+<h4 id="_2">Таблица сигналов ядра</h4>
+<table>
+<thead>
+<tr>
+<th>Номер</th>
+<th>Имя</th>
+<th>Описание и применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td><code>SIGHUP</code></td>
+<td>Перечитать конфигурационный файл без разрыва текущих соединений (например, <code>nginx -s reload</code>).</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>SIGINT</code></td>
+<td>Прерывание с клавиатуры (<code>Ctrl+C</code>).</td>
+</tr>
+<tr>
+<td><code>9</code></td>
+<td><code>SIGKILL</code></td>
+<td>Безусловное уничтожение процесса ядром. Не перехватывается приложением. Использовать только в крайнем случае.</td>
+</tr>
+<tr>
+<td><code>15</code></td>
+<td><code>SIGTERM</code></td>
+<td><strong>Стандартный сигнал остановки</strong> (по умолчанию в <code>kill &lt;PID&gt;</code>, <code>systemctl stop</code>, <code>docker stop</code>). Позволяет приложению сделать Graceful Shutdown (закрыть коннекты к БД, дописать файлы).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Практические команды диагностики:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Топ-5 процессов по потреблению оперативной памяти (RAM)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">6</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Топ-5 процессов по нагрузке на процессор (CPU)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%cpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">6</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Найти процесс по имени и вывести его PID</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>pgrep<span class="w"> </span>-a<span class="w"> </span>python3
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Посмотреть, какие файлы и сокеты держит открытыми процесс с PID 1234</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>sudo<span class="w"> </span>lsof<span class="w"> </span>-p<span class="w"> </span><span class="m">1234</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># Найти удаленные файлы, которые всё еще удерживаются процессами (частая причина нехватки места!)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>sudo<span class="w"> </span>lsof<span class="w"> </span>+L1
+</span></code></pre></div>
+<hr />
+<h3 id="15-systemd-journalctl">1.5. Системные службы (<code>systemd</code> и <code>journalctl</code>)</h3>
+<p><code>systemd</code> — это главный менеджер системы (PID 1), который запускает сервисы параллельно, следит за их состоянием и собирает их логи.</p>
+<p>Куда класть юнит-файлы:</p>
+<ul>
+<li><code>/lib/systemd/system/</code> — системные юниты, установленные пакетным менеджером (<code>apt</code>). Редактировать вручную не рекомендуется (перезапишутся при обновлении).</li>
+<li><code>/etc/systemd/system/</code> — пользовательские юниты и переопределения (приоритет выше). <strong>Свои сервисы создаем только здесь.</strong></li>
+</ul>
+<h4 id="production-ready-etcsystemdsystemmyappservice">Шаблон production-ready юнита (<code>/etc/systemd/system/myapp.service</code>)</h4>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[Unit]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">My Custom Backend Service</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Запускать только после поднятия сети</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="na">After</span><span class="o">=</span><span class="s">network-online.target</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">Wants</span><span class="o">=</span><span class="s">network-online.target</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">[Service]</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># Безопасность: никогда не запускаем приложения от root без крайней необходимости</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="na">User</span><span class="o">=</span><span class="s">myservice</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="na">Group</span><span class="o">=</span><span class="s">myservice</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/opt/myservice</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># Переменные окружения из файла</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="na">EnvironmentFile</span><span class="o">=</span><span class="s">-/etc/default/myservice</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># Команда запуска (обязательно абсолютный путь к бинарнику)</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/python3 /opt/myservice/app.py</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1"># Автоматический перезапуск при падении с паузой в 5 секунд</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="na">RestartSec</span><span class="o">=</span><span class="s">5s</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="c1"># Ограничение ресурсов (защита сервера от утечки памяти)</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="na">MemoryMax</span><span class="o">=</span><span class="s">512M</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="na">LimitNOFILE</span><span class="o">=</span><span class="s">65535</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="c1"># Логирование в systemd journal</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="na">StandardOutput</span><span class="o">=</span><span class="s">journal</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="na">StandardError</span><span class="o">=</span><span class="s">journal</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="na">SyslogIdentifier</span><span class="o">=</span><span class="s">myapp</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="k">[Install]</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</span></code></pre></div>
+<p><strong>Шпаргалка по <code>systemctl</code> и <code>journalctl</code>:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Перечитать конфигурацию после создания или изменения .service файла (ОБЯЗАТЕЛЬНО)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Включить автозапуск при старте сервера и сразу запустить(--now)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>myapp.service
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Проверить статус, PID и последние строки логов</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>myapp.service
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Читать логи сервиса в реальном времени (аналог tail -f)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>myapp.service<span class="w"> </span>-f
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1"># Показать только ошибки (уровень err и выше) за последний час</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>myapp.service<span class="w"> </span>-p<span class="w"> </span>err<span class="w"> </span>--since<span class="w"> </span><span class="s2">"1 hour ago"</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1"># Очистить старые логи журнала, оставив только последние 500 МБ</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>--vacuum-size<span class="o">=</span>500M
+</span></code></pre></div>
+<hr />
+<h2 id="2">Блок 2. Сети и сетевые протоколы</h2>
+<h3 id="21-tcpip-osi">2.1. Стек TCP/IP и модель OSI на практике</h3>
+<p>Чтобы быстро находить, почему «сервис не открывается», проблему всегда изолируют снизу вверх по уровням:</p>
+<table>
+<thead>
+<tr>
+<th>Уровень OSI</th>
+<th>Единица данных</th>
+<th>Протоколы / Технологии</th>
+<th>Инструменты отладки в Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L1 (Физический)</strong></td>
+<td>Биты</td>
+<td>Кабель, оптика, радиоканал</td>
+<td><code>ethtool</code>, <code>ip link</code> (флаг <code>LOWER_UP</code>)</td>
+</tr>
+<tr>
+<td><strong>L2 (Канальный)</strong></td>
+<td>Кадры (Frames)</td>
+<td>Ethernet, MAC-адреса, ARP, VLAN</td>
+<td><code>ip neigh</code> (ARP-таблица), <code>bridge</code></td>
+</tr>
+<tr>
+<td><strong>L3 (Сетевой)</strong></td>
+<td>Пакеты (Packets)</td>
+<td>IP (IPv4/IPv6), ICMP, маршрутизация</td>
+<td><code>ip addr</code>, <code>ip route</code>, <code>ping</code>, <code>traceroute</code>, <code>mtr</code></td>
+</tr>
+<tr>
+<td><strong>L4 (Транспортный)</strong></td>
+<td>Сегменты / Датаграммы</td>
+<td>TCP (надежный), UDP (быстрый), порты</td>
+<td><code>ss</code>, <code>netstat</code>, <code>nc</code> (netcat), <code>tcpdump</code></td>
+</tr>
+<tr>
+<td><strong>L7 (Прикладной)</strong></td>
+<td>Данные (Payload)</td>
+<td>HTTP/HTTPS, DNS, SSH, TLS, gRPC</td>
+<td><code>curl</code>, <code>dig</code>, <code>openssl s_client</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ipv4-rfc-1918-cidr">Приватные диапазоны IPv4 (RFC 1918) и CIDR</h4>
+<p>Внутри локальных сетей, Docker и облачных VPC используются три диапазона серых (приватных) адресов:</p>
+<ul>
+<li><code>10.0.0.0/8</code> (от <code>10.0.0.0</code> до <code>10.255.255.255</code>) — часто используется в облаках и Kubernetes.</li>
+<li><code>172.16.0.0/12</code> (от <code>172.16.0.0</code> до <code>172.31.255.255</code>) — по умолчанию используется для сетей Docker (<code>172.17.0.0/16</code>).</li>
+<li><code>192.168.0.0/16</code> (от <code>192.168.0.0</code> до <code>192.168.255.255</code>) — домашние и офисные сети.</li>
+<li><code>127.0.0.0/8</code> (<code>127.0.0.1</code>) — <strong>Loopback (<code>lo</code>)</strong>, трафик внутри самого хоста.</li>
+</ul>
+<blockquote>
+<p><strong>Важное правило:</strong> Если веб-сервер слушает <code>127.0.0.1:8080</code>, к нему <strong>нельзя</strong> подключиться снаружи по сети (даже если фаервол открыт). Чтобы принимать внешние подключения со всех сетевых карт, сервис должен слушать <code>0.0.0.0:8080</code> (или конкретный IP сетевого интерфейса).</p>
+</blockquote>
+<h4 id="tcp-3-way-handshake">Трехэтапное рукопожатие TCP (3-Way Handshake)</h4>
+<p>Перед передачей данных по TCP устанавливается соединение:</p>
+<ol>
+<li>Клиент $\rightarrow$ Сервер: <strong><code>SYN</code></strong> (Хочу подключиться).</li>
+<li>Сервер $\rightarrow$ Клиент: <strong><code>SYN-ACK</code></strong> (Слышу тебя, готов).</li>
+<li>Клиент $\rightarrow$ Сервер: <strong><code>ACK</code></strong> (Отлично, начинаем передачу).</li>
+</ol>
+<hr />
+<h3 id="22-ip-iproute2">2.2. Маршрутизация и утилита <code>ip</code> (пакет <code>iproute2</code>)</h3>
+<p>Утилита <code>ifconfig</code> устарела более 15 лет назад. Современный стандарт — <code>ip</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Краткий вывод всех интерфейсов и их IP-адресов с подсветкой</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ip<span class="w"> </span>-br<span class="w"> </span>-c<span class="w"> </span>addr<span class="w"> </span>show
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Просмотр таблицы маршрутизации</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ip<span class="w"> </span>route<span class="w"> </span>show
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># Пример вывода:</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># default via 192.168.1.1 dev eth0 proto dhcp src 192.168.1.50 metric 100</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># 192.168.1.0/24 dev eth0 proto kernel scope link src 192.168.1.50</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Проверить, через какой интерфейс и шлюз пойдет пакет до конкретного IP (например, 8.8.8.8)</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>ip<span class="w"> </span>route<span class="w"> </span>get<span class="w"> </span><span class="m">8</span>.8.8.8
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c1"># Посмотреть таблицу ARP (соответствие IP и MAC-адресов в локальной сети)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>ip<span class="w"> </span>neigh<span class="w"> </span>show
+</span></code></pre></div>
+<hr />
+<h3 id="23-dns-dig">2.3. DNS: Разрешение доменных имен (<code>dig</code>)</h3>
+<p>Когда приложение обращается к <code>api.example.com</code>, Linux ищет IP-адрес в следующем порядке (определяется в <code>/etc/nsswitch.conf</code>, строка <code>hosts: files dns</code>):</p>
+<ol>
+<li>Локальный файл <code>/etc/hosts</code> (жестко прописанные соответствия).</li>
+<li>Локальный кэширующий резолвер (<code>systemd-resolved</code> на <code>127.0.0.53</code>) или DNS-серверы, указанные в <code>/etc/resolv.conf</code>.</li>
+</ol>
+<p><strong>Диагностика DNS через <code>dig</code>:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Обычный запрос A-записи</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>dig<span class="w"> </span>example.com
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Вывести ТОЛЬКО IP-адрес (идеально для использования внутри Bash-скриптов)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>dig<span class="w"> </span>+short<span class="w"> </span>example.com
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Запросить конкретный тип записи (TXT, MX, CNAME, NS) у конкретного DNS-сервера (@1.1.1.1)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>dig<span class="w"> </span>@1.1.1.1<span class="w"> </span>example.com<span class="w"> </span>TXT<span class="w"> </span>+short
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Полная трассировка делегирования от корневых серверов (.) до конечного NS</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>dig<span class="w"> </span>+trace<span class="w"> </span>example.com
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># Обратный DNS-запрос (PTR) — узнать имя хоста по IP</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>dig<span class="w"> </span>-x<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w"> </span>+short
+</span></code></pre></div>
+<hr />
+<h3 id="24-http-ss-curl-nc">2.4. Порты, сокеты и отладка HTTP (<code>ss</code>, <code>curl</code>, <code>nc</code>)</h3>
+<p><strong>Сокет</strong> — это комбинация <code>IP-адрес : Порт : Протокол</code>.</p>
+<h4 id="ss-socket-statistics">Анализ портов утилитой <code>ss</code> (Socket Statistics)</h4>
+<p>Запоминаем главный флаг администратора — <strong><code>ss -tulpn</code></strong>:</p>
+<ul>
+<li><code>-t</code> — показать TCP-сокеты.</li>
+<li><code>-u</code> — показать UDP-сокеты.</li>
+<li><code>-l</code> — показать только слушающие порты (<code>LISTEN</code>).</li>
+<li><code>-p</code> — показать процесс и PID, который занял порт (требует <code>sudo</code>).</li>
+<li><code>-n</code> — не переводить номера портов в имена (писать <code>:80</code> вместо <code>:http</code>, работает мгновенно).</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Кто слушает порты на сервере прямо сейчас?</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>ss<span class="w"> </span>-tulpn
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Показать все установленные (активные) TCP-соединения</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>ss<span class="w"> </span>-tan<span class="w"> </span>state<span class="w"> </span>established
+</span></code></pre></div>
+<h4 id="curl-nc-netcat">Диагностика с помощью <code>curl</code> и <code>nc</code> (Netcat)</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Проверить только HTTP-заголовки ответа (-I)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>https://ya.ru
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Подробный режим (-v): покажет DNS-резолв, TCP-хендшейк, детали TLS-сертификата и заголовки</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>curl<span class="w"> </span>-v<span class="w"> </span>https://example.com<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Отправить POST-запрос с JSON-телом и кастомным заголовком</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8080/api/v1/items<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">     </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">     </span>-d<span class="w"> </span><span class="s1">'{"name": "server-01", "role": "worker"}'</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># Вывести только HTTP-код ответа (полезно для проверок в CI/CD и скриптах)</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">"%{http_code}\n"</span><span class="w"> </span>https://example.com
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1"># Проверить, открыт ли TCP-порт 5432 (PostgreSQL) на удаленном хосте с таймаутом 3 секунды</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>nc<span class="w"> </span>-zv<span class="w"> </span>-w<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">192</span>.168.1.50<span class="w"> </span><span class="m">5432</span>
+</span></code></pre></div>
+<hr />
+<h3 id="25-tcpdump-iptables-nftables-ufw">2.5. Перехват трафика (<code>tcpdump</code>) и фаервол (<code>iptables</code> / <code>nftables</code> / <code>ufw</code>)</h3>
+<h4 id="tcpdump">Перехват пакетов через <code>tcpdump</code></h4>
+<p>Когда логи пусты, а сервис не работает, <code>tcpdump</code> показывает реальную картину на сетевой карте.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Слушать интерфейс eth0, только TCP-порт 80, не резолвить имена (-nn)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>tcpdump<span class="w"> </span>-i<span class="w"> </span>eth0<span class="w"> </span>-nn<span class="w"> </span>tcp<span class="w"> </span>port<span class="w"> </span><span class="m">80</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Слушать на всех интерфейсах (-i any) пинги (ICMP) от конкретного хоста</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>tcpdump<span class="w"> </span>-i<span class="w"> </span>any<span class="w"> </span>-nn<span class="w"> </span>icmp<span class="w"> </span>and<span class="w"> </span>host<span class="w"> </span><span class="m">8</span>.8.8.8
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Записать дамп трафика в файл для последующего визуального анализа в Wireshark</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>sudo<span class="w"> </span>tcpdump<span class="w"> </span>-i<span class="w"> </span>eth0<span class="w"> </span>-nn<span class="w"> </span>port<span class="w"> </span><span class="m">443</span><span class="w"> </span>-w<span class="w"> </span>capture.pcap
+</span></code></pre></div>
+<h4 id="netfilter-iptables-nftables-ufw">Межсетевой экран: <code>Netfilter</code> (<code>iptables</code>, <code>nftables</code>, <code>ufw</code>)</h4>
+<p>В ядре Linux встроен фреймворк <strong>Netfilter</strong>. <code>iptables</code> и более современный <code>nftables</code> — это консольные утилиты для управления правилами этого фреймворка.</p>
+<p><strong>Базовые концепции <code>iptables</code>:</strong></p>
+<ul>
+<li><strong>Таблицы (Tables):</strong></li>
+<li><code>filter</code> (по умолчанию) — разрешать или блокировать пакеты.</li>
+<li>
+<p><code>nat</code> — подмена адресов и проброс портов (именно здесь Docker прописывает правила проброса портов контейнеров!).</p>
+</li>
+<li>
+<p><strong>Цепочки (Chains):</strong></p>
+</li>
+<li><code>INPUT</code> — пакеты, адресованные самому нашему серверу.</li>
+<li><code>OUTPUT</code> — пакеты, исходящие от нашего сервера.</li>
+<li>
+<p><code>FORWARD</code> — транзитные пакеты, проходящие сквозь сервер (например, в сеть Docker-контейнеров).</p>
+</li>
+<li>
+<p><strong>Действия (Targets):</strong></p>
+</li>
+<li><code>ACCEPT</code> — пропустить пакет.</li>
+<li><code>DROP</code> — молча уничтожить пакет (отправитель будет ждать до истечения таймаута).</li>
+<li><code>REJECT</code> — отбросить пакет и вежливо отправить в ответ сообщение «Порт закрыт» (ICMP Port Unreachable / TCP RST).</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Посмотреть текущие правила таблицы filter с номерами строк и счетчиками пакетов</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-L<span class="w"> </span>-v<span class="w"> </span>-n<span class="w"> </span>--line-numbers
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Посмотреть правила NAT (увидеть, как Docker пробрасывает порты)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-L<span class="w"> </span>-n<span class="w"> </span>-v
+</span></code></pre></div>
+<p>На серверах Ubuntu для управления хостовым фаерволом используют удобную обертку <strong><code>ufw</code> (Uncomplicated Firewall)</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 1. По умолчанию запретить все входящие и разрешить все исходящие</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>default<span class="w"> </span>deny<span class="w"> </span>incoming
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>default<span class="w"> </span>allow<span class="w"> </span>outgoing
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># 2. ОБЯЗАТЕЛЬНО сначала разрешить SSH, чтобы не отрезать себе доступ!</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>/tcp
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># 3. Открыть веб-порты HTTP и HTTPS</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>/tcp
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">443</span>/tcp
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="c1"># 4. Включить фаервол и проверить статус</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>status<span class="w"> </span>numbered
+</span></code></pre></div>
+<hr />
+<h2 id="3-bash">Блок 3. Программирование и автоматизация на Bash</h2>
+<h3 id="31">3.1. Потоки ввода/вывода, пайпы и коды возврата</h3>
+<p>Каждая команда возвращает <strong>Exit Code</strong> (код возврата от <code>0</code> до <code>255</code>), который сохраняется в переменную <code>$?</code>:</p>
+<ul>
+<li><code>0</code> — успешное выполнение.</li>
+<li><code>1..255</code> — ошибка (например, <code>127</code> — команда не найдена, <code>126</code> — нет прав на исполнение).</li>
+</ul>
+<p><strong>Операторы перенаправления и связки:</strong></p>
+<ul>
+<li><code>cmd1 | cmd2</code> (Pipe / Конвейер) — передает <code>stdout</code> первой команды на <code>stdin</code> второй.</li>
+<li><code>cmd1 &amp;&amp; cmd2</code> — выполнит <code>cmd2</code> <strong>только если</strong> <code>cmd1</code> завершилась успешно (код <code>0</code>).</li>
+<li><code>cmd1 || cmd2</code> — выполнит <code>cmd2</code> <strong>только если</strong> <code>cmd1</code> завершилась с ошибкой (код $\neq 0$).</li>
+<li><code>&gt; file</code> — перезаписать файл выводом <code>stdout</code>.</li>
+<li><code>&gt;&gt; file</code> — дописать в конец файла.</li>
+<li><code>2&gt; error.log</code> — перенаправить только поток ошибок <code>stderr</code>.</li>
+<li><code>&gt; all.log 2&gt;&amp;1</code> (или <code>&amp;&gt; all.log</code>) — направить и <code>stdout</code>, и <code>stderr</code> в одно место.</li>
+<li><code>2&gt; /dev/null</code> — скрыть ошибки (отправить в «черную дыру»).</li>
+</ul>
+<hr />
+<h3 id="32-bash-safe-bash">3.2. Золотой стандарт надежного Bash-скрипта (Safe Bash)</h3>
+<p>По умолчанию Bash продолжает выполнять скрипт даже тогда, когда одна из команд внутри упала с ошибкой или переменная оказалась пустой.</p>
+<blockquote>
+<p><strong>Страшный пример:</strong> Если переменная <code>$ APP_DIR</code> не задана, команда <code>rm -rf $APP_DIR/*</code> превратится в <code>rm -rf /*</code>!</p>
+</blockquote>
+<p>Чтобы этого никогда не произошло, любой профессиональный скрипт начинается с заголовка <strong><code>set -euo pipefail</code></strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/usr/bin/env bash</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+</span></code></pre></div>
+<ul>
+<li><strong><code>-e</code> (errexit):</strong> Немедленно прервать скрипт, если любая команда вернула ненулевой код ошибки.</li>
+<li><strong><code>-u</code> (nounset):</strong> Прервать скрипт при попытке обратиться к необъявленной переменной.</li>
+<li><strong><code>-o pipefail</code>:</strong> Если в цепочке с пайпом (<code>cmd1 | cmd2 | cmd3</code>) упала любая промежуточная команда, весь конвейер считается упавшим (без этого флага Bash смотрит только на код последней команды).</li>
+</ul>
+<hr />
+<h3 id="33">3.3. Переменные, условия, циклы и функции</h3>
+<h4 id="_3">Разница кавычек и подстановка</h4>
+<ul>
+<li><code>'Одинарные кавычки'</code> — строгий литерал, внутри ничего не вычисляется (<code>echo '$USER'</code> выведет текст <code>$USER</code>).</li>
+<li><code>"Двойные кавычки"</code> — вычисляют переменные и подстановки (<code>echo "Привет, $USER"</code> выведет <code>Привет, root</code>). <strong>Всегда оборачивайте переменные в двойные кавычки (<code>"$VAR"</code>), чтобы пробелы в именах файлов не ломали скрипт.</strong></li>
+<li><code>$(команда)</code> — выполнить команду и подставить её результат (например, <code>CURRENT_DATE="$(date +%F)"</code>).</li>
+</ul>
+<h4 id="_4">Шпаргалка по условиям <code>[[ ... ]]</code></h4>
+<p>В современном Bash используют двойные квадратные скобки <code>[[ ... ]]</code> — они безопаснее одинарных <code>[ ... ]</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Проверка файлов</th>
+<th>Проверка строк</th>
+<th>Проверка чисел</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[[ -f "$file" ]]</code> — файл существует</td>
+<td><code>[[ -z "$str" ]]</code> — строка пустая</td>
+<td><code>[[ "$a" -eq "$b" ]]</code> — равно ($=$)</td>
+</tr>
+<tr>
+<td><code>[[ -d "$dir" ]]</code> — директория существует</td>
+<td><code>[[ -n "$str" ]]</code> — строка НЕ пустая</td>
+<td><code>[[ "$a" -ne "$b" ]]</code> — не равно ($\neq$)</td>
+</tr>
+<tr>
+<td><code>[[ -r "$file" ]]</code> — доступен для чтения</td>
+<td><code>[[ "$a" == "$b" ]]</code> — строки равны</td>
+<td><code>[[ "$a" -gt "$b" ]]</code> — больше ($&gt;$)</td>
+</tr>
+<tr>
+<td><code>[[ -x "$file" ]]</code> — файл исполняемый</td>
+<td><code>[[ "$a" != "$b" ]]</code> — строки не равны</td>
+<td><code>[[ "$a" -lt "$b" ]]</code> — меньше ($&lt;$)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="if-for-while">Пример конструкции <code>if</code>, цикла <code>for</code>, <code>while</code> и функций</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="ch">#!/usr/bin/env bash</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Позиционные аргументы: $1 - первый аргумент, ${1:-default} - значение по умолчанию</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">TARGET_ENV</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">staging</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">SERVICES</span><span class="o">=(</span><span class="s2">"nginx"</span><span class="w"> </span><span class="s2">"postgresql"</span><span class="w"> </span><span class="s2">"redis"</span><span class="o">)</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>log_info<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"[</span><span class="k">$(</span>date<span class="w"> </span>+<span class="s1">'%Y-%m-%d %H:%M:%S'</span><span class="k">)</span><span class="s2">] [INFO] </span><span class="si">${</span><span class="nv">msg</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="o">}</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="c1"># Условие</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$TARGET_ENV</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"production"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span>log_info<span class="w"> </span><span class="s2">"Внимание! Работаем в PRODUCTION окружении."</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="k">else</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span>log_info<span class="w"> </span><span class="s2">"Тестовое окружение: </span><span class="si">${</span><span class="nv">TARGET_ENV</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="k">fi</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="c1"># Цикл по массиву</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="k">for</span><span class="w"> </span>svc<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">SERVICES</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span>systemctl<span class="w"> </span>is-active<span class="w"> </span>--quiet<span class="w"> </span><span class="s2">"</span><span class="nv">$svc</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">        </span>log_info<span class="w"> </span><span class="s2">"Сервис </span><span class="si">${</span><span class="nv">svc</span><span class="si">}</span><span class="s2"> работает штатно."</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">        </span>log_info<span class="w"> </span><span class="s2">"Сервис </span><span class="si">${</span><span class="nv">svc</span><span class="si">}</span><span class="s2"> ОСТАНОВЛЕН!"</span>
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="k">done</span>
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="c1"># Безопасное построчное чтение файла через while</span>
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="k">while</span><span class="w"> </span><span class="nv">IFS</span><span class="o">=</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>line<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Прочитана строка: </span><span class="nv">$line</span><span class="s2">"</span>
+</span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span>/etc/hosts
+</span></code></pre></div>
+<hr />
+<h3 id="34-grep-sed-awk">3.4. Текстовый конвейер: <code>grep</code>, <code>sed</code>, <code>awk</code></h3>
+<p>Три кита парсинга логов и конфигураций в консоли.</p>
+<h4 id="1-grep">1. <code>grep</code> — поиск и фильтрация строк по регулярным выражениям</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Найти слово ERROR (без учета регистра -i) с номерами строк (-n)</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>grep<span class="w"> </span>-in<span class="w"> </span><span class="s2">"error"</span><span class="w"> </span>/var/log/syslog
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Вывести только активные директивы конфига (исключить -v пустые строки ^$ и комментарии ^#)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>grep<span class="w"> </span>-Ev<span class="w"> </span><span class="s1">'^\s*#|^\s*$'</span><span class="w"> </span>/etc/ssh/sshd_config
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Рекурсивно (-r) найти все файлы в /etc, где упоминается порт 8080</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>sudo<span class="w"> </span>grep<span class="w"> </span>-rnw<span class="w"> </span><span class="s1">'/etc/'</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'8080'</span>
+</span></code></pre></div>
+<h4 id="2-sed">2. <code>sed</code> — потоковый редактор (замена и удаление текста на лету)</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Заменить слово "http" на "https" во всем файле и вывести на экран (флаг g - все вхождения в строке)</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sed<span class="w"> </span><span class="s1">'s/http/https/g'</span><span class="w"> </span>config.txt
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Заменить значение прямо внутри файла (-i) с созданием резервной копии config.txt.bak (-i.bak)</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">'s/PermitRootLogin yes/PermitRootLogin no/g'</span><span class="w"> </span>sshd_config
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Если в строке есть слэши (пути), в качестве разделителя вместо / можно использовать | или #</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>sed<span class="w"> </span><span class="s1">'s|/var/www/html|/opt/app/public|g'</span><span class="w"> </span>nginx.conf
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1"># Удалить все пустые строки из файла</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>sed<span class="w"> </span><span class="s1">'/^$/d'</span><span class="w"> </span>file.txt
+</span></code></pre></div>
+<h4 id="3-awk">3. <code>awk</code> — работа со столбцами и аналитика</h4>
+<p>По умолчанию <code>awk</code> делит каждую строку на колонки по пробелам/табуляции: <code>$1</code> — первая колонка, <code>$2</code> — вторая, <code>$NF</code> — последняя колонка, <code>$0</code> — вся строка целиком. Флаг <code>-F</code> задает свой разделитель.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Вывести первого пользователя и его shell из /etc/passwd (разделитель двоеточие)</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>awk<span class="w"> </span>-F<span class="s1">':'</span><span class="w"> </span><span class="s1">'{print "User: " $1 " | Shell: " $7}'</span><span class="w"> </span>/etc/passwd
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Отфильтровать строки, где 9-я колонка (HTTP-код в логе Nginx) равна 500, и вывести IP ($1) и URL ($7)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>awk<span class="w"> </span><span class="s1">'$9 == 500 {print $1, $7}'</span><span class="w"> </span>access.log
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Топ-10 IP-адресов, с которых идет больше всего запросов (классика отладки DDoS)</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>awk<span class="w"> </span><span class="s1">'{print $1}'</span><span class="w"> </span>access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
+</span></code></pre></div>
+<hr />
+<h2 id="4">Блок 4. Виртуализация и основы изоляции</h2>
+<h3 id="41">4.1. Классификация гипервизоров и контейнеров</h3>
+<p>Чтобы понимать разницу между облачной ВМ и Docker-контейнером, разберем, как они делят ресурсы физического сервера (Host):</p>
+<table>
+<thead>
+<tr>
+<th>Характеристика</th>
+<th>Гипервизор Type 1 (Bare-Metal)</th>
+<th>Гипервизор Type 2 (Hosted)</th>
+<th>Контейнеризация (OS-level)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Примеры</strong></td>
+<td><strong>KVM</strong>, VMware ESXi, Xen, Hyper-V</td>
+<td><strong>VirtualBox</strong>, VMware Workstation</td>
+<td><strong>Docker</strong>, containerd, LXC</td>
+</tr>
+<tr>
+<td><strong>Как работает</strong></td>
+<td>Работает напрямую на железе (KVM встроен прямо в ядро Linux).</td>
+<td>Запускается как обычная программа поверх хостовой ОС (Windows/macOS).</td>
+<td>Процессы работают на общем ядре хоста, изолированные через <code>namespaces</code> и <code>cgroups</code>.</td>
+</tr>
+<tr>
+<td><strong>Свое ядро ОС?</strong></td>
+<td><strong>Да</strong> (у каждой ВМ свое ядро и своя гостевая ОС).</td>
+<td><strong>Да</strong> (полная гостевая ОС).</td>
+<td><strong>Нет</strong> (используется ядро хоста).</td>
+</tr>
+<tr>
+<td><strong>Время старта</strong></td>
+<td>15–60 секунд.</td>
+<td>20–90 секунд.</td>
+<td>Доли секунды (как обычный процесс).</td>
+</tr>
+<tr>
+<td><strong>Накладные расходы</strong></td>
+<td>Низкие / Средние (требуется выделенная RAM под гостевую ОС).</td>
+<td>Высокие.</td>
+<td>Минимальные (почти равны нативному процессу).</td>
+</tr>
+<tr>
+<td><strong>Изоляция</strong></td>
+<td><strong>Максимальная</strong> (аппаратная: Intel VT-x / AMD-V).</td>
+<td>Высокая.</td>
+<td>Логическая (на уровне ядра ОС).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="42-kvm-qemu-libvirt">4.2. Связка KVM + QEMU + libvirt (основа всех облаков)</h3>
+<p>Когда вы создаете виртуальную машину в Yandex Cloud, AWS или Proxmox, под капотом почти всегда работает связка:</p>
+<ol>
+<li><strong>KVM (Kernel-based Virtual Machine):</strong> Модуль ядра Linux, который превращает само ядро в гипервизор Type 1, используя аппаратные расширения процессора (Intel VT-x или AMD-V).</li>
+<li><strong>QEMU (Quick Emulator):</strong> Эмулирует периферийное железо для виртуальной машины (сетевые карты, контроллеры дисков, видеокарту). В паре с KVM выполняет код процессора напрямую без эмуляции.</li>
+<li><strong>libvirt (<code>virsh</code>):</strong> Удобный API и демон для управления жизненным циклом виртуальных машин.</li>
+</ol>
+<hr />
+<h3 id="43-linux-docker">4.3. Основы изоляции в ядре Linux (предвестник Docker)</h3>
+<p>Контейнер — это не «легковесная виртуальная машина». Это обычный процесс Linux, которому ядро ограничило видимость и ресурсы с помощью трех механизмов:</p>
+<ol>
+<li><strong><code>Namespaces</code> (Пространства имен) — отвечают за то, ЧТО процесс ВИДИТ:</strong></li>
+<li><code>pid</code> — у процесса внутри свой PID 1, он не видит процессы хоста.</li>
+<li><code>net</code> — свой изолированный сетевой стек (свои интерфейсы, IP, таблица маршрутизации и порты).</li>
+<li><code>mnt</code> — своя точка монтирования файловой системы.</li>
+<li><code>uts</code> — свое имя хоста (<code>hostname</code>).</li>
+<li>
+<p><code>ipc</code> и <code>user</code> — изоляция межпроцессного взаимодействия и ID пользователей.</p>
+</li>
+<li>
+<p><strong><code>cgroups</code> (Control Groups) — отвечают за то, СКОЛЬКО ресурсов процесс может ПОТРЕБЛЯТЬ:</strong></p>
+</li>
+<li>
+<p>Ограничивают лимиты CPU, оперативной памяти (если процесс превысит лимит cgroup по RAM, в дело вступит <strong>OOM Killer</strong> и убьет его сигналом <code>SIGKILL</code>), дискового I/O и числа процессов.</p>
+</li>
+<li>
+<p><strong><code>chroot</code> / <code>pivot_root</code>:</strong> Переносит корневую директорию <code>/</code> процесса в отдельную подпапку на диске, чтобы он не имел доступа к файловой системе хоста.</p>
+</li>
+</ol>
+<hr />
+<h2 id="0">🛠 Практический проект Модуля 0</h2>
+<p>Выполни все 3 этапа последовательно. Это твой первый законченный инфраструктурный кейс.</p>
+<h3 id="1">Этап 1. Развёртывание тестового стенда (кроссплатформенно)</h3>
+<p>Для быстрой и единообразной работы на Windows (WSL2), macOS или Linux мы используем <strong>Multipass</strong> (официальный инструмент от Canonical, который за 1 минуту поднимает легкую ВМ Ubuntu поверх Hyper-V/VirtualBox на Windows, Hypervisor.framework на macOS или KVM на Linux) — либо любую твою чистую ВМ с Ubuntu 22.04 / 24.04.</p>
+<p><strong>Вариант через Multipass (или используй свою ВМ / WSL2):</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># 1. Запустить ВМ с именем devops-node, 2 ядрами CPU, 2 ГБ RAM и 10 ГБ диска</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>multipass<span class="w"> </span>launch<span class="w"> </span>--name<span class="w"> </span>devops-node<span class="w"> </span>--cpus<span class="w"> </span><span class="m">2</span><span class="w"> </span>--memory<span class="w"> </span>2G<span class="w"> </span>--disk<span class="w"> </span>10G
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># 2. Узнать выданный IP-адрес виртуальной машины</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>multipass<span class="w"> </span>list
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1"># 3. Зайти внутрь ВМ</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>multipass<span class="w"> </span>shell<span class="w"> </span>devops-node
+</span></code></pre></div>
+<hr />
+<h3 id="2-hardening-ssh-firewall">Этап 2. Базовый Hardening (SSH + Firewall)</h3>
+<p>Выполни эти шаги, чтобы настроить безопасный доступ по SSH-ключам и закрыть лишние порты.</p>
+<h4 id="1-ed25519-ssh-">1. На твоем рабочем компьютере (Хосте) сгенерируй ED25519 SSH-ключ:</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">"devops-course-key"</span><span class="w"> </span>-f<span class="w"> </span>~/.ssh/id_ed25519_devops
+</span></code></pre></div>
+<p>Скопируй содержимое публичного ключа (<code>cat ~/.ssh/id_ed25519_devops.pub</code>).</p>
+<h4 id="2_1">2. Внутри виртуальной машины (Сервера) создай пользователя и добавь ключ:</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Создаем пользователя deployer и добавляем его в группу sudo</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-s<span class="w"> </span>/bin/bash<span class="w"> </span>-G<span class="w"> </span>sudo<span class="w"> </span>deployer
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Разрешаем пользователю deployer выполнять sudo без пароля (стандарт для будущей работы с Ansible)</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"deployer ALL=(ALL) NOPASSWD:ALL"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/sudoers.d/deployer
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">440</span><span class="w"> </span>/etc/sudoers.d/deployer
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="c1"># Создаем папку .ssh и кладем туда наш публичный ключ</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/home/deployer/.ssh
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ВСТАВЬ_СЮДА_СОДЕРЖИМОЕ_id_ed25519_devops.pub"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/home/deployer/.ssh/authorized_keys
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="c1"># Выставляем строгие права доступа (иначе SSH откажется принимать ключ!)</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>deployer:deployer<span class="w"> </span>/home/deployer/.ssh
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/home/deployer/.ssh
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/home/deployer/.ssh/authorized_keys
+</span></code></pre></div>
+<h4 id="3-ssh-etcsshsshd_config">3. Защити демон SSH (<code>/etc/ssh/sshd_config</code>):</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Отключаем вход под root и вход по паролю с помощью sed</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/^#*PermitRootLogin.*/PermitRootLogin no/'</span><span class="w"> </span>/etc/ssh/sshd_config
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/^#*PasswordAuthentication.*/PasswordAuthentication no/'</span><span class="w"> </span>/etc/ssh/sshd_config
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># Проверяем синтаксис конфига SSH перед перезапуском (если вывода нет — всё отлично)</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>sudo<span class="w"> </span>sshd<span class="w"> </span>-t
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="c1"># Перезапускаем демон SSH</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
+</span></code></pre></div>
+<h4 id="4-ufw">4. Настрой фаервол <code>ufw</code>:</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>default<span class="w"> </span>deny<span class="w"> </span>incoming
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>default<span class="w"> </span>allow<span class="w"> </span>outgoing
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>/tcp<span class="w"> </span>comment<span class="w"> </span><span class="s1">'SSH access'</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>/tcp<span class="w"> </span>comment<span class="w"> </span><span class="s1">'HTTP web'</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>--force<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>status<span class="w"> </span>verbose
+</span></code></pre></div>
+<p>Теперь проверь вход со своего компьютера по ключу:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_ed25519_devops<span class="w"> </span>deployer@&lt;IP_ТВОЕЙ_ВМ&gt;
+</span></code></pre></div>
+<hr />
+<h3 id="3-sys-auditor-systemd">Этап 3. Разработка демона аудита сервера (<code>sys-auditor</code>) и упаковка в <code>systemd</code></h3>
+<p>Мы напишем Bash-скрипт, который контролирует здоровье сервера (диск, RAM, сеть, порты) и оформлен как полноценный системный сервис.</p>
+<h4 id="1-usrlocalbinsys-auditorsh">1. Создай скрипт <code>/usr/local/bin/sys-auditor.sh</code>:</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/usr/local/bin/sys-auditor.sh<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="s">#!/usr/bin/env bash</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="s">set -euo pipefail</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="s">LOG_FILE="/var/log/sys-auditor.log"</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="s">DISK_THRESHOLD=85</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="s">CHECK_URL="https://ya.ru"</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="s">log_msg() {</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="s">    local level="$1"</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="s">    local message="$2"</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="s">    local timestamp</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="s">    timestamp="$(date +'%Y-%m-%d %H:%M:%S')"</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="s">    echo "[${timestamp}] [${level}] ${message}" | tee -a "$LOG_FILE"</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="s">}</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="s">check_disk() {</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="s">    # Получаем процент заполнения корневого раздела / без знака %</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="s">    local usage</span>
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="s">    usage="$(df -P / | awk 'NR==2 {gsub(/%/,"",$5); print $5}')"</span>
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="s">    if [[ "$usage" -ge "$DISK_THRESHOLD" ]]; then</span>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="s">        log_msg "WARN" "Root disk usage is critical: ${usage}% (Threshold: ${DISK_THRESHOLD}%)"</span>
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a><span class="s">    else</span>
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="s">        log_msg "INFO" "Root disk usage OK: ${usage}%"</span>
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a><span class="s">    fi</span>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a><span class="s">}</span>
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a><span class="s">check_memory() {</span>
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a><span class="s">    # Считаем доступную память в МБ из /proc/meminfo</span>
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a><span class="s">    local mem_avail_mb</span>
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a><span class="s">    mem_avail_mb="$(awk '/MemAvailable/ {printf "%d", $2/1024}' /proc/meminfo)"</span>
+</span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="s">    log_msg "INFO" "Available RAM: ${mem_avail_mb} MB"</span>
+</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a><span class="s">}</span>
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a><span class="s">check_network() {</span>
+</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a><span class="s">    local http_code</span>
+</span><span id="__span-23-37"><a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="s">    http_code="$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "$CHECK_URL" || echo "000")"</span>
+</span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a><span class="s">    if [[ "$http_code" =~ ^(200|301|302)$ ]]; then</span>
+</span><span id="__span-23-39"><a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a><span class="s">        log_msg "INFO" "Network connectivity to ${CHECK_URL} OK (HTTP ${http_code})"</span>
+</span><span id="__span-23-40"><a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a><span class="s">    else</span>
+</span><span id="__span-23-41"><a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a><span class="s">        log_msg "ERROR" "Network check failed for ${CHECK_URL} (HTTP ${http_code})"</span>
+</span><span id="__span-23-42"><a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a><span class="s">    fi</span>
+</span><span id="__span-23-43"><a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a><span class="s">}</span>
+</span><span id="__span-23-44"><a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>
+</span><span id="__span-23-45"><a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a><span class="s">check_listening_ports() {</span>
+</span><span id="__span-23-46"><a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a><span class="s">    local port_count</span>
+</span><span id="__span-23-47"><a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a><span class="s">    port_count="$(ss -tln | awk 'NR&gt;1 {count++} END {print count+0}')"</span>
+</span><span id="__span-23-48"><a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a><span class="s">    log_msg "INFO" "Active listening TCP sockets: ${port_count}"</span>
+</span><span id="__span-23-49"><a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a><span class="s">}</span>
+</span><span id="__span-23-50"><a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a>
+</span><span id="__span-23-51"><a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a><span class="s">main() {</span>
+</span><span id="__span-23-52"><a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a><span class="s">    log_msg "INFO" "=== Starting System Audit Daemon ==="</span>
+</span><span id="__span-23-53"><a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a><span class="s">    while true; do</span>
+</span><span id="__span-23-54"><a id="__codelineno-23-54" name="__codelineno-23-54" href="#__codelineno-23-54"></a><span class="s">        check_disk</span>
+</span><span id="__span-23-55"><a id="__codelineno-23-55" name="__codelineno-23-55" href="#__codelineno-23-55"></a><span class="s">        check_memory</span>
+</span><span id="__span-23-56"><a id="__codelineno-23-56" name="__codelineno-23-56" href="#__codelineno-23-56"></a><span class="s">        check_network</span>
+</span><span id="__span-23-57"><a id="__codelineno-23-57" name="__codelineno-23-57" href="#__codelineno-23-57"></a><span class="s">        check_listening_ports</span>
+</span><span id="__span-23-58"><a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a><span class="s">        sleep 60</span>
+</span><span id="__span-23-59"><a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a><span class="s">    done</span>
+</span><span id="__span-23-60"><a id="__codelineno-23-60" name="__codelineno-23-60" href="#__codelineno-23-60"></a><span class="s">}</span>
+</span><span id="__span-23-61"><a id="__codelineno-23-61" name="__codelineno-23-61" href="#__codelineno-23-61"></a>
+</span><span id="__span-23-62"><a id="__codelineno-23-62" name="__codelineno-23-62" href="#__codelineno-23-62"></a><span class="s">main "$@"</span>
+</span><span id="__span-23-63"><a id="__codelineno-23-63" name="__codelineno-23-63" href="#__codelineno-23-63"></a><span class="s">EOF</span>
+</span><span id="__span-23-64"><a id="__codelineno-23-64" name="__codelineno-23-64" href="#__codelineno-23-64"></a>
+</span><span id="__span-23-65"><a id="__codelineno-23-65" name="__codelineno-23-65" href="#__codelineno-23-65"></a><span class="c1"># Делаем скрипт исполняемым</span>
+</span><span id="__span-23-66"><a id="__codelineno-23-66" name="__codelineno-23-66" href="#__codelineno-23-66"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/usr/local/bin/sys-auditor.sh
+</span></code></pre></div>
+<h4 id="2-systemd-etcsystemdsystemsys-auditorservice">2. Создай systemd-юнит <code>/etc/systemd/system/sys-auditor.service</code>:</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/systemd/system/sys-auditor.service<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="s">[Unit]</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="s">Description=System Health Auditor Service</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="s">After=network-online.target</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="s">Wants=network-online.target</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="s">[Service]</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="s">Type=simple</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="s">User=root</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="s">ExecStart=/usr/local/bin/sys-auditor.sh</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="s">Restart=always</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="s">RestartSec=10s</span>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="s">StandardOutput=journal</span>
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="s">StandardError=journal</span>
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="s">SyslogIdentifier=sys-auditor</span>
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="s">[Install]</span>
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="s">WantedBy=multi-user.target</span>
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<h4 id="3-etclogrotatedsys-auditor">3. Настрой ротацию логов <code>/etc/logrotate.d/sys-auditor</code> (чтобы лог не забил диск):</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/logrotate.d/sys-auditor<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="s">/var/log/sys-auditor.log {</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="s">    daily</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="s">    rotate 7</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="s">    compress</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="s">    delaycompress</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="s">    missingok</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="s">    notifempty</span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="s">    create 0640 root adm</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="s">}</span>
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<h4 id="4_1">4. Запусти и протестируй сервис:</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>sys-auditor.service
+</span></code></pre></div>
+<hr />
+<h3 id="-0">✅ Чек-лист самопроверки по Модулю 0</h3>
+<p>Проверь, что все 4 команды возвращают корректный результат:</p>
+<ol>
+<li>
+<p>Статус сервиса <code>active (running)</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>sys-auditor.service
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Логи пишутся и в журнал <code>systemd</code>, и в файл <code>/var/log/sys-auditor.log</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>sys-auditor<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>--no-pager
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>cat<span class="w"> </span>/var/log/sys-auditor.log
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Проверь самовосстановление сервиса (<code>Restart=always</code>): найди PID процесса и убей его через <code>kill -9</code>, а через 12 секунд проверь, что <code>systemd</code> поднял его заново с новым PID:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sudo<span class="w"> </span>pkill<span class="w"> </span>-9<span class="w"> </span>-f<span class="w"> </span>sys-auditor.sh
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>sleep<span class="w"> </span><span class="m">12</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>systemctl<span class="w"> </span>status<span class="w"> </span>sys-auditor.service
+</span></code></pre></div></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

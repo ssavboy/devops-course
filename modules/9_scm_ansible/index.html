@@ -1,0 +1,1872 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Бесплатный практический курс по DevOps для разработчиков и джунов">
+      
+      
+      
+      
+        <link rel="prev" href="../8_iac_terraform/">
+      
+      
+        <link rel="next" href="../10_kubernetes_k8s/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Управление конфигурацией (SCM) — Ansible - DevOps Курс для начинающих</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scm-ansible" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-header__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Курс для начинающих
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Управление конфигурацией (SCM) — Ansible
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на темную тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на темную тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-nav__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DevOps Курс для начинающих
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux, сети и автоматизация на Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение в DevOps и системы контроля версий (Git)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контейнеризация приложений (Docker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оркестрация многоконтейнерных приложений (Docker Compose & Nginx)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Наблюдаемость (Observability) и мониторинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизация сборки и CI (Continuous Integration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_continuous_delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continuous Delivery и безопасность внедрения (CD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_iac_terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инфраструктура как код (IaC) — Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Управление конфигурацией (SCM) — Ansible
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Управление конфигурацией (SCM) — Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ansible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Архитектура Ansible, Инвентарь и Идемпотентность
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Архитектура Ansible, Инвентарь и Идемпотентность">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-agentless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Безагентная архитектура (Agentless)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Главный принцип: Идемпотентность (Idempotency)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Инвентаризация (Inventory): Статическая и Динамическая
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-facts-jinja2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Переменные, Факты (Facts), Условия и Шаблоны Jinja2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Переменные, Факты (Facts), Условия и Шаблоны Jinja2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-group_vars-host_vars-ansible_facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Переменные (group_vars и host_vars) и Факты (ansible_facts)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Переменные (group_vars и host_vars) и Факты (ansible_facts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gathering-facts-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сбор фактов о сервере (Gathering Facts — модуль setup):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-when-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Условные конструкции (when) и Циклы (loop)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-jinja2-j2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Динамическая шаблонизация конфигов через Jinja2 (.j2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Отказоустойчивые плейбуки: Обработчики (Handlers), Блоки ошибок и Стратегии
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Отказоустойчивые плейбуки: Обработчики (Handlers), Блоки ошибок и Стратегии">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-handlers-notify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Обработчики событий (Handlers и notify)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-block-rescue-always" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Блоки перехвата ошибок (block / rescue / always)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-rolling-updates-serial-max_fail_percentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Стратегии выполнения и Rolling Updates (serial, max_fail_percentage)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-roles-ansible-galaxy-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Модульные Роли (Roles), Ansible Galaxy и защита секретов (Ansible Vault)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Модульные Роли (Roles), Ansible Galaxy и защита секретов (Ansible Vault)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Структура Ролей (Roles) для переиспользования кода
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ansible-galaxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Интеграция готовых решений из Ansible Galaxy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Шифрование секретов с помощью Ansible Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ansible-jinja2-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 9: Разработка Ansible-проекта с ролями, шаблонами Jinja2, блоками отказоустойчивости и Ansible Vault
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 9: Разработка Ansible-проекта с ролями, шаблонами Jinja2, блоками отказоустойчивости и Ansible Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ansible_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Установка Ansible и создание каркаса проекта
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-group_vars-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Настройка Инвентаря, Переменных окружений (group_vars) и шифрования Ansible Vault
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 2. Настройка Инвентаря, Переменных окружений (group_vars) и шифрования Ansible Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vaultyml-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Создадим и зашифруем секретный файл vault.yml с помощью ansible-vault:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-microservice_config-defaults-jinja2-templates-tasks-blockrescue-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Наполнение роли microservice_config (Defaults, Jinja2 Templates, Tasks, Block/Rescue, Handlers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-siteyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Создание главного плейбука site.yml и запуск на разных окружениях!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 9
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_kubernetes_k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes (K8s) и оркестрация контейнеров в продакшене
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Итоговый дипломный проект DevOps - Production-Ready Платформа «CloudOrder»
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ansible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Архитектура Ansible, Инвентарь и Идемпотентность
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Архитектура Ansible, Инвентарь и Идемпотентность">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-agentless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Безагентная архитектура (Agentless)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Главный принцип: Идемпотентность (Idempotency)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Инвентаризация (Inventory): Статическая и Динамическая
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-facts-jinja2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Переменные, Факты (Facts), Условия и Шаблоны Jinja2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Переменные, Факты (Facts), Условия и Шаблоны Jinja2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-group_vars-host_vars-ansible_facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Переменные (group_vars и host_vars) и Факты (ansible_facts)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Переменные (group_vars и host_vars) и Факты (ansible_facts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gathering-facts-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сбор фактов о сервере (Gathering Facts — модуль setup):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-when-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Условные конструкции (when) и Циклы (loop)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-jinja2-j2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Динамическая шаблонизация конфигов через Jinja2 (.j2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Отказоустойчивые плейбуки: Обработчики (Handlers), Блоки ошибок и Стратегии
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Отказоустойчивые плейбуки: Обработчики (Handlers), Блоки ошибок и Стратегии">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-handlers-notify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Обработчики событий (Handlers и notify)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-block-rescue-always" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Блоки перехвата ошибок (block / rescue / always)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-rolling-updates-serial-max_fail_percentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Стратегии выполнения и Rolling Updates (serial, max_fail_percentage)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-roles-ansible-galaxy-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Модульные Роли (Roles), Ansible Galaxy и защита секретов (Ansible Vault)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Модульные Роли (Roles), Ansible Galaxy и защита секретов (Ansible Vault)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Структура Ролей (Roles) для переиспользования кода
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ansible-galaxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Интеграция готовых решений из Ansible Galaxy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Шифрование секретов с помощью Ansible Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ansible-jinja2-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 9: Разработка Ansible-проекта с ролями, шаблонами Jinja2, блоками отказоустойчивости и Ansible Vault
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 9: Разработка Ansible-проекта с ролями, шаблонами Jinja2, блоками отказоустойчивости и Ansible Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ansible_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Установка Ansible и создание каркаса проекта
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-group_vars-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Настройка Инвентаря, Переменных окружений (group_vars) и шифрования Ansible Vault
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 2. Настройка Инвентаря, Переменных окружений (group_vars) и шифрования Ansible Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vaultyml-ansible-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Создадим и зашифруем секретный файл vault.yml с помощью ansible-vault:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-microservice_config-defaults-jinja2-templates-tasks-blockrescue-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Наполнение роли microservice_config (Defaults, Jinja2 Templates, Tasks, Block/Rescue, Handlers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-siteyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Создание главного плейбука site.yml и запуск на разных окружениях!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 9
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="scm-ansible">Управление конфигурацией (SCM) — Ansible</h1>
+<p>В предыдущем модуле мы изучили <strong>Terraform</strong>, который отвечает за <em>создание облачного «железа»</em> (сетей, виртуальных машин, дисков и бакетов). Но когда виртуальная машина только что создана в облаке — внутри неё абсолютно пустая операционная система. Кто установит на 50 новых серверов Docker, настроит права пользователей, пропишет правила фаервола, разложит SSL-сертификаты и сгенерирует конфигурационные файлы <code>nginx.conf</code> под каждое окружение?</p>
+<p>Эту задачу решает класс инструментов <strong>SCM (Software Configuration Management — Управление конфигурацией)</strong>, и безусловный стандарт индустрии здесь — <strong>Ansible</strong>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[ Terraform / OpenTofu ]                 [ Ansible ]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Создает инфраструктуру в облаке   ───►   Настраивает ОС и софт внутри ВМ
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>(VPC, Subnets, VMs, Disks, S3)           (Users, SSH, Firewall, Docker, Configs)
+</span></code></pre></div>
+<hr />
+<h2 id="1-ansible">Блок 1. Архитектура Ansible, Инвентарь и Идемпотентность</h2>
+<h3 id="11-agentless">1.1. Безагентная архитектура (Agentless)</h3>
+<p>Главное преимущество Ansible перед старыми системами (Puppet, Chef, SaltStack) — <strong>безагентная архитектура (Agentless)</strong>:
+* На целевые серверы (<strong>Managed Nodes</strong>) <strong>не нужно устанавливать никаких специальных демонов-агентов</strong>, которые висят в памяти и требуют обновлений.
+* Всё, что нужно от целевого сервера — работающий <strong>SSH-сервер</strong> и установленный <strong>Python</strong> (который уже есть из коробки в Ubuntu/Debian/RHEL).
+* С вашего ноутбука или раннера GitLab CI (<strong>Control Node</strong>) Ansible подключается к серверам по SSH, передает маленькие Python-скрипты (модули), выполняет их и удаляет за собой временные файлы.</p>
+<hr />
+<h3 id="12-idempotency">1.2. Главный принцип: Идемпотентность (Idempotency)</h3>
+<p><strong>Идемпотентность</strong> — это свойство операции, при котором повторный запуск плейбука 1, 10 или 100 раз подряд приводит сервер в <strong>одно и то же желаемое состояние</strong>, не совершая лишних действий и не ломая систему.</p>
+<ul>
+<li><strong>Неидемпотентный подход (плохой Bash):</strong>
+  Команда <code>echo "Port 2222" &gt;&gt; /etc/ssh/sshd_config</code> при каждом запуске будет дописывать новую строчку в конец файла, пока конфиг не сломается.</li>
+<li><strong>Идемпотентный подход (модуль Ansible <code>lineinfile</code>):</strong>
+  Ansible сначала прочитает файл <code>/etc/ssh/sshd_config</code>. Если строчка <code>Port 2222</code> там уже есть — он ничего не тронет и вернет зеленый статус <strong><code>ok</code></strong>. Если строчки нет — он аккуратно добавит её и вернет желтый статус <strong><code>changed</code></strong>.</li>
+</ul>
+<p><strong>Три главных цвета в выводе Ansible:</strong>
+* 🟢 <strong><code>ok</code>:</strong> Сервер уже находится в нужном состоянии, никаких изменений не потребовалось.
+* 🟡 <strong><code>changed</code>:</strong> Ansible внес изменения на сервере (установил пакет, изменил конфиг, перезапустил сервис).
+* 🔴 <strong><code>failed</code> / <code>unreachable</code>:</strong> Произошла ошибка выполнения или сервер недоступен по SSH.</p>
+<hr />
+<h3 id="13-inventory">1.3. Инвентаризация (Inventory): Статическая и Динамическая</h3>
+<p><strong>Inventory (Инвентарь)</strong> — это список ваших серверов, разбитый по логическим группам (<code>webservers</code>, <code>databases</code>, <code>k8s_nodes</code>) и окружениям (<code>staging</code>, <code>production</code>). Современный стандарт оформления инвентаря — формат <strong>YAML</strong> (<code>inventory.yml</code>):</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">all</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployer</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">ansible_ssh_private_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_ed25519_devops</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">ansible_python_interpreter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/bin/python3</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">children</span><span class="p">:</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">webservers</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="nt">hosts</span><span class="p">:</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="nt">web-01</span><span class="p">:</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">          </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.10.1.11</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">          </span><span class="nt">http_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="nt">web-02</span><span class="p">:</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">          </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.10.1.12</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">          </span><span class="nt">http_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nt">databases</span><span class="p">:</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">      </span><span class="nt">hosts</span><span class="p">:</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="nt">db-master</span><span class="p">:</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">          </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.10.1.50</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">          </span><span class="nt">pg_max_connections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Динамический инвентарь (Dynamic Inventory):</strong> В облаках (Yandex Cloud, AWS) IP-адреса серверов меняются динамически при масштабировании. Вместо ручного редактирования <code>inventory.yml</code> используют плагины динамического инвентаря (или генерацию <code>inventory.yml</code> напрямую через <code>terraform output</code>!), которые сами опрашивают API облака по тегам и собирают актуальный список хостов на лету.</p>
+</blockquote>
+<hr />
+<h2 id="2-facts-jinja2">Блок 2. Переменные, Факты (<code>Facts</code>), Условия и Шаблоны Jinja2</h2>
+<h3 id="21-group_vars-host_vars-ansible_facts">2.1. Переменные (<code>group_vars</code> и <code>host_vars</code>) и Факты (<code>ansible_facts</code>)</h3>
+<p>Чтобы не смешивать список IP-адресов с настройками в одном файле, Ansible автоматически подхватывает переменные из двух специальных папок рядом с инвентарем:
+* <strong><code>group_vars/webservers.yml</code></strong> — переменные для всей группы <code>webservers</code>.
+* <strong><code>host_vars/web-01.yml</code></strong> — индивидуальные переменные для конкретного хоста <code>web-01</code> (переопределяют групповые).</p>
+<h4 id="gathering-facts-setup">Сбор фактов о сервере (<code>Gathering Facts</code> — модуль <code>setup</code>):</h4>
+<p>Перед выполнением первой задачи каждого плейбука Ansible автоматически опрашивает сервер и собирает сотни системных параметров в словарь <strong><code>ansible_facts</code></strong>:
+* <code>ansible_facts['os_family']</code> — семейство ОС (<code>Debian</code>, <code>RedHat</code>).
+* <code>ansible_facts['distribution_version']</code> — версия дистрибутива (<code>24.04</code>).
+* <code>ansible_facts['processor_vcpus']</code> — количество ядер CPU.
+* <code>ansible_facts['memtotal_mb']</code> — объем оперативной памяти в МБ.
+* <code>ansible_facts['default_ipv4']['address']</code> — основной IP-адрес сервера.</p>
+<hr />
+<h3 id="22-when-loop">2.2. Условные конструкции (<code>when</code>) и Циклы (<code>loop</code>)</h3>
+<p>Зная факты о сервере, мы можем адаптировать поведение плейбука под разные ОС и окружения:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Установка веб-сервера и создание пользователей</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webservers</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Выполнять задачи с привилегиями root (через sudo)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="c1"># Условие when: выполнится только на системах семейства Debian/Ubuntu</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Установить Nginx на Debian/Ubuntu</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="nt">ansible.builtin.apt</span><span class="p">:</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="nt">update_cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible_facts['os_family'] == "Debian"</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="c1"># Цикл loop: создание сразу нескольких системных директорий за один шаг</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Создать рабочие директории проекта</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="nt">ansible.builtin.file</span><span class="p">:</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">item</span><span class="nv"> </span><span class="s">}}"</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">directory</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">www-data</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">www-data</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">"0755"</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">      </span><span class="nt">loop</span><span class="p">:</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/app</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/app/config</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log/app</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Золотое правило безопасности Ansible:</strong> Никогда не используйте модули <code>shell:</code> или <code>command:</code> для установки пакетов или создания файлов! Команды в <code>shell:</code> <strong>неидемпотентны</strong> и всегда возвращают <code>changed</code>. Всегда используйте специализированные модули (<code>ansible.builtin.apt</code>, <code>file</code>, <code>copy</code>, <code>template</code>, <code>user</code>, <code>systemd</code>). Если всё же пришлось вызвать <code>command:</code>, указывайте параметр <code>creates: /path/to/file</code> или <code>changed_when: false</code>.</p>
+</blockquote>
+<hr />
+<h3 id="23-jinja2-j2">2.3. Динамическая шаблонизация конфигов через Jinja2 (<code>.j2</code>)</h3>
+<p>Представь, что у тебя 10 серверов: на одном 2 ядра CPU и 2 ГБ RAM, а на другом — 16 ядер и 64 ГБ RAM. Как сгенерировать для каждого из них идеальный <code>nginx.conf</code> или <code>postgresql.conf</code> автоматически?</p>
+<p>Для этого используется шаблонизатор <strong>Jinja2</strong> (модуль <code>ansible.builtin.template</code>). Внутри шаблона <code>nginx.conf.j2</code> доступны:
+* <strong><code>{{ переменная }}</code></strong> — подстановка переменных и системных фактов (включая математику, например выделение 25% RAM под БД: <code>{{ (ansible_facts['memtotal_mb'] * 0.25) | int }}MB</code>).
+* <strong><code>{% if ... %} ... {% endif %}</code></strong> — ветвления внутри конфига (например, включить <code>access_log</code> только на <code>staging</code>, а на <code>prod</code> писать только ошибки).
+* <strong><code>{% for item in list %} ... {% endfor %}</code></strong> — автоматическая генерация списка серверов в блоке <code>upstream</code>!</p>
+<p><strong>Пример умного шаблона <code>templates/nginx.conf.j2</code>:</strong>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Файл сгенерирован автоматически через Ansible. Ручные правки запрещены!</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Сервер: {{ inventory_hostname }} (ОС: {{ ansible_facts['distribution'] }})</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">worker_processes</span><span class="w"> </span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="s">ansible_facts['processor_vcpus']</span><span class="w"> </span><span class="err">}}</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">events</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kn">worker_connections</span><span class="w"> </span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="s">max_connections</span><span class="w"> </span><span class="s">|</span><span class="w"> </span><span class="s">default(1024)</span><span class="w"> </span><span class="err">}}</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="kn">http</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="kn">{%</span><span class="w"> </span><span class="s">if</span><span class="w"> </span><span class="s">env_name</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">'production'</span><span class="w"> </span><span class="s">%</span><span class="err">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="s">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="kn">error_log</span><span class="w"> </span><span class="s">/var/log/nginx/error.log</span><span class="w"> </span><span class="s">crit</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="kn">{%</span><span class="w"> </span><span class="s">else</span><span class="w"> </span><span class="s">%</span><span class="err">}</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="s">access_log</span><span class="w"> </span><span class="s">/var/log/nginx/access.log</span><span class="p">;</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="kn">error_log</span><span class="w"> </span><span class="s">/var/log/nginx/error.log</span><span class="w"> </span><span class="s">debug</span><span class="p">;</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="kn">{%</span><span class="w"> </span><span class="s">endif</span><span class="w"> </span><span class="s">%</span><span class="err">}</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="s">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="s">http_port</span><span class="w"> </span><span class="err">}}</span><span class="p">;</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/status</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">            </span><span class="kn">return</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="s">'</span><span class="p">{</span><span class="kn">"node":</span><span class="w"> </span><span class="s">"</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="s">inventory_hostname</span><span class="w"> </span><span class="err">}}</span><span class="s">",</span><span class="w"> </span><span class="s">"cpus":</span><span class="w"> </span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="s">ansible_facts["processor_vcpus"]</span><span class="w"> </span><span class="err">}}</span><span class="s">,</span><span class="w"> </span><span class="s">"env":</span><span class="w"> </span><span class="s">"</span><span class="p">{</span><span class="kn">{</span><span class="w"> </span><span class="s">env_name</span><span class="w"> </span><span class="err">}}</span><span class="s">"</span><span class="err">}</span><span class="s">\n'</span><span class="p">;</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<hr />
+<h2 id="3-handlers">Блок 3. Отказоустойчивые плейбуки: Обработчики (<code>Handlers</code>), Блоки ошибок и Стратегии</h2>
+<h3 id="31-handlers-notify">3.1. Обработчики событий (<code>Handlers</code> и <code>notify</code>)</h3>
+<p>Мы изменили файл <code>nginx.conf</code> из шаблона Jinja2. Чтобы настройки вступили в силу, нужно выполнить <code>systemctl reload nginx</code>.
+* Если просто поставить задачу рестарта Nginx обычным шагом внизу плейбука — Nginx будет перезапускаться <strong>при каждом запуске Ansible</strong>, даже если конфиг вообще не менялся!
+* <strong>Решение — <code>Handlers</code> (Обработчики):</strong> Задачи в секции <code>handlers:</code> спят и запускаются <strong>только тогда</strong>, когда задача выше реально изменила файл (вернула статус <code>changed</code>) и послала сигнал <strong><code>notify:</code></strong>! При этом, даже если 5 разных задач за время плейбука вызвали <code>notify: Reload Nginx</code>, сам обработчик выполнится <strong>ровно один раз в самом конце плейбука</strong>.</p>
+<hr />
+<h3 id="32-block-rescue-always">3.2. Блоки перехвата ошибок (<code>block</code> / <code>rescue</code> / <code>always</code>)</h3>
+<p>Как в Python есть конструкция <code>try / except / finally</code>, так и в Ansible для создания отказоустойчивых плейбуков с автооткатом используется конструкция <strong><code>block</code> / <code>rescue</code> / <code>always</code></strong>:
+* <strong><code>block:</code></strong> — основные задачи (например, выкатить новый конфиг и проверить его валидность).
+* <strong><code>rescue:</code></strong> — выполняется <strong>только если любая задача внутри <code>block</code> упала с ошибкой</strong> (например: вернуть старый бэкап конфига и отправить алерт в Telegram).
+* <strong><code>always:</code></strong> — выполняется всегда, независимо от успеха или ошибки (например: очистить временные установочные архивы в <code>/tmp</code>).</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Безопасное обновление конфигурации с автооткатом при ошибке</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">block</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Выкатить новый конфиг приложения</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">      </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.conf.j2</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/myapp/app.conf</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nt">backup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Создать резервную копию перед перезаписью</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">      </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config_result</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Проверить валидность нового конфига</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">      </span><span class="nt">ansible.builtin.command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/bin/myapp --check-config</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">      </span><span class="nt">changed_when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="nt">rescue</span><span class="p">:</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">АВАРИЙНЫЙ ОТКАТ — вернуть старый конфиг из бэкапа при ошибке валидации</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">      </span><span class="nt">ansible.builtin.copy</span><span class="p">:</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">config_result.backup_file</span><span class="nv"> </span><span class="s">}}"</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/myapp/app.conf</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="nt">remote_src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config_result.backup_file is defined</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span><span class="nt">always</span><span class="p">:</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Убедиться, что сервис запущен</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">      </span><span class="nt">ansible.builtin.service</span><span class="p">:</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">started</span>
+</span></code></pre></div>
+<hr />
+<h3 id="33-rolling-updates-serial-max_fail_percentage">3.3. Стратегии выполнения и Rolling Updates (<code>serial</code>, <code>max_fail_percentage</code>)</h3>
+<p>По умолчанию Ansible применяет каждую задачу ко всем серверам группы одновременно (стратегия <code>linear</code>, по 5 хостов за раз — параметр <code>forks</code>).
+Если вы обновляете боевой кластер из 10 веб-серверов и перезапустите их все одновременно — сайт упадет!</p>
+<p>Для бесперебойного обновления (<strong>Rolling Update</strong>) в плейбуке задают:
+* <strong><code>serial: 2</code> (или <code>serial: "25%"</code>)</strong> — Ansible будет полностью проходить весь плейбук сначала только на первых 2 серверах, и лишь убедившись, что они живы, перейдет к следующим двум!
+* <strong><code>max_fail_percentage: 20</code></strong> — если более 20% серверов первой пачки упали с ошибкой, немедленно остановить обновление всего остального кластера!</p>
+<hr />
+<h2 id="4-roles-ansible-galaxy-ansible-vault">Блок 4. Модульные Роли (<code>Roles</code>), Ansible Galaxy и защита секретов (<code>Ansible Vault</code>)</h2>
+<h3 id="41-roles">4.1. Структура Ролей (Roles) для переиспользования кода</h3>
+<p>Хранить все задачи, шаблоны и переменные в одном гигантском файле <code>playbook.yml</code> — антипаттерн. В промышленной разработке код разбивается на независимые <strong>Роли (<code>roles/</code>)</strong> по компонентам: роль <code>security_baseline</code>, роль <code>docker</code>, роль <code>postgresql</code>, роль <code>nginx_proxy</code>.</p>
+<p>Стандартная структура роли (создается автоматически командой <code>ansible-galaxy role init &lt;имя_роли&gt;</code>):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>roles/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>└── webapp_node/
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    ├── defaults/
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    │   └── main.yml      # Переменные по умолчанию (самый низкий приоритет, легко переопределить)
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    ├── tasks/
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    │   └── main.yml      # Главный список задач роли
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    ├── handlers/
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    │   └── main.yml      # Обработчики перезапуска сервисов (notify)
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    ├── templates/
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    │   └── app.conf.j2   # Шаблоны Jinja2
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    ├── files/
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    │   └── ca.crt        # Статические файлы для копирования без изменений
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    └── meta/
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        └── main.yml      # Зависимости роли и авторство
+</span></code></pre></div>
+<hr />
+<h3 id="42-ansible-galaxy">4.2. Интеграция готовых решений из Ansible Galaxy</h3>
+<p><strong>Ansible Galaxy</strong> — это официальный публичный реестр готовых ролей и коллекций от сообщества и вендоров (например, эталонная роль установки Docker <code>geerlingguy.docker</code> или коллекция <code>community.postgresql</code>).</p>
+<p>Список внешних зависимостей фиксируется в файле <strong><code>requirements.yml</code></strong>:
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nn">---</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">roles</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geerlingguy.security</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.3.0</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">collections</span><span class="p">:</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">community.general</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"&gt;=9.0.0"</span>
+</span></code></pre></div>
+Установка зависимостей одной командой перед запуском пайплайна:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ansible-galaxy<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.yml
+</span></code></pre></div></p>
+<hr />
+<h3 id="43-ansible-vault">4.3. Шифрование секретов с помощью <code>Ansible Vault</code></h3>
+<p>Как хранить пароли от БД, токены API и приватные ключи прямо внутри Git-репозитория вместе с кодом Ansible, не нарушая безопасность?
+Для этого в Ansible встроен криптографический инструмент <strong><code>ansible-vault</code></strong> (алгоритм шифрования <strong>AES-256</strong>):</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 1. Зашифровать файл с секретами паролем (файл превратится в нечитаемый шифротекст $ANSIBLE_VAULT;1.1;AES256)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ansible-vault<span class="w"> </span>encrypt<span class="w"> </span>group_vars/production/vault.yml
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># 2. Посмотреть содержимое зашифрованного файла без расшифровки на диске</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>ansible-vault<span class="w"> </span>view<span class="w"> </span>group_vars/production/vault.yml
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># 3. Отредактировать зашифрованный файл на лету</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>ansible-vault<span class="w"> </span>edit<span class="w"> </span>group_vars/production/vault.yml
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># 4. Запустить плейбук с передачей мастер-пароля из файла (или из переменной GitLab CI)</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>ansible-playbook<span class="w"> </span>site.yml<span class="w"> </span>--vault-password-file<span class="w"> </span>.vault_pass
+</span></code></pre></div>
+<strong>Безопасно коммитить в Git:</strong> Зашифрованный через <code>ansible-vault</code> файл абсолютно безопасно хранить в Git! Главное — добавить сам файл мастер-пароля <code>.vault_pass</code> в <code>.gitignore</code>.</p>
+<hr />
+<h2 id="9-ansible-jinja2-ansible-vault">🛠 Практический проект Модуля 9: Разработка Ansible-проекта с ролями, шаблонами Jinja2, блоками отказоустойчивости и Ansible Vault</h2>
+<p>Мы соберем полноценный инфраструктурный проект Ansible, который:
+1. Подключает внешнюю коллекцию из <strong>Ansible Galaxy</strong>.
+2. Хранит секретные API-ключи в зашифрованном виде через <strong>Ansible Vault</strong> (<code>AES-256</code>).
+3. Разделяет переменные для окружений <strong><code>staging</code></strong> и <strong><code>production</code></strong> через <code>group_vars</code>.
+4. Использует собственную модульную роль <strong><code>microservice_config</code></strong>, которая:
+   * Собирает системные факты о хосте (<code>CPU</code>, <code>RAM</code>, <code>OS</code>).
+   * Генерирует индивидуальные конфигурационные файлы сервисов и Nginx из шаблонов <strong>Jinja2</strong> под конкретное окружение.
+   * Проверяет валидность конфига внутри отказоустойчивого блока <strong><code>block / rescue</code></strong> с автооткатом.
+   * Вызывает <strong><code>handler</code></strong> только при реальном изменении файлов.</p>
+<hr />
+<h3 id="1-ansible_1">Этап 1. Установка Ansible и создание каркаса проекта</h3>
+<ol>
+<li>
+<p>Проверим наличие <code>ansible</code> (если не установлен — установим за 15 секунд):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>ansible-playbook<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Устанавливаем Ansible..."</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ansible
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">fi</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ansible<span class="w"> </span>--version
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Создадим промышленную структуру каталогов и инициализируем роль <code>microservice_config</code> с помощью <code>ansible-galaxy</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ansible-practice/<span class="o">{</span>inventories/staging,inventories/production,roles<span class="o">}</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">cd</span><span class="w"> </span>~/ansible-practice
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Создаем стандартный каркас роли через встроенный генератор ansible-galaxy</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>init<span class="w"> </span>roles/microservice_config
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Создадим главный конфигурационный файл <code>ansible.cfg</code> и файл внешних зависимостей <code>requirements.yml</code> для Ansible Galaxy:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/ansible.cfg</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s">[defaults]</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="s">inventory = inventories/staging/hosts.yml</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="s">roles_path = ./roles</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="s">host_key_checking = False</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="s">retry_files_enabled = False</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="s">stdout_callback = yaml</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="s">interpreter_python = auto_silent</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="s">EOF</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/requirements.yml</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="s">---</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="s">collections:</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="s">  - name: community.general</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="s">EOF</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="c1"># Устанавливаем коллекцию из Ansible Galaxy</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.yml
+</span></code></pre></div></p>
+</li>
+</ol>
+<hr />
+<h3 id="2-group_vars-ansible-vault">Этап 2. Настройка Инвентаря, Переменных окружений (<code>group_vars</code>) и шифрования <code>Ansible Vault</code></h3>
+<p>Мы настроим два окружения (<code>staging</code> и <code>production</code>), которые будут раскатывать конфигурации в изолированные директории <code>/tmp/ansible-env-staging</code> и <code>/tmp/ansible-env-production</code> на нашем хосте — это позволит мгновенно увидеть разницу генерации шаблонов для разных сред!</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 1. Инвентарь и переменные для STAGING</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ansible-practice/inventories/staging/group_vars/app_cluster
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/inventories/staging/hosts.yml</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="s">all:</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="s">  children:</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="s">    app_cluster:</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="s">      hosts:</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="s">        stage-node-01:</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="s">          ansible_connection: local</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="s">          http_port: 8081</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="s">EOF</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/inventories/staging/group_vars/app_cluster/vars.yml</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="s">env_name: staging</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="s">deploy_root: /tmp/ansible-env-staging</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="s">app_workers: 2</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="s">enable_debug_logs: true</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="s">db_secret_password: "{{ vault_db_password }}"</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="s">EOF</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="c1"># 2. Инвентарь и переменные для PRODUCTION</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ansible-practice/inventories/production/group_vars/app_cluster
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/inventories/production/hosts.yml</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="s">all:</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="s">  children:</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="s">    app_cluster:</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="s">      hosts:</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="s">        prod-node-01:</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="s">          ansible_connection: local</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="s">          http_port: 9091</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="s">EOF</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/inventories/production/group_vars/app_cluster/vars.yml</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="s">env_name: production</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="s">deploy_root: /tmp/ansible-env-production</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="s">app_workers: 8</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="s">enable_debug_logs: false</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="s">db_secret_password: "{{ vault_db_password }}"</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<h4 id="vaultyml-ansible-vault">Создадим и зашифруем секретный файл <code>vault.yml</code> с помощью <code>ansible-vault</code>:</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>~/ansible-practice
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># Создаем мастер-ключ шифрования (и сразу прячем его в .gitignore!)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"MyVaultMasterKey2026!"</span><span class="w"> </span>&gt;<span class="w"> </span>.vault_pass
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>.vault_pass
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">".vault_pass"</span><span class="w"> </span>&gt;<span class="w"> </span>.gitignore
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># Создаем файл с секретами для обоих окружений</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; inventories/staging/group_vars/app_cluster/vault.yml</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="s">vault_db_password: "Stage_Encrypted_DB_Password_123"</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="s">EOF</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; inventories/production/group_vars/app_cluster/vault.yml</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="s">vault_db_password: "PROD_Ultra_Secret_Vault_Password_999!"</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="s">EOF</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1"># Шифруем оба файла алгоритмом AES-256 через ansible-vault!</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>ansible-vault<span class="w"> </span>encrypt<span class="w"> </span>inventories/staging/group_vars/app_cluster/vault.yml<span class="w"> </span>--vault-password-file<span class="w"> </span>.vault_pass
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>ansible-vault<span class="w"> </span>encrypt<span class="w"> </span>inventories/production/group_vars/app_cluster/vault.yml<span class="w"> </span>--vault-password-file<span class="w"> </span>.vault_pass
+</span></code></pre></div>
+<p>Посмотри, во что превратился файл секретов на диске:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span>inventories/production/group_vars/app_cluster/vault.yml
+</span></code></pre></div>
+Ты увидишь заголовок <code>$ANSIBLE_VAULT;1.1;AES256</code> и криптографический шифр вместо пароля!</p>
+<hr />
+<h3 id="3-microservice_config-defaults-jinja2-templates-tasks-blockrescue-handlers">Этап 3. Наполнение роли <code>microservice_config</code> (Defaults, Jinja2 Templates, Tasks, Block/Rescue, Handlers)</h3>
+<ol>
+<li>
+<p>Зададим значения по умолчанию в <code>roles/microservice_config/defaults/main.yml</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/roles/microservice_config/defaults/main.yml</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s">---</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="s">env_name: development</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="s">deploy_root: /tmp/ansible-env-dev</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="s">http_port: 8000</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="s">app_workers: 1</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="s">enable_debug_logs: true</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="s">simulate_broken_config: false</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="s">EOF</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Создадим динамический шаблон <strong>Jinja2</strong> <code>roles/microservice_config/templates/service.conf.j2</code>, использующий системные факты (<code>ansible_facts</code>), математику памяти, условия <code>{% if %}</code> и расшифрованный секрет из Vault:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/roles/microservice_config/templates/service.conf.j2</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s"># =====================================================================</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="s"># MANAGED BY ANSIBLE ROLE: microservice_config</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="s"># Target Host: {{ inventory_hostname }} | OS: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="s"># Hardware Facts: {{ ansible_facts['processor_vcpus'] }} vCPUs / {{ ansible_facts['memtotal_mb'] }} MB RAM</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="s"># =====================================================================</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="s">[server]</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="s">environment = {{ env_name }}</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="s">listen_port = {{ http_port }}</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="s">workers = {{ app_workers }}</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="s"># Автоматический расчет буфера памяти (10% от всей RAM сервера):</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="s">memory_limit_mb = {{ (ansible_facts['memtotal_mb'] * 0.10) | int }}</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="s">[logging]</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="s">{% if enable_debug_logs %}</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="s">log_level = DEBUG</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="s">verbose_sql_trace = true</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="s">{% else %}</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="s">log_level = ERROR</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="s">verbose_sql_trace = false</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="s">{% endif %}</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="s">[database]</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="s">db_password = {{ db_secret_password }}</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>
+</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="s">{% if simulate_broken_config %}</span>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="s">INVALID_DIRECTIVE = CRASH_NOW</span>
+</span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="s">{% endif %}</span>
+</span><span id="__span-16-30"><a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a><span class="s">EOF</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Напишем обработчик событий (<code>Handler</code>) в <code>roles/microservice_config/handlers/main.yml</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/roles/microservice_config/handlers/main.yml</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s">---</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s">- name: Reload Microservice Daemon</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="s">  ansible.builtin.debug:</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s">    msg: "🔄 [HANDLER TRIGGERED] Конфигурация изменилась! Перезагружаем сервис на узле {{ inventory_hostname }} (Окружение: {{ env_name }})"</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="s">EOF</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Напишем отказоустойчивые задачи роли (<code>block / rescue / always</code>) в <code>roles/microservice_config/tasks/main.yml</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/roles/microservice_config/tasks/main.yml</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="s">---</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="s">- name: Создать структуру каталогов для окружения {{ env_name }}</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="s">  ansible.builtin.file:</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="s">    path: "{{ item }}"</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="s">    state: directory</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="s">    mode: "0750"</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="s">  loop:</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="s">    - "{{ deploy_root }}"</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="s">    - "{{ deploy_root }}/etc"</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="s">    - "{{ deploy_root }}/logs"</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="s">- name: Отказоустойчивое обновление конфигурации с проверкой и автооткатом</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="s">  block:</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="s">    - name: Сгенерировать конфигурационный файл service.conf из шаблона Jinja2</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="s">      ansible.builtin.template:</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="s">        src: service.conf.j2</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="s">        dest: "{{ deploy_root }}/etc/service.conf"</span>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="s">        mode: "0600"</span>
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="s">        backup: true</span>
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="s">      register: template_result</span>
+</span><span id="__span-18-22"><a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="s">      notify: Reload Microservice Daemon</span>
+</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>
+</span><span id="__span-18-24"><a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="s">    - name: Проверить сгенерированный конфиг на наличие запрещенных директив (Валидация)</span>
+</span><span id="__span-18-25"><a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="s">      ansible.builtin.command: &gt;</span>
+</span><span id="__span-18-26"><a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a><span class="s">        grep -v "INVALID_DIRECTIVE" {{ deploy_root }}/etc/service.conf</span>
+</span><span id="__span-18-27"><a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="s">      changed_when: false</span>
+</span><span id="__span-18-28"><a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>
+</span><span id="__span-18-29"><a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a><span class="s">  rescue:</span>
+</span><span id="__span-18-30"><a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a><span class="s">    - name: "🚨 [RESCUE] Ошибка валидации конфига! Выполняем откат из резервной копии"</span>
+</span><span id="__span-18-31"><a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a><span class="s">      ansible.builtin.copy:</span>
+</span><span id="__span-18-32"><a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a><span class="s">        src: "{{ template_result.backup_file }}"</span>
+</span><span id="__span-18-33"><a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a><span class="s">        dest: "{{ deploy_root }}/etc/service.conf"</span>
+</span><span id="__span-18-34"><a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a><span class="s">        remote_src: true</span>
+</span><span id="__span-18-35"><a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a><span class="s">        mode: "0600"</span>
+</span><span id="__span-18-36"><a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a><span class="s">      when: template_result.backup_file is defined</span>
+</span><span id="__span-18-37"><a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a>
+</span><span id="__span-18-38"><a id="__codelineno-18-38" name="__codelineno-18-38" href="#__codelineno-18-38"></a><span class="s">    - name: Завершить выполнение с ошибкой после успешного отката</span>
+</span><span id="__span-18-39"><a id="__codelineno-18-39" name="__codelineno-18-39" href="#__codelineno-18-39"></a><span class="s">      ansible.builtin.fail:</span>
+</span><span id="__span-18-40"><a id="__codelineno-18-40" name="__codelineno-18-40" href="#__codelineno-18-40"></a><span class="s">        msg: "Выкатка прервана: обнаружена ошибка в конфиге! Старая рабочая конфигурация успешно восстановлена блоком rescue."</span>
+</span><span id="__span-18-41"><a id="__codelineno-18-41" name="__codelineno-18-41" href="#__codelineno-18-41"></a>
+</span><span id="__span-18-42"><a id="__codelineno-18-42" name="__codelineno-18-42" href="#__codelineno-18-42"></a><span class="s">  always:</span>
+</span><span id="__span-18-43"><a id="__codelineno-18-43" name="__codelineno-18-43" href="#__codelineno-18-43"></a><span class="s">    - name: Записать метку времени последнего аудита Ansible</span>
+</span><span id="__span-18-44"><a id="__codelineno-18-44" name="__codelineno-18-44" href="#__codelineno-18-44"></a><span class="s">      ansible.builtin.copy:</span>
+</span><span id="__span-18-45"><a id="__codelineno-18-45" name="__codelineno-18-45" href="#__codelineno-18-45"></a><span class="s">        content: "Last checked on {{ ansible_facts['date_time']['iso8601'] }} for env {{ env_name }}\n"</span>
+</span><span id="__span-18-46"><a id="__codelineno-18-46" name="__codelineno-18-46" href="#__codelineno-18-46"></a><span class="s">        dest: "{{ deploy_root }}/logs/audit.log"</span>
+</span><span id="__span-18-47"><a id="__codelineno-18-47" name="__codelineno-18-47" href="#__codelineno-18-47"></a><span class="s">        mode: "0644"</span>
+</span><span id="__span-18-48"><a id="__codelineno-18-48" name="__codelineno-18-48" href="#__codelineno-18-48"></a><span class="s">      changed_when: false</span>
+</span><span id="__span-18-49"><a id="__codelineno-18-49" name="__codelineno-18-49" href="#__codelineno-18-49"></a><span class="s">EOF</span>
+</span></code></pre></div></p>
+</li>
+</ol>
+<hr />
+<h3 id="4-siteyml">Этап 4. Создание главного плейбука <code>site.yml</code> и запуск на разных окружениях!</h3>
+<p>Создадим корневой плейбук <code>site.yml</code>, который настраивает кластер с ограничением пачки обновления <code>serial: 1</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/ansible-practice/site.yml</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="s">---</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="s">- name: Настройка серверов кластера приложений</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="s">  hosts: app_cluster</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="s">  serial: 1</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="s">  gather_facts: true</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="s">  roles:</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="s">    - role: microservice_config</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="s">EOF</span>
+</span></code></pre></div></p>
+<p>Теперь протестируем работу на обоих окружениях (<code>staging</code> и <code>production</code>) с автоматической расшифровкой секретов из <code>Ansible Vault</code>!</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">cd</span><span class="w"> </span>~/ansible-practice
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== 1. Раскатка конфигурации на STAGING ==="</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>inventories/staging/hosts.yml<span class="w"> </span>site.yml<span class="w"> </span>--vault-password-file<span class="w"> </span>.vault_pass
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== 2. Раскатка конфигурации на PRODUCTION ==="</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>inventories/production/hosts.yml<span class="w"> </span>site.yml<span class="w"> </span>--vault-password-file<span class="w"> </span>.vault_pass
+</span></code></pre></div>
+<hr />
+<h3 id="-9">✅ Чек-лист самопроверки по Модулю 9</h3>
+<p>Выполни эти 4 проверки, чтобы убедиться в работе всех механизмов Ansible:</p>
+<ol>
+<li><strong>Проверка шаблонизации Jinja2, системных фактов и расшифровки Ansible Vault:</strong>
+   Сравни сгенерированные файлы для <code>staging</code> и <code>production</code>:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>cat<span class="w"> </span>/tmp/ansible-env-staging/etc/service.conf
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>cat<span class="w"> </span>/tmp/ansible-env-production/etc/service.conf
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em></li>
+<li>В шапке обоих файлов автоматически подставились реальные характеристики твоего процессора, RAM и ОС из <code>ansible_facts</code>, а также рассчитался <code>memory_limit_mb</code> (10% от твоей RAM).</li>
+<li>На <code>staging</code> включен <code>log_level = DEBUG</code> и подставился пароль <code>Stage_Encrypted_DB_Password_123</code>.</li>
+<li>
+<p>На <code>production</code> выставлен <code>log_level = ERROR</code>, <code>workers = 8</code> и подставился расшифрованный из Vault пароль <code>PROD_Ultra_Secret_Vault_Password_999!</code>.</p>
+</li>
+<li>
+<p><strong>Проверка Идемпотентности (повторный запуск):</strong>
+   Запусти плейбук второй раз подряд:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>inventories/production/hosts.yml<span class="w"> </span>site.yml<span class="w"> </span>--vault-password-file<span class="w"> </span>.vault_pass
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em> Внизу в <code>PLAY RECAP</code> горит <strong><code>changed=0</code></strong>, а обработчик <code>Reload Microservice Daemon</code> <strong>не вызывался</strong>, так как конфигурационный файл на диске уже находится в эталонном состоянии!</p>
+</li>
+<li>
+<p><strong>Испытание отказоустойчивости (<code>block / rescue</code> автооткат при поломке):</strong>
+   Запустим плейбук с флагом <code>-e "simulate_broken_config=true"</code>, который специально подбросит синтаксическую ошибку в конфиг:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>inventories/production/hosts.yml<span class="w"> </span>site.yml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span>--vault-password-file<span class="w"> </span>.vault_pass<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span>-e<span class="w"> </span><span class="s2">"simulate_broken_config=true"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div>
+   Посмотри на вывод:</p>
+</li>
+<li>Задача проверки валидации упала с ошибкой.</li>
+<li>Автоматически включился блок <strong><code>🚨 [RESCUE]</code></strong>, который восстановил предыдущий рабочий файл <code>service.conf</code> из бэкапа!</li>
+<li>Проверь <code>cat /tmp/ansible-env-production/etc/service.conf</code> — внутри остался чистый рабочий конфиг без <code>INVALID_DIRECTIVE</code>!</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1902 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Бесплатный практический курс по DevOps для разработчиков и джунов">
+      
+      
+      
+      
+        <link rel="prev" href="../7_continuous_delivery/">
+      
+      
+        <link rel="next" href="../9_scm_ansible/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Инфраструктура как код (IaC) — Terraform - DevOps Курс для начинающих</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iac-terraform" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-header__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Курс для начинающих
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Инфраструктура как код (IaC) — Terraform
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на темную тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на темную тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-nav__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DevOps Курс для начинающих
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux, сети и автоматизация на Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение в DevOps и системы контроля версий (Git)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контейнеризация приложений (Docker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оркестрация многоконтейнерных приложений (Docker Compose & Nginx)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Наблюдаемость (Observability) и мониторинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизация сборки и CI (Continuous Integration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_continuous_delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continuous Delivery и безопасность внедрения (CD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инфраструктура как код (IaC) — Terraform
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инфраструктура как код (IaC) — Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-iac-immutable-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Принципы IaC и Immutable Infrastructure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Принципы IaC и Immutable Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Декларативный подход против Императивного
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-immutable-infrastructure-pets-vs-cattle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Концепция Immutable Infrastructure (Неизменяемая инфраструктура) — Pets vs Cattle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-terraform-hcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Архитектура Terraform и синтаксис HCL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Архитектура Terraform и синтаксис HCL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Как работает Terraform (Ядро, Провайдеры и Жизненный цикл)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Как работает Terraform (Ядро, Провайдеры и Жизненный цикл)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Четыре главные команды жизненного цикла Terraform:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-hcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Базовые строительные блоки языка HCL
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Управление состоянием инфраструктуры (State) и защита от дрейфа
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Управление состоянием инфраструктуры (State) и защита от дрейфа">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-terraformtfstate-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Зачем нужен файл terraform.tfstate и почему его НЕЛЬЗЯ хранить в Git
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Зачем нужен файл terraform.tfstate и почему его НЕЛЬЗЯ хранить в Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraformtfstate-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Почему категорически запрещено коммитить terraform.tfstate в Git:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-state-s3-state-locking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Промышленный стандарт: Remote State в S3 + State Locking (Блокировки)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-drift-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Предотвращение дрейфа конфигураций (Drift Detection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Гибкость кода: Переменные, Секреты, Циклы и Принцип DRY (Модули)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Гибкость кода: Переменные, Секреты, Циклы и Принцип DRY (Модули)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-variables-outputs-sensitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Переменные (variables), Выходные значения (outputs) и Секреты (sensitive)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-count-for_each-dynamic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Динамические конфигурации: count, for_each и dynamic блоки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-dry-terraform-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Принцип DRY: Переиспользование модулей Terraform (Modules)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-terraform-state-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 8: Проектирование и реализация модулей Terraform с безопасным хранением State и проверкой Drift
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 8: Проектирование и реализация модулей Terraform с безопасным хранением State и проверкой Drift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-terraform-opentofu-s3-remote-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Установка Terraform (или OpenTofu) и запуск S3-хранилища для Remote State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-terraform-dry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Разработка переиспользуемых модулей Terraform (Принцип DRY)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 2. Разработка переиспользуемых модулей Terraform (Принцип DRY)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modulesnetwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Модуль сети (modules/network):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-for_each-modulesapp_tier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Модуль кластера приложений с использованием for_each и секретов (modules/app_tier):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-staging-remote-s3-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Сборка окружения staging с подключением Remote S3 State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-plan-apply-remote-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Инициализация, Plan, Apply и проверка Remote State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-8-drift-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 8 (и тест Drift Detection!)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_scm_ansible/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Управление конфигурацией (SCM) — Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_kubernetes_k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes (K8s) и оркестрация контейнеров в продакшене
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Итоговый дипломный проект DevOps - Production-Ready Платформа «CloudOrder»
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-iac-immutable-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Принципы IaC и Immutable Infrastructure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Принципы IaC и Immutable Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Декларативный подход против Императивного
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-immutable-infrastructure-pets-vs-cattle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Концепция Immutable Infrastructure (Неизменяемая инфраструктура) — Pets vs Cattle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-terraform-hcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Архитектура Terraform и синтаксис HCL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Архитектура Terraform и синтаксис HCL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Как работает Terraform (Ядро, Провайдеры и Жизненный цикл)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Как работает Terraform (Ядро, Провайдеры и Жизненный цикл)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Четыре главные команды жизненного цикла Terraform:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-hcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Базовые строительные блоки языка HCL
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Управление состоянием инфраструктуры (State) и защита от дрейфа
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Управление состоянием инфраструктуры (State) и защита от дрейфа">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-terraformtfstate-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Зачем нужен файл terraform.tfstate и почему его НЕЛЬЗЯ хранить в Git
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Зачем нужен файл terraform.tfstate и почему его НЕЛЬЗЯ хранить в Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraformtfstate-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Почему категорически запрещено коммитить terraform.tfstate в Git:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-state-s3-state-locking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Промышленный стандарт: Remote State в S3 + State Locking (Блокировки)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-drift-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Предотвращение дрейфа конфигураций (Drift Detection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Гибкость кода: Переменные, Секреты, Циклы и Принцип DRY (Модули)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Гибкость кода: Переменные, Секреты, Циклы и Принцип DRY (Модули)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-variables-outputs-sensitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Переменные (variables), Выходные значения (outputs) и Секреты (sensitive)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-count-for_each-dynamic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Динамические конфигурации: count, for_each и dynamic блоки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-dry-terraform-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Принцип DRY: Переиспользование модулей Terraform (Modules)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-terraform-state-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 8: Проектирование и реализация модулей Terraform с безопасным хранением State и проверкой Drift
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 8: Проектирование и реализация модулей Terraform с безопасным хранением State и проверкой Drift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-terraform-opentofu-s3-remote-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Установка Terraform (или OpenTofu) и запуск S3-хранилища для Remote State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-terraform-dry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Разработка переиспользуемых модулей Terraform (Принцип DRY)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 2. Разработка переиспользуемых модулей Terraform (Принцип DRY)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modulesnetwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Модуль сети (modules/network):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-for_each-modulesapp_tier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Модуль кластера приложений с использованием for_each и секретов (modules/app_tier):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-staging-remote-s3-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Сборка окружения staging с подключением Remote S3 State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-plan-apply-remote-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Инициализация, Plan, Apply и проверка Remote State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-8-drift-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 8 (и тест Drift Detection!)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="iac-terraform">Инфраструктура как код (IaC) — Terraform</h1>
+<p>До этого момента мы работали с уже существующим сервером или локальной машиной. Но откуда берутся сами виртуальные машины, облачные сети (VPC), подсети, балансировщики нагрузки, группы безопасности (Firewalls), управляемые базы данных и S3-бакеты в облаке?</p>
+<p>Создавать их мышкой в веб-консоли облачного провайдера (<strong>ClickOps</strong>) в реальных проектах строго запрещено: вы не сможете повторить такую инфраструктуру один-в-один для тестового стенда (<code>staging</code>), никто не знает, кто и зачем вчера открыл порт <code>22</code> на весь мир, а при случайном удалении сети восстановление займет дни.</p>
+<p><strong>Infrastructure as Code (IaC)</strong> решает эту проблему: вся облачная инфраструктура описывается декларативным кодом в Git-репозитории, проходит Code Review и автоматически создается или обновляется утилитой <strong>Terraform</strong> (или его open-source форком <strong>OpenTofu</strong>).</p>
+<hr />
+<h2 id="1-iac-immutable-infrastructure">Блок 1. Принципы IaC и Immutable Infrastructure</h2>
+<h3 id="11">1.1. Декларативный подход против Императивного</h3>
+<p>Инструменты автоматизации делятся на два лагеря:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика</th>
+<th style="text-align: left;">Императивный подход (<em>КАК сделать</em>)</th>
+<th style="text-align: left;">Декларативный подход (<em>ЧТО получить</em>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Примеры</strong></td>
+<td style="text-align: left;">Bash-скрипты, CLI (<code>yc compute instance create</code>, <code>aws ec2 run-instances</code>)</td>
+<td style="text-align: left;"><strong>Terraform / OpenTofu</strong>, Kubernetes манифесты, Docker Compose</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Логика работы</strong></td>
+<td style="text-align: left;">Вы пишете пошаговый алгоритм команд. Если запустить скрипт второй раз — он упадет с ошибкой «Сервер уже существует» или создаст дубликат!</td>
+<td style="text-align: left;">Вы описываете <strong>желаемое конечное состояние</strong> (например: <em>«Хочу 3 сервера с 4 ГБ RAM»</em>). Инструмент сам сравнивает это с текущим состоянием и вычисляет, что нужно добавить, изменить или удалить.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Идемпотентность</strong></td>
+<td style="text-align: left;">Требует ручного написания сложных <code>if-else</code> проверок.</td>
+<td style="text-align: left;">Встроена из коробки: если ничего не менялось в коде, повторный запуск ничего не трогает (<code>No changes</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="12-immutable-infrastructure-pets-vs-cattle">1.2. Концепция Immutable Infrastructure (Неизменяемая инфраструктура) — Pets vs Cattle</h3>
+<p>В классическом системном администрировании к серверам относились как к <strong>Домашним питомцам (Pets)</strong>:
+* У каждого сервера было ласковое имя (<code>zeus</code>, <code>apollo</code>), админы заходили на них по SSH, годами ставили пакеты руками, правили конфиги. Со временем наступал <strong>Configuration Drift (Дрейф конфигурации)</strong> — два сервера должны быть одинаковыми, но работают по-разному. Если такой сервер умирал, вся компания впадала в панику.</p>
+<p>В современном DevOps серверы — это <strong>Стадо (Cattle / Неизменяемая инфраструктура)</strong>:
+* Серверы имеют безликие номера (<code>app-node-01</code>, <code>app-node-02</code>) и создаются из одного шаблона по коду Terraform.
+* <strong>Золотое правило Immutable Infrastructure:</strong> После создания сервера мы <strong>никогда не меняем его вручную</strong>. Если нужно обновить версию ОС, ядра или конфигурацию — мы меняем код в Terraform, и он <strong>автоматически создает новый чистый сервер</strong>, переключает на него трафик и <strong>уничтожает старый</strong>!</p>
+<hr />
+<h2 id="2-terraform-hcl">Блок 2. Архитектура Terraform и синтаксис HCL</h2>
+<h3 id="21-terraform">2.1. Как работает Terraform (Ядро, Провайдеры и Жизненный цикл)</h3>
+<p>Terraform написан на Go и состоит из двух частей:
+1. <strong>Terraform Core:</strong> Читает ваш код на языке <strong>HCL (HashiCorp Configuration Language)</strong>, строит граф зависимостей между ресурсами и сравнивает желаемое состояние с файлом текущего состояния (<code>terraform.tfstate</code>).
+2. <strong>Providers (Провайдеры):</strong> Плагины, которые умеют переводить команды Terraform на язык REST API конкретного облака или сервиса (например: <code>yandex</code>, <code>aws</code>, <code>google</code>, <code>kubernetes</code>, <code>docker</code>, <code>gitlab</code>).</p>
+<h4 id="terraform">Четыре главные команды жизненного цикла Terraform:</h4>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[terraform init] ──► [terraform plan] ──► [terraform apply] ──► [terraform destroy]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> Скачивание плагинов   Сухой прогон (Diff)   Создание ресурсов     Полное удаление стенда
+</span></code></pre></div>
+* <strong><code>terraform init</code>:</strong> Инициализирует рабочую директорию, скачивает нужные провайдеры и модули, настраивает подключение к хранилищу стейта (Backend).
+* <strong><code>terraform validate</code> &amp; <code>terraform fmt</code>:</strong> Проверяет синтаксис кода и автоматически выравнивает отступы по стандарту.
+* <strong><code>terraform plan</code>:</strong> Самая важная команда! Ничего не меняет в облаке, но опрашивает API провайдера и показывает точный план изменений (как <code>git diff</code>):
+  * <code>+ create</code> (зеленый) — ресурс будет создан.
+  * <code>~ update in-place</code> (желтый) — ресурс будет изменен без перезагрузки (например, добавится тег или правило фаервола).
+  * <code>-/+ destroy and then create replacement</code> (красный!) — <strong>ОПАСНО!</strong> Изменение параметра (например, смена образа ОС или зоны доступности) требует <strong>полного удаления старого ресурса и создания нового</strong>.
+* <strong><code>terraform apply</code>:</strong> Выполняет план и вносит изменения в реальное облако.</p>
+<hr />
+<h3 id="22-hcl">2.2. Базовые строительные блоки языка HCL</h3>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Блок настройки версии Terraform и требуемых провайдеров</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;= 1.6.0"</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nb">yandex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"yandex-cloud/yandex"</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt; 0.120.0"</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># 2. Настройка самого провайдера (авторизация через переменные окружения!)</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">"yandex"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="na">zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.default_zone</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="c1"># 3. Data Source (Источник данных) — НИЧЕГО не создает, а только ЧИТАЕТ существующий объект из облака</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="kr">data</span><span class="w"> </span><span class="nc">"yandex_compute_image"</span><span class="w"> </span><span class="nv">"ubuntu_2404"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="na">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ubuntu-2404-lts"</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="c1"># 4. Resource (Ресурс) — главный блок: СОЗДАЕТ и управляет объектом инфраструктуры</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="c1"># Синтаксис: resource "&lt;ТИП_РЕСУРСА&gt;" "&lt;ЛОКАЛЬНОЕ_ИМЯ_В_КОДЕ&gt;"</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"yandex_vpc_network"</span><span class="w"> </span><span class="nv">"app_net"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"production-vpc"</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="p">}</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"yandex_vpc_subnet"</span><span class="w"> </span><span class="nv">"app_subnet"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="na">name</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"production-subnet-a"</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">  </span><span class="na">zone</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">var.default_zone</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="c1">  # Неявная зависимость: Terraform сам поймет, что сначала нужно создать сеть app_net!</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="na">network_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">yandex_vpc_network.app_net.id</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="na">v4_cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"10.10.1.0/24"</span><span class="p">]</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="3-state">Блок 3. Управление состоянием инфраструктуры (<code>State</code>) и защита от дрейфа</h2>
+<h3 id="31-terraformtfstate-git">3.1. Зачем нужен файл <code>terraform.tfstate</code> и почему его НЕЛЬЗЯ хранить в Git</h3>
+<p>Откуда Terraform знает, какие именно виртуальные машины в облаке создал он, а какие — другие отделы?
+После первого выполнения <code>terraform apply</code> создается JSON-файл <strong><code>terraform.tfstate</code></strong>, в котором записано соответствие между вашим кодом (<code>yandex_vpc_network.app_net</code>) и реальным ID объекта в облаке (<code>enp9abc12345</code>).</p>
+<h4 id="terraformtfstate-git">❌ Почему категорически запрещено коммитить <code>terraform.tfstate</code> в Git:</h4>
+<ol>
+<li><strong>Секреты в открытом виде:</strong> Даже если вы пометили переменную пароля БД как <code>sensitive = true</code> (она скрыта в выводе консоли), <strong>внутри файла <code>terraform.tfstate</code> все пароли, приватные ключи и токены хранятся открытым текстом (Plaintext)</strong>!</li>
+<li><strong>Конфликты командной работы (Race Condition):</strong> Если два DevOps-инженера одновременно запустят <code>terraform apply</code> со своих ноутбуков со старым локальным стейтом, они перезапишут инфраструктуру друг друга и сломают облако.</li>
+</ol>
+<h4 id="remote-state-s3-state-locking">✅ Промышленный стандарт: Remote State в S3 + State Locking (Блокировки)</h4>
+<p>В реальных проектах стейт хранится удаленно (<strong>Remote Backend</strong>) в объектном хранилище <strong>S3</strong> (Yandex Object Storage / AWS S3 / MinIO / GitLab Managed Terraform State) с включенным шифрованием и механизмом <strong>блокировки (State Lock)</strong>:
+* Когда Инженер №1 запускает <code>terraform apply</code>, Terraform вешает замок (<code>.tflock</code> в S3 или запись в таблице DynamoDB/YDB).
+* Если в эту же секунду Инженер №2 запустит <code>apply</code>, Terraform выдаст ему сообщение: <em>«Error acquiring the state lock: стейт сейчас занят Инженером №1, подождите»</em>.</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nb">endpoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="na">s3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://storage.yandexcloud.net"</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"my-company-tfstate-prod"</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ru-central1"</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"infra/network/terraform.tfstate"</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">    # Включение нативной блокировки стейта (.tflock в S3 бакете, доступно в современных версиях Terraform)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="na">use_lockfile</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="na">skip_region_validation</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="na">skip_credentials_validation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="na">skip_requesting_account_id</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h3 id="32-drift-detection">3.2. Предотвращение дрейфа конфигураций (Drift Detection)</h3>
+<p><strong>Дрейф конфигурации (Configuration Drift)</strong> возникает, когда кто-то зашел руками в веб-консоль облака и изменил настройки ресурса (например, поменял порт в Security Group или увеличил RAM сервера), в обход кода Terraform.</p>
+<p><strong>Как бороться с дрейфом:</strong>
+1. <strong>Регулярный <code>terraform plan -detailed-exitcode</code> по расписанию в GitLab CI:</strong>
+   * Код возврата <code>0</code> — дрейфа нет, облако на 100% совпадает с кодом Git.
+   * Код возврата <code>1</code> — ошибка выполнения.
+   * Код возврата <code>2</code> — <strong>ОБНАРУЖЕН ДРЕЙФ (есть расхождения)!</strong> Пайплайн немедленно шлет алерт в Telegram/Slack дежурному инженеру.
+2. <strong>Блок <code>lifecycle</code> (Защита критических ресурсов от случайного удаления):</strong>
+   Чтобы никто случайно не пересоздал боевую базу данных или S3-бакет, добавляют защиту прямо в код ресурса:
+   <div class="language-hcl highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="na">prevent_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1"> # Terraform выдаст фатальную ошибку при любой попытке удалить этот ресурс!</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="na">ignore_changes</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">tags</span><span class="p">]</span><span class="c1"> # Игнорировать ручные изменения конкретных полей</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<hr />
+<h2 id="4-dry">Блок 4. Гибкость кода: Переменные, Секреты, Циклы и Принцип DRY (Модули)</h2>
+<h3 id="41-variables-outputs-sensitive">4.1. Переменные (<code>variables</code>), Выходные значения (<code>outputs</code>) и Секреты (<code>sensitive</code>)</h3>
+<p>Чтобы один и тот же код работал для <code>dev</code>, <code>staging</code> и <code>production</code>, все параметры выносятся в переменные (<code>variables.tf</code>):</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># variables.tf</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"environment"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Имя окружения (dev, staging, prod)"</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nb">validation</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="na">condition</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">contains</span><span class="p">([</span><span class="s2">"dev", "staging", "prod"</span><span class="p">],</span><span class="w"> </span><span class="nv">var.environment</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="na">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Окружение должно быть только dev, staging или prod!"</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"db_password"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Пароль администратора БД"</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="na">sensitive</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1"> # Скрывает значение в выводе terraform plan и apply ([sensitive value])</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1"># Locals — вычисляемые внутренние константы для удобства</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="nb">locals</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="na">name_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cluster-${var.environment}"</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span><span class="nb">common_tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="na">managed_by</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform"</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="na">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.environment</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="p">}</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="c1"># outputs.tf — значения, которые Terraform выведет на экран после создания (например, выданный IP сервера)</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"load_balancer_public_ip"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Внешний IP-адрес входного балансировщика"</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span><span class="na">value</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">yandex_compute_instance.balancer.network_interface[0].nat_ip_address</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Как передавать секретные переменные (например, <code>db_password</code>):</strong>
+Никогда не пишите их в <code>terraform.tfvars</code> в Git! Передавайте их через переменные окружения с префиксом <strong><code>TF_VAR_</code></strong>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_db_password</span><span class="o">=</span><span class="s2">"MySuperSecretPassword"</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>terraform<span class="w"> </span>apply
+</span></code></pre></div></p>
+<hr />
+<h3 id="42-count-for_each-dynamic">4.2. Динамические конфигурации: <code>count</code>, <code>for_each</code> и <code>dynamic</code> блоки</h3>
+<p>Как создать сразу 3 разных контейнера или 3 подсети без копипасты (Copy-Paste) одного и того же блока <code>resource</code>?</p>
+<ul>
+<li><strong><code>count</code>:</strong> Простой числовой счетчик (<code>count = 3</code>). Создает массив ресурсов <code>[0]</code>, <code>[1]</code>, <code>[2]</code>. <em>Минус:</em> если удалить средний элемент из списка, все последующие сдвинутся по индексу и пересоздадутся!</li>
+<li><strong><code>for_each</code> (Рекомендуемый стандарт):</strong> Принимает словарь (<code>map</code>) или множество (<code>set</code> строк). Каждый ресурс получает осмысленный текстовый ключ (<code>each.key</code> и <code>each.value</code>), поэтому удаление одного элемента никак не затрагивает остальные!</li>
+</ul>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"microservices"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="kt">object</span><span class="p">({</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="na">port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="kt">number</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="na">replicas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">number</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="p">}))</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="nb">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="s2">"auth-api"</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8001</span><span class="p">,</span><span class="w"> </span><span class="na">replicas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="s2">"billing-api"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8002</span><span class="p">,</span><span class="w"> </span><span class="na">replicas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">}</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># Один блок создаст ресурсы для каждого сервиса из словаря!</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># Обращение к конкретному ресурсу: docker_container.service["auth-api"]</span>
+</span></code></pre></div>
+<hr />
+<h3 id="43-dry-terraform-modules">4.3. Принцип DRY: Переиспользование модулей Terraform (<code>Modules</code>)</h3>
+<p>Когда проект растет, хранить 2000 строк кода в одном файле <code>main.tf</code> невозможно. Кроме того, нам нужно поднять <strong>абсолютно одинаковую архитектуру</strong> для <code>staging</code> (на маленьких дешевых ВМ) и для <code>production</code> (на мощных серверах).</p>
+<p>Решение — <strong>Модули Terraform</strong> (аналог функций/библиотек в программировании):
+* Мы один раз пишем универсальный модуль <code>modules/app_service/</code> (со своими входными <code>variables.tf</code>, <code>main.tf</code> и выходными <code>outputs.tf</code>).
+* А в папках окружений (<code>environments/staging</code> и <code>environments/prod</code>) просто вызываем этот модуль блок-схемой <code>module "..."</code>, передавая разные размеры ресурсов!</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>terraform-infra/
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── modules/                      # Переиспользуемые строительные кирпичики (DRY)
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│   ├── network/                  # Модуль создания изолированной сети
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│   │   ├── main.tf
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│   │   ├── variables.tf
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│   │   └── outputs.tf
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>│   └── microservice_node/        # Модуль создания узла сервиса
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>│       ├── main.tf
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>│       ├── variables.tf
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>│       └── outputs.tf
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>└── environments/                 # Конкретные окружения
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    ├── staging/
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    │   └── main.tf               # Вызывает модули с параметрами для Staging
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    └── production/
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        └── main.tf               # Вызывает те же модули с параметрами для Prod
+</span></code></pre></div>
+<hr />
+<h2 id="8-terraform-state-drift">🛠 Практический проект Модуля 8: Проектирование и реализация модулей Terraform с безопасным хранением State и проверкой Drift</h2>
+<p>Чтобы ты мог выполнить этот практикум <strong>прямо сейчас на своем компьютере бесплатно и без привязки банковской карты к облаку</strong>, мы применим хитрость профессиональных DevOps-инженеров:
+1. Мы поднимем локальное облачное S3-хранилище <strong>MinIO</strong> (100% совместимое с AWS S3 и Yandex Object Storage) для <strong>удаленного хранения <code>terraform.tfstate</code> и блокировок</strong>.
+2. Напишем два переиспользуемых модуля Terraform (<code>modules/network</code> и <code>modules/app_tier</code>), используя официальный провайдер <code>kreuzwerker/docker</code> (при этом рядом я оставлю эталонный код модуля для Yandex Cloud, чтобы у тебя были оба шаблона!).
+3. Развернем инфраструктуру одной командой <code>terraform apply</code>, симулируем ручной взлом/дрейф конфигурации и обнаружим его через <strong>Drift Detection</strong>!</p>
+<hr />
+<h3 id="1-terraform-opentofu-s3-remote-state">Этап 1. Установка Terraform (или OpenTofu) и запуск S3-хранилища для Remote State</h3>
+<ol>
+<li>
+<p>Проверим наличие <code>terraform</code> (если еще не установлен — установим бинарник в <code>/usr/local/bin</code> за 10 секунд):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>terraform<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Устанавливаем Terraform..."</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nv">ARCH</span><span class="o">=</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/x86_64/amd64/;s/aarch64/arm64/'</span><span class="k">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="s2">"https://hashicorp-releases.yandexcloud.net/terraform/1.9.8/terraform_1.9.8_linux_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip"</span><span class="w"> </span>-o<span class="w"> </span>/tmp/tf.zip
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span>sudo<span class="w"> </span>unzip<span class="w"> </span>-o<span class="w"> </span>/tmp/tf.zip<span class="w"> </span>-d<span class="w"> </span>/usr/local/bin/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>/tmp/tf.zip
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">fi</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>terraform<span class="w"> </span>version
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Запустим локальный S3-сервер <strong>MinIO</strong> и автоматически создадим в нём защищенный бакет <code>tfstate-bucket</code> для хранения состояния нашей инфраструктуры:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/terraform-practice<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/terraform-practice
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span>--name<span class="w"> </span>s3-minio<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span>-p<span class="w"> </span><span class="m">9001</span>:9001<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">MINIO_ROOT_USER</span><span class="o">=</span>tf_admin<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">MINIO_ROOT_PASSWORD</span><span class="o">=</span>TfSecretKey2026<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span>minio/minio<span class="w"> </span>server<span class="w"> </span>/data<span class="w"> </span>--console-address<span class="w"> </span><span class="s2">":9001"</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>sleep<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="c1"># Создаем бакет tfstate-bucket внутри S3 через клиент mc</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--network<span class="w"> </span>host<span class="w"> </span>--entrypoint<span class="w"> </span>/bin/sh<span class="w"> </span>minio/mc<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="s2">  mc alias set local http://127.0.0.1:9000 tf_admin TfSecretKey2026 &amp;&amp;</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="s2">  mc mb --ignore-existing local/tfstate-bucket &amp;&amp;</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="s2">  mc version enable local/tfstate-bucket</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="s2">"</span>
+</span></code></pre></div></p>
+<blockquote>
+<p>Обрати внимание на команду <code>mc version enable</code>: мы включили <strong>версионирование S3-бакета</strong>. Если стейт когда-либо повредится, мы сможем откатить любую его прошлую ревизию!</p>
+</blockquote>
+</li>
+</ol>
+<hr />
+<h3 id="2-terraform-dry">Этап 2. Разработка переиспользуемых модулей Terraform (Принцип DRY)</h3>
+<p>Создадим модульную структуру проекта:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/terraform-practice/modules/<span class="o">{</span>network,app_tier<span class="o">}</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/terraform-practice/environments/staging
+</span></code></pre></div></p>
+<h4 id="1-modulesnetwork">1. Модуль сети (<code>modules/network</code>):</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/terraform-practice/modules/network/variables.tf</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s">variable "env_name" {</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="s">  description = "Имя окружения"</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="s">  type        = string</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="s">}</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="s">variable "subnet_cidr" {</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="s">  description = "Подсеть в формате CIDR"</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="s">  type        = string</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="s">}</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="s">EOF</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/terraform-practice/modules/network/main.tf</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="s">terraform {</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="s">  required_providers {</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="s">    docker = {</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="s">      source  = "kreuzwerker/docker"</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="s">      version = "~&gt; 3.0.2"</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="s">    }</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="s">  }</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="s">}</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="s">resource "docker_network" "vpc_net" {</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="s">  name   = "tf-${var.env_name}-vpc"</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="s">  driver = "bridge"</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="s">  ipam_config {</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="s">    subnet = var.subnet_cidr</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="s">  }</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="s">  labels {</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="s">    label = "managed_by"</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="s">    value = "terraform"</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="s">  }</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="s">  labels {</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="s">    label = "environment"</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="s">    value = var.env_name</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="s">  }</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="s">}</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="s">EOF</span>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a>
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/terraform-practice/modules/network/outputs.tf</span>
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a><span class="s">output "network_id" {</span>
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="s">  value = docker_network.vpc_net.id</span>
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a><span class="s">}</span>
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a>
+</span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="s">output "network_name" {</span>
+</span><span id="__span-11-46"><a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="s">  value = docker_network.vpc_net.name</span>
+</span><span id="__span-11-47"><a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a><span class="s">}</span>
+</span><span id="__span-11-48"><a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<h4 id="2-for_each-modulesapp_tier">2. Модуль кластера приложений с использованием <code>for_each</code> и секретов (<code>modules/app_tier</code>):</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/terraform-practice/modules/app_tier/variables.tf</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="s">variable "env_name" {</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="s">  type = string</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="s">}</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="s">variable "network_name" {</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="s">  type = string</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="s">}</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="s">variable "api_secret_token" {</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="s">  type      = string</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="s">  sensitive = true</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="s">}</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="s">variable "nodes" {</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="s">  description = "Карта узлов для развертывания через for_each"</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="s">  type = map(object({</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="s">    external_port = number</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="s">    memory_mb     = number</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="s">  }))</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="s">}</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="s">EOF</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/terraform-practice/modules/app_tier/main.tf</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="s">terraform {</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="s">  required_providers {</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="s">    docker = {</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="s">      source  = "kreuzwerker/docker"</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="s">      version = "~&gt; 3.0.2"</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="s">    }</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="s">  }</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="s">}</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="s">resource "docker_image" "nginx_img" {</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="s">  name         = "nginx:1.27-alpine"</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="s">  keep_locally = true</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="s">}</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="s"># Динамическое создание узлов по словарю var.nodes через for_each</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="s">resource "docker_container" "app_node" {</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="s">  for_each = var.nodes</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="s">  name   = "tf-${var.env_name}-${each.key}"</span>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="s">  image  = docker_image.nginx_img.image_id</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="s">  memory = each.value.memory_mb</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="s">  # Передача чувствительного секрета и метаданных в окружение</span>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="s">  env = [</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="s">    "ENV_NAME=${var.env_name}",</span>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="s">    "NODE_NAME=${each.key}",</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="s">    "API_SECRET_TOKEN=${var.api_secret_token}"</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="s">  ]</span>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="s">  ports {</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a><span class="s">    internal = 80</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="s">    external = each.value.external_port</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a><span class="s">  }</span>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a><span class="s">  networks_advanced {</span>
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a><span class="s">    name = var.network_name</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="s">  }</span>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a><span class="s">  labels {</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="s">    label = "managed_by"</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="s">    value = "terraform"</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="s">  }</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a><span class="s">}</span>
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a><span class="s">EOF</span>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/terraform-practice/modules/app_tier/outputs.tf</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a><span class="s">output "deployed_endpoints" {</span>
+</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72" href="#__codelineno-12-72"></a><span class="s">  description = "Список развернутых узлов и их внешних URL"</span>
+</span><span id="__span-12-73"><a id="__codelineno-12-73" name="__codelineno-12-73" href="#__codelineno-12-73"></a><span class="s">  value = {</span>
+</span><span id="__span-12-74"><a id="__codelineno-12-74" name="__codelineno-12-74" href="#__codelineno-12-74"></a><span class="s">    for k, node in docker_container.app_node :</span>
+</span><span id="__span-12-75"><a id="__codelineno-12-75" name="__codelineno-12-75" href="#__codelineno-12-75"></a><span class="s">    k =&gt; "http://localhost:${node.ports[0].external}"</span>
+</span><span id="__span-12-76"><a id="__codelineno-12-76" name="__codelineno-12-76" href="#__codelineno-12-76"></a><span class="s">  }</span>
+</span><span id="__span-12-77"><a id="__codelineno-12-77" name="__codelineno-12-77" href="#__codelineno-12-77"></a><span class="s">}</span>
+</span><span id="__span-12-78"><a id="__codelineno-12-78" name="__codelineno-12-78" href="#__codelineno-12-78"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<hr />
+<h3 id="3-staging-remote-s3-state">Этап 3. Сборка окружения <code>staging</code> с подключением Remote S3 State</h3>
+<p>Теперь перейдем в папку окружения <code>environments/staging</code> и соберем инфраструктуру из наших модулей, настроив хранение стейта в S3-бакете <code>tfstate-bucket</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>~/terraform-practice/environments/staging
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># 1. Настройка удаленного хранения State в S3 и провайдеров (backend.tf)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; backend.tf</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="s">terraform {</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="s">  required_version = "&gt;= 1.6.0"</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="s">  required_providers {</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="s">    docker = {</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="s">      source  = "kreuzwerker/docker"</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="s">      version = "~&gt; 3.0.2"</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="s">    }</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="s">  }</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="s">  # Удаленный Backend в S3 (MinIO / Yandex Object Storage / AWS S3)</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="s">  backend "s3" {</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="s">    endpoints = {</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="s">      s3 = "http://127.0.0.1:9000"</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="s">    }</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="s">    bucket                      = "tfstate-bucket"</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="s">    key                         = "staging/terraform.tfstate"</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="s">    region                      = "us-east-1"</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="s">    use_path_style              = true</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="s">    skip_credentials_validation = true</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="s">    skip_metadata_api_check     = true</span>
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="s">    skip_requesting_account_id  = true</span>
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="s">  }</span>
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="s">}</span>
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="s">EOF</span>
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="c1"># 2. Вызов модулей network и app_tier (main.tf)</span>
+</span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; main.tf</span>
+</span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="s">variable "api_secret_token" {</span>
+</span><span id="__span-13-34"><a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="s">  type        = string</span>
+</span><span id="__span-13-35"><a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a><span class="s">  sensitive   = true</span>
+</span><span id="__span-13-36"><a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a><span class="s">  description = "Секретный токен, передаваемый через TF_VAR_api_secret_token"</span>
+</span><span id="__span-13-37"><a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a><span class="s">}</span>
+</span><span id="__span-13-38"><a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a>
+</span><span id="__span-13-39"><a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="s"># Вызываем модуль сети</span>
+</span><span id="__span-13-40"><a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="s">module "vpc" {</span>
+</span><span id="__span-13-41"><a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="s">  source      = "../../modules/network"</span>
+</span><span id="__span-13-42"><a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a><span class="s">  env_name    = "staging"</span>
+</span><span id="__span-13-43"><a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a><span class="s">  subnet_cidr = "172.28.0.0/16"</span>
+</span><span id="__span-13-44"><a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a><span class="s">}</span>
+</span><span id="__span-13-45"><a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a>
+</span><span id="__span-13-46"><a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a><span class="s"># Вызываем модуль узлов приложения</span>
+</span><span id="__span-13-47"><a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a><span class="s">module "cluster_nodes" {</span>
+</span><span id="__span-13-48"><a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a><span class="s">  source           = "../../modules/app_tier"</span>
+</span><span id="__span-13-49"><a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a><span class="s">  env_name         = "staging"</span>
+</span><span id="__span-13-50"><a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a><span class="s">  network_name     = module.vpc.network_name</span>
+</span><span id="__span-13-51"><a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a><span class="s">  api_secret_token = var.api_secret_token</span>
+</span><span id="__span-13-52"><a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a>
+</span><span id="__span-13-53"><a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a><span class="s">  nodes = {</span>
+</span><span id="__span-13-54"><a id="__codelineno-13-54" name="__codelineno-13-54" href="#__codelineno-13-54"></a><span class="s">    "web-01" = { external_port = 8181, memory_mb = 64 }</span>
+</span><span id="__span-13-55"><a id="__codelineno-13-55" name="__codelineno-13-55" href="#__codelineno-13-55"></a><span class="s">    "web-02" = { external_port = 8182, memory_mb = 64 }</span>
+</span><span id="__span-13-56"><a id="__codelineno-13-56" name="__codelineno-13-56" href="#__codelineno-13-56"></a><span class="s">  }</span>
+</span><span id="__span-13-57"><a id="__codelineno-13-57" name="__codelineno-13-57" href="#__codelineno-13-57"></a><span class="s">}</span>
+</span><span id="__span-13-58"><a id="__codelineno-13-58" name="__codelineno-13-58" href="#__codelineno-13-58"></a>
+</span><span id="__span-13-59"><a id="__codelineno-13-59" name="__codelineno-13-59" href="#__codelineno-13-59"></a><span class="s">output "vpc_network_id" {</span>
+</span><span id="__span-13-60"><a id="__codelineno-13-60" name="__codelineno-13-60" href="#__codelineno-13-60"></a><span class="s">  value = module.vpc.network_id</span>
+</span><span id="__span-13-61"><a id="__codelineno-13-61" name="__codelineno-13-61" href="#__codelineno-13-61"></a><span class="s">}</span>
+</span><span id="__span-13-62"><a id="__codelineno-13-62" name="__codelineno-13-62" href="#__codelineno-13-62"></a>
+</span><span id="__span-13-63"><a id="__codelineno-13-63" name="__codelineno-13-63" href="#__codelineno-13-63"></a><span class="s">output "cluster_urls" {</span>
+</span><span id="__span-13-64"><a id="__codelineno-13-64" name="__codelineno-13-64" href="#__codelineno-13-64"></a><span class="s">  value = module.cluster_nodes.deployed_endpoints</span>
+</span><span id="__span-13-65"><a id="__codelineno-13-65" name="__codelineno-13-65" href="#__codelineno-13-65"></a><span class="s">}</span>
+</span><span id="__span-13-66"><a id="__codelineno-13-66" name="__codelineno-13-66" href="#__codelineno-13-66"></a><span class="s">EOF</span>
+</span><span id="__span-13-67"><a id="__codelineno-13-67" name="__codelineno-13-67" href="#__codelineno-13-67"></a>
+</span><span id="__span-13-68"><a id="__codelineno-13-68" name="__codelineno-13-68" href="#__codelineno-13-68"></a><span class="c1"># 3. Обязательный .gitignore для любого Terraform-репозитория!</span>
+</span><span id="__span-13-69"><a id="__codelineno-13-69" name="__codelineno-13-69" href="#__codelineno-13-69"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; .gitignore</span>
+</span><span id="__span-13-70"><a id="__codelineno-13-70" name="__codelineno-13-70" href="#__codelineno-13-70"></a><span class="s">.terraform/</span>
+</span><span id="__span-13-71"><a id="__codelineno-13-71" name="__codelineno-13-71" href="#__codelineno-13-71"></a><span class="s">*.tfstate</span>
+</span><span id="__span-13-72"><a id="__codelineno-13-72" name="__codelineno-13-72" href="#__codelineno-13-72"></a><span class="s">*.tfstate.*</span>
+</span><span id="__span-13-73"><a id="__codelineno-13-73" name="__codelineno-13-73" href="#__codelineno-13-73"></a><span class="s">crash.log</span>
+</span><span id="__span-13-74"><a id="__codelineno-13-74" name="__codelineno-13-74" href="#__codelineno-13-74"></a><span class="s">*.tfvars</span>
+</span><span id="__span-13-75"><a id="__codelineno-13-75" name="__codelineno-13-75" href="#__codelineno-13-75"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<hr />
+<h3 id="4-plan-apply-remote-state">Этап 4. Инициализация, Plan, Apply и проверка Remote State</h3>
+<p>Передадим ключи доступа к нашему S3-хранилищу и секретный токен приложения через переменные окружения и развернем инфраструктуру:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>~/terraform-practice/environments/staging
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">"tf_admin"</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">"TfSecretKey2026"</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_api_secret_token</span><span class="o">=</span><span class="s2">"ProdSecretVaultToken777"</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># 1. Инициализируем проект и подключаем S3 backend</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>terraform<span class="w"> </span>init
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1"># 2. Проверяем форматирование и валидность кода</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>terraform<span class="w"> </span>fmt<span class="w"> </span>-check
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>terraform<span class="w"> </span>validate
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1"># 3. Строим план выполнения (обрати внимание: api_secret_token скрыт как (sensitive value)!)</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-out<span class="o">=</span>tfplan
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="c1"># 4. Применяем план без лишнего запроса подтверждения</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>terraform<span class="w"> </span>apply<span class="w"> </span><span class="s2">"tfplan"</span>
+</span></code></pre></div>
+<hr />
+<h3 id="-8-drift-detection">✅ Чек-лист самопроверки по Модулю 8 (и тест Drift Detection!)</h3>
+<p>Выполни эти 4 проверки, чтобы убедиться, что вся цепочка IaC работает по промышленному стандарту:</p>
+<ol>
+<li>
+<p><strong>Проверка того, что локально НЕТ файла <code>terraform.tfstate</code>, а он лежит в S3-бакете:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ls<span class="w"> </span>-la<span class="w"> </span>terraform.tfstate<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Локального стейта нет — отлично!"</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--network<span class="w"> </span>host<span class="w"> </span>--entrypoint<span class="w"> </span>/bin/sh<span class="w"> </span>minio/mc<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="s2">  mc alias set local http://127.0.0.1:9000 tf_admin TfSecretKey2026 &gt;/dev/null &amp;&amp;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="s2">  mc ls local/tfstate-bucket/staging/</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="s2">"</span>
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em> В S3-бакете лежит файл <code>terraform.tfstate</code>!</p>
+</li>
+<li>
+<p><strong>Проверка работы развернутых узлов по URL из <code>terraform output</code>:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>terraform<span class="w"> </span>output
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://localhost:8181
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://localhost:8182
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em> Оба узла возвращают <code>HTTP/1.1 200 OK</code>.</p>
+</li>
+<li>
+<p><strong>Боевое учение: Симуляция дрейфа конфигурации (Configuration Drift) и самовосстановление!</strong>
+   Представим, что кто-то зашел на сервер в обход Terraform и вручную удалил узел <code>tf-staging-web-02</code>:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Вручную ломаем инфраструктуру (удаляем второй контейнер)</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>tf-staging-web-02
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Запускаем проверку дрейфа через terraform plan -detailed-exitcode</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-detailed-exitcode<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"🚨 ОБНАРУЖЕН ДРЕЙФ КОНФИГУРАЦИИ (Exit Code 2)!"</span>
+</span></code></pre></div>
+   Посмотри на вывод Terraform: <code># module.cluster_nodes.docker_container.app_node["web-02"] will be created</code>. Он мгновенно заметил пропажу узла!</p>
+</li>
+<li>
+<p><strong>Устранение дрейфа одной командой:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>docker<span class="w"> </span>ps<span class="w"> </span>--filter<span class="w"> </span><span class="s2">"name=tf-staging"</span>
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em> Узел <code>tf-staging-web-02</code> автоматически пересоздан и возвращен в строй за 1 секунду!</p>
+</li>
+</ol>
+<p><em>(Очистка стенда после завершения модуля: <code>terraform destroy -auto-approve &amp;&amp; docker rm -f s3-minio</code>)</em>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

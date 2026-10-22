@@ -1,0 +1,1792 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Бесплатный практический курс по DevOps для разработчиков и джунов">
+      
+      
+      
+      
+        <link rel="prev" href="../0_fundamentals/">
+      
+      
+        <link rel="next" href="../2_docker/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Введение в DevOps и системы контроля версий (Git) - DevOps Курс для начинающих</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#devops-git" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-header__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Курс для начинающих
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Введение в DevOps и системы контроля версий (Git)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на темную тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на темную тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-nav__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DevOps Курс для начинающих
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux, сети и автоматизация на Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение в DevOps и системы контроля версий (Git)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение в DevOps и системы контроля версий (Git)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Философия и культура DevOps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Философия и культура DevOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-wall-of-confusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Историческая проблема: «Стена отчуждения» (Wall of Confusion)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-calms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Модель CALMS и её влияние на скорость разработки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dora-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Четыре ключевые DORA-метрики эффективности
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Внутреннее устройство Git: репозитории, коммиты и история
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Внутреннее устройство Git: репозитории, коммиты и история">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Как Git хранит данные под капотом
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Четыре зоны состояния файлов в Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-branching-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Стратегии ветвления (Branching Strategies)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Сравнение версий, разрешение конфликтов и чистота истории
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Сравнение версий, разрешение конфликтов и чистота истории">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-git-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Сравнение версий (git diff)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-git-merge-vs-git-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. git merge vs git rebase и поддержание чистоты истории
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2. git merge vs git rebase и поддержание чистоты истории">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-git-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. git merge (Слияние)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-git-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. git rebase (Перебазирование)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-rebase-i-squashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Интерактивный ребейз (git rebase -i) и Squashing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-merge-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Анатомия и разрешение Merge-конфликтов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-pull-merge-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 5. Командная работа через Pull / Merge Requests и антипаттерны
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 5. Командная работа через Pull / Merge Requests и антипаттерны">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-conventional-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Стандарты оформления коммитов (Conventional Commits)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-pull-requests-github-merge-requests-gitlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Культура Pull Requests (GitHub) / Merge Requests (GitLab)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Типичные антипаттерны в работе с Git (и как их лечить)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3. Типичные антипаттерны в работе с Git (и как их лечить)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-reflog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Спасательный круг инженера: git reflog
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 1: Рефакторинг проблемного репозитория
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 1: Рефакторинг проблемного репозитория">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Генерация «проблемного» репозитория (стенд задачи)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gitignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Удаление секретов и мусора из индекса и настройка .gitignore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-interactive-rebase-squash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Очистка истории ветки (Interactive Rebase &amp; Squash)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Перебазирование на main и разрешение конфликта
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-devsecops-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 5 (Продвинутый DevSecOps). Полная зачистка пароля из глубокой истории Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контейнеризация приложений (Docker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оркестрация многоконтейнерных приложений (Docker Compose & Nginx)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Наблюдаемость (Observability) и мониторинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизация сборки и CI (Continuous Integration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_continuous_delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continuous Delivery и безопасность внедрения (CD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_iac_terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инфраструктура как код (IaC) — Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_scm_ansible/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Управление конфигурацией (SCM) — Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_kubernetes_k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes (K8s) и оркестрация контейнеров в продакшене
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Итоговый дипломный проект DevOps - Production-Ready Платформа «CloudOrder»
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Философия и культура DevOps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Философия и культура DevOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-wall-of-confusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Историческая проблема: «Стена отчуждения» (Wall of Confusion)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-calms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Модель CALMS и её влияние на скорость разработки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dora-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Четыре ключевые DORA-метрики эффективности
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Внутреннее устройство Git: репозитории, коммиты и история
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Внутреннее устройство Git: репозитории, коммиты и история">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Как Git хранит данные под капотом
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Четыре зоны состояния файлов в Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-branching-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Стратегии ветвления (Branching Strategies)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Сравнение версий, разрешение конфликтов и чистота истории
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Сравнение версий, разрешение конфликтов и чистота истории">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-git-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Сравнение версий (git diff)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-git-merge-vs-git-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. git merge vs git rebase и поддержание чистоты истории
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2. git merge vs git rebase и поддержание чистоты истории">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-git-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. git merge (Слияние)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-git-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. git rebase (Перебазирование)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-rebase-i-squashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Интерактивный ребейз (git rebase -i) и Squashing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-merge-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Анатомия и разрешение Merge-конфликтов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-pull-merge-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 5. Командная работа через Pull / Merge Requests и антипаттерны
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 5. Командная работа через Pull / Merge Requests и антипаттерны">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-conventional-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Стандарты оформления коммитов (Conventional Commits)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-pull-requests-github-merge-requests-gitlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Культура Pull Requests (GitHub) / Merge Requests (GitLab)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Типичные антипаттерны в работе с Git (и как их лечить)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3. Типичные антипаттерны в работе с Git (и как их лечить)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-reflog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Спасательный круг инженера: git reflog
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 1: Рефакторинг проблемного репозитория
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 1: Рефакторинг проблемного репозитория">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Генерация «проблемного» репозитория (стенд задачи)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gitignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Удаление секретов и мусора из индекса и настройка .gitignore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-interactive-rebase-squash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Очистка истории ветки (Interactive Rebase &amp; Squash)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Перебазирование на main и разрешение конфликта
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-devsecops-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 5 (Продвинутый DevSecOps). Полная зачистка пароля из глубокой истории Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="devops-git">Введение в DevOps и системы контроля версий Git</h1>
+<p>В современном DevOps <strong>всё является кодом</strong>: исходный код приложений, конфигурация серверов (Ansible), описание облачной инфраструктуры (Terraform), манифесты кластера (Kubernetes) и сами пайплайны сборки (CI/CD). Поэтому Git — это единый источник истины (Single Source of Truth), с которого начинается любое изменение в инфраструктуре.</p>
+<hr />
+<h2 id="1-devops">Блок 1. Философия и культура DevOps</h2>
+<h3 id="11-wall-of-confusion">1.1. Историческая проблема: «Стена отчуждения» (Wall of Confusion)</h3>
+<p>До появления DevOps разработка (Development) и эксплуатация (Operations) имели прямо противоположные KPI:</p>
+<ul>
+<li><strong>Цель разработчиков (Dev):</strong> Как можно быстрее выпускать новые фичи для бизнеса (Изменения = хорошо).</li>
+<li><strong>Цель администраторов (Ops):</strong> Чтобы серверы работали стабильно и ничего не падало (Изменения = риск падения).</li>
+</ul>
+<p>Разработчики перекидывали код «через забор» со словами <em>«У меня на ноутбуке всё работало!»</em>, а админы вручную деплоили его по ночам и блокировали частые релизы. <strong>DevOps</strong> убирает эту стену, объединяя процессы, людей и инструменты вокруг общей цели — быстрой и безопасной доставки ценности конечному пользователю.</p>
+<hr />
+<h3 id="12-calms">1.2. Модель CALMS и её влияние на скорость разработки</h3>
+<p>Акроним <strong>CALMS</strong> (предложенный Джезом Хамблом) описывает 5 столпов зрелого DevOps-процесса:</p>
+<table>
+<thead>
+<tr>
+<th>Буква</th>
+<th>Расшифровка</th>
+<th>Суть и влияние на Time-to-Market</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C</strong></td>
+<td><strong>Culture</strong> (Культура)</td>
+<td>Отказ от поиска виноватых (<strong>Blameless Postmortems</strong>). Если упал прод — виноват не человек, который нажал кнопку, а процесс, который позволил ошибке дойти до прода без проверок. Общая ответственность: <em>«You build it, you run it»</em>.</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td><strong>Automation</strong> (Автоматизация)</td>
+<td>Устранение ручного труда (toil). Ручная настройка серверов по SSH запрещена — всё делается через CI/CD, Terraform и Ansible. Это ускоряет релизы с недель до минут.</td>
+</tr>
+</tbody>
+</table>
+<p>|
+| <strong>L</strong> | <strong>Lean</strong> (Бережливое производство) | Фокус на маленьких партиях изменений (Small Batch Sizes) и устранении потерь времени (ожиданий ревью, ручного тестирования). Проще выкатить и протестировать 10 строчек кода, чем релиз за полгода на 50 000 строк.</p>
+<p>|
+| <strong>M</strong> | <strong>Measurement</strong> (Измерения) | Если вы что-то не измеряете, вы не можете это улучшить. Измеряется всё: от загрузки CPU до бизнес-метрик и скорости доставки кода (<strong>DORA-метрики</strong>).</p>
+<p>|
+| <strong>S</strong> | <strong>Sharing</strong> (Обмен знаниями) | Отсутствие «незаменимых шаманов» (низкого Bus Factor). Единая документация, открытые репозитории, совместные разборы инцидентов и взаимное обучение между Dev, QA и Ops. |</p>
+<hr />
+<h3 id="13-dora-">1.3. Четыре ключевые DORA-метрики эффективности</h3>
+<p>Исследовательская группа DORA выделила 4 метрики, которые объективно показывают качество инженерных процессов в компании:</p>
+<ol>
+<li><strong>Deployment Frequency (Частота релизов):</strong> Как часто команда успешно выкатывает код в продакшен (у лидеров индустрии — по запросу, десятки раз в день).</li>
+<li><strong>Lead Time for Changes (Время вывода изменений):</strong> Время от момента создания коммита до того, как этот код начал работать в продакшене (цель — менее часа).</li>
+<li><strong>Change Failure Rate (Доля неуспешных изменений):</strong> Какой процент деплоев приводит к деградации сервиса, хотфиксам или откату (цель — $0\text{–}15\%$).</li>
+<li><strong>MTTR (Mean Time to Restore / Recovery):</strong> Среднее время восстановления сервиса после аварии (цель — менее часа, достигается за счет мониторинга и автоматического отката).</li>
+</ol>
+<hr />
+<h2 id="2-git">Блок 2. Внутреннее устройство Git: репозитории, коммиты и история</h2>
+<h3 id="21-git">2.1. Как Git хранит данные под капотом</h3>
+<p>В отличие от старых систем (SVN), которые хранили разницу между файлами (дельты), <strong>Git хранит полные слепки состояния (snapshots)</strong> в виде направленного ациклического графа (DAG) в папке <code>.git/objects/</code>.</p>
+<p>Внутри Git есть 4 основных типа объектов, идентифицируемых по SHA-1 хэшу (40 шестнадцатеричных символов):</p>
+<ul>
+<li><strong><code>blob</code>:</strong> Содержимое конкретного файла (без имени файла и прав).</li>
+<li><strong><code>tree</code>:</strong> Аналог директории — содержит список имен файлов, их права и ссылки на <code>blob</code>-объекты и другие <code>tree</code>.</li>
+<li><strong><code>commit</code>:</strong> Слепок проекта. Содержит ссылку на корневой объект <code>tree</code>, метаданные автора, сообщение коммита и ссылку на родительский коммит (<code>parent</code>).</li>
+<li><strong><code>tag</code>:</strong> Постоянная именная метка, привязанная к конкретному коммиту (например, <code>v1.2.0</code>).</li>
+</ul>
+<blockquote>
+<p><strong>Что такое ветка (Branch)?</strong> Ветка в Git — это не копия файлов! Это просто крошечный текстовый файл (весом 41 байт) в <code>.git/refs/heads/</code>, внутри которого записан SHA-1 хэш последнего коммита. Поэтому создание и переключение веток в Git происходит мгновенно. Указатель <strong><code>HEAD</code></strong> показывает, на какой ветке или коммите вы находитесь прямо сейчас.</p>
+</blockquote>
+<hr />
+<h3 id="22-git">2.2. Четыре зоны состояния файлов в Git</h3>
+<ol>
+<li><strong>Working Directory (Рабочая директория):</strong> Файлы, которые вы прямо сейчас редактируете на диске.</li>
+<li><strong>Staging Area / Index (Индекс):</strong> Промежуточная зона подготовки. Сюда вы складываете (<code>git add</code>) только те изменения, которые должны войти в следующий осмысленный коммит.</li>
+<li>
+<p><strong>Local Repository (<code>.git</code>):</strong> Ваша локальная база данных коммитов (<code>git commit</code>).</p>
+</li>
+<li>
+<p><strong>Remote Repository (<code>origin</code>):</strong> Удаленный сервер (GitLab, GitHub), куда пушатся изменения (<code>git push</code>).</p>
+</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Working Dir]  --(git add)--&gt;  [Staging / Index]  --(git commit)--&gt;  [Local Repo]  --(git push)--&gt;  [Remote Repo]
+</span></code></pre></div>
+<p><strong>Базовая настройка и навигация по истории:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Обязательная первичная настройка имени и почты</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Ivan Petrov"</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"i.petrov@example.com"</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Красивый граф истории коммитов со всеми ветками в терминале</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--decorate<span class="w"> </span>--all
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Посмотреть, какие именно строки изменились в каждом коммите</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>git<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Узнать, кто и каким коммитом изменил каждую строчку в конфиге (незаменимо при разборе полетов!)</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>git<span class="w"> </span>blame<span class="w"> </span>nginx.conf
+</span></code></pre></div>
+<hr />
+<h2 id="3-branching-strategies">Блок 3. Стратегии ветвления (Branching Strategies)</h2>
+<p>Выбор стратегии ветвления напрямую влияет на то, как вы будете строить CI/CD пайплайны в следующих модулях.</p>
+<p>| Характеристика | GitFlow</p>
+<p>| GitHub Flow</p>
+<p>| Trunk-Based Development (TBD) |
+| --- | --- | --- | --- |
+| <strong>Основные ветки</strong> | <code>main</code>, <code>develop</code>, <code>feature/*</code>, <code>release/*</code>, <code>hotfix/*</code> | <code>main</code> + короткоживущие <code>feature/*</code> | <code>main</code> (trunk) + микро-ветки на пару часов |
+| <strong>Жизненный цикл фичи</strong> | Длинный: <code>feature</code> $\rightarrow$ <code>develop</code> $\rightarrow$ <code>release</code> $\rightarrow$ <code>main</code> | Простой: <code>feature</code> $\rightarrow$ Pull Request $\rightarrow$ <code>main</code> $\rightarrow$ Деплой | Сверхбыстрый: слияние в <code>main</code> минимум раз в день (использование Feature Flags)</p>
+<p>|
+| <strong>Плюсы</strong> | Строгий контроль версий, удобно поддерживать несколько старых релизов параллельно | Простота, прозрачность, быстрый вывод фич в прод | Нет болезненных merge-конфликтов, максимальная скорость CI/CD |
+| <strong>Минусы</strong> | Огромная бюрократия, долгоживущие ветки, тяжелые конфликты слияния | Требует надежных автотестов в CI перед слиянием в <code>main</code> | Требует высокой зрелости команды и умения работать с Feature Flags |
+| <strong>Где применяется</strong> | Коробочный софт, мобильные приложения, легаси-банкинг | 80% современных веб-сервисов и инфраструктурных репозиториев (IaC) | Зрелые продуктовые компании с непрерывным деплоем (CD) |</p>
+<hr />
+<h2 id="4">Блок 4. Сравнение версий, разрешение конфликтов и чистота истории</h2>
+<h3 id="41-git-diff">4.1. Сравнение версий (<code>git diff</code>)</h3>
+<p>Перед тем как делать коммит или вливать чужую ветку, инженер всегда проверяет дельту изменений:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Что изменилось в рабочей папке, но еще НЕ добавлено в индекс (git add)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>diff
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Что уже лежит в индексе (staged) и прямо сейчас войдет в коммит</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>diff<span class="w"> </span>--staged
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Сравнить две ветки между собой (например, main и feature/nginx-tuning)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>git<span class="w"> </span>diff<span class="w"> </span>main..feature/nginx-tuning
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Показать только список измененных файлов между двумя коммитами</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>git<span class="w"> </span>diff<span class="w"> </span>--name-status<span class="w"> </span>a1b2c3d<span class="w"> </span>f4e5d6c
+</span></code></pre></div>
+<hr />
+<h3 id="42-git-merge-vs-git-rebase">4.2. <code>git merge</code> vs <code>git rebase</code> и поддержание чистоты истории</h3>
+<p>Когда вы работаете в своей ветке <code>feature</code>, основная ветка <code>main</code> успевает уйти вперед. Объединить изменения можно двумя способами:</p>
+<h4 id="1-git-merge">1. <code>git merge</code> (Слияние)</h4>
+<ul>
+<li>Создает специальный <strong>merge-коммит</strong>, имеющий сразу двух родителей.</li>
+<li><strong>Плюс:</strong> Сохраняет точную хронологическую правду.</li>
+<li><strong>Минус:</strong> Если разработчики постоянно подтягивают <code>main</code> в свои ветки через <code>merge</code>, история превращается в нечитаемую «гитару» из переплетенных линий.</li>
+</ul>
+<h4 id="2-git-rebase">2. <code>git rebase</code> (Перебазирование)</h4>
+<ul>
+<li>Берет ваши коммиты из ветки <code>feature</code>, временно откладывает их, перематывает ветку на самый свежий коммит <code>main</code> и по очереди применяет ваши коммиты поверх (переписывая их хэши).</li>
+<li>
+<p><strong>Плюс:</strong> Идеально прямая, линейная история коммитов без лишнего шума.</p>
+</li>
+<li>
+<p><strong>Золотое правило безопасности Rebase:</strong> <strong>Никогда не делайте <code>rebase</code> публичных общих веток (<code>main</code>, <code>develop</code>)</strong>, в которых уже работают другие люди! Делать <code>rebase</code> можно только для своей локальной фича-ветки перед отправкой в Pull Request.</p>
+</li>
+</ul>
+<h4 id="git-rebase-i-squashing">Интерактивный ребейз (<code>git rebase -i</code>) и Squashing</h4>
+<p>В процессе работы над задачей вы могли сделать 5 черновых коммитов: <code>WIP</code>, <code>fix typo</code>, <code>try again</code>, <code>almost working</code>. Вливать такой мусор в <code>main</code> — дурной тон.</p>
+<p>Перед открытием Pull Request их склеивают (<strong>squash</strong>) в один чистый коммит:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Открыть интерактивный ребейз для последних 4 коммитов</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>HEAD~4
+</span></code></pre></div>
+<p>В открывшемся редакторе у первого коммита оставляем слово <code>pick</code>, а у остальных меняем <code>pick</code> на <code>squash</code> (или <code>s</code>) — они сольются в один аккуратный коммит.</p>
+<hr />
+<h3 id="43-merge-">4.3. Анатомия и разрешение Merge-конфликтов</h3>
+<p>Конфликт возникает, когда в двух сливаемых ветках была изменена <strong>одна и та же строка одного и того же файла</strong> (или в одной ветке файл удалили, а в другой отредактировали).</p>
+<p>При возникновении конфликта Git помечает проблемный участок специальными маркерами:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">worker_processes 4;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">=</span><span class="s">======</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">worker_processes auto;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/optimize-nginx</span>
+</span></code></pre></div>
+<ul>
+<li>Между <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> и <code>=======</code> — то, что находится в вашей текущей ветке.</li>
+<li>Между <code>=======</code> и <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/...</code> — то, что пришло из вливаемой ветки.</li>
+</ul>
+<p><strong>Алгоритм разрешения конфликта:</strong></p>
+<ol>
+<li>Посмотреть список конфликтующих файлов: <code>git status</code>.</li>
+<li>Открыть файл в редакторе, выбрать правильный вариант кода и **полностью удалить строки с маркерами <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;**</code>.</li>
+<li>Отметить, что конфликт решен: <code>git add &lt;имя_файла&gt;</code>.</li>
+<li>Завершить слияние: <code>git commit</code> (для merge) или <code>git rebase --continue</code> (для rebase).
+<em>(Если всё пошло не так и хочется вернуть как было до начала слияния: <code>git merge --abort</code> или <code>git rebase --abort</code>)</em>.</li>
+</ol>
+<hr />
+<h2 id="5-pull-merge-requests">Блок 5. Командная работа через Pull / Merge Requests и антипаттерны</h2>
+<h3 id="51-conventional-commits">5.1. Стандарты оформления коммитов (Conventional Commits)</h3>
+<p>Чтобы по истории репозитория можно было автоматически генерировать Changelog и понимать суть правок за секунду, используют стандарт <strong>Conventional Commits</strong>:</p>
+<ul>
+<li><code>feat: add prometheus exporter config</code> — новая функциональность.</li>
+<li><code>fix: resolve port conflict in nginx.conf</code> — исправление ошибки.</li>
+<li><code>refactor: simplify backup bash script</code> — рефакторинг без изменения логики.</li>
+<li><code>docs: update README deployment guide</code> — обновление документации.</li>
+<li><code>ci: add linter stage to gitlab-ci</code> — правки конвейера сборки.</li>
+</ul>
+<h3 id="52-pull-requests-github-merge-requests-gitlab">5.2. Культура Pull Requests (GitHub) / Merge Requests (GitLab)</h3>
+<p>Ветка <code>main</code> в реальных проектах всегда закрыта от прямого <code>git push</code> (<strong>Protected Branch</strong>). Любое изменение попадает туда только через PR/MR:</p>
+<ol>
+<li>Инженер пушит ветку <code>feat/add-firewall</code> на сервер и открывает PR/MR.</li>
+<li>
+<p>Автоматически запускается CI-пайплайн (линтеры, тесты, проверка безопасности).</p>
+</li>
+<li>
+<p>Коллеги проводят <strong>Code Review</strong> (оставляют комментарии к строкам кода, проверяют архитектуру).</p>
+</li>
+<li>После получения аппрувов (например, минимум 1–2 <code>Approve</code>) и зеленого статуса пайплайна ветка вливается в <code>main</code> (часто с галочкой <em>Squash commits</em> и <em>Delete source branch</em>).</li>
+</ol>
+<hr />
+<h3 id="53-git">5.3. Типичные антипаттерны в работе с Git (и как их лечить)</h3>
+<table>
+<thead>
+<tr>
+<th>Антипаттерн</th>
+<th>Чем это грозит в продакшене</th>
+<th>Инженерное решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Коммит секретов в Git</strong> (пароли, приватные SSH-ключи, <code>.env</code>, токены AWS/Yandex Cloud)</td>
+<td>Даже если вы удалите файл следующим коммитом, <strong>он навсегда останется в истории <code>.git</code>!</strong> Любой, у кого есть доступ на чтение репозитория, вытащит ключ за 5 секунд.</td>
+<td>1. Немедленно отозвать (перевыпустить) скомпрометированный ключ!<br></td>
+</tr>
+</tbody>
+</table>
+<p><br>2. Вычистить историю утилитой <code>git-filter-repo</code>.<br></p>
+<p><br>3. Добавить <code>.env</code> и <code>*.key</code> в <code>.gitignore</code>. |
+| <strong>2. Хранение тяжелых бинарников и логов</strong> (архивы <code>.tar.gz</code>, дампы БД, <code>node_modules/</code>, <code>__pycache__/</code>, <code>.terraform/</code>) | Репозиторий раздувается до гигабайтов, <code>git clone</code> в CI/CD идет по 15 минут. | Настроить жесткий файл <strong><code>.gitignore</code></strong> в корне проекта с первого дня. Артефакты хранить в S3 / Registry.</p>
+<p>|
+| <strong>3. Гигантские коммиты («Божественный коммит»)</strong> | В одном коммите на 80 файлов смешаны рефакторинг, фикс бага и новая фича с сообщением <code>fix</code>. Если он сломает прод, вы не сможете аккуратно откатить (<code>git revert</code>) только проблемную часть. | Правило <strong>Атомарных коммитов</strong>: 1 логическое изменение = 1 коммит. |
+| **4. Слепой <code>git add .</code> или <code>git push --force**</code> | Случайное добавление временных мусорных файлов или затирание коммитов коллег в общей ветке. | Использовать <code>git status</code> и <code>git add -p</code> (поблочное добавление). Вместо <code>--force</code> всегда использовать безопасный флаг <strong><code>--force-with-lease</code></strong> (он не перезапишет ветку, если кто-то успел запушить туда новые коммиты). |</p>
+<h4 id="git-reflog">Спасательный круг инженера: <code>git reflog</code></h4>
+<p>Если вы случайно сделали <code>git reset --hard</code>, удалили не ту ветку или неудачно сделали <code>rebase</code>, «потеряв» коммиты — не паникуйте. Git хранит локальный журнал всех перемещений указателя <code>HEAD</code> минимум 30–90 дней:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Посмотреть историю всех ваших действий в репозитории</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>reflog
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Восстановить состояние на момент любого шага из reflog</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD@<span class="o">{</span><span class="m">2</span><span class="o">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="1">🛠 Практический проект Модуля 1: Рефакторинг проблемного репозитория</h2>
+<p>Представь реальную рабочую ситуацию: тебе достался инфраструктурный репозиторий от уволившегося джуна. В нём полный хаос:</p>
+<ul>
+<li>В историю попал файл с паролями от базы <code>secrets.env</code> и мусорные логи <code>*.log</code>.</li>
+<li>Нет файла <code>.gitignore</code>.</li>
+<li>В рабочей ветке куча кривых мелких коммитов (<code>test</code>, <code>oops</code>, <code>fix2</code>).</li>
+<li>Между ветками висит неразрешенный конфликт в конфигурационном файле.</li>
+</ul>
+<p>Твоя задача — провести полный рефакторинг репозитория прямо в терминале.</p>
+<hr />
+<h3 id="1_1">Этап 1. Генерация «проблемного» репозитория (стенд задачи)</h3>
+<p>Скопируй и выполни этот блок команд целиком — он автоматически создаст на твоей машине учебный репозиторий <code>messy-infra-repo</code> со всеми типичными ошибками:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/messy-infra-repo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/messy-infra-repo
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>init<span class="w"> </span>-b<span class="w"> </span>main
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 1. Первый коммит с конфигом и случайно добавленными секретами и логами</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app.conf</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">PORT=8080</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s">WORKERS=2</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s">LOG_LEVEL=debug</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s">EOF</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"DB_PASSWORD=SuperSecretProdPass123!"</span><span class="w"> </span>&gt;<span class="w"> </span>secrets.env
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"2026-10-18 ERROR connection timeout"</span><span class="w"> </span>&gt;<span class="w"> </span>debug.log
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"initial commit"</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># 2. Создаем ветку фичи с "грязной" историей коммитов и конфликтующим изменением</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/prod-tuning
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/WORKERS=2/WORKERS=8/'</span><span class="w"> </span>app.conf
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"update workers"</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"# temp note"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>app.conf
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"wip"</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/LOG_LEVEL=debug/LOG_LEVEL=warn/'</span><span class="w"> </span>app.conf
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"oops forgot log level"</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="c1"># 3. Возвращаемся в main и создаем встречное изменение в той же строке (провоцируем конфликт!)</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/WORKERS=2/WORKERS=4/'</span><span class="w"> </span>app.conf
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"hotfix workers count in main"</span>
+</span></code></pre></div>
+<p>Посмотри на текущее состояние с помощью <code>git log --oneline --graph --all</code>. Теперь начинаем наводить порядок по шагам!</p>
+<hr />
+<h3 id="2-gitignore">Этап 2. Удаление секретов и мусора из индекса и настройка <code>.gitignore</code></h3>
+<ol>
+<li>Создай правильный файл <code>.gitignore</code>, чтобы логи, секреты и временные файлы больше никогда не попадали в Git:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; .gitignore</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s"># Secrets and environments</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">*.env</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s">*.key</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="s">*.pem</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s"># Logs and temp files</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s">*.log</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">*.tmp</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">.DS_Store</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<ol>
+<li>Удали <code>secrets.env</code> и <code>debug.log</code> <strong>из отслеживания Git</strong>, но оставь сам файл <code>secrets.env</code> лежать локально на диске (флаг <code>--cached</code> удаляет файл только из индекса Git, не стирая его с диска!):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>secrets.env
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>debug.log
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>git<span class="w"> </span>add<span class="w"> </span>.gitignore
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: add .gitignore and untrack sensitive files"</span>
+</span></code></pre></div>
+<hr />
+<h3 id="3-interactive-rebase-squash">Этап 3. Очистка истории ветки (<code>Interactive Rebase &amp; Squash</code>)</h3>
+<p>Переключись в ветку <code>feature/prod-tuning</code> и посмотри на её неряшливую историю:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>feature/prod-tuning
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span>
+</span></code></pre></div>
+<p>Мы видим три мелких коммита (<code>oops forgot log level</code>, <code>wip</code>, <code>update workers</code>). Склеим их в один атомарный коммит с правильным сообщением по стандарту Conventional Commits:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Сбрасываем мягко (soft) 3 последних коммита, оставляя все их изменения в индексе (staged)</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD~3
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Убираем мусорную строчку "# temp note" из файла app.conf</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/# temp note/d'</span><span class="w"> </span>app.conf
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Делаем один чистый и понятный коммит</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>git<span class="w"> </span>add<span class="w"> </span>app.conf
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(config): optimize workers count and set warn log level"</span>
+</span></code></pre></div>
+<p>Проверь <code>git log --oneline</code> — вместо трёх мусорных коммитов остался один образцовый!</p>
+<hr />
+<h3 id="4-main">Этап 4. Перебазирование на <code>main</code> и разрешение конфликта</h3>
+<p>Теперь подтянем актуальные изменения из ветки <code>main</code>, используя <code>rebase</code>, чтобы история осталась идеально линейной:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>rebase<span class="w"> </span>main
+</span></code></pre></div>
+<p>Git остановится и сообщит о конфликте: <code>CONFLICT (content): Merge conflict in app.conf</code>.</p>
+<ol>
+<li>Посмотри на конфликт внутри файла <code>cat app.conf</code>:</li>
+</ol>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="na">PORT</span><span class="o">=</span><span class="s">8080</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="na">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="na">WORKERS</span><span class="o">=</span><span class="s">4</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="na">LOG_LEVEL</span><span class="o">=</span><span class="s">debug</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="o">=</span><span class="s">======</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="na">WORKERS</span><span class="o">=</span><span class="s">8</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="na">LOG_LEVEL</span><span class="o">=</span><span class="s">warn</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="na">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feat(config)</span><span class="o">:</span><span class="w"> </span><span class="s">optimize workers count...</span>
+</span></code></pre></div>
+<ol>
+<li>Разреши конфликт вручную (оставляем финальные продакшен-настройки <code>WORKERS=8</code> и <code>LOG_LEVEL=warn</code> без маркеров конфликта):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app.conf</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s">PORT=8080</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="s">WORKERS=8</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="s">LOG_LEVEL=warn</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<ol>
+<li>Добавь исправленный файл в индекс и заверши ребейз:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>add<span class="w"> </span>app.conf
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+</span></code></pre></div>
+<p><em>(Если откроется текстовый редактор для подтверждения сообщения коммита — в <code>nano</code> нажми <code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>, а в <code>vim</code> введи <code>:wq</code> и <code>Enter</code>)</em>.</p>
+<ol>
+<li>Влей чистую ветку в <code>main</code> и удали отработанную фича-ветку:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>git<span class="w"> </span>merge<span class="w"> </span>feature/prod-tuning
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature/prod-tuning
+</span></code></pre></div>
+<hr />
+<h3 id="5-devsecops-git">Этап 5 (Продвинутый DevSecOps). Полная зачистка пароля из глубокой истории Git</h3>
+<p>Мы удалили <code>secrets.env</code> во втором этапе, но если выполнить <code>git log -p</code>, пароль <code>SuperSecretProdPass123!</code> <strong>всё еще виден в самом первом коммите (<code>initial commit</code>)</strong>!</p>
+<p>Вычистим файл <code>secrets.env</code> из всех исторических коммитов репозитория:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--index-filter<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="s2">"git rm --cached --ignore-unmatch secrets.env"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span>--prune-empty<span class="w"> </span>--tag-name-filter<span class="w"> </span>cat<span class="w"> </span>--<span class="w"> </span>--all
+</span></code></pre></div>
+<hr />
+<h3 id="-1">✅ Чек-лист самопроверки по Модулю 1</h3>
+<p>Выполни эти 3 проверочные команды в папке <code>~/messy-infra-repo</code>:</p>
+<ol>
+<li><strong>Проверка линейности и чистоты истории:</strong></li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--all
+</span></code></pre></div>
+<p><em>Ожидаемый результат:</em> Прямая линия из 4 аккуратных коммитов без лишних веток и коммитов <code>wip</code>/<code>oops</code>.
+2. <strong>Проверка работы <code>.gitignore</code>:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>status
+</span></code></pre></div></p>
+<p><em>Ожидаемый результат:</em> <code>nothing to commit, working tree clean</code> (при том, что файл <code>secrets.env</code> продолжает лежать в папке <code>ls -la</code>, но Git его полностью игнорирует).
+3. <strong>Проверка отсутствия утечки пароля во всей истории коммитов:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>log<span class="w"> </span>-S<span class="w"> </span><span class="s2">"SuperSecretProdPass123!"</span><span class="w"> </span>--oneline
+</span></code></pre></div>
+<p><em>Ожидаемый результат:</em> Пустой вывод! Пароль бесследно стерт из истории репозитория.</p>
+<hr />
+<p>Как только прогонишь этот практикум или если появятся вопросы по командам Git — дай знать, и мы переходим к <strong>Модулю 2: Контейнеризация приложений (Docker)</strong>!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1607 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Бесплатный практический курс по DevOps для разработчиков и джунов">
+      
+      
+      
+      
+        <link rel="prev" href="../5_monitoring/">
+      
+      
+        <link rel="next" href="../7_continuous_delivery/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Автоматизация сборки и CI (Continuous Integration) - DevOps Курс для начинающих</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ci" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-header__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Курс для начинающих
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Автоматизация сборки и CI (Continuous Integration)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на темную тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на темную тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-nav__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DevOps Курс для начинающих
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux, сети и автоматизация на Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение в DevOps и системы контроля версий (Git)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контейнеризация приложений (Docker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оркестрация многоконтейнерных приложений (Docker Compose & Nginx)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Наблюдаемость (Observability) и мониторинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизация сборки и CI (Continuous Integration)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизация сборки и CI (Continuous Integration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ci-lean-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Архитектура CI-конвейеров и Lean-подход
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Архитектура CI-конвейеров и Lean-подход">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-ci-fast-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lean-fail-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lean-подход к проектированию конвейеров (Fail Fast):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-gitlab-ci-runners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#executors-gitlab-runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Типы исполнителей (Executors) у GitLab Runner:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gitlab-ciyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Анатомия файла .gitlab-ci.yml
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Анатомия файла .gitlab-ci.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-stages-jobs-image-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Базовые сущности: stages, jobs, image, services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-cache-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Кэширование (cache) против Артефактов (artifacts)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-dag-needs-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Ускорение пайплайна с помощью DAG (needs:) и правил (rules:)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-quality-gates-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-shift-left-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Эшелонированная проверка качества (Shift-Left Security)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-docker-docker-dind-vs-kaniko" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Как собирать Docker-образы внутри Docker-раннера: DinD vs Kaniko
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ci-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Типичные антипаттерны в CI-конвейерах
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ci-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Подготовка репозитория с тестами и проверками качества
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gitlab-ciyml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Проектирование эталонного .gitlab-ci.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ci-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Локальный прогон всех стадий CI-конвейера в Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_continuous_delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continuous Delivery и безопасность внедрения (CD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_iac_terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инфраструктура как код (IaC) — Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_scm_ansible/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Управление конфигурацией (SCM) — Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_kubernetes_k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes (K8s) и оркестрация контейнеров в продакшене
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Итоговый дипломный проект DevOps - Production-Ready Платформа «CloudOrder»
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ci-lean-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Архитектура CI-конвейеров и Lean-подход
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Архитектура CI-конвейеров и Lean-подход">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-ci-fast-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lean-fail-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lean-подход к проектированию конвейеров (Fail Fast):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-gitlab-ci-runners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#executors-gitlab-runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Типы исполнителей (Executors) у GitLab Runner:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gitlab-ciyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Анатомия файла .gitlab-ci.yml
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Анатомия файла .gitlab-ci.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-stages-jobs-image-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Базовые сущности: stages, jobs, image, services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-cache-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Кэширование (cache) против Артефактов (artifacts)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-dag-needs-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Ускорение пайплайна с помощью DAG (needs:) и правил (rules:)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-quality-gates-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-shift-left-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Эшелонированная проверка качества (Shift-Left Security)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-docker-docker-dind-vs-kaniko" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Как собирать Docker-образы внутри Docker-раннера: DinD vs Kaniko
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ci-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Типичные антипаттерны в CI-конвейерах
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ci-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Подготовка репозитория с тестами и проверками качества
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gitlab-ciyml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Проектирование эталонного .gitlab-ci.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ci-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Локальный прогон всех стадий CI-конвейера в Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ci">Автоматизация сборки и CI</h1>
+<p>До этого момента мы собирали Docker-образы, проверяли код и запускали сканер уязвимостей Trivy вручную в терминале. В реальной командной разработке ручная сборка запрещена: человек может забыть прогнать тесты, собрать образ из несохраненного локального файла или случайно запушить сломанный код.</p>
+<p><strong>Continuous Integration (Непрерывная интеграция)</strong> — это инженерная практика, при которой каждое изменение кода в Git автоматически запускает конвейер (Pipeline): код проверяется линтерами, тестируется, сканируется на уязвимости и упаковывается в версионированный артефакт без участия человека.</p>
+<hr />
+<h2 id="1-ci-lean-">Блок 1. Архитектура CI-конвейеров и Lean-подход</h2>
+<h3 id="11-ci-fast-feedback">1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)</h3>
+<p>Главная цель CI — <strong>обнаружить ошибку как можно раньше и дешевле</strong>. Если разработчик допустил синтаксическую ошибку или сломал API, он должен узнать об этом через <strong>2–3 минуты</strong> после <code>git push</code>, а не через неделю на продакшене.</p>
+<h4 id="lean-fail-fast">Lean-подход к проектированию конвейеров (Fail Fast):</h4>
+<p>В соответствии с принципами бережливого производства (Lean), этапы конвейера всегда выстраиваются <strong>от самых быстрых и дешевых к самым долгим и ресурсоемким</strong>:</p>
+<ol>
+<li><strong>Линтинг и проверка форматирования (<code>lint</code> — 10–20 сек):</strong> Мгновенно отсекает синтаксические ошибки в Python/Go/JS, <code>Dockerfile</code> и YAML-файлах. Нет смысла запускать тяжелую сборку Docker, если в коде пропущена скобка.</li>
+<li><strong>Модульные тесты и SAST (<code>test</code> — 30–60 сек):</strong> Проверка бизнес-логики изолированными unit-тестами и статический анализ безопасности исходного кода.</li>
+<li><strong>Сборка образа (<code>build</code> — 1–3 мин):</strong> Упаковка приложения в Docker-образ.</li>
+<li><strong>Сканирование образа и интеграционные тесты (<code>security</code> / <code>integration</code> — 1–2 мин):</strong> Проверка готового образа через Trivy и тестовый запуск связки с БД.</li>
+<li><strong>Публикация артефакта (<code>publish</code> — 20 сек):</strong> Отправка проверенного образа в Container Registry.</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[git push] ──► (Stage 1: Lint) ──► (Stage 2: Unit Tests &amp; SAST) ──► (Stage 3: Docker Build) ──► (Stage 4: Trivy Scan) ──► (Stage 5: Push Registry)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                  ~15 sec                   ~45 sec                       ~90 sec                    ~40 sec                   ~15 sec
+</span></code></pre></div>
+<hr />
+<h3 id="12-gitlab-ci-runners">1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)</h3>
+<p>Многие начинающие инженеры думают, что сборка кода происходит прямо внутри самого сервера GitLab. <strong>Это критическое заблуждение.</strong> Если бы тяжелые сборки шли на основном сервере GitLab, веб-интерфейс и Git-репозитории всей компании зависали бы при каждом коммите.</p>
+<p>Архитектура разделена на два независимых компонента:</p>
+<ol>
+<li><strong>GitLab Server (Coordinator):</strong> Хранит Git-репозитории, читает файл <code>.gitlab-ci.yml</code>, управляет очередью задач и отображает статус пайплайнов в веб-интерфейсе.</li>
+<li><strong>GitLab Runner (Агент-исполнитель):</strong> Легковесный демон на языке Go, который устанавливается на <strong>отдельные виртуальные машины или в Kubernetes-кластер</strong>. Раннер сам опрашивает сервер GitLab по HTTP/HTTPS (Pull-модель), забирает задачи (<code>Jobs</code>), выполняет их и отправляет обратно логи и статус выполнения.</li>
+</ol>
+<h4 id="executors-gitlab-runner">Типы исполнителей (Executors) у GitLab Runner:</h4>
+<p>При регистрации раннера мы выбираем, <em>в какой среде</em> он будет выполнять команды из <code>.gitlab-ci.yml</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Тип Executor</th>
+<th style="text-align: left;">Как работает</th>
+<th style="text-align: left;">Плюсы и минусы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>shell</code></strong></td>
+<td style="text-align: left;">Выполняет команды напрямую в bash хостовой ОС, где стоит раннер.</td>
+<td style="text-align: left;">Быстро, но <strong>опасно и грязно</strong>: задачи разных проектов влияют друг на друга, остаются временные файлы, нет изоляции.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>docker</code> (Стандарт)</strong></td>
+<td style="text-align: left;">На каждую джобу (<code>job</code>) раннер поднимает <strong>чистый одноразовый Docker-контейнер</strong> с нужным образом (например, <code>python:3.12</code>), выполняет команды и удаляет контейнер.</td>
+<td style="text-align: left;">Идеальная изоляция, воспроизводимость, на одном сервере можно одновременно собирать Python, Go, Node.js и Terraform.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>kubernetes</code></strong></td>
+<td style="text-align: left;">На каждую джобу создает отдельный <code>Pod</code> в кластере Kubernetes.</td>
+<td style="text-align: left;">Автоматическое масштабирование от 0 до сотен сборок параллельно в облаке.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-gitlab-ciyml">Блок 2. Анатомия файла <code>.gitlab-ci.yml</code></h2>
+<p>Конвейер описывается декларативно в файле <code>.gitlab-ci.yml</code> в корне Git-репозитория.</p>
+<h3 id="21-stages-jobs-image-services">2.1. Базовые сущности: <code>stages</code>, <code>jobs</code>, <code>image</code>, <code>services</code></h3>
+<ul>
+<li><strong><code>stages</code> (Стадии):</strong> Определяют глобальный порядок этапов. Все джобы внутри одной стадии выполняются <strong>параллельно</strong>, а следующая стадия начинается только тогда, когда <strong>все</strong> джобы предыдущей завершились успешно (код возврата <code>0</code>).</li>
+<li><strong><code>jobs</code> (Задачи):</strong> Сами блоки команд (<code>script:</code>), привязанные к конкретной стадии.</li>
+<li><strong><code>image</code>:</strong> В каком Docker-образе должна запуститься данная джоба (например, <code>python:3.12-slim</code> для тестов или <code>hadolint/hadolint</code> для проверки Dockerfile).</li>
+<li><strong><code>services</code> (Вспомогательные контейнеры):</strong> Позволяют поднять рядом с джобой временную базу данных (например, <code>postgres:16-alpine</code> или <code>redis:7-alpine</code>) специально на время прогона интеграционных тестов!</li>
+</ul>
+<hr />
+<h3 id="22-cache-artifacts">2.2. Кэширование (<code>cache</code>) против Артефактов (<code>artifacts</code>)</h3>
+<p>На собеседованиях постоянно спрашивают разницу между <code>cache</code> и <code>artifacts</code>. Оба механизма передают файлы между джобами, но у них совершенно разное назначение:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика</th>
+<th style="text-align: left;">Кэш (<code>cache:</code>)</th>
+<th style="text-align: left;">Артефакты (<code>artifacts:</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Назначение</strong></td>
+<td style="text-align: left;"><strong>Ускорение скачивания зависимостей</strong> из интернета (папки <code>.cache/pip</code>, <code>node_modules/</code>, <code>.m2/</code>).</td>
+<td style="text-align: left;"><strong>Передача результата работы</strong> одной стадии в следующую (скомпилированный бинарник, отчет о тестах, HTML-отчет Trivy).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Область действия</strong></td>
+<td style="text-align: left;">Сохраняется <strong>между разными пайплайнами (коммитами)</strong> по ключу <code>key:</code> (например, хэшу файла <code>requirements.txt</code>).</td>
+<td style="text-align: left;">Передается строго <strong>внутри одного текущего пайплайна</strong> от ранних стадий к поздним и доступен для скачивания в UI GitLab.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Гарантия доставки</strong></td>
+<td style="text-align: left;">Best-effort (если кэш пуст или сброшен, джоба всё равно должна успешно скачать пакеты сама).</td>
+<td style="text-align: left;">Гарантированная доставка (хранится на сервере GitLab или в S3 до истечения срока <code>expire_in</code>).</td>
+</tr>
+</tbody>
+</table>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Пример правильного кэширования pip-пакетов по хэшу файла requirements.txt:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Кэш обновится только тогда, когда разработчик изменит список библиотек!</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">cache</span><span class="p">:</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">key</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">files</span><span class="p">:</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app/requirements.txt</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">paths</span><span class="p">:</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.cache/pip</span>
+</span></code></pre></div>
+<hr />
+<h3 id="23-dag-needs-rules">2.3. Ускорение пайплайна с помощью DAG (<code>needs:</code>) и правил (<code>rules:</code>)</h3>
+<ul>
+<li><strong>Директива <code>needs:</code> (Directed Acyclic Graph):</strong> Позволяет джобе не ждать завершения всей предыдущей стадии целиком, а стартовать мгновенно, как только завершилась конкретная нужная ей джоба.</li>
+<li><strong>Директива <code>rules:</code> (Замена устаревших <code>only</code> / <code>except</code>):</strong> Управляет тем, <em>когда</em> запускать джобу. Например: тесты гонять на каждый коммит в любой ветке, а сборку и пуш релизного образа в Registry — только при слиянии в ветку <code>main</code> или создании git-тега!</li>
+</ul>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="c1"># Запускать только в ветке main и только если изменились файлы внутри папки app/</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_BRANCH == "main"</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">changes</span><span class="p">:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app/**/*</span>
+</span></code></pre></div>
+<hr />
+<h2 id="3-quality-gates-ci">Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI</h2>
+<h3 id="31-shift-left-security">3.1. Эшелонированная проверка качества (Shift-Left Security)</h3>
+<p>Вместо того чтобы искать баги после релиза, мы сдвигаем проверки безопасности максимально влево (<strong>Shift-Left</strong>) — на этап коммита:</p>
+<ol>
+<li><strong>Линтинг кода (<code>ruff</code> / <code>flake8</code> для Python):</strong> Проверяет стиль кода (PEP8), неиспользуемые импорты и синтаксические ошибки за 2 секунды.</li>
+<li><strong>Линтинг Dockerfile (<code>hadolint</code>):</strong> Проверяет <code>Dockerfile</code> на соблюдение лучших практик безопасности и кэширования слоев.</li>
+<li><strong>SAST (Static Application Security Testing — <code>bandit</code> / <code>semgrep</code>):</strong> Анализирует исходный код на наличие потенциальных дыр в безопасности (SQL-инъекции, захардкоженные пароли, небезопасная десериализация).</li>
+<li><strong>Unit и Интеграционные тесты (<code>pytest</code>):</strong> Проверяют работу функций и реальное подключение к тестовым контейнерам PostgreSQL и Redis, поднятым через секцию <code>services:</code>.</li>
+</ol>
+<hr />
+<h3 id="32-docker-docker-dind-vs-kaniko">3.2. Как собирать Docker-образы внутри Docker-раннера: DinD vs Kaniko</h3>
+<p>Когда сама джоба уже бежит внутри Docker-контейнера, возникает вопрос: <em>как собрать новый Docker-образ внутри контейнера?</em> Есть 3 подхода:</p>
+<ol>
+<li><strong>Проброс сокета хоста (<code>/var/run/docker.sock</code> binding):</strong>
+   Быстро (использует общий кэш хоста), но несет риски безопасности на общих серверах (контейнер получает полный доступ к демону Docker на хосте).</li>
+<li><strong>Docker-in-Docker (<code>docker:dind</code> service):</strong>
+   Поднимает изолированный демон Docker как <code>service</code> рядом с джобой. Требует флага <code>privileged: true</code> в настройках раннера.</li>
+<li><strong>Kaniko (<code>gcr.io/kaniko-project/executor</code>) — стандарт DevSecOps:</strong>
+   Инструмент от Google, который собирает образы из <code>Dockerfile</code> прямо в пространстве пользователя <strong>вообще без демона Docker и без привилегированного режима (<code>privileged: false</code>)</strong>!</li>
+</ol>
+<hr />
+<h2 id="4-ci-">Блок 4. Типичные антипаттерны в CI-конвейерах</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Антипаттерн в CI</th>
+<th style="text-align: left;">К чему приводит</th>
+<th style="text-align: left;">Как сделать правильно</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Отсутствие кэширования зависимостей</strong></td>
+<td style="text-align: left;">При каждом коммите <code>pip install</code> или <code>npm install</code> заново качает сотни мегабайт из сети. Пайплайн идет 15 минут вместо 1 минуты.</td>
+<td style="text-align: left;">Настроить секцию <code>cache:</code> с ключом по файлу <code>requirements.txt</code> / <code>package-lock.json</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Игнорирование упавших тестов (<code>allow_failure: true</code> на тестах)</strong></td>
+<td style="text-align: left;">Разработчики перестают чинить упавшие тесты, в <code>main</code> вливается нерабочий код.</td>
+<td style="text-align: left;">Любое падение линтера, unit-теста или критической CVE в Trivy должно <strong>жестко валить пайплайн</strong> (<code>exit 1</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Хранение паролей и токенов в <code>.gitlab-ci.yml</code></strong></td>
+<td style="text-align: left;">Любой разработчик с доступом к репозиторию видит продакшен-секреты.</td>
+<td style="text-align: left;">Хранить секреты строго в <strong>Settings $\rightarrow$ CI/CD $\rightarrow$ Variables</strong> с флагами <strong><code>Masked</code></strong> (скрывать в логах звездочками <code>[MASKED]</code>) и <strong><code>Protected</code></strong> (доступны только в защищенной ветке <code>main</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Сборка образа заново на каждой стадии</strong></td>
+<td style="text-align: left;">На стадии <code>test</code> собрали один образ, а на стадии <code>publish</code> собрали его еще раз с нуля (нарушение принципа <em>Build Once</em>).</td>
+<td style="text-align: left;">Собрать образ <strong>один раз</strong> с тегом по SHA коммита (<code>:$CI_COMMIT_SHORT_SHA</code>), протестировать именно его, и при успехе просто присвоить ему релизный тег (<code>docker tag</code> + <code>docker push</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-ci-">🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества</h2>
+<p>Мы создадим промышленный многоэтапный конвейер <code>.gitlab-ci.yml</code> для нашего микросервиса из предыдущих модулей и <strong>протестируем его работу локально прямо на твоем компьютере</strong> (с помощью Docker и GitLab Runner), даже не поднимая тяжелый сервер GitLab!</p>
+<hr />
+<h3 id="1">Этап 1. Подготовка репозитория с тестами и проверками качества</h3>
+<p>Перейдем в папку нашего кластера <code>~/compose-cluster</code> (или создадим её) и добавим автоматические тесты <code>pytest</code> для нашего API:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/compose-cluster/app/tests<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/compose-cluster
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># 1. Добавим в зависимости для разработки быстрый линтер ruff, SAST-сканер bandit и pytest</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/requirements-dev.txt</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">-r requirements.txt</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s">pytest==8.3.2</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">ruff==0.6.2</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">bandit==1.7.9</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">EOF</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># 2. Напишем автоматические тесты (Unit + интеграционная проверка БД и Redis)</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/tests/test_app.py</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s">import os</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s">import sys</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s">sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="s">from main import app</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">def test_health_endpoint():</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="s">    """Проверяем, что сервис отвечает 200 OK на /health при живых БД и Redis"""</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="s">    client = app.test_client()</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="s">    response = client.get("/health")</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="s">    assert response.status_code == 200</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="s">    data = response.get_json()</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="s">    assert data["status"] == "healthy"</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="s">def test_visit_increments_counter():</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="s">    """Проверяем, что /api/visit корректно пишет в PostgreSQL и увеличивает счетчик в Redis"""</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="s">    client = app.test_client()</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="s">    resp1 = client.get("/api/visit").get_json()</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="s">    resp2 = client.get("/api/visit").get_json()</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="s">    assert resp2["redis_hits"] == resp1["redis_hits"] + 1</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="s">    assert resp2["postgres_saved_rows"] == resp1["postgres_saved_rows"] + 1</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<hr />
+<h3 id="2-gitlab-ciyml_1">Этап 2. Проектирование эталонного <code>.gitlab-ci.yml</code></h3>
+<p>Создай в корне проекта файл <code>.gitlab-ci.yml</code>, реализующий 5 стадий конвейера по принципу <strong>Fail Fast</strong>:
+1. <strong><code>lint</code>:</strong> Проверка Python-кода линтером <code>ruff</code> и проверка <code>Dockerfile</code> линтером <code>hadolint</code> (запускаются параллельно!).
+2. <strong><code>test</code>:</strong> Запуск SAST-анализатора безопасности кода <code>bandit</code> и прогон тестов <code>pytest</code> с автоматическим поднятием временных контейнеров <code>postgres:16-alpine</code> и <code>redis:7-alpine</code> через секцию <code>services:</code>.
+3. <strong><code>build</code>:</strong> Сборка Docker-образа с версионированием по короткому хэшу коммита (<code>$CI_COMMIT_SHORT_SHA</code>).
+4. <strong><code>security</code>:</strong> Автоматическое сканирование собранного образа через <strong>Trivy</strong> с сохранением отчета в <code>artifacts:</code>.
+5. <strong><code>publish</code>:</strong> Публикация проверенного образа в GitLab Container Registry (только для ветки <code>main</code>).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; .gitlab-ci.yml</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">stages:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">  - lint</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s">  - test</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s">  - build</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s">  - security</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">  - publish</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s"># Глобальные переменные конвейера</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s">variables:</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">  IMAGE_TAG: "$CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHORT_SHA"</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">  IMAGE_LATEST: "$CI_REGISTRY_IMAGE/backend:latest"</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s"># Кэширование скачанных Python-пакетов между запусками по хэшу файла зависимостей</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="s">cache:</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="s">  key:</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="s">    files:</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="s">      - app/requirements-dev.txt</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="s">  paths:</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="s">    - .cache/pip</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="s"># STAGE 1: LINT (Быстрая проверка синтаксиса и стиля &lt; 15 сек)</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="s">lint:python:</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="s">  stage: lint</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="s">  image: python:3.12-slim</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="s">  script:</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="s">    - pip install --quiet ruff==0.6.2</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="s">    - ruff check app/</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="s">lint:dockerfile:</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="s">  stage: lint</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="s">  image: hadolint/hadolint:latest-debian</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="s">  script:</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="s">    # Игнорируем DL3008 (версии системных пакетов apt), проверяем остальное строго</span>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="s">    - hadolint --ignore DL3008 app/Dockerfile</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="s"># STAGE 2: TEST &amp; SAST (Проверка безопасности кода и тесты с БД)</span>
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="s">sast:bandit:</span>
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="s">  stage: test</span>
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="s">  image: python:3.12-slim</span>
+</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="s">  needs: ["lint:python"]</span>
+</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="s">  script:</span>
+</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="s">    - pip install --quiet bandit==1.7.9</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="s">    # Проверяем код на уязвимости высокой и средней критичности (-ll)</span>
+</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="s">    - bandit -r app/main.py -ll</span>
+</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>
+</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="s">unit-and-integration:pytest:</span>
+</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="s">  stage: test</span>
+</span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="s">  image: python:3.12-slim</span>
+</span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="s">  needs: ["lint:python"]</span>
+</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="s">  # GitLab Runner автоматически поднимет эти контейнеры рядом с джобой!</span>
+</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="s">  services:</span>
+</span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="s">    - name: postgres:16-alpine</span>
+</span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="s">      alias: db</span>
+</span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="s">    - name: redis:7-alpine</span>
+</span><span id="__span-4-61"><a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="s">      alias: redis</span>
+</span><span id="__span-4-62"><a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="s">  variables:</span>
+</span><span id="__span-4-63"><a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="s">    POSTGRES_USER: test_admin</span>
+</span><span id="__span-4-64"><a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="s">    POSTGRES_PASSWORD: test_secret_password</span>
+</span><span id="__span-4-65"><a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a><span class="s">    POSTGRES_DB: test_cluster_db</span>
+</span><span id="__span-4-66"><a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a><span class="s">    DB_HOST: db</span>
+</span><span id="__span-4-67"><a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a><span class="s">    REDIS_HOST: redis</span>
+</span><span id="__span-4-68"><a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a><span class="s">  script:</span>
+</span><span id="__span-4-69"><a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a><span class="s">    - pip install --quiet -r app/requirements-dev.txt</span>
+</span><span id="__span-4-70"><a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a><span class="s">    - pytest app/tests/ -v --junitxml=report.xml</span>
+</span><span id="__span-4-71"><a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a><span class="s">  artifacts:</span>
+</span><span id="__span-4-72"><a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="s">    when: always</span>
+</span><span id="__span-4-73"><a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a><span class="s">    reports:</span>
+</span><span id="__span-4-74"><a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a><span class="s">      junit: report.xml</span>
+</span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="s">    expire_in: 7 days</span>
+</span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a>
+</span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="s"># STAGE 3: BUILD (Сборка Docker-образа)</span>
+</span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="s">build:image:</span>
+</span><span id="__span-4-81"><a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a><span class="s">  stage: build</span>
+</span><span id="__span-4-82"><a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a><span class="s">  image: docker:27-cli</span>
+</span><span id="__span-4-83"><a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a><span class="s">  services:</span>
+</span><span id="__span-4-84"><a id="__codelineno-4-84" name="__codelineno-4-84" href="#__codelineno-4-84"></a><span class="s">    - docker:27-dind</span>
+</span><span id="__span-4-85"><a id="__codelineno-4-85" name="__codelineno-4-85" href="#__codelineno-4-85"></a><span class="s">  needs: ["unit-and-integration:pytest", "lint:dockerfile", "sast:bandit"]</span>
+</span><span id="__span-4-86"><a id="__codelineno-4-86" name="__codelineno-4-86" href="#__codelineno-4-86"></a><span class="s">  script:</span>
+</span><span id="__span-4-87"><a id="__codelineno-4-87" name="__codelineno-4-87" href="#__codelineno-4-87"></a><span class="s">    - docker build -t "$IMAGE_TAG" ./app</span>
+</span><span id="__span-4-88"><a id="__codelineno-4-88" name="__codelineno-4-88" href="#__codelineno-4-88"></a><span class="s">    - docker save "$IMAGE_TAG" -o image.tar</span>
+</span><span id="__span-4-89"><a id="__codelineno-4-89" name="__codelineno-4-89" href="#__codelineno-4-89"></a><span class="s">  artifacts:</span>
+</span><span id="__span-4-90"><a id="__codelineno-4-90" name="__codelineno-4-90" href="#__codelineno-4-90"></a><span class="s">    paths:</span>
+</span><span id="__span-4-91"><a id="__codelineno-4-91" name="__codelineno-4-91" href="#__codelineno-4-91"></a><span class="s">      - image.tar</span>
+</span><span id="__span-4-92"><a id="__codelineno-4-92" name="__codelineno-4-92" href="#__codelineno-4-92"></a><span class="s">    expire_in: 1 hour</span>
+</span><span id="__span-4-93"><a id="__codelineno-4-93" name="__codelineno-4-93" href="#__codelineno-4-93"></a>
+</span><span id="__span-4-94"><a id="__codelineno-4-94" name="__codelineno-4-94" href="#__codelineno-4-94"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-95"><a id="__codelineno-4-95" name="__codelineno-4-95" href="#__codelineno-4-95"></a><span class="s"># STAGE 4: SECURITY SCAN (Проверка образа через Trivy)</span>
+</span><span id="__span-4-96"><a id="__codelineno-4-96" name="__codelineno-4-96" href="#__codelineno-4-96"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-97"><a id="__codelineno-4-97" name="__codelineno-4-97" href="#__codelineno-4-97"></a><span class="s">security:trivy:</span>
+</span><span id="__span-4-98"><a id="__codelineno-4-98" name="__codelineno-4-98" href="#__codelineno-4-98"></a><span class="s">  stage: security</span>
+</span><span id="__span-4-99"><a id="__codelineno-4-99" name="__codelineno-4-99" href="#__codelineno-4-99"></a><span class="s">  image:</span>
+</span><span id="__span-4-100"><a id="__codelineno-4-100" name="__codelineno-4-100" href="#__codelineno-4-100"></a><span class="s">    name: aquasec/trivy:latest</span>
+</span><span id="__span-4-101"><a id="__codelineno-4-101" name="__codelineno-4-101" href="#__codelineno-4-101"></a><span class="s">    entrypoint: [""]</span>
+</span><span id="__span-4-102"><a id="__codelineno-4-102" name="__codelineno-4-102" href="#__codelineno-4-102"></a><span class="s">  needs: ["build:image"]</span>
+</span><span id="__span-4-103"><a id="__codelineno-4-103" name="__codelineno-4-103" href="#__codelineno-4-103"></a><span class="s">  script:</span>
+</span><span id="__span-4-104"><a id="__codelineno-4-104" name="__codelineno-4-104" href="#__codelineno-4-104"></a><span class="s">    # Сканируем собранный tar-архив образа; если есть CRITICAL уязвимости в коде — валим сборку (--exit-code 1)</span>
+</span><span id="__span-4-105"><a id="__codelineno-4-105" name="__codelineno-4-105" href="#__codelineno-4-105"></a><span class="s">    - trivy image --input image.tar --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 --format table -o trivy-report.txt</span>
+</span><span id="__span-4-106"><a id="__codelineno-4-106" name="__codelineno-4-106" href="#__codelineno-4-106"></a><span class="s">    - cat trivy-report.txt</span>
+</span><span id="__span-4-107"><a id="__codelineno-4-107" name="__codelineno-4-107" href="#__codelineno-4-107"></a><span class="s">  artifacts:</span>
+</span><span id="__span-4-108"><a id="__codelineno-4-108" name="__codelineno-4-108" href="#__codelineno-4-108"></a><span class="s">    when: always</span>
+</span><span id="__span-4-109"><a id="__codelineno-4-109" name="__codelineno-4-109" href="#__codelineno-4-109"></a><span class="s">    paths:</span>
+</span><span id="__span-4-110"><a id="__codelineno-4-110" name="__codelineno-4-110" href="#__codelineno-4-110"></a><span class="s">      - trivy-report.txt</span>
+</span><span id="__span-4-111"><a id="__codelineno-4-111" name="__codelineno-4-111" href="#__codelineno-4-111"></a><span class="s">    expire_in: 30 days</span>
+</span><span id="__span-4-112"><a id="__codelineno-4-112" name="__codelineno-4-112" href="#__codelineno-4-112"></a>
+</span><span id="__span-4-113"><a id="__codelineno-4-113" name="__codelineno-4-113" href="#__codelineno-4-113"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-114"><a id="__codelineno-4-114" name="__codelineno-4-114" href="#__codelineno-4-114"></a><span class="s"># STAGE 5: PUBLISH (Публикация в Registry только из ветки main)</span>
+</span><span id="__span-4-115"><a id="__codelineno-4-115" name="__codelineno-4-115" href="#__codelineno-4-115"></a><span class="s"># ==========================================================</span>
+</span><span id="__span-4-116"><a id="__codelineno-4-116" name="__codelineno-4-116" href="#__codelineno-4-116"></a><span class="s">publish:registry:</span>
+</span><span id="__span-4-117"><a id="__codelineno-4-117" name="__codelineno-4-117" href="#__codelineno-4-117"></a><span class="s">  stage: publish</span>
+</span><span id="__span-4-118"><a id="__codelineno-4-118" name="__codelineno-4-118" href="#__codelineno-4-118"></a><span class="s">  image: docker:27-cli</span>
+</span><span id="__span-4-119"><a id="__codelineno-4-119" name="__codelineno-4-119" href="#__codelineno-4-119"></a><span class="s">  services:</span>
+</span><span id="__span-4-120"><a id="__codelineno-4-120" name="__codelineno-4-120" href="#__codelineno-4-120"></a><span class="s">    - docker:27-dind</span>
+</span><span id="__span-4-121"><a id="__codelineno-4-121" name="__codelineno-4-121" href="#__codelineno-4-121"></a><span class="s">  needs: ["security:trivy"]</span>
+</span><span id="__span-4-122"><a id="__codelineno-4-122" name="__codelineno-4-122" href="#__codelineno-4-122"></a><span class="s">  rules:</span>
+</span><span id="__span-4-123"><a id="__codelineno-4-123" name="__codelineno-4-123" href="#__codelineno-4-123"></a><span class="s">    - if: $CI_COMMIT_BRANCH == "main"</span>
+</span><span id="__span-4-124"><a id="__codelineno-4-124" name="__codelineno-4-124" href="#__codelineno-4-124"></a><span class="s">  script:</span>
+</span><span id="__span-4-125"><a id="__codelineno-4-125" name="__codelineno-4-125" href="#__codelineno-4-125"></a><span class="s">    - docker load -i image.tar</span>
+</span><span id="__span-4-126"><a id="__codelineno-4-126" name="__codelineno-4-126" href="#__codelineno-4-126"></a><span class="s">    - echo "$CI_REGISTRY_PASSWORD" | docker login "$CI_REGISTRY" -u "$CI_REGISTRY_USER" --password-stdin</span>
+</span><span id="__span-4-127"><a id="__codelineno-4-127" name="__codelineno-4-127" href="#__codelineno-4-127"></a><span class="s">    - docker tag "$IMAGE_TAG" "$IMAGE_LATEST"</span>
+</span><span id="__span-4-128"><a id="__codelineno-4-128" name="__codelineno-4-128" href="#__codelineno-4-128"></a><span class="s">    - docker push "$IMAGE_TAG"</span>
+</span><span id="__span-4-129"><a id="__codelineno-4-129" name="__codelineno-4-129" href="#__codelineno-4-129"></a><span class="s">    - docker push "$IMAGE_LATEST"</span>
+</span><span id="__span-4-130"><a id="__codelineno-4-130" name="__codelineno-4-130" href="#__codelineno-4-130"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<hr />
+<h3 id="3-ci-docker">Этап 3. Локальный прогон всех стадий CI-конвейера в Docker</h3>
+<p>Чтобы убедиться, что каждый шаг нашего конвейера работает безупречно (точно так же, как его выполнит Docker Executor в GitLab Runner), выполни локальный прогон всех стадий одной командой:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/compose-cluster
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 1.1] Запуск линтера Python (Ruff) ==="</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/work"</span><span class="w"> </span>-w<span class="w"> </span>/work<span class="w"> </span>python:3.12-slim<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q ruff==0.6.2 &amp;&amp; ruff check app/"</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 1.2] Запуск линтера Dockerfile (Hadolint) ==="</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-i<span class="w"> </span>hadolint/hadolint:latest-debian<span class="w"> </span>hadolint<span class="w"> </span>--ignore<span class="w"> </span>DL3008<span class="w"> </span>-<span class="w"> </span>&lt;<span class="w"> </span>app/Dockerfile
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 2.1] Статический анализ безопасности кода (Bandit SAST) ==="</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/work"</span><span class="w"> </span>-w<span class="w"> </span>/work<span class="w"> </span>python:3.12-slim<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q bandit==1.7.9 &amp;&amp; bandit -r app/main.py -ll"</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 2.2] Запуск интеграционных тестов Pytest со связкой PostgreSQL + Redis ==="</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>db<span class="w"> </span>redis
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span>--network<span class="w"> </span>compose-cluster_backend-net<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/work"</span><span class="w"> </span>-w<span class="w"> </span>/work<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DB_HOST</span><span class="o">=</span>db<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">POSTGRES_USER</span><span class="o">=</span>app_admin<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">POSTGRES_DB</span><span class="o">=</span>cluster_db<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>SuperStrongPgSecret2026<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">REDIS_HOST</span><span class="o">=</span>redis<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">  </span>python:3.12-slim<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q -r app/requirements-dev.txt &amp;&amp; pytest app/tests/ -v"</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 3 &amp; 4] Сборка образа и проверка безопасности через Trivy ==="</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>compose-cluster-backend:ci-test<span class="w"> </span>./app
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">  </span>aquasec/trivy:latest<span class="w"> </span>image<span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>--ignore-unfixed<span class="w"> </span>--exit-code<span class="w"> </span><span class="m">1</span><span class="w"> </span>compose-cluster-backend:ci-test
+</span></code></pre></div>
+<hr />
+<h3 id="-6">✅ Чек-лист самопроверки по Модулю 6</h3>
+<ol>
+<li><strong>Проверка зеленого пайплайна:</strong>
+   Все 5 шагов скрипта выше должны пройти без единой ошибки:</li>
+<li><code>ruff check app/</code>: <code>All checks passed!</code></li>
+<li><code>bandit</code>: <code>No issues identified.</code></li>
+<li><code>pytest</code>: <code>2 passed in 0.45s</code></li>
+<li>
+<p><code>trivy</code>: <code>0 (HIGH: 0, CRITICAL: 0)</code></p>
+</li>
+<li>
+<p><strong>Тест на срабатывание Quality Gate (проверка принципа Fail Fast):</strong>
+   Давай намеренно внесем неиспользуемую переменную или синтаксическую ошибку в <code>app/main.py</code> и убедимся, что линтер мгновенно заблокирует пайплайн на первой же секунде:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Добавим неиспользуемый импорт в начало файла</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'1i import subprocess'</span><span class="w"> </span>app/main.py
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Запустим стадию линтинга</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/work"</span><span class="w"> </span>-w<span class="w"> </span>/work<span class="w"> </span>python:3.12-slim<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q ruff==0.6.2 &amp;&amp; ruff check app/"</span>
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em> <code>F401 [*] subprocess imported but unused. Found 1 error.</code> Код возврата <code>1</code> — конвейер остановлен до начала долгой сборки!</p>
+</li>
+</ol>
+<p><em>(Не забудь вернуть файл в исходное чистое состояние командой <code>sed -i '1d' app/main.py</code>)</em>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

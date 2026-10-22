@@ -1,0 +1,1825 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Бесплатный практический курс по DevOps для разработчиков и джунов">
+      
+      
+      
+      
+        <link rel="prev" href="../1_git/">
+      
+      
+        <link rel="next" href="../3_bd/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Контейнеризация приложений (Docker) - DevOps Курс для начинающих</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#docker" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-header__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Курс для начинающих
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Контейнеризация приложений (Docker)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на темную тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на темную тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-nav__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DevOps Курс для начинающих
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux, сети и автоматизация на Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение в DevOps и системы контроля версий (Git)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контейнеризация приложений (Docker)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контейнеризация приложений (Docker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Архитектура контейнеров и пространства имён Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Архитектура контейнеров и пространства имён Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-namespaces-cgroups-overlayfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Как устроен контейнер под капотом (Namespaces, cgroups, OverlayFS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-docker-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Архитектура Docker Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Базовое управление контейнерами и образами
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Создание Dockerfile, параметризация и реестры
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Создание Dockerfile, параметризация и реестры">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Ключевые директивы Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Кэширование слоев и оптимизация размера образа
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Кэширование слоев и оптимизация размера образа">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Плохой Dockerfile (Антипаттерн — 1.1 ГБ, долгая сборка):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-stage-dockerfile-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Оптимизированный Multi-Stage Dockerfile (60 МБ, мгновенная пересборка)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-docker-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Управление реестрами образов (Docker Registries)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-volumes-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Сети и постоянные тома (Volumes) в Docker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Сети и постоянные тома (Volumes) в Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-volumes-vs-bind-mounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Хранение данных: Volumes vs Bind Mounts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Изолированные сети и взаимодействие контейнеров
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-devsecops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. DevSecOps: Безопасный запуск, секреты и проверка на уязвимости
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. DevSecOps: Безопасный запуск, секреты и проверка на уязвимости">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Безопасный запуск компонентов (Hardening контейнеров)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Безопасная работа с секретами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-vulnerability-scanning-trivy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Проверка образов на уязвимости (Vulnerability Scanning — Trivy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 2: Полный цикл упаковки и защиты приложения
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 2: Полный цикл упаковки и защиты приложения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Подготовка исходного кода приложения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dockerignore-multi-stage-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Настройка .dockerignore и создание защищенного Multi-Stage Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-trivy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Сборка и сканирование образа на уязвимости через Trivy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Изолированная сеть, том данных и безопасный запуск с секретами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оркестрация многоконтейнерных приложений (Docker Compose & Nginx)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Наблюдаемость (Observability) и мониторинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизация сборки и CI (Continuous Integration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_continuous_delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continuous Delivery и безопасность внедрения (CD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_iac_terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инфраструктура как код (IaC) — Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_scm_ansible/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Управление конфигурацией (SCM) — Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_kubernetes_k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes (K8s) и оркестрация контейнеров в продакшене
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Итоговый дипломный проект DevOps - Production-Ready Платформа «CloudOrder»
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Архитектура контейнеров и пространства имён Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 1. Архитектура контейнеров и пространства имён Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-namespaces-cgroups-overlayfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Как устроен контейнер под капотом (Namespaces, cgroups, OverlayFS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-docker-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Архитектура Docker Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Базовое управление контейнерами и образами
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Создание Dockerfile, параметризация и реестры
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Создание Dockerfile, параметризация и реестры">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Ключевые директивы Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Кэширование слоев и оптимизация размера образа
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Кэширование слоев и оптимизация размера образа">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Плохой Dockerfile (Антипаттерн — 1.1 ГБ, долгая сборка):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-stage-dockerfile-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Оптимизированный Multi-Stage Dockerfile (60 МБ, мгновенная пересборка)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-docker-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Управление реестрами образов (Docker Registries)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-volumes-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Сети и постоянные тома (Volumes) в Docker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Сети и постоянные тома (Volumes) в Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-volumes-vs-bind-mounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Хранение данных: Volumes vs Bind Mounts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Изолированные сети и взаимодействие контейнеров
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-devsecops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. DevSecOps: Безопасный запуск, секреты и проверка на уязвимости
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. DevSecOps: Безопасный запуск, секреты и проверка на уязвимости">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Безопасный запуск компонентов (Hardening контейнеров)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Безопасная работа с секретами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-vulnerability-scanning-trivy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Проверка образов на уязвимости (Vulnerability Scanning — Trivy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 2: Полный цикл упаковки и защиты приложения
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 2: Полный цикл упаковки и защиты приложения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Подготовка исходного кода приложения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dockerignore-multi-stage-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Настройка .dockerignore и создание защищенного Multi-Stage Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-trivy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Сборка и сканирование образа на уязвимости через Trivy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Изолированная сеть, том данных и безопасный запуск с секретами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<hr />
+<h1 id="docker">Контейнеризация приложений Docker</h1>
+<p>Контейнеризация навсегда решила проблему <em>«У меня на ноутбуке всё работало, а на сервере упало!»</em>. Вместо того чтобы вручную устанавливать на сервер нужную версию Python/Node.js/Go, системные библиотеки и зависимости, мы упаковываем приложение вместе со всем его окружением в единый неизменяемый артефакт — <strong>Docker-образ (Image)</strong>, который гарантированно одинаково запустится на любом Linux-сервере.</p>
+<hr />
+<h2 id="1-linux">Блок 1. Архитектура контейнеров и пространства имён Linux</h2>
+<h3 id="11-namespaces-cgroups-overlayfs">1.1. Как устроен контейнер под капотом (Namespaces, cgroups, OverlayFS)</h3>
+<p>В физическом смысле «контейнера» в ядре Linux не существует. Контейнер — это обычный изолированный процесс на хостовой ОС, созданный с помощью трёх технологий ядра Linux:</p>
+<ol>
+<li>
+<p>Пространства имён (<code>Namespaces</code>) — изолируют видимость:</p>
+</li>
+<li>
+<p><strong><code>pid</code>:</strong> Процесс внутри контейнера видит себя как <code>PID 1</code> и не видит остальные процессы сервера.</p>
+</li>
+<li>
+<p><strong><code>net</code>:</strong> Контейнер получает собственный виртуальный сетевой интерфейс (<code>eth0</code>), свой IP-адрес, свою таблицу маршрутизации и свои порты.</p>
+</li>
+<li>
+<p><strong><code>mnt</code>:</strong> Своя изолированная корневая файловая система <code>/</code>.</p>
+</li>
+<li><strong><code>uts</code>:</strong> Своё собственное имя хоста (<code>hostname</code>).</li>
+<li>
+<p><strong><code>ipc</code> и <code>user</code>:</strong> Изоляция общей памяти и маппинг идентификаторов пользователей (UID/GID).</p>
+</li>
+<li>
+<p><strong>Контрольные группы (<code>cgroups</code>) — ограничивают ресурсы:</strong></p>
+</li>
+<li>
+<p>Не дают одному контейнеру «съесть» всю оперативную память или 100% процессора хоста.</p>
+</li>
+<li>
+<p><strong>Слоёная файловая система (<code>UnionFS</code> / <code>OverlayFS</code>):</strong></p>
+</li>
+<li>
+<p>Образ контейнера состоит из неизменяемых (<strong>Read-Only</strong>) слоёв, наложенных друг на друга. Когда контейнер запускается, поверх них создаётся один тонкий записываемый слой (<strong>Read-Write Container Layer</strong>).</p>
+</li>
+<li>
+<p>Если 10 контейнеров запущены из одного образа Ubuntu + Python (весом 300 МБ), на диске эти 300 МБ хранятся <strong>только в одном экземпляре</strong>, а каждый контейнер занимает лишь пару килобайт под свои изменения (механизм <em>Copy-on-Write</em>).</p>
+</li>
+</ol>
+<hr />
+<h3 id="12-docker-engine">1.2. Архитектура Docker Engine</h3>
+<p>Docker работает по клиент-серверной архитектуре:</p>
+<ul>
+<li><strong>Docker CLI (<code>docker</code>):</strong> Консольный клиент, в котором вы вводите команды. Он отправляет REST API-запросы демону через UNIX-сокет <code>/var/run/docker.sock</code>.</li>
+<li>
+<p><strong>Docker Daemon (<code>dockerd</code>):</strong> Фоновая служба, которая управляет образами, сетями и томами.</p>
+</li>
+<li>
+<p><strong><code>containerd</code> и <code>runc</code>:</strong> Низкоуровневые компоненты (по стандарту OCI), которым <code>dockerd</code> делегирует непосредственный запуск контейнеров через системные вызовы ядра Linux.</p>
+</li>
+</ul>
+<hr />
+<h3 id="13">1.3. Базовое управление контейнерами и образами</h3>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker run -d --name web -p 8080:80 nginx:alpine</code></td>
+<td>Запустить контейнер в фоне (<code>-d</code>), дать имя <code>web</code>, пробросить порт <code>8080</code> хоста на порт <code>80</code> контейнера (<code>-p</code>).</td>
+</tr>
+<tr>
+<td><code>docker ps</code> / <code>docker ps -a</code></td>
+<td>Показать запущенные контейнеры / показать вообще все контейнеры (включая остановленные).</td>
+</tr>
+<tr>
+<td><code>docker logs -f --tail 100 web</code></td>
+<td>Читать логи контейнера (<code>stdout</code>/<code>stderr</code>) в реальном времени (<code>-f</code>), начиная с последних 100 строк.</td>
+</tr>
+<tr>
+<td><code>docker exec -it web /bin/sh</code></td>
+<td>Зайти внутрь работающего контейнера в интерактивный терминал (<code>-i</code> и <code>-t</code>) для диагностики.</td>
+</tr>
+<tr>
+<td><code>docker stats</code></td>
+<td>Живой мониторинг потребления CPU, RAM и сети всеми контейнерами (аналог <code>htop</code>).</td>
+</tr>
+<tr>
+<td><code>docker inspect web</code></td>
+<td>Вывести полный JSON-паспорт контейнера (IP-адрес, переменные, примонтированные тома, лимиты).</td>
+</tr>
+<tr>
+<td><code>docker stop web</code> / <code>docker kill web</code></td>
+<td>Корректно остановить (<code>SIGTERM</code> $\rightarrow$ пауза 10 сек $\rightarrow$ <code>SIGKILL</code>) / мгновенно убить (<code>SIGKILL</code>).</td>
+</tr>
+<tr>
+<td><code>docker system df</code> / <code>docker system prune -a</code></td>
+<td>Посмотреть, сколько места занимают образы и кэш / очистить все неиспользуемые контейнеры, сети и образы.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-dockerfile">Блок 2. Создание Dockerfile, параметризация и реестры</h2>
+<h3 id="21-dockerfile">2.1. Ключевые директивы <code>Dockerfile</code></h3>
+<ul>
+<li><strong><code>FROM</code>:</strong> Задает базовый образ (например, <code>python:3.12-slim</code> или <code>alpine:3.20</code>).</li>
+<li><strong><code>WORKDIR</code>:</strong> Устанавливает рабочую директорию внутри контейнера (все последующие команды <code>RUN</code>, <code>COPY</code>, <code>CMD</code> будут выполняться в ней). Никогда не используйте <code>RUN cd /app</code> — используйте <code>WORKDIR /app</code>.</li>
+<li><strong><code>COPY</code> vs <code>ADD</code>:</strong></li>
+<li><strong><code>COPY src dest</code></strong> — простое и прозрачное копирование файлов с хоста в образ. <strong>Используйте в 99% случаев.</strong></li>
+<li>
+<p><strong><code>ADD</code></strong> — умеет автоматически распаковывать локальные <code>.tar.gz</code>-архивы и скачивать файлы по URL (считается неявным поведением).</p>
+</li>
+<li>
+<p><strong><code>RUN</code>:</strong> Выполняет команду во время сборки образа и фиксирует результат как <strong>новый слой</strong>.</p>
+</li>
+<li>
+<p><code>ARG</code> vs <code>ENV</code> (Параметризация образов):</p>
+</li>
+<li>
+<p><strong><code>ARG</code></strong> — переменная, доступная <strong>только во время сборки (<code>docker build --build-arg</code>)</strong>. В запущенном контейнере её нет (например, версия пакета <code>ARG APP_VERSION=1.0.0</code>).</p>
+</li>
+<li>
+<p><strong><code>ENV</code></strong> — переменная окружения, которая сохраняется внутри готового образа и <strong>доступна работающему приложению</strong> (<code>docker run -e PORT=9000</code>).</p>
+</li>
+<li>
+<p><strong><code>EXPOSE</code>:</strong> Документирует, какой порт слушает приложение внутри контейнера (сам по себе порт наружу не открывает!).</p>
+</li>
+<li><strong><code>ENTRYPOINT</code> и <code>CMD</code>:</strong> Определяют команду, которая запустится как <code>PID 1</code> при старте контейнера:</li>
+<li>Всегда пишите их в <strong>JSON/exec-форме</strong> (<code>["python3", "app.py"]</code>), а не в shell-форме (<code>python3 app.py</code>). В shell-форме <code>PID 1</code> займет оболочка <code>/bin/sh -c</code>, которая **не передает сигнал <code>SIGTERM**</code> вашему приложению — в итоге контейнер не сможет корректно завершаться и будет каждый раз зависать на 10 секунд при остановке!</li>
+</ul>
+<hr />
+<h3 id="22">2.2. Кэширование слоев и оптимизация размера образа</h3>
+<p>Каждая инструкция <code>RUN</code>, <code>COPY</code>, <code>ADD</code> создает новый слой. Если при повторной сборке файлы в <code>COPY</code> не изменились, Docker берет этот слой и все последующие из кэша за 0.1 секунды. Но как только один слой изменился — <strong>весь кэш ниже него сбрасывается</strong>.</p>
+<h4 id="dockerfile-11">❌ Плохой Dockerfile (Антипаттерн — 1.1 ГБ, долгая сборка):</h4>
+<div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:24.04</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c"># ОШИБКА 1: Копируем весь код ДО установки зависимостей. </span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c"># Любая правка в коде сбросит кэш, и pip install будет качать пакеты заново!</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c"># ОШИБКА 2: Раздельные RUN и неочищенный кэш apt остаются в слоях навсегда</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>gcc
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">CMD</span><span class="w"> </span>python3<span class="w"> </span>main.py
+</span></code></pre></div>
+<h4 id="multi-stage-dockerfile-60">✅ Оптимизированный Multi-Stage Dockerfile (60 МБ, мгновенная пересборка)</h4>
+<p>:</p>
+<p><strong>Multi-stage build (Многоэтапная сборка)</strong> позволяет в первом временном образе (<code>builder</code>) скомпилировать код со всеми тяжелыми компиляторами (<code>gcc</code>, <code>maven</code>, <code>go</code>, <code>npm</code>), а в финальный чистый образ скопировать <strong>только готовый бинарник или зависимости</strong>.</p>
+<div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># --- Этап 1: Сборка зависимостей (Builder) ---</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c"># Сначала копируем ТОЛЬКО файл зависимостей (слой закэшируется!)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>--prefix<span class="o">=</span>/install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c"># --- Этап 2: Финальный легковесный образ (Runtime) ---</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c"># Параметризация сборки и окружения</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">ARG</span><span class="w"> </span><span class="nv">APP_VERSION</span><span class="o">=</span><span class="m">1</span>.0.0
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">APP_VERSION</span><span class="o">=</span><span class="si">${</span><span class="nv">APP_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c"># Копируем установленные библиотеки из этапа builder</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/install<span class="w"> </span>/usr/local
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="c"># Копируем исходный код в самом конце</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="k">COPY</span><span class="w"> </span>src/<span class="w"> </span>./src/
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">"python3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"src/app.py"</span><span class="p">]</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Обязательный файл <code>.dockerignore</code>:</strong> Как и <code>.gitignore</code>, создавайте в корне проекта файл <code>.dockerignore</code> и добавляйте туда <code>.git</code>, <code>.env</code>, <code>venv</code>, <code>node_modules</code>, <code>*.log</code>, чтобы они не улетали в контекст сборки и не попадали внутрь образа!</p>
+</blockquote>
+<hr />
+<h3 id="23-docker-registries">2.3. Управление реестрами образов (Docker Registries)</h3>
+<p>Собранные образы хранятся в реестрах (Docker Hub, GitLab Container Registry, GitHub Container Registry <code>ghcr.io</code>, Yandex Container Registry).</p>
+<p>Полное имя (тег) образа всегда имеет структуру:
+<code>[АДРЕС_РЕЕСТРА]/[ПРОЕКТ_ИЛИ_ЛОГИН]/[ИМЯ_СЕРВИСА]:[ВЕРСИЯ]</code>
+<em>(например: <code>[registry.gitlab.com/myteam/backend-api:1.2.4](https://registry.gitlab.com/myteam/backend-api:1.2.4)</code>)</em>.</p>
+<blockquote>
+<p><strong>Правило продакшена:</strong> Никогда не используйте тег <code>:latest</code> в продакшене! Тег <code>:latest</code> перезаписывается при каждой сборке — вы не поймете, какая именно версия кода сейчас запущена, и не сможете быстро сделать откат (rollback). Всегда используйте фиксированные версии (<code>:1.2.4</code> или короткий SHA коммита <code>:a1b2c3d</code>).</p>
+</blockquote>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Авторизоваться в реестре</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>docker<span class="w"> </span>login<span class="w"> </span>registry.gitlab.com
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Собрать образ с двумя тегами (конкретная версия и latest) и передать build-arg</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>docker<span class="w"> </span>build<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">APP_VERSION</span><span class="o">=</span><span class="m">1</span>.2.0<span class="w"> </span>-t<span class="w"> </span>myuser/myapp:1.2.0<span class="w"> </span>-t<span class="w"> </span>myuser/myapp:latest<span class="w"> </span>.
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Отправить образ в удаленный реестр</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>docker<span class="w"> </span>push<span class="w"> </span>myuser/myapp:1.2.0
+</span></code></pre></div>
+<hr />
+<h2 id="3-volumes-docker">Блок 3. Сети и постоянные тома (Volumes) в Docker</h2>
+<h3 id="31-volumes-vs-bind-mounts">3.1. Хранение данных: Volumes vs Bind Mounts</h3>
+<p>По умолчанию все файлы, созданные внутри контейнера, живут в его верхнем Read-Write слое и <strong>бесследно исчезают при удалении контейнера (<code>docker rm</code>)</strong>. Чтобы сохранять данные (базы данных, загруженные файлы), используют монтирование:</p>
+<ol>
+<li>
+<p>Docker Volume (Именованный том) — выбор для продакшена:</p>
+</li>
+<li>
+<p>Управляется самим Docker (хранится в <code>/var/lib/docker/volumes/</code>). Изолирован от хоста, легко бэкапится и безопасно подключается к контейнерам.</p>
+</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>pg_data
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>db<span class="w"> </span>-v<span class="w"> </span>pg_data:/var/lib/postgresql/data<span class="w"> </span>postgres:16-alpine
+</span></code></pre></div>
+<ol>
+<li><strong>Bind Mount (Прямой проброс папки хоста):</strong></li>
+<li>Монтирует конкретный файл или папку с сервера напрямую внутрь контейнера. Удобно для проброса конфигурационных файлов (<code>nginx.conf</code>, только для чтения <code>:ro</code>) или кода при локальной разработке.</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>proxy<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/nginx.conf:/etc/nginx/nginx.conf:ro<span class="w"> </span>nginx:alpine
+</span></code></pre></div>
+<ol>
+<li><strong><code>tmpfs</code> Mount:</strong></li>
+<li>Монтирует временную папку прямо в оперативную память (RAM) хоста. Идеально для хранения временных чувствительных данных или кэша, который не должен попадать на диск.</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Изолированные сети и взаимодействие контейнеров</h3>
+<p>В Docker есть несколько сетевых драйверов:</p>
+<ul>
+<li><strong><code>bridge</code> (По умолчанию):</strong> Создает виртуальный сетевой мост (<code>docker0</code> на хосте). Контейнеры получают внутренние IP (например, <code>172.17.0.2</code>) и выходят в интернет через NAT (<code>iptables</code>).</li>
+<li>
+<p>User-Defined Bridge (Пользовательская сеть) — стандарт работы:</p>
+</li>
+<li>
+<p>В стандартном мосту <code>bridge</code> контейнеры видят друг друга только по IP-адресам.</p>
+</li>
+<li>
+<p>Но если создать <strong>свою изолированную сеть (<code>docker network create</code>)</strong>, Docker поднимает внутри неё <strong>встроенный DNS-сервер</strong>! Контейнеры в одной пользовательской сети могут обращаться друг к другу <strong>просто по имени контейнера</strong> (например, <code>http://backend-api:8000</code> или <code>postgres://db:5432</code>)!</p>
+</li>
+<li>
+<p><strong><code>host</code> (<code>--network host</code>):</strong> Убирает сетевую изоляцию — контейнер использует сетевую карту самого сервера напрямую (максимальная производительность, нет NAT).</p>
+</li>
+<li><strong><code>none</code> (<code>--network none</code>):</strong> Полное отключение сети у контейнера (только интерфейс <code>lo</code>).</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Создать изолированную сеть для нашего проекта</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>app-net
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Запустить Redis в этой сети (порт наружу на хост НЕ пробрасываем — он доступен только внутри сети!)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-cache<span class="w"> </span>--network<span class="w"> </span>app-net<span class="w"> </span>redis:7-alpine
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Запустить второй контейнер в той же сети и проверить связь по имени "redis-cache"</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--network<span class="w"> </span>app-net<span class="w"> </span>alpine<span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>redis-cache
+</span></code></pre></div>
+<hr />
+<h2 id="4-devsecops">Блок 4. DevSecOps: Безопасный запуск, секреты и проверка на уязвимости</h2>
+<h3 id="41-hardening">4.1. Безопасный запуск компонентов (Hardening контейнеров)</h3>
+<p>По умолчанию процесс внутри контейнера запускается от пользователя <strong><code>root</code> (UID 0)</strong>. Поскольку ядро у контейнера и у хоста общее, при обнаружении уязвимости в приложении или ядре злоумышленник может совершить <em>Container Escape</em> и получить права <code>root</code> на всем физическом сервере!</p>
+<p>4 золотых правила защиты контейнера:</p>
+<ol>
+<li>Запуск от непривилегированного пользователя (<code>USER</code>):
+Всегда создавайте в <code>Dockerfile</code> системного пользователя без прав <code>root</code> и переключайтесь на него перед запуском приложения:</li>
+</ol>
+<div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">RUN</span><span class="w"> </span>groupadd<span class="w"> </span>-r<span class="w"> </span>appgroup<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>useradd<span class="w"> </span>-r<span class="w"> </span>-g<span class="w"> </span>appgroup<span class="w"> </span>-u<span class="w"> </span><span class="m">10001</span><span class="w"> </span>appuser
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">USER</span><span class="w"> </span><span class="s">10001:10001</span>
+</span></code></pre></div>
+<ol>
+<li><strong>Файловая система только для чтения (<code>--read-only</code>):</strong>
+Запускайте контейнер с флагом <code>--read-only</code> (а для временных файлов давайте <code>--tmpfs /tmp</code>), чтобы взломщик не смог скачать и записать вредоносный скрипт внутрь контейнера.</li>
+<li><strong>Сброс привилегий ядра (<code>--cap-drop=ALL</code>):</strong>
+Отбирайте у контейнера все Linux Capabilities (<code>--cap-drop=ALL</code> и <code>--security-opt=no-new-privileges</code>).</li>
+<li><strong>Ограничение ресурсов (<code>--memory</code>, <code>--cpus</code>, <code>--pids-limit</code>):</strong>
+Защищает сервер от утечек памяти и fork-бомб внутри контейнера.</li>
+</ol>
+<hr />
+<h3 id="42">4.2. Безопасная работа с секретами</h3>
+<ul>
+<li>
+<p><strong>Никогда не запекайте пароли, токены и приватные ключи внутрь <code>Dockerfile</code> через <code>ENV</code> или <code>ARG</code>!</strong> Любой человек может выполнить <code>docker history &lt;image&gt;</code> или <code>docker inspect &lt;image&gt;</code> и увидеть все ваши пароли открытым текстом.</p>
+</li>
+<li>
+<p>Как передавать секреты правильно:</p>
+</li>
+<li>
+<p><strong>Во время запуска (<code>Runtime</code>):</strong> Передавать переменные окружения снаружи через <code>--env-file .env</code> или монтировать файл с секретом в память контейнера (в Docker Compose / Kubernetes — через механизм <code>secrets</code>).</p>
+</li>
+<li>
+<p><strong>Во время сборки (<code>Build-time</code>):</strong> Если при сборке нужно скачать пакет из приватного репозитория по токену, используйте <strong>BuildKit Secret Mount</strong> (<code>RUN --mount=type=secret,id=my_token ...</code>) — такой секрет монтируется в оперативную память только на одну секунду выполнения команды и <strong>гарантированно не попадает в слои образа</strong>.</p>
+</li>
+</ul>
+<hr />
+<h3 id="43-vulnerability-scanning-trivy">4.3. Проверка образов на уязвимости (Vulnerability Scanning — Trivy)</h3>
+<p>Даже если ваш собственный код идеален, базовый образ (например, <code>python:3.9</code> или <code>debian</code>) может содержать десятки известных уязвимостей (<strong>CVE</strong>) в системных библиотеках (<code>openssl</code>, <code>curl</code>, <code>libc</code>).</p>
+<p>Индустриальный стандарт для сканирования образов — утилита <strong>Trivy</strong> от Aqua Security:</p>
+<ul>
+<li>Проверяет как системные пакеты ОС (<code>apt</code>, <code>apk</code>), так и библиотеки языков программирования (<code>pip</code>, <code>npm</code>, <code>go.mod</code>, <code>pom.xml</code>).</li>
+<li>Ищет случайно забытые в слоях секреты и ключи.</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Запустить сканирование образа через сам Docker (без установки Trivy на хост!)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># Проверить только критические (CRITICAL) и высокие (HIGH) уязвимости:</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span>aquasec/trivy:latest<span class="w"> </span>image<span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>python:3.12-slim
+</span></code></pre></div>
+<hr />
+<h2 id="2">🛠 Практический проект Модуля 2: Полный цикл упаковки и защиты приложения</h2>
+<p>Мы пройдем полный цикл DevOps-инженера: возьмем исходный код микросервиса на Python, проведем его ревизию, упакуем в оптимизированный Multi-stage образ с непривилегированным пользователем, проверим на уязвимости с помощью <strong>Trivy</strong> и запустим в связке с Redis внутри изолированной сети с передачей секретов.</p>
+<hr />
+<h3 id="1">Этап 1. Подготовка исходного кода приложения</h3>
+<p>Создай рабочую директорию и файлы микросервиса, который подключается к Redis, проверяет секретный API-ключ и считает количество обращений:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/docker-practice/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/docker-practice
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># 1. Зависимости приложения</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; requirements.txt</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">flask==3.0.3</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">redis==5.0.8</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s">gunicorn==23.0.0</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s">EOF</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># 2. Исходный код сервиса (src/app.py)</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; src/app.py</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="s">import os</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="s">import socket</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="s">from flask import Flask, jsonify, request</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="s">import redis</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="s">app = Flask(__name__)</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="s">REDIS_HOST = os.getenv("REDIS_HOST", "localhost")</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="s">REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="s">API_SECRET_KEY = os.getenv("API_SECRET_KEY", "not-set")</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="s">cache = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="s">@app.route("/health")</span>
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="s">def health():</span>
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="s">    return jsonify({"status": "healthy", "hostname": socket.gethostname()}), 200</span>
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="s">@app.route("/hit")</span>
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="s">def hit():</span>
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="s">    client_key = request.headers.get("X-API-Key")</span>
+</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="s">    if client_key != API_SECRET_KEY:</span>
+</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="s">        return jsonify({"error": "Unauthorized: invalid X-API-Key"}), 403</span>
+</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="s">    try:</span>
+</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="s">        count = cache.incr("hits")</span>
+</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="s">        return jsonify({</span>
+</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="s">            "message": "Success",</span>
+</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="s">            "hits": count,</span>
+</span><span id="__span-8-39"><a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a><span class="s">            "container_id": socket.gethostname(),</span>
+</span><span id="__span-8-40"><a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a><span class="s">            "version": os.getenv("APP_VERSION", "unknown")</span>
+</span><span id="__span-8-41"><a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="s">        }), 200</span>
+</span><span id="__span-8-42"><a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a><span class="s">    except redis.ConnectionError:</span>
+</span><span id="__span-8-43"><a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a><span class="s">        return jsonify({"error": "Redis connection failed"}), 500</span>
+</span><span id="__span-8-44"><a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a>
+</span><span id="__span-8-45"><a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a><span class="s">if __name__ == "__main__":</span>
+</span><span id="__span-8-46"><a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a><span class="s">    app.run(host="0.0.0.0", port=8000)</span>
+</span><span id="__span-8-47"><a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<hr />
+<h3 id="2-dockerignore-multi-stage-dockerfile">Этап 2. Настройка <code>.dockerignore</code> и создание защищенного Multi-Stage <code>Dockerfile</code></h3>
+<ol>
+<li>Создай файл <code>.dockerignore</code>, чтобы исключить попадание секретов и мусора в образ:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; .dockerignore</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s">.git</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s">.env</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s">*.env</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s">*.log</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s">__pycache__</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="s">README.md</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<ol>
+<li>Создай production-ready <code>Dockerfile</code> с многоэтапной сборкой, параметризацией, встроенным <code>HEALTHCHECK</code> и запуском от non-root пользователя <code>appuser</code> (UID <code>10001</code>):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; Dockerfile</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s"># ==========================================</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s"># Stage 1: Builder (сборка зависимостей)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s"># ==========================================</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s">FROM python:3.12-slim AS builder</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s">WORKDIR /build</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s">COPY requirements.txt .</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s"># Устанавливаем зависимости в отдельную директорию /install без сохранения кэша</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s">RUN pip install --no-cache-dir --prefix=/install -r requirements.txt</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s"># ==========================================</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="s"># Stage 2: Production Runtime</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s"># ==========================================</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s">FROM python:3.12-slim</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="s"># Параметризация версии при сборке</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="s">ARG APP_VERSION=1.0.0</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="s">ENV APP_VERSION=${APP_VERSION} \</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="s">    PYTHONDONTWRITEBYTECODE=1 \</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="s">    PYTHONUNBUFFERED=1 \</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="s">    PORT=8000</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="s">WORKDIR /app</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="s"># Обновляем системные пакеты безопасности и создаем non-root пользователя (UID 10001)</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="s">RUN apt-get update &amp;&amp; apt-get upgrade -y &amp;&amp; \</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="s">    rm -rf /var/lib/apt/lists/* &amp;&amp; \</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="s">    groupadd -r appgroup &amp;&amp; \</span>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="s">    useradd -r -g appgroup -u 10001 -s /usr/sbin/nologin appuser</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="s"># Копируем собранные библиотеки из Stage 1</span>
+</span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="s">COPY --from=builder /install /usr/local</span>
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a>
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="s"># Копируем исходный код и сразу назначаем владельца</span>
+</span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="s">COPY --chown=appuser:appgroup src/ ./src/</span>
+</span><span id="__span-10-38"><a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>
+</span><span id="__span-10-39"><a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="s"># Переключаемся на непривилегированного пользователя</span>
+</span><span id="__span-10-40"><a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="s">USER 10001:10001</span>
+</span><span id="__span-10-41"><a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a>
+</span><span id="__span-10-42"><a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a><span class="s">EXPOSE 8000</span>
+</span><span id="__span-10-43"><a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a>
+</span><span id="__span-10-44"><a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a><span class="s"># Встроенная проверка здоровья контейнера средствами Python (без установки лишнего curl!)</span>
+</span><span id="__span-10-45"><a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a><span class="s">HEALTHCHECK --interval=15s --timeout=3s --start-period=5s --retries=3 \</span>
+</span><span id="__span-10-46"><a id="__codelineno-10-46" name="__codelineno-10-46" href="#__codelineno-10-46"></a><span class="s">  CMD ["python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]</span>
+</span><span id="__span-10-47"><a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a>
+</span><span id="__span-10-48"><a id="__codelineno-10-48" name="__codelineno-10-48" href="#__codelineno-10-48"></a><span class="s"># Запускаем через промышленный WSGI-сервер gunicorn в exec-форме (PID 1)</span>
+</span><span id="__span-10-49"><a id="__codelineno-10-49" name="__codelineno-10-49" href="#__codelineno-10-49"></a><span class="s">ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "2", "src.app:app"]</span>
+</span><span id="__span-10-50"><a id="__codelineno-10-50" name="__codelineno-10-50" href="#__codelineno-10-50"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<hr />
+<h3 id="3-trivy">Этап 3. Сборка и сканирование образа на уязвимости через Trivy</h3>
+<ol>
+<li>Собери образ с передачей параметра <code>APP_VERSION=1.0.5</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>build<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">APP_VERSION</span><span class="o">=</span><span class="m">1</span>.0.5<span class="w"> </span>-t<span class="w"> </span>hit-counter:1.0.5<span class="w"> </span>.
+</span></code></pre></div>
+<ol>
+<li>Проверь размер собранного образа и его слои:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker<span class="w"> </span>images<span class="w"> </span>hit-counter:1.0.5
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>docker<span class="w"> </span><span class="nb">history</span><span class="w"> </span>hit-counter:1.0.5
+</span></code></pre></div>
+<ol>
+<li>Просканируй свой образ сканером уязвимостей <strong>Trivy</strong> на наличие критических CVE и забытых секретов:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span>aquasec/trivy:latest<span class="w"> </span>image<span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>hit-counter:1.0.5
+</span></code></pre></div>
+<hr />
+<h3 id="4">Этап 4. Изолированная сеть, том данных и безопасный запуск с секретами</h3>
+<ol>
+<li>Создай изолированную сеть <code>backend-net</code> и постоянный том <code>redis-data</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>backend-net
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>redis-data
+</span></code></pre></div>
+<ol>
+<li>Запусти контейнер базы Redis в этой сети с подключением тома (обрати внимание: мы <strong>не</strong> публикуем порт <code>6379</code> на хост — база полностью закрыта от внешнего мира и доступна только внутри <code>backend-net</code>!):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span>--name<span class="w"> </span>redis-db<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span>--network<span class="w"> </span>backend-net<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span>-v<span class="w"> </span>redis-data:/data<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span>redis:7-alpine<span class="w"> </span>redis-server<span class="w"> </span>--appendonly<span class="w"> </span>yes
+</span></code></pre></div>
+<ol>
+<li>Создай локальный файл <code>.env</code> с секретным ключом на хосте (благодаря <code>.dockerignore</code> и <code>.gitignore</code> он никогда не попадет ни в образ, ни в Git):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; .env</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s">REDIS_HOST=redis-db</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="s">REDIS_PORT=6379</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="s">API_SECRET_KEY=ProdSuperSecretToken999</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="s">EOF</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>.env
+</span></code></pre></div>
+<ol>
+<li>Запусти наше приложение в максимально защищенном режиме (Read-Only файловая система, сброс привилегий ядра <code>--cap-drop=ALL</code>, лимит памяти 128 МБ, передача секретов через <code>--env-file</code>):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span>--name<span class="w"> </span>hit-app<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>--network<span class="w"> </span>backend-net<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">  </span>--env-file<span class="w"> </span>.env<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">8080</span>:8000<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span>--read-only<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">  </span>--tmpfs<span class="w"> </span>/tmp<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">  </span>--cap-drop<span class="o">=</span>ALL<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">  </span>--security-opt<span class="o">=</span>no-new-privileges<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">  </span>--memory<span class="o">=</span><span class="s2">"128m"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">  </span>--cpus<span class="o">=</span><span class="s2">"0.5"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">  </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">  </span>hit-counter:1.0.5
+</span></code></pre></div>
+<hr />
+<h3 id="-2">✅ Чек-лист самопроверки по Модулю 2</h3>
+<p>Выполни 5 проверочных шагов, чтобы убедиться, что весь стек работает по стандартам DevSecOps:</p>
+<ol>
+<li><strong>Проверка статуса <code>healthy</code>:</strong>
+Подожди 15 секунд и выполни:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>docker<span class="w"> </span>ps
+</span></code></pre></div></li>
+</ol>
+<p><em>Ожидаемый результат:</em> В колонке <code>STATUS</code> у контейнера <code>hit-app</code> горит пометка <strong><code>(healthy)</code></strong>.
+2. Проверка работы под non-root пользователем:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>hit-app<span class="w"> </span>id
+</span></code></pre></div>
+<p><em>Ожидаемый результат:</em> <code>uid=10001(appuser) gid=10001(appgroup) groups=10001(appgroup)</code>.
+3. Проверка защиты Read-Only файловой системы:
+Попробуй создать файл внутри контейнера:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>hit-app<span class="w"> </span>touch<span class="w"> </span>/app/hacked.txt
+</span></code></pre></div>
+<p><em>Ожидаемый результат:</em> <code>touch: cannot touch '/app/hacked.txt': Read-only file system</code> (атака заблокирована!).
+4. Проверка авторизации по секрету и связки с Redis по внутреннему DNS:</p>
+<ul>
+<li>
+<p>Запрос без секретного ключа (должен вернуть <code>403 Unauthorized</code>):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>http://localhost:8080/hit
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Запрос с правильным ключом из <code>.env</code> (выполни 2–3 раза подряд — счетчик <code>hits</code> в Redis будет увеличиваться!):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"X-API-Key: ProdSuperSecretToken999"</span><span class="w"> </span>http://localhost:8080/hit
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Проверка сохранности данных в Volume (<code>redis-data</code>):
+Удали контейнер <code>redis-db</code>, создай его заново с тем же томом <code>redis-data</code> и снова вызови <code>curl</code> — счетчик <code>hits</code> не сбросится в <code>1</code>, а продолжит считать с прежнего значения!</p>
+</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

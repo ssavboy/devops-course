@@ -1,0 +1,1792 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Бесплатный практический курс по DevOps для разработчиков и джунов">
+      
+      
+      
+      
+        <link rel="prev" href="../6_ci/">
+      
+      
+        <link rel="next" href="../8_iac_terraform/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Continuous Delivery и безопасность внедрения (CD) - DevOps Курс для начинающих</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#continuous-delivery-cd" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-header__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Курс для начинающих
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Continuous Delivery и безопасность внедрения (CD)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на темную тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на темную тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DevOps Курс для начинающих" class="md-nav__button md-logo" aria-label="DevOps Курс для начинающих" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DevOps Курс для начинающих
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux, сети и автоматизация на Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение в DevOps и системы контроля версий (Git)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контейнеризация приложений (Docker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оркестрация многоконтейнерных приложений (Docker Compose & Nginx)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Наблюдаемость (Observability) и мониторинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизация сборки и CI (Continuous Integration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continuous Delivery и безопасность внедрения (CD)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Continuous Delivery и безопасность внедрения (CD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-continuous-delivery-continuous-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Разница между Continuous Delivery и Continuous Deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-semver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Семантическое версионирование (SemVer) и управление артефактами
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Семантическое версионирование (SemVer) и управление артефактами">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-semver-majorminorpatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Стандарт SemVer (MAJOR.MINOR.PATCH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-immutable-artifacts-12-factor-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Неизменяемость артефактов (Immutable Artifacts) и 12-Factor App
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-feature-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Стратегии безопасного деплоя и Feature Flags
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Стратегии безопасного деплоя и Feature Flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-feature-flags-feature-toggles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Feature Flags (Фича-флаги / Feature Toggles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cd-stateful-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Особенности CD для Stateful-приложений и автомиграции БД
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Особенности CD для Stateful-приложений и автомиграции БД">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-expand-and-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Паттерн Expand and Contract (Расширение и Сжатие) для миграций БД
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cd-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Порядок шагов в CD-пайплайне
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dora-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 5. Оптимизация релизов и расчет DORA-метрик
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-cd-feature-flags-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 7: Сквозной CD-конвейер с миграциями БД, Feature Flags и автоматическим откатом (Rollback)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 7: Сквозной CD-конвейер с миграциями БД, Feature Flags и автоматическим откатом (Rollback)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-semver-feature-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Обновление приложения: SemVer, Feature Flags и симуляция сбоя релиза
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-expand-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Создание системы обратно-совместимых миграций БД (Expand Pattern)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-smoke-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Создание боевого скрипта деплоя с авто-бэкапом, миграциями, Smoke-тестом и Rollback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cd-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Сборка артефактов и испытание CD-пайплайна в действии!
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 4. Сборка артефактов и испытание CD-пайплайна в действии!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-v100-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сценарий 1. Выкатка базовой версии v1.0.0 (Фича-флаг выключен)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-v110-feature-flag-vip_mode-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сценарий 2. Выкатка минорного релиза v1.1.0 с включением Feature Flag (VIP_MODE = true)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-v120-auto-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сценарий 3. Выкатка «сломанного» релиза v1.2.0 и срабатывание Auto-Rollback!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gitlab-ciyml-cd-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 5. Как это выглядит в .gitlab-ci.yml (CD-стадии и environments)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-7-dora-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 7 (Расчет DORA-метрик в SQL!)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_iac_terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инфраструктура как код (IaC) — Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_scm_ansible/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Управление конфигурацией (SCM) — Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_kubernetes_k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes (K8s) и оркестрация контейнеров в продакшене
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Итоговый дипломный проект DevOps - Production-Ready Платформа «CloudOrder»
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-continuous-delivery-continuous-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 1. Разница между Continuous Delivery и Continuous Deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-semver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 2. Семантическое версионирование (SemVer) и управление артефактами
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 2. Семантическое версионирование (SemVer) и управление артефактами">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-semver-majorminorpatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Стандарт SemVer (MAJOR.MINOR.PATCH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-immutable-artifacts-12-factor-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Неизменяемость артефактов (Immutable Artifacts) и 12-Factor App
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-feature-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 3. Стратегии безопасного деплоя и Feature Flags
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 3. Стратегии безопасного деплоя и Feature Flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-feature-flags-feature-toggles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Feature Flags (Фича-флаги / Feature Toggles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cd-stateful-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 4. Особенности CD для Stateful-приложений и автомиграции БД
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Блок 4. Особенности CD для Stateful-приложений и автомиграции БД">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-expand-and-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Паттерн Expand and Contract (Расширение и Сжатие) для миграций БД
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cd-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Порядок шагов в CD-пайплайне
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dora-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Блок 5. Оптимизация релизов и расчет DORA-метрик
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-cd-feature-flags-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Практический проект Модуля 7: Сквозной CD-конвейер с миграциями БД, Feature Flags и автоматическим откатом (Rollback)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 7: Сквозной CD-конвейер с миграциями БД, Feature Flags и автоматическим откатом (Rollback)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-semver-feature-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1. Обновление приложения: SemVer, Feature Flags и симуляция сбоя релиза
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-expand-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2. Создание системы обратно-совместимых миграций БД (Expand Pattern)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-smoke-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3. Создание боевого скрипта деплоя с авто-бэкапом, миграциями, Smoke-тестом и Rollback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cd-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 4. Сборка артефактов и испытание CD-пайплайна в действии!
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 4. Сборка артефактов и испытание CD-пайплайна в действии!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-v100-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сценарий 1. Выкатка базовой версии v1.0.0 (Фича-флаг выключен)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-v110-feature-flag-vip_mode-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сценарий 2. Выкатка минорного релиза v1.1.0 с включением Feature Flag (VIP_MODE = true)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-v120-auto-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сценарий 3. Выкатка «сломанного» релиза v1.2.0 и срабатывание Auto-Rollback!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-gitlab-ciyml-cd-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 5. Как это выглядит в .gitlab-ci.yml (CD-стадии и environments)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-7-dora-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Чек-лист самопроверки по Модулю 7 (Расчет DORA-метрик в SQL!)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="continuous-delivery-cd">Continuous Delivery и безопасность внедрения (CD)</h1>
+<p>В предыдущем модуле (CI) мы научились автоматически проверять код и собирать защищенный Docker-образ. Но сам по себе образ, лежащий в реестре (Registry), не приносит бизнесу никакой пользы, пока он не окажется на боевых серверах.</p>
+<p><strong>Continuous Delivery / Deployment (Непрерывная доставка и развертывание)</strong> отвечает за самую рискованную часть жизни кода — его доставку в тестовые (<code>staging</code>) и боевые (<code>production</code>) окружения без простоя (Zero-Downtime), с безопасным обновлением базы данных и гарантированным механизмом автоматического отката (<strong>Rollback</strong>), если что-то пошло не так.</p>
+<hr />
+<h2 id="1-continuous-delivery-continuous-deployment">Блок 1. Разница между Continuous Delivery и Continuous Deployment</h2>
+<p>В обоих случаях сокращение пишется как <strong>CD</strong>, но между ними есть ключевая организационная и техническая граница:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Git Push] ──► [CI: Build &amp; Test] ──► [Deploy to Staging] ──► [Auto Smoke Tests] ──┬──► (Ручная кнопка Approve) ──► [Production]  (Continuous Delivery)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                                                                                   │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                                                                                   └──► (100% Автоматически)    ──► [Production]  (Continuous Deployment)
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика</th>
+<th style="text-align: left;">Continuous Delivery (Непрерывная доставка)</th>
+<th style="text-align: left;">Continuous Deployment (Непрерывное развертывание)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Что происходит автоматически</strong></td>
+<td style="text-align: left;">Сборка, тесты, деплой на тестовый стенд (<code>staging</code>), автотесты. Артефакт на 100% готов к выходу в прод.</td>
+<td style="text-align: left;"><strong>Абсолютно всё</strong>, включая финальную выкатку в <code>production</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Выход в Production</strong></td>
+<td style="text-align: left;">По нажатию кнопки человеком (<strong>Manual Trigger</strong> в GitLab CI: <code>when: manual</code>).</td>
+<td style="text-align: left;">Автоматически после успешного прохождения всех стадий тестирования без участия человека.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Зачем нужен ручной шаг?</strong></td>
+<td style="text-align: left;">Бизнес-ограничения, согласование релизного окна, регуляторные требования (банки, финтех, госсектор).</td>
+<td style="text-align: left;">Максимальная скорость вывода фич (SaaS, веб-платформы, маркетплейсы). Требует идеального покрытия тестами и мониторингом.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-semver">Блок 2. Семантическое версионирование (SemVer) и управление артефактами</h2>
+<h3 id="21-semver-majorminorpatch">2.1. Стандарт SemVer (<code>MAJOR.MINOR.PATCH</code>)</h3>
+<p>Чтобы инженеры и автоматика понимали масштаб изменений в каждом релизе, используется стандарт <strong>Semantic Versioning 2.0.0</strong> в формате <strong><code>X.Y.Z</code></strong> (например, <code>v2.4.1</code>):</p>
+<ol>
+<li><strong><code>MAJOR</code> (<code>X</code> — Мажорная версия, например <code>1.0.0</code> $\rightarrow$ <code>2.0.0</code>):</strong> Увеличивается, когда вносятся <strong>обратно несовместимые изменения API</strong> (Breaking Changes: удалили поле из JSON, изменили формат ответа, переписали схему БД).</li>
+<li><strong><code>MINOR</code> (<code>Y</code> — Минорная версия, например <code>1.1.0</code> $\rightarrow$ <code>1.2.0</code>):</strong> Увеличивается, когда добавлена <strong>новая функциональность без поломки обратной совместимости</strong> (добавили новый эндпоинт <code>/api/v2/export</code>, при этом старые работают как прежде).</li>
+<li><strong><code>PATCH</code> (<code>Z</code> — Патч-версия, например <code>1.2.0</code> $\rightarrow$ <code>1.2.1</code>):</strong> Увеличивается при <strong>исправлении багов (bugfix) или закрытии уязвимостей</strong> без изменения логики и контрактов API.</li>
+</ol>
+<p><em>Дополнительные суффиксы:</em> Для тестовых сборок перед релизом используют пре-релизные метки: <code>1.3.0-alpha.1</code>, <code>1.3.0-rc.2</code> (Release Candidate).</p>
+<hr />
+<h3 id="22-immutable-artifacts-12-factor-app">2.2. Неизменяемость артефактов (Immutable Artifacts) и 12-Factor App</h3>
+<p>В соответствии с методологией <strong>Twelve-Factor App</strong> (Фактор V: <em>Build, release, run</em>):
+* Строго разделяются три этапа: <strong>Сборка (Build)</strong> $\rightarrow$ <strong>Релиз (Release = Сборка + Конфиг окружения)</strong> $\rightarrow$ <strong>Запуск (Run)</strong>.
+* <strong>Золотое правило CD:</strong> Один и тот же собранный бинарный Docker-образ (с уникальным SHA256-хэшем) должен пройти через <code>dev</code> $\rightarrow$ <code>staging</code> $\rightarrow$ <code>production</code>. <strong>Запрещено пересобирать образ заново перед выкаткой в прод!</strong> Меняются только внешние переменные окружения (<code>.env</code>, <code>Secrets</code>), но сам контейнер остается бит-в-бит тем же самым, который прошел тесты на <code>staging</code>.</p>
+<hr />
+<h2 id="3-feature-flags">Блок 3. Стратегии безопасного деплоя и Feature Flags</h2>
+<p>Как обновить приложение с версии <code>v1.0.0</code> на <code>v1.1.0</code> так, чтобы ни один активный пользователь не увидел ошибку <code>502 Bad Gateway</code>?</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Стратегия деплоя</th>
+<th style="text-align: left;">Как работает</th>
+<th style="text-align: left;">Плюсы</th>
+<th style="text-align: left;">Минусы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Recreate</strong></td>
+<td style="text-align: left;">Убить все старые контейнеры <code>v1.0</code> $\rightarrow$ запустить новые <code>v1.1</code>.</td>
+<td style="text-align: left;">Просто, не требует лишних ресурсов.</td>
+<td style="text-align: left;"><strong>Есть простой (Downtime)</strong>. Пока стартует <code>v1.1</code>, сайт недоступен. Для продакшена не подходит.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Rolling Update</strong> (По умолчанию)</td>
+<td style="text-align: left;">Контейнеры заменяются по очереди: подняли один <code>v1.1</code> $\rightarrow$ проверили его <code>healthcheck</code> $\rightarrow$ погасили один <code>v1.0</code>, и так далее.</td>
+<td style="text-align: left;"><strong>Zero-Downtime</strong>, не требует удвоения серверов.</td>
+<td style="text-align: left;">Несколько минут версии <code>v1.0</code> и <code>v1.1</code> работают одновременно (база данных должна быть совместима с обеими!).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Blue-Green</strong></td>
+<td style="text-align: left;">Поднимаем рядом полный дубль кластера (<code>Green</code> с <code>v1.1</code>), тестируем его и за 1 миллисекунду переключаем весь трафик на балансировщике Nginx со старого (<code>Blue</code> <code>v1.0</code>) на новый (<code>Green</code>).</td>
+<td style="text-align: left;"><strong>Мгновенный деплой и мгновенный откат</strong> (просто вернуть свитч в Nginx на <code>Blue</code>).</td>
+<td style="text-align: left;">Требует <strong>в 2 раза больше ресурсов</strong> (RAM/CPU) на момент переключения.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Canary (Канареечный)</strong></td>
+<td style="text-align: left;">Выкатываем <code>v1.1</code> на 1 контейнер и направляем на него только <strong>5% реального трафика</strong>. Смотрим в Grafana 15 минут: если ошибок <code>500</code> нет — плавно доводим трафик до 100%.</td>
+<td style="text-align: left;">Минимальный радиус поражения (Blast Radius): если в релизе баг, пострадают только 5% запросов, а не 100%.</td>
+<td style="text-align: left;">Сложнее в настройке маршрутизации на балансировщике / Ingress.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="31-feature-flags-feature-toggles">3.1. Feature Flags (Фича-флаги / Feature Toggles)</h3>
+<p>Классическая ошибка новичка — считать, что <strong>Деплой (Deployment)</strong> и <strong>Релиз (Release)</strong> — это одно и то же. В современном DevOps эти понятия разделены:
+* <strong>Deployment (Техническая выкатка):</strong> Доставка нового контейнера на прод-серверы.
+* <strong>Release (Включение функции для бизнеса):</strong> Момент, когда новая кнопка или алгоритм становятся доступны реальным пользователям.</p>
+<p><strong>Feature Flag</strong> — это условный рубильник (<code>if feature_enabled("new_checkout_flow"):</code>), который позволяет выкатить новый код в продакшен <strong>в выключенном состоянии</strong>!
+* Код уже лежит на проде, но спрятан за флагом (<code>FEATURE_NEW_PAYMENT=false</code> в конфиге или БД/Redis).
+* Если после включения флага база начала тормозить, нам <strong>даже не нужно делать откат контейнера или перезапускать CI/CD</strong> — мы просто за 1 секунду переключаем флаг обратно в <code>false</code>!</p>
+<hr />
+<h2 id="4-cd-stateful-">Блок 4. Особенности CD для Stateful-приложений и автомиграции БД</h2>
+<p>Обновить Stateless-контейнер бэкенда легко, но как быть с базой данных PostgreSQL? Во время <code>Rolling Update</code>, <code>Blue-Green</code> или <code>Canary</code> старая (<code>v1.0</code>) и новая (<code>v1.1</code>) версии бэкенда одновременно обращаются к <strong>одной и той же базе данных</strong>!</p>
+<h3 id="41-expand-and-contract">4.1. Паттерн Expand and Contract (Расширение и Сжатие) для миграций БД</h3>
+<p>Если в релизе <code>v1.1</code> нужно переименовать колонку <code>client_ip</code> в <code>user_ip</code>:
+* ❌ <strong>Как делать НЕЛЬЗЯ:</strong> Выполнить <code>ALTER TABLE visits RENAME COLUMN client_ip TO user_ip;</code> перед деплоем. Как только миграция пройдет, все еще работающие контейнеры <code>v1.0</code> мгновенно упадут с фатальной ошибкой <code>column "client_ip" does not exist</code>! И самое страшное: <strong>вы не сможете откатить код <code>v1.1</code> назад на <code>v1.0</code></strong>, потому что схема базы уже сломана для <code>v1.0</code>!
+* ✅ <strong>Как делать ПРАВИЛЬНО (обратно совместимые миграции):</strong>
+  1. <strong>Шаг 1 (Expand — в текущем релизе <code>v1.1</code>):</strong> Миграция только <em>добавляет</em> новую колонку <code>ALTER TABLE visits ADD COLUMN IF NOT EXISTS user_ip VARCHAR(64);</code>, не трогая старую. Код <code>v1.1</code> умеет работать с обеими колонками. Если <code>v1.1</code> упадет, мы спокойно откатываемся на <code>v1.0</code> — старая колонка на месте!
+  2. <strong>Шаг 2 (Contract — через неделю в релизе <code>v1.2</code>):</strong> Когда <code>v1.0</code> давно ушла в историю, мы спокойно удаляем старую колонку.</p>
+<h3 id="42-cd-">4.2. Порядок шагов в CD-пайплайне</h3>
+<p>В конвейере доставки строго соблюдается последовательность:
+1. <strong>Снятие автоматического бэкапа БД (<code>pre-deploy backup</code>)</strong> перед любыми изменениями.
+2. <strong>Запуск одноразового контейнера миграций (<code>db-migrate</code>)</strong> с новыми SQL-скриптами.
+3. <strong>Обновление контейнеров приложения (<code>deploy</code>)</strong>.
+4. <strong>Проверка жизнеспособности (<code>post-deploy smoke test</code>)</strong>: автоматический скрипт стучится в <code>/health</code> и <code>/api/visit</code> и проверяет, что ответ равен <code>200 OK</code>.
+5. <strong>Автоматический откат (<code>auto-rollback</code>)</strong>: если smoke-тест не прошел — скрипт немедленно возвращает предыдущую стабильную версию образа!</p>
+<hr />
+<h2 id="5-dora-">Блок 5. Оптимизация релизов и расчет DORA-метрик</h2>
+<p>Как понять, что построенный нами CI/CD-конвейер действительно эффективен? Мы измеряем 4 метрики <strong>DORA</strong> прямо по данным из GitLab CI и нашей базы деплоев:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Метрика DORA</th>
+<th style="text-align: left;">Как считается технически в CI/CD</th>
+<th style="text-align: left;">Уровень Elite-команд</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Deployment Frequency</strong> (Частота деплоев)</td>
+<td style="text-align: left;">Количество успешных запусков стадии <code>deploy:production</code> в день/неделю.</td>
+<td style="text-align: left;">Несколько раз в день (по требованию).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Lead Time for Changes</strong> (Время доставки коммита)</td>
+<td style="text-align: left;">$T_{\text{deploy_finished}} - T_{\text{commit_created}}$ (разница между временем коммита и завершением деплоя в прод).</td>
+<td style="text-align: left;">Менее 1 часа.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Change Failure Rate</strong> (Процент неудачных релизов)</td>
+<td style="text-align: left;">$\frac{\text{Деплои со статусом FAILED или ROLLED_BACK}}{\text{Общее число деплоев в прод}} \times 100\%$.</td>
+<td style="text-align: left;">$0\% - 15\%$.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. MTTR</strong> (Среднее время восстановления)</td>
+<td style="text-align: left;">$T_{\text{rollback_or_hotfix_ok}} - T_{\text{incident_alert_fired}}$ (время от срабатывания алерта до успешного автоотката).</td>
+<td style="text-align: left;">Менее 1 часа (при автооткате в CD — <strong>менее 2 минут</strong>!).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-cd-feature-flags-rollback">🛠 Практический проект Модуля 7: Сквозной CD-конвейер с миграциями БД, Feature Flags и автоматическим откатом (Rollback)</h2>
+<p>Мы модернизируем наш кластер в <code>~/compose-cluster</code>:
+1. Добавим в приложение поддержку <strong>Семантического версионирования (<code>APP_VERSION</code>)</strong> и <strong>Feature Flags (<code>FEATURE_VIP_MODE</code>)</strong>.
+2. Создадим систему версионированных <strong>SQL-миграций БД</strong>.
+3. Напишем боевой скрипт оркестрации релиза <strong><code>deploy_with_rollback.sh</code></strong>, который:
+   * Снимает предрелизный бэкап PostgreSQL.
+   * Накатывает SQL-миграции.
+   * Выкатывает новую версию сервиса без простоя (Blue-Green / Rolling).
+   * Прогоняет автоматические Smoke-тесты.
+   * <strong>Автоматически откатывает кластер на предыдущую стабильную версию</strong>, если новая версия оказалась с багом!
+4. Дополним <code>.gitlab-ci.yml</code> полноценными CD-стадиями для <code>staging</code> и <code>production</code>.</p>
+<hr />
+<h3 id="1-semver-feature-flags">Этап 1. Обновление приложения: SemVer, Feature Flags и симуляция сбоя релиза</h3>
+<p>Перейдем в директорию <code>~/compose-cluster</code> и обновим <code>app/main.py</code>, добавив поддержку фича-флага <code>FEATURE_VIP_MODE</code> и специального флага <code>SIMULATE_CRASH</code> (чтобы мы могли вживую протестировать, как наш конвейер сам обнаружит сломанный релиз и выполнит автоматический откат!):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/compose-cluster
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/main.py</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s">import os</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s">import socket</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s">import psycopg2</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s">import redis</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s">from flask import Flask, jsonify, request</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s">app = Flask(__name__)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s">APP_VERSION = os.getenv("APP_VERSION", "1.0.0")</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s">FEATURE_VIP_MODE = os.getenv("FEATURE_VIP_MODE", "false").lower() == "true"</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s">SIMULATE_CRASH = os.getenv("SIMULATE_CRASH", "false").lower() == "true"</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s">def get_db_password():</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s">    secret_path = "/run/secrets/db_password"</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s">    if os.path.exists(secret_path):</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s">        with open(secret_path, "r") as f:</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">            return f.read().strip()</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s">    return os.getenv("POSTGRES_PASSWORD", "")</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s">def get_db_conn():</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s">    return psycopg2.connect(</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s">        host=os.getenv("DB_HOST", "db"),</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s">        database=os.getenv("POSTGRES_DB", "cluster_db"),</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="s">        user=os.getenv("POSTGRES_USER", "app_admin"),</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="s">        password=get_db_password(),</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="s">        connect_timeout=3</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="s">    )</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="s">cache = redis.Redis(host=os.getenv("REDIS_HOST", "redis"), port=6379, decode_responses=True)</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="s">@app.route("/health")</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="s">def health():</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="s">    # Если в релизе допущена критическая ошибка — healthcheck возвращает 500</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="s">    if SIMULATE_CRASH:</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="s">        return jsonify({"status": "unhealthy", "reason": "Simulated critical bug in release!", "version": APP_VERSION}), 500</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="s">    try:</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="s">        conn = get_db_conn()</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="s">        conn.close()</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="s">        cache.ping()</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="s">        return jsonify({</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="s">            "status": "healthy",</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="s">            "version": APP_VERSION,</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="s">            "feature_vip_mode": FEATURE_VIP_MODE,</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="s">            "node": socket.gethostname()</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="s">        }), 200</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="s">    except Exception as e:</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="s">        return jsonify({"status": "unhealthy", "error": str(e)}), 500</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="s">@app.route("/api/visit")</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="s">def visit():</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="s">    if SIMULATE_CRASH:</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="s">        return jsonify({"error": "Internal Server Error in broken release"}), 500</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="s">    client_ip = request.headers.get("X-Real-IP", request.remote_addr)</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="s">    node_id = socket.gethostname()</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="s">    total_hits = cache.incr("cluster_hits")</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="s">    conn = get_db_conn()</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="s">    cur = conn.cursor()</span>
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="s">    cur.execute("""</span>
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="s">        CREATE TABLE IF NOT EXISTS visits (</span>
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="s">            id SERIAL PRIMARY KEY,</span>
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="s">            node_id VARCHAR(64),</span>
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="s">            client_ip VARCHAR(64),</span>
+</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="s">            app_version VARCHAR(32) DEFAULT '1.0.0',</span>
+</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="s">            visited_at TIMESTAMPTZ DEFAULT NOW()</span>
+</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="s">        );</span>
+</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="s">    """)</span>
+</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="s">    cur.execute(</span>
+</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="s">        "INSERT INTO visits (node_id, client_ip, app_version) VALUES (%s, %s, %s);",</span>
+</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="s">        (node_id, client_ip, APP_VERSION)</span>
+</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="s">    )</span>
+</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="s">    cur.execute("SELECT COUNT(*) FROM visits;")</span>
+</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="s">    db_rows = cur.fetchone()[0]</span>
+</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="s">    conn.commit()</span>
+</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="s">    cur.close()</span>
+</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a><span class="s">    conn.close()</span>
+</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>
+</span><span id="__span-1-82"><a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a><span class="s">    response_data = {</span>
+</span><span id="__span-1-83"><a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a><span class="s">        "version": APP_VERSION,</span>
+</span><span id="__span-1-84"><a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a><span class="s">        "served_by_replica": node_id,</span>
+</span><span id="__span-1-85"><a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="s">        "redis_hits": total_hits,</span>
+</span><span id="__span-1-86"><a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a><span class="s">        "postgres_saved_rows": db_rows,</span>
+</span><span id="__span-1-87"><a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a><span class="s">        "feature_vip_enabled": FEATURE_VIP_MODE</span>
+</span><span id="__span-1-88"><a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a><span class="s">    }</span>
+</span><span id="__span-1-89"><a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a><span class="s">    # Логика, скрытая за Feature Flag (включается без пересборки кода!)</span>
+</span><span id="__span-1-90"><a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a><span class="s">    if FEATURE_VIP_MODE:</span>
+</span><span id="__span-1-91"><a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a><span class="s">        response_data["vip_bonus_message"] = "Welcome to VIP Canary Feature!"</span>
+</span><span id="__span-1-92"><a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>
+</span><span id="__span-1-93"><a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a><span class="s">    return jsonify(response_data), 200</span>
+</span><span id="__span-1-94"><a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<p>Обновим <code>compose.yaml</code>, чтобы сервис <code>backend</code> использовал динамический тег образа <code>compose-cluster-backend:${APP_VERSION:-1.0.0}</code> и передавал <code>APP_VERSION</code>, <code>FEATURE_VIP_MODE</code> и <code>SIMULATE_CRASH</code> из окружения:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; compose.yaml</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="s">x-service-defaults: &amp;service-defaults</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">  restart: unless-stopped</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s">  security_opt:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s">    - no-new-privileges:true</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s">services:</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s">  db:</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s">    &lt;&lt;: *service-defaults</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s">    image: postgres:16-alpine</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s">    environment:</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s">      POSTGRES_USER: ${POSTGRES_USER:-app_admin}</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s">      POSTGRES_DB: ${POSTGRES_DB:-cluster_db}</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s">      POSTGRES_PASSWORD_FILE: /run/secrets/db_password</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="s">    secrets:</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="s">      - db_password</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="s">    volumes:</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="s">      - pg_cluster_data:/var/lib/postgresql/data</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s">    networks:</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s">      - backend-net</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s">    healthcheck:</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s">      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app_admin} -d ${POSTGRES_DB:-cluster_db}"]</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s">      interval: 5s</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="s">      timeout: 3s</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s">      retries: 5</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="s">  redis:</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="s">    &lt;&lt;: *service-defaults</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="s">    image: redis:7-alpine</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="s">    command: ["redis-server", "--appendonly", "yes"]</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="s">    volumes:</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="s">      - redis_cluster_data:/data</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="s">    networks:</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="s">      - backend-net</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="s">    healthcheck:</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="s">      test: ["CMD", "redis-cli", "ping"]</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="s">      interval: 5s</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="s">      timeout: 3s</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="s">      retries: 5</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="s">  backend:</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="s">    &lt;&lt;: *service-defaults</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="s">    image: compose-cluster-backend:${APP_VERSION:-1.0.0}</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="s">    build:</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="s">      context: ./app</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="s">    environment:</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="s">      DB_HOST: db</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="s">      POSTGRES_USER: ${POSTGRES_USER:-app_admin}</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="s">      POSTGRES_DB: ${POSTGRES_DB:-cluster_db}</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="s">      REDIS_HOST: ${REDIS_HOST:-redis}</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="s">      APP_VERSION: ${APP_VERSION:-1.0.0}</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="s">      FEATURE_VIP_MODE: ${FEATURE_VIP_MODE:-false}</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="s">      SIMULATE_CRASH: ${SIMULATE_CRASH:-false}</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="s">    secrets:</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="s">      - db_password</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="s">    expose:</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="s">      - "8000"</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="s">    networks:</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="s">      - frontend-net</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="s">      - backend-net</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="s">    depends_on:</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="s">      db:</span>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="s">        condition: service_healthy</span>
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="s">      redis:</span>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="s">        condition: service_healthy</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a>
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="s">  nginx:</span>
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="s">    &lt;&lt;: *service-defaults</span>
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="s">    image: nginx:1.27-alpine</span>
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="s">    ports:</span>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="s">      - "8080:80"</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="s">    volumes:</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="s">      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="s">    networks:</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="s">      - frontend-net</span>
+</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="s">    depends_on:</span>
+</span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="s">      - backend</span>
+</span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a>
+</span><span id="__span-2-79"><a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a><span class="s">networks:</span>
+</span><span id="__span-2-80"><a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="s">  frontend-net:</span>
+</span><span id="__span-2-81"><a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="s">    driver: bridge</span>
+</span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a><span class="s">  backend-net:</span>
+</span><span id="__span-2-83"><a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="s">    driver: bridge</span>
+</span><span id="__span-2-84"><a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a>
+</span><span id="__span-2-85"><a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a><span class="s">volumes:</span>
+</span><span id="__span-2-86"><a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a><span class="s">  pg_cluster_data:</span>
+</span><span id="__span-2-87"><a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a><span class="s">  redis_cluster_data:</span>
+</span><span id="__span-2-88"><a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a>
+</span><span id="__span-2-89"><a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a><span class="s">secrets:</span>
+</span><span id="__span-2-90"><a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a><span class="s">  db_password:</span>
+</span><span id="__span-2-91"><a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a><span class="s">    file: ./secrets/db_password.txt</span>
+</span><span id="__span-2-92"><a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<hr />
+<h3 id="2-expand-pattern">Этап 2. Создание системы обратно-совместимых миграций БД (Expand Pattern)</h3>
+<p>Создай папку <code>migrations/</code> с идемпотентным SQL-скриптом миграции <code>V1__add_app_version_column.sql</code>, который безопасно расширяет таблицу <code>visits</code> и создает таблицу аудита релизов <code>release_history</code> (для подсчета DORA-метрик!):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/compose-cluster/migrations<span class="w"> </span>~/compose-cluster/backups
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; migrations/V1__expand_schema_and_dora_audit.sql</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">BEGIN;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s">-- 1. Создаем основную таблицу, если она еще не создана</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">CREATE TABLE IF NOT EXISTS visits (</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">    id SERIAL PRIMARY KEY,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">    node_id VARCHAR(64),</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s">    client_ip VARCHAR(64),</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">    visited_at TIMESTAMPTZ DEFAULT NOW()</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s">);</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s">-- 2. Паттерн Expand: безопасно добавляем новую колонку без блокировки старого кода</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s">ALTER TABLE visits ADD COLUMN IF NOT EXISTS app_version VARCHAR(32) DEFAULT '1.0.0';</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="s">-- 3. Таблица для трекинга релизов и расчета DORA-метрик (Change Failure Rate)</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="s">CREATE TABLE IF NOT EXISTS release_history (</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">    id SERIAL PRIMARY KEY,</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="s">    version VARCHAR(32) NOT NULL,</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="s">    status VARCHAR(32) NOT NULL CHECK (status IN ('DEPLOYED', 'ROLLED_BACK')),</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="s">    deployed_at TIMESTAMPTZ DEFAULT NOW()</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="s">);</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="s">COMMIT;</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<hr />
+<h3 id="3-smoke-rollback">Этап 3. Создание боевого скрипта деплоя с авто-бэкапом, миграциями, Smoke-тестом и Rollback</h3>
+<p>Создай скрипт <code>deploy.sh</code>, который выполняет всю магию безопасного CD:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; deploy.sh</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">#!/usr/bin/env bash</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">set -euo pipefail</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s">NEW_VERSION="${1:?Укажите версию для деплоя (например: ./deploy.sh 1.1.0)}"</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s">VIP_FLAG="${2:-false}"</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">CRASH_SIM="${3:-false}"</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s">STATE_FILE=".last_stable_version"</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s">log() {</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">    echo "[$(date +'%H:%M:%S')] [CD-PIPELINE] $*"</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">}</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s"># 1. Определяем текущую стабильную версию для возможного отката (Rollback)</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s">if [[ -f "$STATE_FILE" ]]; then</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="s">    PREV_VERSION="$(cat "$STATE_FILE")"</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="s">else</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="s">    PREV_VERSION="1.0.0"</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="s">fi</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="s">log "Начинаем релиз версии v${NEW_VERSION} (Предыдущая стабильная: v${PREV_VERSION})"</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="s"># 2. Убеждаемся, что БД и Redis запущены</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="s">docker compose up -d db redis</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="s">sleep 3</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="s"># 3. Pre-Deploy Backup: снимаем бэкап БД перед накатом миграций</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="s">BACKUP_FILE="backups/pre_deploy_v${NEW_VERSION}_$(date +%s).dump"</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="s">log "Снимаем страховочный бэкап PostgreSQL -&gt; ${BACKUP_FILE}"</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="s">DB_CONTAINER="$(docker compose ps -q db)"</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="s">docker exec "$DB_CONTAINER" pg_dump -U app_admin -d cluster_db -Fc -f /tmp/backup.dump</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="s">docker cp "${DB_CONTAINER}:/tmp/backup.dump" "$BACKUP_FILE"</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="s"># 4. Накатываем обратно-совместимые SQL-миграции</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="s">log "Применяем SQL-миграции из папки migrations/..."</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="s">for sql_file in migrations/*.sql; do</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="s">    log " -&gt; Выполняется миграция: ${sql_file}"</span>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="s">    docker exec -i "$DB_CONTAINER" psql -v ON_ERROR_STOP=1 -U app_admin -d cluster_db &lt; "$sql_file"</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="s">done</span>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="s"># 5. Выкатываем новую версию контейнеров</span>
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="s">log "Запускаем контейнеры backend версии v${NEW_VERSION} (FEATURE_VIP_MODE=${VIP_FLAG})..."</span>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="s">export APP_VERSION="$NEW_VERSION"</span>
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="s">export FEATURE_VIP_MODE="$VIP_FLAG"</span>
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="s">export SIMULATE_CRASH="$CRASH_SIM"</span>
+</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>
+</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="s">docker compose up -d --scale backend=2 --no-deps backend nginx</span>
+</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="s"># 6. Post-Deploy Smoke Tests (проверяем здоровье выкаченной версии)</span>
+</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="s">log "Ожидание готовности сервиса и запуск Smoke-тестов..."</span>
+</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="s">sleep 5</span>
+</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>
+</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="s">HTTP_STATUS="$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/health || echo "000")"</span>
+</span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a>
+</span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="s">if [[ "$HTTP_STATUS" == "200" ]]; then</span>
+</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="s">    log "✅ SMOKE TEST PASSED (HTTP 200)! Релиз v${NEW_VERSION} успешно введен в эксплуатацию!"</span>
+</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="s">    echo "$NEW_VERSION" &gt; "$STATE_FILE"</span>
+</span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="s">    docker exec -i "$DB_CONTAINER" psql -U app_admin -d cluster_db -c \</span>
+</span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="s">      "INSERT INTO release_history (version, status) VALUES ('${NEW_VERSION}', 'DEPLOYED');" &gt; /dev/null</span>
+</span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="s">else</span>
+</span><span id="__span-4-61"><a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="s">    log "❌ CRITICAL ALERT: Smoke Test провалился (HTTP ${HTTP_STATUS}) на версии v${NEW_VERSION}!"</span>
+</span><span id="__span-4-62"><a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="s">    log "⏪ ЗАПУСК АВТОМАТИЧЕСКОГО ОТКАТА (ROLLBACK) НА СТАБИЛЬНУЮ ВЕРСИЮ v${PREV_VERSION}..."</span>
+</span><span id="__span-4-63"><a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a>
+</span><span id="__span-4-64"><a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="s">    export APP_VERSION="$PREV_VERSION"</span>
+</span><span id="__span-4-65"><a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a><span class="s">    export SIMULATE_CRASH="false"</span>
+</span><span id="__span-4-66"><a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a><span class="s">    docker compose up -d --scale backend=2 --no-deps backend nginx</span>
+</span><span id="__span-4-67"><a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a><span class="s">    sleep 4</span>
+</span><span id="__span-4-68"><a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a>
+</span><span id="__span-4-69"><a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a><span class="s">    ROLLBACK_STATUS="$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/health || echo "000")"</span>
+</span><span id="__span-4-70"><a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a><span class="s">    if [[ "$ROLLBACK_STATUS" == "200" ]]; then</span>
+</span><span id="__span-4-71"><a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a><span class="s">        log "✅ ROLLBACK УСПЕШЕН! Кластер восстановлен на версии v${PREV_VERSION} (HTTP 200)."</span>
+</span><span id="__span-4-72"><a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="s">        docker exec -i "$DB_CONTAINER" psql -U app_admin -d cluster_db -c \</span>
+</span><span id="__span-4-73"><a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a><span class="s">          "INSERT INTO release_history (version, status) VALUES ('${NEW_VERSION}', 'ROLLED_BACK');" &gt; /dev/null</span>
+</span><span id="__span-4-74"><a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a><span class="s">        exit 1</span>
+</span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="s">    else</span>
+</span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a><span class="s">        log "🚨 FATAL: Не удалось восстановиться автоматически!"</span>
+</span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="s">        exit 2</span>
+</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="s">    fi</span>
+</span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a><span class="s">fi</span>
+</span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="s">EOF</span>
+</span><span id="__span-4-81"><a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a>
+</span><span id="__span-4-82"><a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a>chmod<span class="w"> </span>+x<span class="w"> </span>deploy.sh
+</span></code></pre></div>
+<hr />
+<h3 id="4-cd-">Этап 4. Сборка артефактов и испытание CD-пайплайна в действии!</h3>
+<p>Давай соберем три версии нашего образа по стандарту SemVer (<code>1.0.0</code>, <code>1.1.0</code> и «сломанную» <code>1.2.0</code>) и проведем боевые учения!</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Собираем неизменяемые артефакты (Build Once)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>compose-cluster-backend:1.0.0<span class="w"> </span>./app
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>docker<span class="w"> </span>tag<span class="w"> </span>compose-cluster-backend:1.0.0<span class="w"> </span>compose-cluster-backend:1.1.0
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>docker<span class="w"> </span>tag<span class="w"> </span>compose-cluster-backend:1.0.0<span class="w"> </span>compose-cluster-backend:1.2.0
+</span></code></pre></div>
+<h4 id="1-v100-">Сценарий 1. Выкатка базовой версии <code>v1.0.0</code> (Фича-флаг выключен)</h4>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./deploy.sh<span class="w"> </span><span class="m">1</span>.0.0<span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="nb">false</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8080/api/visit<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+</span></code></pre></div>
+<em>Результат:</em> Сервис отвечает версией <code>"1.0.0"</code>, <code>"feature_vip_enabled": false</code>.</p>
+<h4 id="2-v110-feature-flag-vip_mode-true">Сценарий 2. Выкатка минорного релиза <code>v1.1.0</code> с включением Feature Flag (<code>VIP_MODE = true</code>)</h4>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>./deploy.sh<span class="w"> </span><span class="m">1</span>.1.0<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="nb">false</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8080/api/visit<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+</span></code></pre></div>
+<em>Результат:</em> Сервис без единого разрыва соединения обновился до <code>"1.1.0"</code>, и в ответе появилось новое поле <code>"vip_bonus_message": "Welcome to VIP Canary Feature!"</code>.</p>
+<h4 id="3-v120-auto-rollback">Сценарий 3. Выкатка «сломанного» релиза <code>v1.2.0</code> и срабатывание Auto-Rollback!</h4>
+<p>Передадим третий аргумент <code>true</code> (<code>SIMULATE_CRASH=true</code>), симулирующий фатальный баг в продакшене:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>./deploy.sh<span class="w"> </span><span class="m">1</span>.2.0<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div>
+Посмотри на вывод в терминале:
+1. Скрипт выкатил <code>v1.2.0</code>.
+2. Smoke-тест обнаружил код ответа <code>HTTP 500</code> вместо <code>200</code>.
+3. Автоматика мгновенно включила <strong>АВТОМАТИЧЕСКИЙ ОТКАТ (ROLLBACK)</strong> обратно на стабильную версию <code>v1.1.0</code>!</p>
+<p>Проверь, какая версия сейчас обслуживает пользователей:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8080/api/visit<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+</span></code></pre></div>
+<em>Ожидаемый результат:</em> В продакшене снова стабильно работает версия <code>"1.1.0"</code>!</p>
+<hr />
+<h3 id="5-gitlab-ciyml-cd-environments">Этап 5. Как это выглядит в <code>.gitlab-ci.yml</code> (CD-стадии и environments)</h3>
+<p>Добавим в конец нашего <code>.gitlab-ci.yml</code> из Модуля 6 стадии доставки <code>deploy_staging</code>, <code>deploy_prod</code> и ручную кнопку отката <code>rollback_prod</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Дополнение к .gitlab-ci.yml для реализации Continuous Delivery:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">deploy:staging</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy_staging</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://staging.example.com</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_BRANCH == "main"</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./deploy.sh "$CI_COMMIT_SHORT_SHA" "true" "false"</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nt">deploy:production</span><span class="p">:</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy_prod</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">  </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"deploy:staging"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="nt">on_stop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rollback:production</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="c1"># Continuous Delivery: выкатка в прод по нажатию кнопки в UI (when: manual)</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">    </span><span class="c1">#Только для релизных тегов SemVer (например, v1.1.0)</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./deploy.sh "$CI_COMMIT_TAG" "false" "false"</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="nt">rollback:production</span><span class="p">:</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy_prod</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stop</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/</span>
+</span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span>
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PREV_VER=$(cat .last_stable_version)</span>
+</span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./deploy.sh "$PREV_VER" "false" "false"</span>
+</span></code></pre></div>
+<hr />
+<h3 id="-7-dora-sql">✅ Чек-лист самопроверки по Модулю 7 (Расчет DORA-метрик в SQL!)</h3>
+<p>Вспомним навыки SQL из Модуля 3 и посчитаем реальные <strong>DORA-метрики</strong> (включая <strong>Change Failure Rate</strong>) по нашей таблице <code>release_history</code>, куда скрипт <code>deploy.sh</code> автоматически записывал результаты всех выкаток:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>docker<span class="w"> </span>compose<span class="w"> </span>ps<span class="w"> </span>-q<span class="w"> </span>db<span class="k">)</span><span class="s2">"</span><span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>app_admin<span class="w"> </span>-d<span class="w"> </span>cluster_db<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s">\echo '=== История всех релизов CD-конвейера ==='</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="s">SELECT id, version, status, TO_CHAR(deployed_at, 'YYYY-MM-DD HH24:MI:SS') AS release_time</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="s">FROM release_history</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="s">ORDER BY id;</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="s">\echo '=== Расчет DORA-метрики Change Failure Rate (CFR) ==='</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="s">SELECT </span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="s">    COUNT(*) AS total_releases,</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="s">    SUM(CASE WHEN status = 'DEPLOYED' THEN 1 ELSE 0 END) AS successful_releases,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="s">    SUM(CASE WHEN status = 'ROLLED_BACK' THEN 1 ELSE 0 END) AS rollbacks,</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="s">    ROUND(</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="s">        SUM(CASE WHEN status = 'ROLLED_BACK' THEN 1.0 ELSE 0.0 END) / COUNT(*) * 100, </span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="s">        1</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="s">    ) || '%' AS change_failure_rate</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="s">FROM release_history;</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<p><em>Ожидаемый результат:</em> В отчете отобразятся 3 релиза (<code>1.0.0</code> — <code>DEPLOYED</code>, <code>1.1.0</code> — <code>DEPLOYED</code>, <code>1.2.0</code> — <code>ROLLED_BACK</code>) и автоматически рассчитанный показатель <code>change_failure_rate = 33.3%</code>, а также свежие дампы БД в папке <code>ls -lh backups/</code>!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
