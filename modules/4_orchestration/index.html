@@ -434,19 +434,19 @@
   <a href="#1-12-factor-app" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 1. Принципы микросервисной архитектуры и 12-Factor App
+        Блок 1. Принципы микросервисной архитектуры и методология 12-Factor App
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 1. Принципы микросервисной архитектуры и 12-Factor App">
+    <nav class="md-nav" aria-label="Блок 1. Принципы микросервисной архитектуры и методология 12-Factor App">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. Монолит против Микросервисов
+        1.1. Монолит против Микросервисов: архитектурный компромисс
       
     </span>
   </a>
@@ -482,10 +482,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-yaml-anchors-extensions" class="md-nav__link">
+  <a href="#22-dry-yaml-anchors-extensions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Переиспользование конфигураций (YAML Anchors &amp; Extensions)
+        2.2. Переиспользование конфигураций (Принцип DRY: YAML Anchors &amp; Extensions)
       
     </span>
   </a>
@@ -496,19 +496,19 @@
   <a href="#23-depends_on-healthcheck" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3. Управление секретами и порядком запуска контейнеров (depends_on + healthcheck)
+        2.3. Управление порядком запуска (depends_on + healthcheck) и секретами
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.3. Управление секретами и порядком запуска контейнеров (depends_on + healthcheck)">
+    <nav class="md-nav" aria-label="2.3. Управление порядком запуска (depends_on + healthcheck) и секретами">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#depends_on" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ловушка простого depends_on
+        Классическая ловушка простого depends_on
       
     </span>
   </a>
@@ -516,10 +516,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#condition-service_healthy" class="md-nav__link">
+  <a href="#healthcheck-condition-service_healthy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Правильное решение: condition: service_healthy
+        Промышленное решение: связка healthcheck + condition: service_healthy
       
     </span>
   </a>
@@ -530,7 +530,7 @@
   <a href="#secrets-docker-compose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Безопасная работа с secrets в Docker Compose
+        Безопасная доставка паролей через механизм secrets в Docker Compose
       
     </span>
   </a>
@@ -563,7 +563,7 @@
   <a href="#31-l4-l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Разница между L4 и L7 балансировкой
+        3.1. Архитектурная разница между L4 и L7 балансировкой
       
     </span>
   </a>
@@ -574,7 +574,7 @@
   <a href="#32-upstream-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Алгоритмы балансировки в блоке upstream (Nginx)
+        3.2. Алгоритмы распределения нагрузки в блоке upstream (Nginx)
       
     </span>
   </a>
@@ -582,10 +582,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-scale-docker-compose-dns-nginx" class="md-nav__link">
+  <a href="#33-scale-dns-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3. Особенность масштабирования (--scale) в Docker Compose и динамический DNS в Nginx
+        3.3. Механика горизонтального масштабирования (--scale) и динамический DNS в Nginx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Механика горизонтального масштабирования (--scale) и динамический DNS в Nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reverse-proxy-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Обязательные заголовки обратного проксирования (Reverse Proxy Headers)
       
     </span>
   </a>
@@ -596,24 +608,29 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#4-nginx" class="md-nav__link">
+  <a href="#4-6-l7l4-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 4: Развёртывание многоконтейнерного приложения с балансировкой Nginx
+        🛠 Практический проект Модуля 4: Развёртывание отказоустойчивого кластера из 6 контейнеров с L7/L4-балансировкой Nginx
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 4: Развёртывание многоконтейнерного приложения с балансировкой Nginx">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 4: Развёртывание отказоустойчивого кластера из 6 контейнеров с L7/L4-балансировкой Nginx">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Создание структуры проекта и файла секретов
+        Этап 1. Создание структуры каталогов и защищенного файла секрета
       
     </span>
   </a>
@@ -624,7 +641,7 @@
   <a href="#2-docker-secrets-postgresql-redis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 2. Код микросервиса (с поддержкой Docker Secrets и PostgreSQL + Redis)
+        Этап 2. Разработка микросервиса (с поддержкой Docker Secrets и связки PostgreSQL + Redis)
       
     </span>
   </a>
@@ -635,7 +652,7 @@
   <a href="#3-l7-l4-nginx-nginxnginxconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Конфигурация L7 и L4 балансировки в Nginx (nginx/nginx.conf)
+        Этап 3. Настройка L7 и L4 балансировки в конфигурации Nginx (nginx/nginx.conf)
       
     </span>
   </a>
@@ -646,7 +663,7 @@
   <a href="#4-composeyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 4. Сборка эталонного compose.yaml
+        Этап 4. Сборка декларативного манифеста compose.yaml
       
     </span>
   </a>
@@ -668,7 +685,7 @@
   <a href="#-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ Чек-лист самопроверки по Модулю 4
+        ✅ Чек-лист самопроверки и боевые испытания по Модулю 4
       
     </span>
   </a>
@@ -907,19 +924,19 @@
   <a href="#1-12-factor-app" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 1. Принципы микросервисной архитектуры и 12-Factor App
+        Блок 1. Принципы микросервисной архитектуры и методология 12-Factor App
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 1. Принципы микросервисной архитектуры и 12-Factor App">
+    <nav class="md-nav" aria-label="Блок 1. Принципы микросервисной архитектуры и методология 12-Factor App">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. Монолит против Микросервисов
+        1.1. Монолит против Микросервисов: архитектурный компромисс
       
     </span>
   </a>
@@ -955,10 +972,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-yaml-anchors-extensions" class="md-nav__link">
+  <a href="#22-dry-yaml-anchors-extensions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Переиспользование конфигураций (YAML Anchors &amp; Extensions)
+        2.2. Переиспользование конфигураций (Принцип DRY: YAML Anchors &amp; Extensions)
       
     </span>
   </a>
@@ -969,19 +986,19 @@
   <a href="#23-depends_on-healthcheck" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3. Управление секретами и порядком запуска контейнеров (depends_on + healthcheck)
+        2.3. Управление порядком запуска (depends_on + healthcheck) и секретами
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.3. Управление секретами и порядком запуска контейнеров (depends_on + healthcheck)">
+    <nav class="md-nav" aria-label="2.3. Управление порядком запуска (depends_on + healthcheck) и секретами">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#depends_on" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ловушка простого depends_on
+        Классическая ловушка простого depends_on
       
     </span>
   </a>
@@ -989,10 +1006,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#condition-service_healthy" class="md-nav__link">
+  <a href="#healthcheck-condition-service_healthy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Правильное решение: condition: service_healthy
+        Промышленное решение: связка healthcheck + condition: service_healthy
       
     </span>
   </a>
@@ -1003,7 +1020,7 @@
   <a href="#secrets-docker-compose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Безопасная работа с secrets в Docker Compose
+        Безопасная доставка паролей через механизм secrets в Docker Compose
       
     </span>
   </a>
@@ -1036,7 +1053,7 @@
   <a href="#31-l4-l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Разница между L4 и L7 балансировкой
+        3.1. Архитектурная разница между L4 и L7 балансировкой
       
     </span>
   </a>
@@ -1047,7 +1064,7 @@
   <a href="#32-upstream-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Алгоритмы балансировки в блоке upstream (Nginx)
+        3.2. Алгоритмы распределения нагрузки в блоке upstream (Nginx)
       
     </span>
   </a>
@@ -1055,10 +1072,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-scale-docker-compose-dns-nginx" class="md-nav__link">
+  <a href="#33-scale-dns-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3. Особенность масштабирования (--scale) в Docker Compose и динамический DNS в Nginx
+        3.3. Механика горизонтального масштабирования (--scale) и динамический DNS в Nginx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Механика горизонтального масштабирования (--scale) и динамический DNS в Nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reverse-proxy-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Обязательные заголовки обратного проксирования (Reverse Proxy Headers)
       
     </span>
   </a>
@@ -1069,24 +1098,29 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#4-nginx" class="md-nav__link">
+  <a href="#4-6-l7l4-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 4: Развёртывание многоконтейнерного приложения с балансировкой Nginx
+        🛠 Практический проект Модуля 4: Развёртывание отказоустойчивого кластера из 6 контейнеров с L7/L4-балансировкой Nginx
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 4: Развёртывание многоконтейнерного приложения с балансировкой Nginx">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 4: Развёртывание отказоустойчивого кластера из 6 контейнеров с L7/L4-балансировкой Nginx">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Создание структуры проекта и файла секретов
+        Этап 1. Создание структуры каталогов и защищенного файла секрета
       
     </span>
   </a>
@@ -1097,7 +1131,7 @@
   <a href="#2-docker-secrets-postgresql-redis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 2. Код микросервиса (с поддержкой Docker Secrets и PostgreSQL + Redis)
+        Этап 2. Разработка микросервиса (с поддержкой Docker Secrets и связки PostgreSQL + Redis)
       
     </span>
   </a>
@@ -1108,7 +1142,7 @@
   <a href="#3-l7-l4-nginx-nginxnginxconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Конфигурация L7 и L4 балансировки в Nginx (nginx/nginx.conf)
+        Этап 3. Настройка L7 и L4 балансировки в конфигурации Nginx (nginx/nginx.conf)
       
     </span>
   </a>
@@ -1119,7 +1153,7 @@
   <a href="#4-composeyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 4. Сборка эталонного compose.yaml
+        Этап 4. Сборка декларативного манифеста compose.yaml
       
     </span>
   </a>
@@ -1141,7 +1175,7 @@
   <a href="#-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ Чек-лист самопроверки по Модулю 4
+        ✅ Чек-лист самопроверки и боевые испытания по Модулю 4
       
     </span>
   </a>
@@ -1170,110 +1204,128 @@
 
 
 
-<h1 id="docker-compose-nginx">Оркестрация многоконтейнерных приложений Docker Compose &amp; Nginx</h1>
-<p>Когда проект вырастает из одного контейнера и превращается в систему (Фронтенд + Бэкенд API + База данных PostgreSQL + Кэш Redis + Веб-сервер Nginx), запускать каждый контейнер вручную через длинные простыни <code>docker run</code> становится невозможно. </p>
-<p><strong>Docker Compose</strong> решает эту задачу с помощью декларативного подхода: мы описываем всю архитектуру, сети, тома и зависимости в одном файле <code>compose.yaml</code> и поднимаем весь стек одной командой <code>docker compose up -d</code>.</p>
+<h1 id="docker-compose-nginx">Оркестрация многоконтейнерных приложений (Docker Compose &amp; Nginx)</h1>
+<p>Когда проект вырастает из одного учебного скрипта и превращается в полноценную распределенную систему — где параллельно работают фронтенд, несколько реплик бэкенд-API, реляционная база данных PostgreSQL, in-memory кэш Redis и входной веб-сервер Nginx, — управлять этим парком вручную через длинные простыни команд <code>docker run</code> в терминале становится невозможно. Вы неизбежно начнете путаться в порядке запуска сервисов, флагах сетей, проброшенных портах и переменных окружения.</p>
+<p>Инструмент <strong>Docker Compose</strong> решает эту проблему за счет перехода от императивных команд к <strong>декларативному описанию архитектуры</strong>. Мы описываем все компоненты системы, их сетевую изоляцию, дисковые тома, секреты и зависимости старта в едином текстовом манифесте <code>compose.yaml</code>, после чего весь многоконтейнерный кластер поднимается, масштабируется и останавливается одной атомарной командой <code>docker compose up -d</code>.</p>
 <hr />
-<h2 id="1-12-factor-app">Блок 1. Принципы микросервисной архитектуры и 12-Factor App</h2>
-<h3 id="11">1.1. Монолит против Микросервисов</h3>
+<h2 id="1-12-factor-app">Блок 1. Принципы микросервисной архитектуры и методология 12-Factor App</h2>
+<h3 id="11">1.1. Монолит против Микросервисов: архитектурный компромисс</h3>
+<p>Прежде чем связывать контейнеры в единую сеть, необходимо понимать разницу между двумя базовыми подходами к построению приложений:</p>
 <ul>
-<li><strong>Монолит (Monolith):</strong> Вся бизнес-логика (авторизация, каталог, оплата, уведомления) живет в одном большом процессе и использует одну общую базу данных. Если модуль генерации отчетов вызовет утечку памяти — упадет весь сайт целиком.</li>
-<li><strong>Микросервисы (Microservices):</strong> Приложение разбито на независимые, слабосвязанные (loosely coupled) сервисы, общающиеся по сети (HTTP/REST, gRPC или через очереди сообщений RabbitMQ/Kafka).</li>
+<li><strong>Монолитная архитектура (Monolith):</strong> Вся бизнес-логика продукта — авторизация пользователей, каталог товаров, проведение платежей, генерация тяжелых PDF-отчетов и отправка уведомлений — скомпилирована в одну большую программу, работающую как единый процесс поверх одной общей базы данных. Монолит прост в разработке на старте, но у него есть фатальная уязвимость в эксплуатации: если программист допустит утечку оперативной памяти в второстепенном модуле генерации отчетов, ядро Linux (OOM Killer) убьет весь процесс целиком — и у бизнеса одновременно ляжет и каталог, и прием платежей.</li>
+<li><strong>Микросервисная архитектура (Microservices):</strong> Система разделена на небольшие, независимые и слабосвязанные (loosely coupled) сервисы, каждый из которых отвечает строго за свою бизнес-задачу и общается с соседями по сети через легковесные протоколы (HTTP/REST, бинарный gRPC или асинхронные брокеры сообщений вроде RabbitMQ и Kafka). Падение одного некритичного микросервиса не обрушивает систему, а самый нагруженный узел можно отмасштабировать в 10 копий за секунду независимо от остальных.</li>
 </ul>
-<p><strong>Ключевые правила проектирования микросервисов для DevOps:</strong>
-1. <strong>Stateless (Отсутствие состояния в контейнерах приложений):</strong> Контейнер с кодом (Python/Go/Node.js) не должен хранить сессии пользователей или загруженные картинки на своем локальном диске. Любой инстанс бэкенда может быть убит или клонирован в 10 копиях за секунду. Всё состояние выносится во внешние <strong>Stateful</strong>-сервисы: PostgreSQL (данные), Redis (сессии и кэш), S3 (файлы).
-2. <strong>Конфигурация через окружение (III фактор из 12-Factor App):</strong> Никаких зашитых в код адресов БД или паролей. Окружение (<code>dev</code>, <code>stage</code>, <code>prod</code>) настраивается исключительно через переменные окружения (<code>ENV</code>) и примонтированные секреты.
-3. <strong>Изоляция сетей (Least Privilege Networking):</strong> Внешний мир видит только входные ворота — <strong>Reverse Proxy (Nginx)</strong>. Сам бэкенд-сервис находится во внутренней сети, а база данных — в глубокой внутренней сети, куда нет доступа даже у Nginx.</p>
+<p>Чтобы микросервисная архитектура была отказоустойчивой и легко масштабировалась в контейнерах, она проектируется по канонам индустриального манифеста <strong>The Twelve-Factor App (12 факторов современного приложения)</strong>:</p>
+<ol>
+<li><strong>Строгое разделение Stateless и Stateful (Фактор VI — Процессы):</strong>
+   Контейнеры с кодом приложения (Python, Go, Node.js, Java) обязаны быть <strong>абсолютно без состояния (Stateless)</strong>. Им категорически запрещено сохранять пользовательские сессии в свою локальную память или складывать загруженные клиентами аватарки на свой внутренний диск. Почему? Потому что через минуту оркестратор может уничтожить этот контейнер или поднять рядом еще 5 таких же копий (реплик). Любое состояние, которое должно пережить перезапуск, мгновенно выносится во внешние специализированные <strong>Stateful-сервисы</strong>: транзакционные таблицы — в PostgreSQL, пользовательские сессии и быстрые счетчики — в Redis, а файлы и картинки — в объектное хранилище S3.</li>
+<li><strong>Конфигурация исключительно через среду выполнения (Фактор III — Конфигурация):</strong>
+   Внутри кода и Docker-образа не должно быть ни одного зашитого адреса базы данных, домена или пароля. Один и тот же собранный образ должен без пересборки работать на ноутбуке разработчика (<code>dev</code>), на тестовом стенде (<code>staging</code>) и в бою (<code>production</code>), получая все настройки снаружи через переменные окружения (<code>ENV</code>) и примонтированные секреты.</li>
+<li><strong>Эшелонированная изоляция сетей (Least Privilege Networking):</strong>
+   В правильной архитектуре контейнеры никогда не сваливаются в одну общую сеть. Внешний интернет видит только единые входные ворота кластера — <strong>обратный прокси и балансировщик нагрузки (Nginx Reverse Proxy)</strong>. Сам Nginx общается с контейнерами бэкенда через изолированную сеть переднего края (<code>frontend-net</code>), а базы данных PostgreSQL и Redis спрятаны в глубокой внутренней сети (<code>backend-net</code> или <code>db-net</code>), куда нет прямого сетевого доступа даже у самого контейнера Nginx!</li>
+</ol>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Интернет :80/:443] 
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        │
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   (frontend-net)
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        ▼
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   [ Nginx Proxy ]
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        │
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   (backend-net)
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   (frontend-net)
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   ┌────┴────┐
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   ▼         ▼
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>[App-1]   [App-2]  (Горизонтальное масштабирование)
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>[App-1]   [App-2]  (Горизонтальное масштабирование Stateless-бэкендов)
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>   └────┬────┘
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    (db-net)
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>   (backend-net)
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>   ┌────┴────┐
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   ▼         ▼
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>[Postgres] [Redis] (Изолированный слой данных)
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>[Postgres] [Redis] (Изолированный Stateful-слой хранения данных)
 </span></code></pre></div>
 <hr />
 <h2 id="2-composeyaml">Блок 2. Анатомия современного <code>compose.yaml</code></h2>
 <blockquote>
-<p><strong>Важное примечание по версиям:</strong> Старая утилита на Python <code>docker-compose</code> (через дефис) и строка <code>version: "3.8"</code> в начале файла официально <strong>устарели (deprecated)</strong>. Современный стандарт — встроенный плагин <strong><code>docker compose</code></strong> (через пробел) и спецификация <strong>Compose Specification</strong> без указания <code>version</code>.</p>
+<p><strong>Важное примечание по эволюции стандарта Compose:</strong>
+В старых статьях и курсах вы часто встретите вызов внешней утилиты на Python <code>docker-compose</code> (пишется через дефис) и обязательную строчку <code>version: "3.8"</code> в самом начале файла <code>docker-compose.yml</code>. Оба этих элемента <strong>официально признаны устаревшими (deprecated)</strong>. Современный стандарт индустрии — встроенный прямо в Docker CLI быстрый плагин на языке Go <strong><code>docker compose</code></strong> (пишется через пробел), работающий по единой спецификации <strong>Compose Specification</strong> в файле <code>compose.yaml</code> <strong>без указания строки <code>version:</code></strong> (современный Compose сам поддерживает все актуальные возможности схемы).</p>
 </blockquote>
 <h3 id="21">2.1. Сети, порты, переменные окружения и тома данных</h3>
+<p>При описании каждого сервиса в <code>compose.yaml</code> мы управляем его сетевым периметром и хранилищем с помощью четырех ключевых блоков:</p>
 <ul>
-<li><strong><code>ports</code> vs <code>expose</code>:</strong></li>
-<li><code>ports: ["8080:80"]</code> — пробрасывает порт на хостовую машину (доступен снаружи сервера).</li>
-<li><code>expose: ["8000"]</code> — порт открыт <strong>только для других контейнеров внутри общей Docker-сети</strong>, снаружи хоста к нему подключиться нельзя (идеально для бэкендов и БД).</li>
-<li><strong><code>networks</code>:</strong> Позволяет разделить сервисы на изолированные сегменты (<code>frontend-net</code>, <code>backend-net</code>). Флаг <code>internal: true</code> полностью запрещает сети выход во внешний интернет.</li>
-<li><strong><code>volumes</code>:</strong> Управляет постоянными данными (<code>pg_data:/var/lib/postgresql/data</code>) и пробросом конфигураций (<code>./nginx.conf:/etc/nginx/nginx.conf:ro</code>).</li>
+<li><strong>Критическая разница между <code>ports</code> и <code>expose</code>:</strong></li>
+<li><code>ports: ["8080:80"]</code> — пробивает периметр хоста: открывает порт <code>8080</code> на сетевой карте самого сервера и перенаправляет весь внешний трафик в порт <code>80</code> контейнера. Используется <strong>только для входного балансировщика (Nginx)</strong>.</li>
+<li><code>expose: ["8000"]</code> — оставляет порт <code>8000</code> открытым <strong>исключительно для соседних контейнеров внутри одной внутренней Docker-сети</strong>, не публикуя его на хостовую машину. Снаружи сервера к такому порту подключиться физически невозможно — это стандарт для всех внутренних микросервисов и баз данных.</li>
+<li><strong><code>networks</code>:</strong> Позволяет привязать контейнер к одному или нескольким изолированным виртуальным коммутаторам (<code>frontend-net</code>, <code>backend-net</code>). Если добавить к описанию сети флаг <code>internal: true</code>, Docker на уровне <code>iptables</code> полностью заблокирует для контейнеров этой сети возможность выходить во внешний интернет.</li>
+<li><strong><code>volumes</code>:</strong> Связывает директории внутри контейнера с постоянными именованными томами (<code>pg_data:/var/lib/postgresql/data</code>) для сохранения баз данных или монтирует конфигурационные файлы с хоста в режиме только для чтения (<code>./nginx.conf:/etc/nginx/nginx.conf:ro</code>).</li>
 </ul>
 <hr />
-<h3 id="22-yaml-anchors-extensions">2.2. Переиспользование конфигураций (YAML Anchors &amp; Extensions)</h3>
-<p>В соответствии с принципом <strong>DRY (Don't Repeat Yourself)</strong>, чтобы не копировать одинаковые блоки (логирование, лимиты ресурсов, политики перезапуска) в каждый из 10 сервисов, в Compose используют расширение <strong><code>x-</code></strong> и YAML-якоря (<code>&amp;</code> и <code>*</code>):</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Объявляем шаблон в секции x- (Docker Compose игнорирует секции, начинающиеся с x-)</span>
+<h3 id="22-dry-yaml-anchors-extensions">2.2. Переиспользование конфигураций (Принцип DRY: YAML Anchors &amp; Extensions)</h3>
+<p>Когда в вашем файле <code>compose.yaml</code> описано 10 микросервисов, дублировать в каждом из них абсолютно одинаковые блоки настроек ротации логов, политики перезапуска и флагов безопасности — грубое нарушение инженерного принципа <strong>DRY (Don't Repeat Yourself — Не повторяйся)</strong>.</p>
+<p>Чтобы сделать манифест чистым и поддерживаемым, спецификация Compose использует нативные возможности языка YAML — <strong>поля расширения (начинающиеся с префикса <code>x-</code>)</strong> и <strong>YAML-якоря (<code>&amp;</code> и <code>*</code>)</strong>:
+1. В начале файла мы создаем служебный блок, имя которого начинается с <code>x-</code> (например, <code>x-common-defaults:</code>) — парсер Docker Compose знает, что это не сервис, а шаблон, и не пытается его запустить.
+2. Сразу после имени ставим метку-якорь <strong><code>&amp;common-defaults</code></strong>, запоминающую содержимое блока.
+3. Внутри любого сервиса пишем оператор слияния словарей <strong><code>&lt;&lt;: *common-defaults</code></strong> — и все настройки из шаблона автоматически разворачиваются внутри этого сервиса одной строчкой!</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Объявляем единый шаблон эксплуатационных настроек в секции расширения x-</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">x-common-defaults</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;common-defaults</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">security_opt</span><span class="p">:</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-new-privileges:true</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">logging</span><span class="p">:</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s">"json-file"</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">options</span><span class="p">:</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s">"10m"</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="nt">max-file</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nt">services</span><span class="p">:</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="nt">api</span><span class="p">:</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="c1"># Встраиваем все настройки из шаблона одной строчкой!</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*common-defaults</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-api:1.0.0</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="nt">worker</span><span class="p">:</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*common-defaults</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-worker:1.0.0</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="c1"># Обязательно ограничиваем размер логов контейнера на диске (макс. 3 файла по 10 МБ),</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="c1"># чтобы бесконечный поток stdout не переполнил раздел /var на сервере!</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">logging</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s">"json-file"</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nt">options</span><span class="p">:</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">      </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s">"10m"</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">      </span><span class="nt">max-file</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nt">services</span><span class="p">:</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="nt">api</span><span class="p">:</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="c1"># Наследуем все настройки шаблона одной строчкой!</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*common-defaults</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-api:1.0.0</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="nt">worker</span><span class="p">:</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*common-defaults</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-worker:1.0.0</span>
 </span></code></pre></div>
 <hr />
-<h3 id="23-depends_on-healthcheck">2.3. Управление секретами и порядком запуска контейнеров (<code>depends_on</code> + <code>healthcheck</code>)</h3>
-<h4 id="depends_on">Ловушка простого <code>depends_on</code></h4>
-<p>Многие новички пишут просто:
+<h3 id="23-depends_on-healthcheck">2.3. Управление порядком запуска (<code>depends_on</code> + <code>healthcheck</code>) и секретами</h3>
+<h4 id="depends_on">Классическая ловушка простого <code>depends_on</code></h4>
+<p>Представьте, что вы запускаете стек из базы данных <code>db</code> (PostgreSQL) и приложения <code>backend</code>. Чтобы бэкенд стартовал после базы, многие новички пишут в <code>compose.yaml</code> простую зависимость:
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">depends_on</span><span class="p">:</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
 </span></code></pre></div>
-<strong>В чем проблема?</strong> Обычный <code>depends_on</code> ждет только того момента, когда <strong>процесс контейнера <code>db</code> стартовал</strong> (это занимает 0.2 секунды). Но самой СУБД PostgreSQL внутри контейнера нужно еще 3–5 секунд, чтобы инициализировать таблицы и открыть порт <code>5432</code>. В итоге бэкенд стартует мгновенно, пытается подключиться к еще не готовой БД и <strong>падает с ошибкой <code>Connection refused</code></strong>!</p>
-<h4 id="condition-service_healthy">Правильное решение: <code>condition: service_healthy</code></h4>
-<p>Мы добавляем к базе данных проверку готовности (<code>healthcheck</code> через штатную утилиту <code>pg_isready</code>), а бэкенду приказываем ждать статуса <strong><code>healthy</code></strong>:</p>
+При запуске <code>docker compose up</code> происходит неожиданное: <strong>контейнер <code>backend</code> падает с фатальной ошибкой <code>Connection refused</code></strong>!</p>
+<p><strong>В чем причина?</strong> Обычный <code>depends_on</code> следит только за фактом <strong>создания процесса контейнера <code>db</code> на уровне ядра Linux</strong> (это занимает 0.2 секунды). Но для того чтобы сам движок СУБД PostgreSQL внутри этого контейнера прочитал конфиги, проверил журнал <code>WAL</code> и реально открыл сетевой сокет на порту <code>5432</code>, ему требуется еще от 3 до 5 секунд! В итоге бэкенд стартует слишком рано и стучится в еще закрытую дверь.</p>
+<h4 id="healthcheck-condition-service_healthy">Промышленное решение: связка <code>healthcheck</code> + <code>condition: service_healthy</code></h4>
+<p>Чтобы оркестратор дождался <strong>реальной готовности базы принимать SQL-запросы</strong>, мы встраиваем в сервис <code>db</code> периодическую проверку здоровья (<code>healthcheck</code>) с помощью штатной утилиты Postgres <code>pg_isready</code>, а в сервисе <code>backend</code> указываем жесткое условие ожидания <strong><code>condition: service_healthy</code></strong>:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">services</span><span class="p">:</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:16-alpine</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD-SHELL"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pg_isready</span><span class="nv"> </span><span class="s">-U</span><span class="nv"> </span><span class="s">$${POSTGRES_USER}</span><span class="nv"> </span><span class="s">-d</span><span class="nv"> </span><span class="s">$${POSTGRES_DB}"</span><span class="p p-Indicator">]</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3s</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">      </span><span class="nt">db</span><span class="p">:</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">      </span><span class="nt">redis</span><span class="p">:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="c1"># Утилита pg_isready проверяет, открыт ли порт 5432 и готова ли база выполнять транзакции</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD-SHELL"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pg_isready</span><span class="nv"> </span><span class="s">-U</span><span class="nv"> </span><span class="s">$${POSTGRES_USER}</span><span class="nv"> </span><span class="s">-d</span><span class="nv"> </span><span class="s">$${POSTGRES_DB}"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3s</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="c1"># Теперь Docker Compose не запустит backend, пока контейнеры db и redis не перейдут в статус (healthy)!</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">      </span><span class="nt">db</span><span class="p">:</span>
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">      </span><span class="nt">redis</span><span class="p">:</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
 </span></code></pre></div>
-<h4 id="secrets-docker-compose">Безопасная работа с <code>secrets</code> в Docker Compose</h4>
-<p>Вместо того чтобы передавать пароль от БД через обычную переменную окружения (которую видно через <code>docker inspect</code>), в Compose используется блок <code>secrets:</code>. Docker монтирует файл с паролем в оперативную память (<code>tmpfs</code>) контейнера по пути <strong><code>/run/secrets/&lt;имя_секрета&gt;</code></strong>:</p>
+<h4 id="secrets-docker-compose">Безопасная доставка паролей через механизм <code>secrets</code> в Docker Compose</h4>
+<p>Как мы помним из второго модуля, передавать боевой пароль от базы данных через обычную переменную окружения (<code>POSTGRES_PASSWORD=secret</code>) небезопасно — он виден в открытом виде любому пользователю с доступом к <code>docker inspect</code>[cite: 3, 5]. </p>
+<p>В Docker Compose для этого предусмотрен нативный блок <strong><code>secrets:</code></strong>. Он берет защищенный текстовый файл с паролем с хоста и монтирует его напрямую во временную файловую систему в оперативной памяти (<code>tmpfs</code>) внутри контейнера по стандартному пути <strong><code>/run/secrets/&lt;имя_секрета&gt;</code></strong>. Ни в <code>docker inspect</code>, ни в переменных окружения <code>env</code> этот пароль не светится, а официальные образы (включая PostgreSQL, MySQL, Redis) умеют читать такие секреты из коробки при помощи суффикса <code>_FILE</code> (<code>POSTGRES_PASSWORD_FILE: /run/secrets/db_password</code>):</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">secrets</span><span class="p">:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">db_password</span><span class="p">:</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./secrets/db_password.txt</span>
 </span></code></pre></div>
 <hr />
 <h2 id="3-l4l7-nginx">Блок 3. Масштабирование сервисов и настройка L4/L7-балансировки через Nginx</h2>
-<h3 id="31-l4-l7">3.1. Разница между L4 и L7 балансировкой</h3>
-<p>Nginx может работать как балансировщик на двух уровнях модели OSI:</p>
+<h3 id="31-l4-l7">3.1. Архитектурная разница между L4 и L7 балансировкой</h3>
+<p>Когда нагрузка на сервис растет, один контейнер бэкенда перестает справляться с потоком запросов. Мы поднимаем 3, 5 или 10 копий (реплик) бэкенда, а перед ними ставим высокопроизводительный балансировщик нагрузки — <strong>Nginx</strong>. В зависимости от задачи Nginx может балансировать трафик на двух разных уровнях модели OSI:</p>
 <table>
 <thead>
 <tr>
@@ -1284,92 +1336,94 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Модуль в Nginx</strong></td>
+<td style="text-align: left;"><strong>Контекстный блок в <code>nginx.conf</code></strong></td>
 <td style="text-align: left;"><code>stream { ... }</code></td>
 <td style="text-align: left;"><code>http { ... }</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>С чем работает</strong></td>
-<td style="text-align: left;">Сырые TCP/UDP-пакеты (знает только IP и порт).</td>
-<td style="text-align: left;">Понимает протокол HTTP/HTTPS, заголовки, куки, URI-пути (<code>/api</code>, <code>/static</code>).</td>
+<td style="text-align: left;"><strong>На каком уровне работает</strong></td>
+<td style="text-align: left;">Оперирует сырыми TCP-сегментами и UDP-датаграммами (видит только IP-адрес отправителя и номер порта, не заглядывая внутрь пакета).</td>
+<td style="text-align: left;">Полностью разбирает протокол HTTP/HTTPS: читает заголовки (<code>Headers</code>), файлы <code>Cookie</code>, методы (<code>GET</code>/<code>POST</code>) и URI-пути запроса (<code>/api</code>, <code>/static</code>).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Возможности маршрутизации</strong></td>
-<td style="text-align: left;">Просто пересылает TCP-соединение на один из серверов пула.</td>
-<td style="text-align: left;">Умная маршрутизация: <code>/api/*</code> $\rightarrow$ на Python, <code>/images/*</code> $\rightarrow$ в S3, проверка заголовков, сжатие <code>gzip</code>, кэширование.</td>
+<td style="text-align: left;"><strong>Интеллект маршрутизации</strong></td>
+<td style="text-align: left;">Работает как сверхбыстрый стрелочник: просто перенаправляет все входящее TCP-соединение на один из серверов пула.</td>
+<td style="text-align: left;">Умная маршрутизация по контенту: запросы <code>/api/*</code> отправляет на Python-бэкенд, <code>/images/*</code> — в бакет S3, терминирует SSL/TLS, сжимает ответы через <code>gzip</code>, отсекает ботов по заголовкам.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Где применяется</strong></td>
-<td style="text-align: left;">Балансировка СУБД (PostgreSQL), брокеров (RabbitMQ), DNS, нестандартных TCP-протоколов.</td>
-<td style="text-align: left;">95% веб-приложений, REST API, gRPC и микросервисов.</td>
+<td style="text-align: left;"><strong>Основная сфера применения</strong></td>
+<td style="text-align: left;">Балансировка нестандартных TCP/UDP-протоколов: кластеров СУБД (PostgreSQL), брокеров сообщений (RabbitMQ/Kafka), DNS, игровых серверов.</td>
+<td style="text-align: left;">95% веб-приложений, REST API, GraphQL, gRPC и микросервисных архитектур.</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h3 id="32-upstream-nginx">3.2. Алгоритмы балансировки в блоке <code>upstream</code> (Nginx)</h3>
-<p>Внутри блока <code>upstream</code> описывается пул бэкенд-серверов:</p>
+<h3 id="32-upstream-nginx">3.2. Алгоритмы распределения нагрузки в блоке <code>upstream</code> (Nginx)</h3>
+<p>Внутри конфигурации Nginx список живых серверов бэкенда объединяется в именованный пул — директиву <strong><code>upstream</code></strong>. Инженер может выбрать один из четырех математических алгоритмов распределения запросов между репликами:</p>
 <ol>
-<li><strong>Round Robin (По умолчанию):</strong> Запросы распределяются по очереди по кругу ($1 \rightarrow 2 \rightarrow 3 \rightarrow 1$).</li>
-<li><strong><code>least_conn</code> (Наименьшее число активных соединений) — лучший выбор для API:</strong> Новый запрос отправляется на тот инстанс бэкенда, который прямо сейчас обрабатывает меньше всего запросов (защищает от ситуации, когда одному воркеру досталось 3 «тяжелых» запроса подряд).</li>
-<li><strong><code>ip_hash</code>:</strong> Привязывает клиента по его IP-адресу к конкретному инстансу (Sticky Sessions).</li>
-<li><strong>Веса (<code>weight=3</code>):</strong> Позволяет отдавать более мощному серверу больше трафика.</li>
+<li><strong>Round Robin (Карусель — используется по умолчанию):</strong> Запросы раздаются серверам строго по очереди по кругу: 1-й → 2-й → 3-й → 1-й. Хорошо работает только тогда, когда все запросы одинаково легкие и выполняются за одно и то же время.</li>
+<li><strong><code>least_conn</code> (Наименьшее число активных соединений) — золотой стандарт для продакшен-API:</strong> Nginx в реальном времени следит, сколько открытых запросов прямо сейчас переваривает каждая реплика бэкенда, и отправляет новый запрос тому контейнеру, который <strong>наименее загружен в данную миллисекунду</strong>. Это надежно защищает от ситуации, когда по Round Robin одному контейнеру случайно достались три тяжелых отчета подряд и он выстроил очередь, пока два соседних контейнера простаивают без дела.</li>
+<li><strong><code>ip_hash</code> (Привязка по хэшу IP-адреса клиента):</strong> Вычисляет хэш от IP-адреса пользователя и гарантирует, что все запросы от этого конкретного клиента всегда будут попадать на одну и ту же реплику бэкенда (<em>Sticky Sessions</em> — необходимо для старых монолитных приложений, хранящих сессию локально в памяти процесса).</li>
+<li><strong>Взвешенная балансировка (<code>weight=3</code>):</strong> Позволяет задать коэффициенты мощности серверов (например, если один сервер имеет 16 ядер CPU, а второй — только 4, первому ставят <code>weight=4</code>, и он забирает на себя 80% всего трафика).</li>
 </ol>
 <hr />
-<h3 id="33-scale-docker-compose-dns-nginx">3.3. Особенность масштабирования (<code>--scale</code>) в Docker Compose и динамический DNS в Nginx</h3>
-<p>Если мы хотим запустить сразу <strong>3 реплики</strong> нашего бэкенда командой:
+<h3 id="33-scale-dns-nginx">3.3. Механика горизонтального масштабирования (<code>--scale</code>) и динамический DNS в Nginx</h3>
+<p>Представьте, что мы хотим одной командой запустить сразу <strong>3 параллельные реплики</strong> нашего бэкенд-сервиса:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--scale<span class="w"> </span><span class="nv">backend</span><span class="o">=</span><span class="m">3</span>
 </span></code></pre></div>
-...то мы <strong>не можем</strong> прописать в <code>backend</code> жесткий проброс портов <code>ports: ["8000:8000"]</code>, потому что второй и третий контейнеры не смогут занять уже занятый на хосте порт <code>8000</code>!</p>
-<p>Вместо этого:
-1. У сервиса <code>backend</code> мы оставляем только внутренний <code>expose: ["8000"]</code>.
-2. Встроенный DNS-сервер Docker (<code>127.0.0.11</code>) при обращении к имени <code>backend</code> автоматически возвращает <strong>все 3 IP-адреса</strong> запущенных реплик (DNS Round-Robin)!
-3. В конфиге <code>nginx.conf</code> мы указываем <code>resolver 127.0.0.11 valid=5s;</code>, чтобы Nginx каждые 5 секунд обновлял список живых контейнеров при масштабировании без перезапуска.</p>
-<p><strong>Обязательные заголовки Reverse Proxy:</strong>
-Когда Nginx пересылает запрос бэкенду, для бэкенда источником пакета становится IP самого контейнера Nginx. Чтобы бэкенд знал реальный IP пользователя и протокол, передают заголовки:
+Здесь возникает классическая архитектурная задача: если бы мы прописали у сервиса <code>backend</code> жесткий проброс портов на хост <code>ports: ["8000:8000"]</code>, то первый контейнер успешно занял бы порт <code>8000</code> сервера, а <strong>вторая и третья реплики мгновенно упали бы при старте с ошибкой <code>Bind for 0.0.0.0:8000 failed: port is already allocated</code></strong>!</p>
+<p>Как это решается в промышленной архитектуре Docker Compose + Nginx:
+1. У масштабируемого сервиса <code>backend</code> мы <strong>никогда не используем <code>ports:</code></strong> и не задаем жесткое имя <code>container_name:</code> — вместо этого мы открываем порт только внутри виртуальной сети через <strong><code>expose: ["8000"]</code></strong>.
+2. Когда Docker Compose поднимает 3 реплики сервиса <code>backend</code>, его внутренний DNS-сервер (работающий в каждом контейнере по зарезервированному адресу <strong><code>127.0.0.11</code></strong>) автоматически регистрирует все три новых IP-адреса под одним общим доменным именем <code>backend</code>!
+3. Чтобы Nginx не закэшировал один IP-адрес навсегда при старте, а динамически подхватывал новые реплики при масштабировании кластера на лету, мы прописываем в <code>nginx.conf</code> директиву внутреннего резолвера <strong><code>resolver 127.0.0.11 valid=5s;</code></strong>.</p>
+<h4 id="reverse-proxy-headers">Обязательные заголовки обратного проксирования (Reverse Proxy Headers)</h4>
+<p>Когда клиент из интернета обращается к вашему сайту, он устанавливает соединение с Nginx, а уже Nginx от своего имени открывает внутреннее соединение к контейнеру бэкенда. Из-за этого для Python-приложения источником всех запросов (<code>remote_addr</code>) начинает выглядеть внутренний IP-адрес самого контейнера Nginx (например, <code>172.18.0.5</code>), а реальный IP клиента теряется! Чтобы бэкенд видел настоящий IP пользователя, оригинальный домен и протокол (<code>http</code>/<code>https</code>), в блок <code>location</code> всегда добавляют стандартный набор прокси-заголовков:</p>
 <div class="language-nginx highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <hr />
-<h2 id="4-nginx">🛠 Практический проект Модуля 4: Развёртывание многоконтейнерного приложения с балансировкой Nginx</h2>
-<p>Мы соберем полноценный кластер из <strong>6 контейнеров</strong> в двух изолированных сетях с использованием секретов, YAML-якорей, проверок здоровья и балансировки нагрузки:
-* <strong>1x Nginx</strong> (входной L7/L4 балансировщик на порту <code>8080</code>).
-* <strong>3x реплики Backend API</strong> (Python/Flask + Gunicorn), которые пишут транзакции в PostgreSQL и кэшируют счетчик в Redis.
-* <strong>1x PostgreSQL 16</strong> (с инициализацией схемы и паролем из Docker Secrets).
-* <strong>1x Redis 7</strong> (кэш в памяти).</p>
+<h2 id="4-6-l7l4-nginx">🛠 Практический проект Модуля 4: Развёртывание отказоустойчивого кластера из 6 контейнеров с L7/L4-балансировкой Nginx</h2>
+<p>Сейчас мы соберем и запустим полноценный микросервисный кластер из <strong>6 контейнеров</strong>, разделенный на два изолированных сетевых эшелона (<code>frontend-net</code> и <code>backend-net</code>), использующий YAML-якоря (<code>x-defaults</code>), криптографические секреты в памяти (<code>Docker Secrets</code>), контроль готовности БД (<code>service_healthy</code>) и автоматическую балансировку нагрузки:</p>
+<ul>
+<li><strong>1x Nginx Reverse Proxy</strong> — входной узел кластера, выполняющий L7 HTTP-балансировку на порту <code>8080</code> и L4 TCP-балансировку на порту <code>9000</code>.</li>
+<li><strong>3x реплики Backend API</strong> (Python / Flask + Gunicorn) — stateless-узлы, которые при каждом запросе увеличивают быстрый счетчик в Redis, записывают транзакцию визита в PostgreSQL и возвращают клиенту свое уникальное имя реплики (<code>hostname</code>).</li>
+<li><strong>1x PostgreSQL 16</strong> — реляционное хранилище с авторизацией по секрету из <code>/run/secrets/db_password</code>.</li>
+<li><strong>1x Redis 7</strong> — высокоскоростной in-memory кэш с сохранением дампов на том.</li>
+</ul>
 <hr />
-<h3 id="1">Этап 1. Создание структуры проекта и файла секретов</h3>
-<p>Создай чистую директорию проекта и безопасный файл с паролем от базы данных:
+<h3 id="1">Этап 1. Создание структуры каталогов и защищенного файла секрета</h3>
+<p>Создадим рабочую директорию кластера <code>~/compose-cluster</code> с подпапками под исходный код приложения, конфигурацию балансировщика и хранилище секретов:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/compose-cluster/<span class="o">{</span>app,nginx,secrets<span class="o">}</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/compose-cluster
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Записываем секретный пароль для PostgreSQL (без переноса строки -n)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Записываем боевой пароль для PostgreSQL в файл секрета (флаг -n подавляет лишний символ переноса строки в конце!)</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"SuperStrongPgSecret2026"</span><span class="w"> </span>&gt;<span class="w"> </span>secrets/db_password.txt
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>secrets/db_password.txt
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Создаем файл несекретных переменных окружения (.env)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Создаем файл несекретных параметров конфигурации окружения (.env)</span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; .env</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">POSTGRES_USER=app_admin</span>
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">POSTGRES_DB=cluster_db</span>
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">REDIS_HOST=redis</span>
 </span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s">APP_PORT=8000</span>
 </span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <hr />
-<h3 id="2-docker-secrets-postgresql-redis">Этап 2. Код микросервиса (с поддержкой Docker Secrets и PostgreSQL + Redis)</h3>
+<h3 id="2-docker-secrets-postgresql-redis">Этап 2. Разработка микросервиса (с поддержкой Docker Secrets и связки PostgreSQL + Redis)</h3>
 <ol>
-<li>
-<p>Создай список зависимостей <code>app/requirements.txt</code>:
+<li>Зафиксируем зависимости сервиса в <code>app/requirements.txt</code> (включая бинарный драйвер <code>psycopg2-binary</code> для работы с PostgreSQL):</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/requirements.txt</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">flask==3.0.3</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">psycopg2-binary==2.9.9</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s">redis==5.0.8</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">gunicorn==23.0.0</span>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Создай код приложения <code>app/main.py</code> (обрати внимание: приложение читает пароль базы из примонтированного секрета <code>/run/secrets/db_password</code> и возвращает ID своей реплики <code>hostname</code>, чтобы мы наглядно увидели работу балансировщика Nginx):
+</span></code></pre></div>
+<ol>
+<li>Создадим код приложения <code>app/main.py</code>. Обрати внимание на функцию <code>get_db_password()</code>: следуя стандарту безопасности, она сначала проверяет наличие примонтированного в оперативную память секрета <code>/run/secrets/db_password</code>, а в ответе <code>/api/visit</code> сервис возвращает поле <code>"served_by_replica"</code> с уникальным ID своего контейнера, чтобы мы могли вживую наблюдать, как балансировщик Nginx распределяет наши запросы по разным нодам кластера:</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/main.py</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s">import os</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s">import socket</span>
@@ -1412,10 +1466,10 @@
 </span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="s">    client_ip = request.headers.get("X-Real-IP", request.remote_addr)</span>
 </span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="s">    node_id = socket.gethostname()</span>
 </span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a>
-</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="s">    # 1. Увеличиваем быстрый счетчик в Redis</span>
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="s">    # 1. Атомарно увеличиваем сквозной счетчик обращений к кластеру в Redis</span>
 </span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="s">    total_hits = cache.incr("cluster_hits")</span>
 </span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a>
-</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="s">    # 2. Записываем визит в таблицу PostgreSQL</span>
+</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="s">    # 2. Фиксируем строку визита в транзакционной таблице PostgreSQL</span>
 </span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="s">    conn = get_db_conn()</span>
 </span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a><span class="s">    cur = conn.cursor()</span>
 </span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a><span class="s">    cur.execute("""</span>
@@ -1440,10 +1494,10 @@
 </span><span id="__span-9-68"><a id="__codelineno-9-68" name="__codelineno-9-68" href="#__codelineno-9-68"></a><span class="s">        "postgres_saved_rows": db_rows</span>
 </span><span id="__span-9-69"><a id="__codelineno-9-69" name="__codelineno-9-69" href="#__codelineno-9-69"></a><span class="s">    }), 200</span>
 </span><span id="__span-9-70"><a id="__codelineno-9-70" name="__codelineno-9-70" href="#__codelineno-9-70"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Создай оптимизированный <code>app/Dockerfile</code>:
+</span></code></pre></div>
+<ol>
+<li>Создадим защищенный Multi-stage <code>app/Dockerfile</code> с непривилегированным пользователем <code>appuser</code> и глубоким <code>HEALTHCHECK</code> (который возвращает <code>healthy</code> только тогда, когда бэкенд успешно проверил связь и с Postgres, и с Redis):</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/Dockerfile</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s">FROM python:3.12-slim AS builder</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s">WORKDIR /build</span>
@@ -1458,17 +1512,16 @@
 </span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s">USER 10001:10001</span>
 </span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s">EXPOSE 8000</span>
 </span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="s">HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \</span>
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s">  CMD ["python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s">  CMD ["python3", "-c", "import urllib.request; urllib.request.urlopen('[http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)')"]</span>
 </span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s">ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "2", "main:app"]</span>
 </span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-</ol>
+</span></code></pre></div>
 <hr />
-<h3 id="3-l7-l4-nginx-nginxnginxconf">Этап 3. Конфигурация L7 и L4 балансировки в Nginx (<code>nginx/nginx.conf</code>)</h3>
-<p>Создай конфигурационный файл <code>nginx/nginx.conf</code>, который включает:
-* <strong>L7-балансировку (<code>http</code>)</strong> по алгоритму <code>least_conn</code> между всеми репликами сервиса <code>backend:8000</code> с автоматическим переключением при сбое (<code>proxy_next_upstream</code>).
-* <strong>L4-проксирование (<code>stream</code>)</strong> на TCP-уровне для демонстрации работы L4.</p>
+<h3 id="3-l7-l4-nginx-nginxnginxconf">Этап 3. Настройка L7 и L4 балансировки в конфигурации Nginx (<code>nginx/nginx.conf</code>)</h3>
+<p>Создадим промышленный конфигурационный файл <code>nginx/nginx.conf</code>. В нем мы:
+* Настраиваем кастомный формат логов <code>upstream_log</code>, который прямо в логе пишет, на какой конкретно внутренний IP-адрес реплики (<code>upstream=$upstream_addr</code>) ушел запрос и сколько миллисекунд он выполнялся.
+* Включаем балансировку по наименьшему числу активных соединений (<code>least_conn</code>) на уровне <strong>L7 (<code>http</code>)</strong> с автоматическим перебросом запроса на соседнюю живую реплику в случае сбоя (<code>proxy_next_upstream</code>).
+* Поднимаем параллельный контур сырой <strong>L4 TCP-балансировки (<code>stream</code>)</strong> на порту <code>9000</code>.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; nginx/nginx.conf</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s">worker_processes auto;</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
@@ -1477,25 +1530,25 @@
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="s">}</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="s"># =====================================================</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="s"># Уровень L7 (HTTP): Умная балансировка веб-трафика</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="s"># Контур L7 (HTTP): Интеллектуальная балансировка веб-трафика</span>
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="s"># =====================================================</span>
 </span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="s">http {</span>
 </span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="s">    include       /etc/nginx/mime.types;</span>
 </span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="s">    default_type  application/json;</span>
 </span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="s">    # Кастомный формат логов с указанием времени ответа и IP конкретного контейнера-апстрима!</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="s">    # Расширенный формат логирования с отображением выбранного IP контейнера-апстрима и таймингов</span>
 </span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="s">    log_format upstream_log '$remote_addr - [$time_local] "$request" '</span>
 </span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="s">                            'status=$status upstream=$upstream_addr '</span>
 </span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="s">                            'resp_time=$request_time';</span>
 </span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="s">    access_log /var/log/nginx/access.log upstream_log;</span>
 </span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>
-</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="s">    # Встроенный DNS-резолвер Docker для обнаружения новых реплик при масштабировании</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="s">    # Подключаем встроенный DNS-сервер Docker (127.0.0.11) для динамического обнаружения всех реплик</span>
 </span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="s">    resolver 127.0.0.11 valid=5s ipv6=off;</span>
 </span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>
 </span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="s">    upstream backend_pool {</span>
 </span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="s">        zone backend_zone 64k;</span>
 </span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="s">        least_conn;</span>
-</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="s">        # resolve позволяет динамически обновлять IP всех реплик контейнера backend</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="s">        # Если реплика 3 раза подряд не ответила за 10 секунд, временно исключаем её из ротации</span>
 </span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="s">        server backend:8000 max_fails=3 fail_timeout=10s;</span>
 </span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="s">    }</span>
 </span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>
@@ -1503,7 +1556,7 @@
 </span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="s">        listen 80;</span>
 </span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="s">        server_name localhost;</span>
 </span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>
-</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="s">        # Эндпоинт проверки самого Nginx</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="s">        # Быстрый эндпоинт самодиагностики самого балансировщика Nginx</span>
 </span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="s">        location /nginx-health {</span>
 </span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="s">            return 200 '{"nginx": "ok"}\n';</span>
 </span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="s">        }</span>
@@ -1512,44 +1565,45 @@
 </span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a><span class="s">            proxy_pass http://backend_pool;</span>
 </span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="s">            proxy_http_version 1.1;</span>
 </span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>
-</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="s">            # Передача заголовков реального клиента</span>
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="s">            # Пробрасываем реальные реквизиты клиента внутрь бэкенд-контейнера</span>
 </span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="s">            proxy_set_header Host $host;</span>
 </span><span id="__span-11-46"><a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="s">            proxy_set_header X-Real-IP $remote_addr;</span>
 </span><span id="__span-11-47"><a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a><span class="s">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
 </span><span id="__span-11-48"><a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a><span class="s">            proxy_set_header X-Forwarded-Proto $scheme;</span>
 </span><span id="__span-11-49"><a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a>
-</span><span id="__span-11-50"><a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a><span class="s">            # Отказоустойчивость: если одна реплика упала, прозрачно передать запрос следующей</span>
-</span><span id="__span-11-51"><a id="__codelineno-11-51" name="__codelineno-11-51" href="#__codelineno-11-51"></a><span class="s">            proxy_next_upstream error timeout http_500 http_502 http_503;</span>
-</span><span id="__span-11-52"><a id="__codelineno-11-52" name="__codelineno-11-52" href="#__codelineno-11-52"></a><span class="s">            proxy_connect_timeout 3s;</span>
-</span><span id="__span-11-53"><a id="__codelineno-11-53" name="__codelineno-11-53" href="#__codelineno-11-53"></a><span class="s">            proxy_read_timeout 10s;</span>
-</span><span id="__span-11-54"><a id="__codelineno-11-54" name="__codelineno-11-54" href="#__codelineno-11-54"></a><span class="s">        }</span>
-</span><span id="__span-11-55"><a id="__codelineno-11-55" name="__codelineno-11-55" href="#__codelineno-11-55"></a><span class="s">    }</span>
-</span><span id="__span-11-56"><a id="__codelineno-11-56" name="__codelineno-11-56" href="#__codelineno-11-56"></a><span class="s">}</span>
-</span><span id="__span-11-57"><a id="__codelineno-11-57" name="__codelineno-11-57" href="#__codelineno-11-57"></a>
-</span><span id="__span-11-58"><a id="__codelineno-11-58" name="__codelineno-11-58" href="#__codelineno-11-58"></a><span class="s"># =====================================================</span>
-</span><span id="__span-11-59"><a id="__codelineno-11-59" name="__codelineno-11-59" href="#__codelineno-11-59"></a><span class="s"># Уровень L4 (TCP Stream): Балансировка сырого TCP-порта</span>
-</span><span id="__span-11-60"><a id="__codelineno-11-60" name="__codelineno-11-60" href="#__codelineno-11-60"></a><span class="s"># =====================================================</span>
-</span><span id="__span-11-61"><a id="__codelineno-11-61" name="__codelineno-11-61" href="#__codelineno-11-61"></a><span class="s">stream {</span>
-</span><span id="__span-11-62"><a id="__codelineno-11-62" name="__codelineno-11-62" href="#__codelineno-11-62"></a><span class="s">    resolver 127.0.0.11 valid=5s ipv6=off;</span>
-</span><span id="__span-11-63"><a id="__codelineno-11-63" name="__codelineno-11-63" href="#__codelineno-11-63"></a>
-</span><span id="__span-11-64"><a id="__codelineno-11-64" name="__codelineno-11-64" href="#__codelineno-11-64"></a><span class="s">    upstream tcp_backend_pool {</span>
-</span><span id="__span-11-65"><a id="__codelineno-11-65" name="__codelineno-11-65" href="#__codelineno-11-65"></a><span class="s">        least_conn;</span>
-</span><span id="__span-11-66"><a id="__codelineno-11-66" name="__codelineno-11-66" href="#__codelineno-11-66"></a><span class="s">        server backend:8000;</span>
-</span><span id="__span-11-67"><a id="__codelineno-11-67" name="__codelineno-11-67" href="#__codelineno-11-67"></a><span class="s">    }</span>
-</span><span id="__span-11-68"><a id="__codelineno-11-68" name="__codelineno-11-68" href="#__codelineno-11-68"></a>
-</span><span id="__span-11-69"><a id="__codelineno-11-69" name="__codelineno-11-69" href="#__codelineno-11-69"></a><span class="s">    server {</span>
-</span><span id="__span-11-70"><a id="__codelineno-11-70" name="__codelineno-11-70" href="#__codelineno-11-70"></a><span class="s">        listen 9000;</span>
-</span><span id="__span-11-71"><a id="__codelineno-11-71" name="__codelineno-11-71" href="#__codelineno-11-71"></a><span class="s">        proxy_pass tcp_backend_pool;</span>
-</span><span id="__span-11-72"><a id="__codelineno-11-72" name="__codelineno-11-72" href="#__codelineno-11-72"></a><span class="s">        proxy_connect_timeout 2s;</span>
-</span><span id="__span-11-73"><a id="__codelineno-11-73" name="__codelineno-11-73" href="#__codelineno-11-73"></a><span class="s">    }</span>
-</span><span id="__span-11-74"><a id="__codelineno-11-74" name="__codelineno-11-74" href="#__codelineno-11-74"></a><span class="s">}</span>
-</span><span id="__span-11-75"><a id="__codelineno-11-75" name="__codelineno-11-75" href="#__codelineno-11-75"></a><span class="s">EOF</span>
+</span><span id="__span-11-50"><a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a><span class="s">            # Механизм Zero-Downtime отказоустойчивости: если выбранная реплика упала или вернула 502/503,</span>
+</span><span id="__span-11-51"><a id="__codelineno-11-51" name="__codelineno-11-51" href="#__codelineno-11-51"></a><span class="s">            # прозрачно для клиента перенаправить этот же запрос на следующую живую реплику пула!</span>
+</span><span id="__span-11-52"><a id="__codelineno-11-52" name="__codelineno-11-52" href="#__codelineno-11-52"></a><span class="s">            proxy_next_upstream error timeout http_500 http_502 http_503;</span>
+</span><span id="__span-11-53"><a id="__codelineno-11-53" name="__codelineno-11-53" href="#__codelineno-11-53"></a><span class="s">            proxy_connect_timeout 3s;</span>
+</span><span id="__span-11-54"><a id="__codelineno-11-54" name="__codelineno-11-54" href="#__codelineno-11-54"></a><span class="s">            proxy_read_timeout 10s;</span>
+</span><span id="__span-11-55"><a id="__codelineno-11-55" name="__codelineno-11-55" href="#__codelineno-11-55"></a><span class="s">        }</span>
+</span><span id="__span-11-56"><a id="__codelineno-11-56" name="__codelineno-11-56" href="#__codelineno-11-56"></a><span class="s">    }</span>
+</span><span id="__span-11-57"><a id="__codelineno-11-57" name="__codelineno-11-57" href="#__codelineno-11-57"></a><span class="s">}</span>
+</span><span id="__span-11-58"><a id="__codelineno-11-58" name="__codelineno-11-58" href="#__codelineno-11-58"></a>
+</span><span id="__span-11-59"><a id="__codelineno-11-59" name="__codelineno-11-59" href="#__codelineno-11-59"></a><span class="s"># =====================================================</span>
+</span><span id="__span-11-60"><a id="__codelineno-11-60" name="__codelineno-11-60" href="#__codelineno-11-60"></a><span class="s"># Контур L4 (TCP Stream): Балансировка сырого TCP-потока</span>
+</span><span id="__span-11-61"><a id="__codelineno-11-61" name="__codelineno-11-61" href="#__codelineno-11-61"></a><span class="s"># =====================================================</span>
+</span><span id="__span-11-62"><a id="__codelineno-11-62" name="__codelineno-11-62" href="#__codelineno-11-62"></a><span class="s">stream {</span>
+</span><span id="__span-11-63"><a id="__codelineno-11-63" name="__codelineno-11-63" href="#__codelineno-11-63"></a><span class="s">    resolver 127.0.0.11 valid=5s ipv6=off;</span>
+</span><span id="__span-11-64"><a id="__codelineno-11-64" name="__codelineno-11-64" href="#__codelineno-11-64"></a>
+</span><span id="__span-11-65"><a id="__codelineno-11-65" name="__codelineno-11-65" href="#__codelineno-11-65"></a><span class="s">    upstream tcp_backend_pool {</span>
+</span><span id="__span-11-66"><a id="__codelineno-11-66" name="__codelineno-11-66" href="#__codelineno-11-66"></a><span class="s">        least_conn;</span>
+</span><span id="__span-11-67"><a id="__codelineno-11-67" name="__codelineno-11-67" href="#__codelineno-11-67"></a><span class="s">        server backend:8000;</span>
+</span><span id="__span-11-68"><a id="__codelineno-11-68" name="__codelineno-11-68" href="#__codelineno-11-68"></a><span class="s">    }</span>
+</span><span id="__span-11-69"><a id="__codelineno-11-69" name="__codelineno-11-69" href="#__codelineno-11-69"></a>
+</span><span id="__span-11-70"><a id="__codelineno-11-70" name="__codelineno-11-70" href="#__codelineno-11-70"></a><span class="s">    server {</span>
+</span><span id="__span-11-71"><a id="__codelineno-11-71" name="__codelineno-11-71" href="#__codelineno-11-71"></a><span class="s">        listen 9000;</span>
+</span><span id="__span-11-72"><a id="__codelineno-11-72" name="__codelineno-11-72" href="#__codelineno-11-72"></a><span class="s">        proxy_pass tcp_backend_pool;</span>
+</span><span id="__span-11-73"><a id="__codelineno-11-73" name="__codelineno-11-73" href="#__codelineno-11-73"></a><span class="s">        proxy_connect_timeout 2s;</span>
+</span><span id="__span-11-74"><a id="__codelineno-11-74" name="__codelineno-11-74" href="#__codelineno-11-74"></a><span class="s">    }</span>
+</span><span id="__span-11-75"><a id="__codelineno-11-75" name="__codelineno-11-75" href="#__codelineno-11-75"></a><span class="s">}</span>
+</span><span id="__span-11-76"><a id="__codelineno-11-76" name="__codelineno-11-76" href="#__codelineno-11-76"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <hr />
-<h3 id="4-composeyaml">Этап 4. Сборка эталонного <code>compose.yaml</code></h3>
-<p>Создай файл <code>compose.yaml</code> в корне <code>~/compose-cluster/</code>, использующий переиспользование конфигов (<code>x-defaults</code>), разделение сетей (<code>frontend-net</code> и изолированную <code>backend-net</code>), Docker Secrets и строгий порядок запуска через <code>service_healthy</code>:</p>
+<h3 id="4-composeyaml">Этап 4. Сборка декларативного манифеста <code>compose.yaml</code></h3>
+<p>Теперь свяжем все компоненты воедино в корневом файле <code>~/compose-cluster/compose.yaml</code>. Обрати внимание на сетевую топологию: сервис <code>backend</code> подключен сразу к обеим сетям (он является связующим мостом), тогда как <code>nginx</code> живет только во внешней <code>frontend-net</code>, а <code>db</code> и <code>redis</code> надежно изолированы в глубокой <code>backend-net</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; compose.yaml</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="s"># --- Шаблон переиспользования конфигураций (DRY) ---</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="s"># --- Шаблон переиспользования конфигураций по принципу DRY (YAML Anchor) ---</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="s">x-service-defaults: &amp;service-defaults</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="s">  restart: unless-stopped</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="s">  security_opt:</span>
@@ -1561,133 +1615,137 @@
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="s">      max-file: "3"</span>
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
 </span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="s">services:</span>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="s">  # 1. Реляционная БД PostgreSQL (Stateful)</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="s">  # 1. Реляционная СУБД PostgreSQL 16 (Stateful)</span>
 </span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="s">  db:</span>
 </span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="s">    &lt;&lt;: *service-defaults</span>
 </span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="s">    image: postgres:16-alpine</span>
 </span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="s">    environment:</span>
 </span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="s">      POSTGRES_USER: ${POSTGRES_USER}</span>
 </span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="s">      POSTGRES_DB: ${POSTGRES_DB}</span>
-</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="s">      POSTGRES_PASSWORD_FILE: /run/secrets/db_password</span>
-</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="s">    secrets:</span>
-</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="s">      - db_password</span>
-</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="s">    volumes:</span>
-</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="s">      - pg_cluster_data:/var/lib/postgresql/data</span>
-</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="s">    networks:</span>
-</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="s">      - backend-net</span>
-</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="s">    healthcheck:</span>
-</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="s">      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]</span>
-</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="s">      interval: 5s</span>
-</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="s">      timeout: 3s</span>
-</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="s">      retries: 5</span>
-</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>
-</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="s">  # 2. Кэш Redis (In-Memory)</span>
-</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="s">  redis:</span>
-</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="s">    &lt;&lt;: *service-defaults</span>
-</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="s">    image: redis:7-alpine</span>
-</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="s">    command: ["redis-server", "--appendonly", "yes"]</span>
-</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="s">    volumes:</span>
-</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="s">      - redis_cluster_data:/data</span>
-</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="s">    networks:</span>
-</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="s">      - backend-net</span>
-</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="s">    healthcheck:</span>
-</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="s">      test: ["CMD", "redis-cli", "ping"]</span>
-</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="s">      interval: 5s</span>
-</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="s">      timeout: 3s</span>
-</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="s">      retries: 5</span>
-</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a>
-</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="s">  # 3. Масштабируемый Бэкенд-сервис (Stateless)</span>
-</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="s">  backend:</span>
-</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="s">    &lt;&lt;: *service-defaults</span>
-</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="s">    build:</span>
-</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="s">      context: ./app</span>
-</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="s">    environment:</span>
-</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a><span class="s">      DB_HOST: db</span>
-</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="s">      POSTGRES_USER: ${POSTGRES_USER}</span>
-</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a><span class="s">      POSTGRES_DB: ${POSTGRES_DB}</span>
-</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a><span class="s">      REDIS_HOST: ${REDIS_HOST}</span>
-</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a><span class="s">    secrets:</span>
-</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a><span class="s">      - db_password</span>
-</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="s">    expose:</span>
-</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a><span class="s">      - "8000"</span>
-</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a><span class="s">    networks:</span>
-</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="s">      - frontend-net</span>
-</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="s">      - backend-net</span>
-</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="s">    depends_on:</span>
-</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a><span class="s">      db:</span>
-</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a><span class="s">        condition: service_healthy</span>
-</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a><span class="s">      redis:</span>
-</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a><span class="s">        condition: service_healthy</span>
-</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a>
-</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72" href="#__codelineno-12-72"></a><span class="s">  # 4. Балансировщик нагрузки и Reverse Proxy (Nginx)</span>
-</span><span id="__span-12-73"><a id="__codelineno-12-73" name="__codelineno-12-73" href="#__codelineno-12-73"></a><span class="s">  nginx:</span>
-</span><span id="__span-12-74"><a id="__codelineno-12-74" name="__codelineno-12-74" href="#__codelineno-12-74"></a><span class="s">    &lt;&lt;: *service-defaults</span>
-</span><span id="__span-12-75"><a id="__codelineno-12-75" name="__codelineno-12-75" href="#__codelineno-12-75"></a><span class="s">    image: nginx:1.27-alpine</span>
-</span><span id="__span-12-76"><a id="__codelineno-12-76" name="__codelineno-12-76" href="#__codelineno-12-76"></a><span class="s">    ports:</span>
-</span><span id="__span-12-77"><a id="__codelineno-12-77" name="__codelineno-12-77" href="#__codelineno-12-77"></a><span class="s">      - "8080:80"   # L7 HTTP-балансировщик</span>
-</span><span id="__span-12-78"><a id="__codelineno-12-78" name="__codelineno-12-78" href="#__codelineno-12-78"></a><span class="s">      - "9000:9000" # L4 TCP-балансировщик</span>
-</span><span id="__span-12-79"><a id="__codelineno-12-79" name="__codelineno-12-79" href="#__codelineno-12-79"></a><span class="s">    volumes:</span>
-</span><span id="__span-12-80"><a id="__codelineno-12-80" name="__codelineno-12-80" href="#__codelineno-12-80"></a><span class="s">      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro</span>
-</span><span id="__span-12-81"><a id="__codelineno-12-81" name="__codelineno-12-81" href="#__codelineno-12-81"></a><span class="s">    networks:</span>
-</span><span id="__span-12-82"><a id="__codelineno-12-82" name="__codelineno-12-82" href="#__codelineno-12-82"></a><span class="s">      - frontend-net</span>
-</span><span id="__span-12-83"><a id="__codelineno-12-83" name="__codelineno-12-83" href="#__codelineno-12-83"></a><span class="s">    depends_on:</span>
-</span><span id="__span-12-84"><a id="__codelineno-12-84" name="__codelineno-12-84" href="#__codelineno-12-84"></a><span class="s">      backend:</span>
-</span><span id="__span-12-85"><a id="__codelineno-12-85" name="__codelineno-12-85" href="#__codelineno-12-85"></a><span class="s">        condition: service_healthy</span>
-</span><span id="__span-12-86"><a id="__codelineno-12-86" name="__codelineno-12-86" href="#__codelineno-12-86"></a>
-</span><span id="__span-12-87"><a id="__codelineno-12-87" name="__codelineno-12-87" href="#__codelineno-12-87"></a><span class="s">networks:</span>
-</span><span id="__span-12-88"><a id="__codelineno-12-88" name="__codelineno-12-88" href="#__codelineno-12-88"></a><span class="s">  # Сеть между Nginx и бэкендами</span>
-</span><span id="__span-12-89"><a id="__codelineno-12-89" name="__codelineno-12-89" href="#__codelineno-12-89"></a><span class="s">  frontend-net:</span>
-</span><span id="__span-12-90"><a id="__codelineno-12-90" name="__codelineno-12-90" href="#__codelineno-12-90"></a><span class="s">    driver: bridge</span>
-</span><span id="__span-12-91"><a id="__codelineno-12-91" name="__codelineno-12-91" href="#__codelineno-12-91"></a><span class="s">  # Изолированная сеть для БД и кэша (Nginx сюда доступа НЕ имеет!)</span>
-</span><span id="__span-12-92"><a id="__codelineno-12-92" name="__codelineno-12-92" href="#__codelineno-12-92"></a><span class="s">  backend-net:</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="s">      # Передаем пароль безопасно через файл секрета в памяти, а не открытым текстом!</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="s">      POSTGRES_PASSWORD_FILE: /run/secrets/db_password</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="s">    secrets:</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="s">      - db_password</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="s">    volumes:</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="s">      - pg_cluster_data:/var/lib/postgresql/data</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="s">    networks:</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="s">      - backend-net</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="s">    healthcheck:</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="s">      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="s">      interval: 5s</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="s">      timeout: 3s</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="s">      retries: 5</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="s">  # 2. Высокоскоростной кэш Redis 7 (Stateful In-Memory)</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="s">  redis:</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="s">    &lt;&lt;: *service-defaults</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="s">    image: redis:7-alpine</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="s">    command: ["redis-server", "--appendonly", "yes"]</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="s">    volumes:</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="s">      - redis_cluster_data:/data</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="s">    networks:</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="s">      - backend-net</span>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="s">    healthcheck:</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="s">      test: ["CMD", "redis-cli", "ping"]</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="s">      interval: 5s</span>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="s">      timeout: 3s</span>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="s">      retries: 5</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="s">  # 3. Горизонтально масштабируемый Бэкенд-сервис (Stateless)</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="s">  backend:</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="s">    &lt;&lt;: *service-defaults</span>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="s">    build:</span>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="s">      context: ./app</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a><span class="s">    environment:</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="s">      DB_HOST: db</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a><span class="s">      POSTGRES_USER: ${POSTGRES_USER}</span>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a><span class="s">      POSTGRES_DB: ${POSTGRES_DB}</span>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a><span class="s">      REDIS_HOST: ${REDIS_HOST}</span>
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a><span class="s">    secrets:</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="s">      - db_password</span>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a><span class="s">    # Порт 8000 открыт ТОЛЬКО внутри виртуальной сети, на хост он не публикуется (позволяет запускать N реплик!)</span>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a><span class="s">    expose:</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="s">      - "8000"</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="s">    networks:</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="s">      - frontend-net</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a><span class="s">      - backend-net</span>
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a><span class="s">    # Строгий порядок старта: ждать полной готовности СУБД и кэша</span>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a><span class="s">    depends_on:</span>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a><span class="s">      db:</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a><span class="s">        condition: service_healthy</span>
+</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72" href="#__codelineno-12-72"></a><span class="s">      redis:</span>
+</span><span id="__span-12-73"><a id="__codelineno-12-73" name="__codelineno-12-73" href="#__codelineno-12-73"></a><span class="s">        condition: service_healthy</span>
+</span><span id="__span-12-74"><a id="__codelineno-12-74" name="__codelineno-12-74" href="#__codelineno-12-74"></a>
+</span><span id="__span-12-75"><a id="__codelineno-12-75" name="__codelineno-12-75" href="#__codelineno-12-75"></a><span class="s">  # 4. Входной балансировщик нагрузки и Reverse Proxy (Nginx)</span>
+</span><span id="__span-12-76"><a id="__codelineno-12-76" name="__codelineno-12-76" href="#__codelineno-12-76"></a><span class="s">  nginx:</span>
+</span><span id="__span-12-77"><a id="__codelineno-12-77" name="__codelineno-12-77" href="#__codelineno-12-77"></a><span class="s">    &lt;&lt;: *service-defaults</span>
+</span><span id="__span-12-78"><a id="__codelineno-12-78" name="__codelineno-12-78" href="#__codelineno-12-78"></a><span class="s">    image: nginx:1.27-alpine</span>
+</span><span id="__span-12-79"><a id="__codelineno-12-79" name="__codelineno-12-79" href="#__codelineno-12-79"></a><span class="s">    ports:</span>
+</span><span id="__span-12-80"><a id="__codelineno-12-80" name="__codelineno-12-80" href="#__codelineno-12-80"></a><span class="s">      - "8080:80"   # Внешний порт L7 HTTP-балансировщика</span>
+</span><span id="__span-12-81"><a id="__codelineno-12-81" name="__codelineno-12-81" href="#__codelineno-12-81"></a><span class="s">      - "9000:9000" # Внешний порт L4 TCP-балансировщика</span>
+</span><span id="__span-12-82"><a id="__codelineno-12-82" name="__codelineno-12-82" href="#__codelineno-12-82"></a><span class="s">    volumes:</span>
+</span><span id="__span-12-83"><a id="__codelineno-12-83" name="__codelineno-12-83" href="#__codelineno-12-83"></a><span class="s">      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro</span>
+</span><span id="__span-12-84"><a id="__codelineno-12-84" name="__codelineno-12-84" href="#__codelineno-12-84"></a><span class="s">    networks:</span>
+</span><span id="__span-12-85"><a id="__codelineno-12-85" name="__codelineno-12-85" href="#__codelineno-12-85"></a><span class="s">      - frontend-net</span>
+</span><span id="__span-12-86"><a id="__codelineno-12-86" name="__codelineno-12-86" href="#__codelineno-12-86"></a><span class="s">    depends_on:</span>
+</span><span id="__span-12-87"><a id="__codelineno-12-87" name="__codelineno-12-87" href="#__codelineno-12-87"></a><span class="s">      backend:</span>
+</span><span id="__span-12-88"><a id="__codelineno-12-88" name="__codelineno-12-88" href="#__codelineno-12-88"></a><span class="s">        condition: service_healthy</span>
+</span><span id="__span-12-89"><a id="__codelineno-12-89" name="__codelineno-12-89" href="#__codelineno-12-89"></a>
+</span><span id="__span-12-90"><a id="__codelineno-12-90" name="__codelineno-12-90" href="#__codelineno-12-90"></a><span class="s">networks:</span>
+</span><span id="__span-12-91"><a id="__codelineno-12-91" name="__codelineno-12-91" href="#__codelineno-12-91"></a><span class="s">  # Сеть переднего края (между Nginx и репликами бэкенда)</span>
+</span><span id="__span-12-92"><a id="__codelineno-12-92" name="__codelineno-12-92" href="#__codelineno-12-92"></a><span class="s">  frontend-net:</span>
 </span><span id="__span-12-93"><a id="__codelineno-12-93" name="__codelineno-12-93" href="#__codelineno-12-93"></a><span class="s">    driver: bridge</span>
-</span><span id="__span-12-94"><a id="__codelineno-12-94" name="__codelineno-12-94" href="#__codelineno-12-94"></a>
-</span><span id="__span-12-95"><a id="__codelineno-12-95" name="__codelineno-12-95" href="#__codelineno-12-95"></a><span class="s">volumes:</span>
-</span><span id="__span-12-96"><a id="__codelineno-12-96" name="__codelineno-12-96" href="#__codelineno-12-96"></a><span class="s">  pg_cluster_data:</span>
-</span><span id="__span-12-97"><a id="__codelineno-12-97" name="__codelineno-12-97" href="#__codelineno-12-97"></a><span class="s">  redis_cluster_data:</span>
-</span><span id="__span-12-98"><a id="__codelineno-12-98" name="__codelineno-12-98" href="#__codelineno-12-98"></a>
-</span><span id="__span-12-99"><a id="__codelineno-12-99" name="__codelineno-12-99" href="#__codelineno-12-99"></a><span class="s">secrets:</span>
-</span><span id="__span-12-100"><a id="__codelineno-12-100" name="__codelineno-12-100" href="#__codelineno-12-100"></a><span class="s">  db_password:</span>
-</span><span id="__span-12-101"><a id="__codelineno-12-101" name="__codelineno-12-101" href="#__codelineno-12-101"></a><span class="s">    file: ./secrets/db_password.txt</span>
-</span><span id="__span-12-102"><a id="__codelineno-12-102" name="__codelineno-12-102" href="#__codelineno-12-102"></a><span class="s">EOF</span>
+</span><span id="__span-12-94"><a id="__codelineno-12-94" name="__codelineno-12-94" href="#__codelineno-12-94"></a><span class="s">  # Изолированная сеть слоя хранения данных (у Nginx сюда физически нет доступа!)</span>
+</span><span id="__span-12-95"><a id="__codelineno-12-95" name="__codelineno-12-95" href="#__codelineno-12-95"></a><span class="s">  backend-net:</span>
+</span><span id="__span-12-96"><a id="__codelineno-12-96" name="__codelineno-12-96" href="#__codelineno-12-96"></a><span class="s">    driver: bridge</span>
+</span><span id="__span-12-97"><a id="__codelineno-12-97" name="__codelineno-12-97" href="#__codelineno-12-97"></a>
+</span><span id="__span-12-98"><a id="__codelineno-12-98" name="__codelineno-12-98" href="#__codelineno-12-98"></a><span class="s">volumes:</span>
+</span><span id="__span-12-99"><a id="__codelineno-12-99" name="__codelineno-12-99" href="#__codelineno-12-99"></a><span class="s">  pg_cluster_data:</span>
+</span><span id="__span-12-100"><a id="__codelineno-12-100" name="__codelineno-12-100" href="#__codelineno-12-100"></a><span class="s">  redis_cluster_data:</span>
+</span><span id="__span-12-101"><a id="__codelineno-12-101" name="__codelineno-12-101" href="#__codelineno-12-101"></a>
+</span><span id="__span-12-102"><a id="__codelineno-12-102" name="__codelineno-12-102" href="#__codelineno-12-102"></a><span class="s">secrets:</span>
+</span><span id="__span-12-103"><a id="__codelineno-12-103" name="__codelineno-12-103" href="#__codelineno-12-103"></a><span class="s">  db_password:</span>
+</span><span id="__span-12-104"><a id="__codelineno-12-104" name="__codelineno-12-104" href="#__codelineno-12-104"></a><span class="s">    file: ./secrets/db_password.txt</span>
+</span><span id="__span-12-105"><a id="__codelineno-12-105" name="__codelineno-12-105" href="#__codelineno-12-105"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <hr />
 <h3 id="5">Этап 5. Запуск и горизонтальное масштабирование кластера</h3>
-<p>Собери и запусти стек сразу с <strong>3 репликами</strong> бэкенд-сервиса:
+<p>Соберем наш образ и одной командой поднимем весь кластер, сразу приказав оркестратору развернуть <strong>3 параллельные реплики</strong> бэкенд-сервиса (<code>--scale backend=3</code>):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build<span class="w"> </span>--scale<span class="w"> </span><span class="nv">backend</span><span class="o">=</span><span class="m">3</span>
-</span></code></pre></div></p>
-<p>Подожди 10–15 секунд, пока сработают проверки <code>healthcheck</code>, и посмотри статус всех 6 контейнеров:
+</span></code></pre></div>
+<p>Подожди 10–15 секунд, пока пройдут проверки готовности <code>healthcheck</code> по цепочке от базы данных до Nginx, и выведи статус всех 6 работающих контейнеров кластера:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>ps
-</span></code></pre></div></p>
+</span></code></pre></div>
 <hr />
-<h3 id="-4">✅ Чек-лист самопроверки по Модулю 4</h3>
+<h3 id="-4">✅ Чек-лист самопроверки и боевые испытания по Модулю 4</h3>
+<p>Выполни четыре теста, чтобы увидеть работу балансировки нагрузки и автоматического преодоления отказов (Failover) своими глазами:</p>
 <ol>
 <li>
-<p><strong>Проверка распределения нагрузки (L7 Load Balancing):</strong>
-   Выполни цикл из 6 запросов к балансировщику Nginx на порту <code>8080</code>:
+<p><strong>Проверка распределения нагрузки между репликами (L7 Load Balancing):</strong>
+   Отправим в цикле 6 последовательных запросов на единую входную точку балансировщика Nginx (<code>localhost:8080</code>):
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..6<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8080/api/visit<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </span></code></pre></div>
-   <em>Ожидаемый результат:</em> В поле <code>"served_by_replica"</code> ты увидишь <strong>3 разных ID контейнеров</strong> (запросы равномерно распределяются по 3 репликам!), а счетчики <code>"redis_hits"</code> и <code>"postgres_saved_rows"</code> синхронно растут от <code>1</code> до <code>6</code>!</p>
+   <em>Ожидаемый результат:</em> Посмотри на поле <code>"served_by_replica"</code> в шести строках ответа — ты увидишь <strong>3 разных идентификатора контейнеров</strong>, которые по очереди обрабатывают твои запросы! При этом общие счетчики <code>"redis_hits"</code> и <code>"postgres_saved_rows"</code> синхронно и без потерь выросли от <code>1</code> до <code>6</code> (потому что все три Stateless-реплики пишут состояние в единые внешние хранилища Redis и PostgreSQL)!</p>
 </li>
 <li>
-<p><strong>Проверка работы L4 TCP-балансировщика на порту <code>9000</code>:</strong>
+<p><strong>Проверка контура сырой L4 TCP-балансировки на порту <code>9000</code>:</strong>
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:9000/health
 </span></code></pre></div>
-   <em>Ожидаемый результат:</em> <code>{"node":"...","status":"healthy"}</code>.</p>
+   <em>Ожидаемый результат:</em> Модуль <code>stream</code> в Nginx прозрачно сбалансировал TCP-соединение на одну из реплик и вернул <code>{"node":"...","status":"healthy"}</code>.</p>
 </li>
 <li>
-<p><strong>Проверка логов апстримов в Nginx:</strong>
-   Посмотри, на какие внутренние IP контейнеров Nginx раскидывал твои запросы:
+<p><strong>Анализ логов апстримов в Nginx:</strong>
+   Посмотрим в наш кастомный лог Nginx, чтобы увидеть внутренние IP-адреса контейнеров, по которым распределялся трафик:
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>nginx<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">6</span>
 </span></code></pre></div></p>
 </li>
 <li>
-<p><strong>Тест на отказоустойчивость (Zero-Downtime Failover):</strong>
-   Насильно убей одну из 3 реплик бэкенда и сразу же отправь запрос:
+<p><strong>Краш-тест на отказоустойчивость без простоя (Zero-Downtime Failover):</strong>
+   Представим, что на одной из нод бэкенда произошел внезапный сбой питания. Принудительно убьем вторую реплику сигналом <code>SIGKILL</code> и в ту же секунду отправим пользовательский запрос на сайт:
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>docker<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>compose-cluster-backend-2
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8080/api/visit
 </span></code></pre></div>
-   <em>Ожидаемый результат:</em> Пользователь не заметил сбоя! Nginx мгновенно переключил трафик на две оставшиеся живые реплики, а Docker автоматически перезапустил убитый контейнер благодаря политике <code>restart: unless-stopped</code>.</p>
+   <em>Ожидаемый результат:</em> Клиент даже не заметил аварии и мгновенно получил успешный ответ <code>200 OK</code>! Балансировщик Nginx автоматически перекинул трафик на две оставшиеся в живых реплики, а демон Docker в фоновом режиме уже поднимает убитый контейнер обратно в строй благодаря политике <code>restart: unless-stopped</code>.</p>
 </li>
 </ol>
 

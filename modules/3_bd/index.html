@@ -469,24 +469,13 @@
   <a href="#21-constraints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Ключевые типы данных и ограничения (Constraints)
+        2.1. Ключевые типы данных и ограничения целостности (Constraints)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.1. Ключевые типы данных и ограничения (Constraints)">
+    <nav class="md-nav" aria-label="2.1. Ключевые типы данных и ограничения целостности (Constraints)">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Основные типы данных в PostgreSQL
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#constraints" class="md-nav__link">
@@ -508,19 +497,19 @@
   <a href="#22-on-delete-cascade" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Создание таблиц, связей и каскадное удаление (ON DELETE CASCADE)
+        2.2. Создание связанных таблиц и логика каскадного удаления (ON DELETE CASCADE)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2. Создание таблиц, связей и каскадное удаление (ON DELETE CASCADE)">
+    <nav class="md-nav" aria-label="2.2. Создание связанных таблиц и логика каскадного удаления (ON DELETE CASCADE)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#on-delete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Как работает каскадное удаление (ON DELETE)
+        Архитектурный выбор при удалении связанных данных (ON DELETE)
       
     </span>
   </a>
@@ -531,7 +520,7 @@
   <a href="#alter-drop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Изменение и удаление таблиц (ALTER, DROP)
+        Модификация структуры существующих таблиц (ALTER, DROP)
       
     </span>
   </a>
@@ -575,7 +564,7 @@
   <a href="#32-cast" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Выборки, операторы сравнения, сортировка и преобразование типов (CAST)
+        3.2. Выборки данных, фильтрация, сортировка и приведение типов (CAST / ::)
       
     </span>
   </a>
@@ -586,7 +575,7 @@
   <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3. Функции для работы со строками, датой и временем
+        3.3. Встроенные функции обработки строк, дат и интервалов времени
       
     </span>
   </a>
@@ -594,10 +583,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#34-group-by" class="md-nav__link">
+  <a href="#34-group-by-having" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4. Группировка данных (GROUP BY) и агрегирующие функции
+        3.4. Группировка данных (GROUP BY), агрегирующие функции и фильтр HAVING
       
     </span>
   </a>
@@ -608,7 +597,7 @@
   <a href="#35-join" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5. Виды соединений таблиц (JOIN) и извлечение связанных данных
+        3.5. Реляционные соединения таблиц (JOIN) и извлечение связанных данных
       
     </span>
   </a>
@@ -636,7 +625,7 @@
   <a href="#41-b-tree-explain-analyze" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Индексы (B-Tree) и анализ производительности (EXPLAIN ANALYZE)
+        4.1. Индексы (B-Tree) и диагностика плана запроса (EXPLAIN ANALYZE)
       
     </span>
   </a>
@@ -647,10 +636,27 @@
   <a href="#42-acid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Транзакции (ACID) и блокировки
+        4.2. Транзакции (ACID), блокировки и спасение зависшей базы
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4.2. Транзакции (ACID), блокировки и спасение зависшей базы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Экстренная диагностика: как найти и снять зависший запрос в продакшене
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -658,7 +664,7 @@
   <a href="#43-pg_dump-pg_restore" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3. Резервное копирование и восстановление (pg_dump и pg_restore)
+        4.3. Резервное копирование и аварийное восстановление (pg_dump и pg_restore)
       
     </span>
   </a>
@@ -669,7 +675,7 @@
   <a href="#44-cicd-flyway-liquibase-alembic" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4. Миграции схемы БД в CI/CD (Flyway / Liquibase / Alembic)
+        4.4. Автоматизация миграций схемы БД в CI/CD (Flyway / Liquibase / Alembic)
       
     </span>
   </a>
@@ -685,19 +691,19 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 3: Создание БД, аналитика, каскадное удаление и бэкап
+        🛠 Практический проект Модуля 3: Проектирование БД инфраструктуры, аналитика, каскадное удаление и аварийное восстановление
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 3: Создание БД, аналитика, каскадное удаление и бэкап">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 3: Проектирование БД инфраструктуры, аналитика, каскадное удаление и аварийное восстановление">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-postgresql-16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Запуск PostgreSQL 16 и инициализация базы данных
+        Этап 1. Запуск сервера PostgreSQL 16 с постоянным томом данных
       
     </span>
   </a>
@@ -708,7 +714,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 2. Создание схемы данных, связей и наполнение таблиц
+        Этап 2. Создание реляционной схемы данных, связей и наполнение таблиц
       
     </span>
   </a>
@@ -716,10 +722,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-join" class="md-nav__link">
+  <a href="#3-join-update" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Отработка аналитических запросов, JOIN, группировки и обновлений
+        Этап 3. Отработка аналитических запросов: JOIN, группировки, функции и массовый UPDATE
       
     </span>
   </a>
@@ -730,7 +736,7 @@
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 4. Снятие бэкапа, проверка каскадного удаления и восстановление
+        Этап 4. Снятие бэкапа, испытание каскадного удаления и аварийное восстановление
       
     </span>
   </a>
@@ -1069,24 +1075,13 @@
   <a href="#21-constraints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Ключевые типы данных и ограничения (Constraints)
+        2.1. Ключевые типы данных и ограничения целостности (Constraints)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.1. Ключевые типы данных и ограничения (Constraints)">
+    <nav class="md-nav" aria-label="2.1. Ключевые типы данных и ограничения целостности (Constraints)">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Основные типы данных в PostgreSQL
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#constraints" class="md-nav__link">
@@ -1108,19 +1103,19 @@
   <a href="#22-on-delete-cascade" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Создание таблиц, связей и каскадное удаление (ON DELETE CASCADE)
+        2.2. Создание связанных таблиц и логика каскадного удаления (ON DELETE CASCADE)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2. Создание таблиц, связей и каскадное удаление (ON DELETE CASCADE)">
+    <nav class="md-nav" aria-label="2.2. Создание связанных таблиц и логика каскадного удаления (ON DELETE CASCADE)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#on-delete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Как работает каскадное удаление (ON DELETE)
+        Архитектурный выбор при удалении связанных данных (ON DELETE)
       
     </span>
   </a>
@@ -1131,7 +1126,7 @@
   <a href="#alter-drop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Изменение и удаление таблиц (ALTER, DROP)
+        Модификация структуры существующих таблиц (ALTER, DROP)
       
     </span>
   </a>
@@ -1175,7 +1170,7 @@
   <a href="#32-cast" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Выборки, операторы сравнения, сортировка и преобразование типов (CAST)
+        3.2. Выборки данных, фильтрация, сортировка и приведение типов (CAST / ::)
       
     </span>
   </a>
@@ -1186,7 +1181,7 @@
   <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3. Функции для работы со строками, датой и временем
+        3.3. Встроенные функции обработки строк, дат и интервалов времени
       
     </span>
   </a>
@@ -1194,10 +1189,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#34-group-by" class="md-nav__link">
+  <a href="#34-group-by-having" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4. Группировка данных (GROUP BY) и агрегирующие функции
+        3.4. Группировка данных (GROUP BY), агрегирующие функции и фильтр HAVING
       
     </span>
   </a>
@@ -1208,7 +1203,7 @@
   <a href="#35-join" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5. Виды соединений таблиц (JOIN) и извлечение связанных данных
+        3.5. Реляционные соединения таблиц (JOIN) и извлечение связанных данных
       
     </span>
   </a>
@@ -1236,7 +1231,7 @@
   <a href="#41-b-tree-explain-analyze" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Индексы (B-Tree) и анализ производительности (EXPLAIN ANALYZE)
+        4.1. Индексы (B-Tree) и диагностика плана запроса (EXPLAIN ANALYZE)
       
     </span>
   </a>
@@ -1247,10 +1242,27 @@
   <a href="#42-acid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Транзакции (ACID) и блокировки
+        4.2. Транзакции (ACID), блокировки и спасение зависшей базы
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4.2. Транзакции (ACID), блокировки и спасение зависшей базы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Экстренная диагностика: как найти и снять зависший запрос в продакшене
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1258,7 +1270,7 @@
   <a href="#43-pg_dump-pg_restore" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3. Резервное копирование и восстановление (pg_dump и pg_restore)
+        4.3. Резервное копирование и аварийное восстановление (pg_dump и pg_restore)
       
     </span>
   </a>
@@ -1269,7 +1281,7 @@
   <a href="#44-cicd-flyway-liquibase-alembic" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4. Миграции схемы БД в CI/CD (Flyway / Liquibase / Alembic)
+        4.4. Автоматизация миграций схемы БД в CI/CD (Flyway / Liquibase / Alembic)
       
     </span>
   </a>
@@ -1285,19 +1297,19 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 3: Создание БД, аналитика, каскадное удаление и бэкап
+        🛠 Практический проект Модуля 3: Проектирование БД инфраструктуры, аналитика, каскадное удаление и аварийное восстановление
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 3: Создание БД, аналитика, каскадное удаление и бэкап">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 3: Проектирование БД инфраструктуры, аналитика, каскадное удаление и аварийное восстановление">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-postgresql-16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Запуск PostgreSQL 16 и инициализация базы данных
+        Этап 1. Запуск сервера PostgreSQL 16 с постоянным томом данных
       
     </span>
   </a>
@@ -1308,7 +1320,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 2. Создание схемы данных, связей и наполнение таблиц
+        Этап 2. Создание реляционной схемы данных, связей и наполнение таблиц
       
     </span>
   </a>
@@ -1316,10 +1328,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-join" class="md-nav__link">
+  <a href="#3-join-update" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Отработка аналитических запросов, JOIN, группировки и обновлений
+        Этап 3. Отработка аналитических запросов: JOIN, группировки, функции и массовый UPDATE
       
     </span>
   </a>
@@ -1330,7 +1342,7 @@
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 4. Снятие бэкапа, проверка каскадного удаления и восстановление
+        Этап 4. Снятие бэкапа, испытание каскадного удаления и аварийное восстановление
       
     </span>
   </a>
@@ -1370,157 +1382,129 @@
 
 
 
-<hr />
 <h1 id="sql-devops">Реляционные базы данных: SQL и администрирование СУБД для DevOps</h1>
-<p>Для DevOps-инженера база данных — это самый ответственный компонент любой архитектуры, потому что в отличие от stateless-приложений (которые можно убить и пересоздать за секунду), <strong>база данных хранит состояние (Stateful)</strong>. Потеря контейнера с бэкендом — это минутная заминка; потеря базы данных без рабочего бэкапа — это катастрофа для бизнеса.</p>
-<p>В этом модуле мы разберем как язык запросов <strong>SQL</strong> (в полном соответствии с программой), так и критически важные аспекты <strong>администрирования PostgreSQL</strong>: конфигурацию, права доступа, резервное копирование, индексы и миграции схемы БД в CI/CD.</p>
+<p>Для DevOps-инженера реляционная база данных — это самый ответственный и критический узел любой архитектуры. Причина кроется в фундаментальном различии между компонентами системы: в то время как контейнеры с кодом бэкенда или фронтенда не хранят состояния (<strong>Stateless</strong>) и могут быть безболезненно уничтожены и пересозданы за секунду, <strong>база данных хранит состояние всего бизнеса (Stateful)</strong>. Потеря контейнера с приложением — это секундная заминка, которую скроет балансировщик нагрузки; потеря базы данных без рабочего резервного копирования — это катастрофа, способная уничтожить компанию.</p>
+<p>В этом модуле мы разберем устройство промышленной СУБД <strong>PostgreSQL</strong> с двух сторон: сначала изучим внутреннюю архитектуру движка, его конфигурацию и систему безопасности, затем освоим язык запросов <strong>SQL</strong> для проектирования схем и аналитики, а в финале разберем задачи эксплуатации — индексы, блокировки, бэкапы и безопасные миграции схемы данных в конвейерах CI/CD.</p>
 <hr />
 <h2 id="1-postgresql-psql">Блок 1. Архитектура PostgreSQL, терминал <code>psql</code> и конфигурация</h2>
 <h3 id="11-postgresql">1.1. Как устроен PostgreSQL под капотом</h3>
-<p>PostgreSQL работает по процессной модели клиент-сервер:</p>
+<p>В отличие от многопоточных СУБД, PostgreSQL построен по классической и сверхнадежной процессной архитектуре клиент-сервер. Чтобы понимать, почему база потребляет память и как она гарантирует сохранность данных при внезапном отключении электричества в дата-центре, нужно знать четыре её ключевых компонента:</p>
 <ul>
-<li><strong><code>postmaster</code> (Главный процесс):</strong> Слушает TCP-порт <strong><code>5432</code></strong> и принимает входящие подключения. На каждое новое клиентское соединение он порождает отдельный рабочий процесс (<code>backend process</code>).</li>
-<li><strong><code>Shared Buffers</code> (Общий буфер в RAM):</strong> Область оперативной памяти, куда PostgreSQL загружает страницы таблиц и индексов с диска для быстрого чтения и изменения.</li>
-<li><strong><code>WAL</code> (Write-Ahead Log — Журнал предзаписи):</strong> Сердце надежности СУБД. Перед тем как изменить данные на диске, PostgreSQL <strong>сначала последовательно записывает операцию в журнал WAL</strong> (<code>pg_wal/</code>). Если сервер внезапно обесточится, при старте база просто воспроизведет записи из WAL и восстановит целостность данных без единой потери.</li>
-<li><strong><code>PGDATA</code> (Директория данных, обычно <code>/var/lib/postgresql/data</code>):</strong> Папка на диске, где физически лежат таблицы, индексы, <code>WAL</code> и конфигурационные файлы.</li>
+<li><strong><code>postmaster</code> (Главный управляющий процесс):</strong> Демон верхнего уровня, который слушает стандартный TCP-порт <strong><code>5432</code></strong> и встречает все входящие сетевые подключения. Как только приложение проходит проверку пароля, <code>postmaster</code> порождает (через системный вызов <code>fork()</code>) отдельный изолированный рабочий процесс (<code>backend process</code>), который обслуживает исключительно эту клиентскую сессию. Благодаря этому фатальный сбой в одном сложном запросе никогда не обрушит весь сервер БД целиком.</li>
+<li><strong><code>Shared Buffers</code> (Общий буферный кэш в RAM):</strong> Выделенная область оперативной памяти, общая для всех рабочих процессов PostgreSQL. Поскольку чтение с диска в тысячи раз медленнее работы с оперативной памятью, СУБД никогда не меняет строки прямо в файлах на диске — она сначала загружает нужные страницы таблиц и индексов (по 8 КБ) в <code>Shared Buffers</code> и работает с ними в памяти.</li>
+<li><strong><code>WAL</code> (Write-Ahead Log — Журнал предзаписи):</strong> Главный механизм, обеспечивающий железобетонную надежность транзакций. Возникает вопрос: если данные меняются в оперативной памяти (<code>Shared Buffers</code>) и сбрасываются в основные файлы таблиц с задержкой, что произойдет, если из сервера выдернут шнур питания? На этот случай работает правило предзаписи: прежде чем подтвердить клиенту успешный <code>COMMIT</code>, PostgreSQL <strong>сначала синхронно и последовательно дописывает информацию об изменении в журнал <code>WAL</code></strong> (в директории <code>pg_wal/</code>). Если сервер внезапно обесточится, при следующем старте база просто прочитает свой журнал <code>WAL</code>, автоматически воспроизведет все недостающие операции и восстановит стопроцентную целостность таблиц без потери ни единого байта подтвержденных данных.</li>
+<li><strong><code>PGDATA</code> (Физическая директория данных):</strong> Корневая папка на диске (в официальных контейнерах и Linux-серверах это обычно <code>/var/lib/postgresql/data</code>), внутри которой физически хранятся бинарные файлы всех баз и таблиц, индексы, сегменты журнала <code>WAL</code> и главные конфигурационные файлы сервера.</li>
 </ul>
 <hr />
 <h3 id="12-postgresql">1.2. Два главных конфигурационных файла PostgreSQL</h3>
-<p>Внутри директории <code>PGDATA</code> (или <code>/etc/postgresql/&lt;версия&gt;/main/</code>) лежат два файла, с которыми работает каждый DevOps-инженер:</p>
+<p>При настройке и траблшутинге кластера PostgreSQL работа DevOps-инженера сосредоточена вокруг двух текстовых файлов, расположенных внутри директории <code>PGDATA</code> (или в <code>/etc/postgresql/&lt;версия&gt;/main/</code> в дистрибутивах Debian/Ubuntu):</p>
 <ol>
-<li><strong><code>postgresql.conf</code> — основные настройки движка и ресурсов:</strong></li>
-<li><code>listen_addresses = '*'</code> (по умолчанию <code>'localhost'</code> — база принимает коннекты только внутри хоста; для работы по сети ставят <code>'*'</code> или IP интерфейса).</li>
-<li><code>max_connections = 100</code> — лимит одновременных подключений.</li>
-<li><code>shared_buffers = 256MB</code> — объем RAM, выделенный под кэш данных (обычно ставят <strong>25% от всей оперативной памяти сервера</strong>).</li>
+<li><strong><code>postgresql.conf</code> — управление ресурсами, сетью и производительностью движка:</strong>
+   Именно здесь задаются лимиты памяти и правила логирования:</li>
+<li><code>listen_addresses = '*'</code> — определяет, на каких сетевых интерфейсах база ждет подключений. По умолчанию стоит безопасное значение <code>'localhost'</code> (<code>127.0.0.1</code>), при котором база принимает запросы только внутри самого хоста; чтобы к базе могли подключаться бэкенд-сервисы по сети, параметр переключают в <code>'*'</code> (или указывают конкретный внутренний IP-адрес сервера).</li>
+<li><code>max_connections = 100</code> — жесткий лимит одновременных клиентских соединений (важно помнить, что каждое соединение в Postgres — это отдельный процесс, потребляющий оперативную память).</li>
+<li><code>shared_buffers = 256MB</code> — объем оперативной памяти, отведенный под внутренний кэш данных самой СУБД. На выделенных боевых серверах БД золотым стандартом считается выделение под <code>shared_buffers</code> ровно <strong>25% от всей физической RAM сервера</strong> (остальные 75% оставляют под файловый кэш самой ОС Linux и память для сортировок в запросах).</li>
 <li>
-<p><code>log_min_duration_statement = 500</code> — логировать все медленные SQL-запросы, которые выполняются дольше 500 мс (главный инструмент поиска тормозов!).</p>
+<p><code>log_min_duration_statement = 500</code> — незаменимый диагностический радар: приказывает базе записывать в лог полный текст всех медленных SQL-запросов, выполнение которых заняло более 500 миллисекунд.</p>
 </li>
 <li>
-<p><strong><code>pg_hba.conf</code> (Host-Based Authentication) — встроенный фаервол и правила входа:</strong>
-Определяет, <em>кто</em>, <em>к какой базе</em>, <em>с какого IP-адреса</em> и <em>каким методом</em> может подключаться.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># TYPE   DATABASE   USER       ADDRESS          METHOD
+<p><strong><code>pg_hba.conf</code> (Host-Based Authentication) — внутренний межсетевой экран и матрица доступа:</strong>
+   Даже если порт <code>5432</code> открыт в сетевом фаерволе, а в <code>postgresql.conf</code> прописан <code>listen_addresses = '*'</code>, PostgreSQL никого не пустит внутрь без разрешающего правила в <code>pg_hba.conf</code>. Этот файл читается сверху вниз до первого совпадения и строго определяет: <em>по какому типу соединения</em>, <em>к какой именно базе</em>, <em>какому пользователю</em>, <em>с какой IP-подсети</em> и <em>каким алгоритмом шифрования</em> разрешен вход:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># TYPE   DATABASE   USER       ADDRESS          METHOD
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>local    all        postgres                    peer
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>host     all        app_user   172.18.0.0/16    scram-sha-256
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>host     all        all        0.0.0.0/0        reject
 </span></code></pre></div></p>
+<blockquote>
+<p><strong>Правило безопасности DevSecOps:</strong> В колонке <code>METHOD</code> для всех сетевых подключений всегда используйте современный криптографический стандарт <strong><code>scram-sha-256</code></strong>. Устаревший алгоритм <code>md5</code> подвержен атакам, а метод <code>trust</code> (который пускает в базу вообще без проверки пароля!) в продакшене категорически запрещен.</p>
+</blockquote>
 </li>
 </ol>
-<blockquote>
-<p><strong>Важно для безопасности:</strong> Всегда используйте современный метод шифрования паролей <strong><code>scram-sha-256</code></strong> (не устаревший <code>md5</code> и тем более не <code>trust</code>, который пускает вообще без пароля!).</p>
-</blockquote>
 <hr />
 <h3 id="13-psql-gui-pgadmin-dbeaver">1.3. Инструменты работы: терминал <code>psql</code> и GUI (<code>pgAdmin</code> / <code>DBeaver</code>)</h3>
-<p>В графических клиентах (<strong>pgAdmin 4</strong>, <strong>DBeaver</strong>) удобно визуально строить диаграммы связей (ER-диаграммы) и просматривать таблицы. Но на боевых серверах и внутри контейнеров графики нет — там используется штатный терминальный клиент <strong><code>psql</code></strong>.</p>
-<p><strong>Шпаргалка по мета-командам <code>psql</code> (начинаются с обратного слэша <code>\</code>):</strong></p>
+<p>При разработке на локальном компьютере инженеры и аналитики часто используют графические клиенты — <strong>DBeaver</strong> или веб-интерфейс <strong>pgAdmin 4</strong>, которые позволяют наглядно просматривать таблицы и строить визуальные схемы связей (ER-диаграммы). Однако на закрытых боевых серверах и внутри минималистичных Docker-контейнеров графической оболочки нет — вся работа и автоматизация выполняются через штатный консольный клиент <strong><code>psql</code></strong>.</p>
+<p>Помимо обычных SQL-запросов, в <code>psql</code> встроены сверхбыстрые служебные мета-команды администратора, которые всегда начинаются с обратного слэша <strong><code>\</code></strong>:</p>
 <table>
 <thead>
 <tr>
 <th>Команда в <code>psql</code></th>
-<th>Что делает</th>
+<th>Назначение при диагностике сервера БД</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>\l</code></td>
-<td>Показать список всех баз данных на сервере (и их размеры с <code>\l+</code>).</td>
+<td><code>\l</code> (или <code>\l+</code>)</td>
+<td>Вывести список всех существующих баз данных на сервере, их владельцев и кодировки (с плюсом <code>\l+</code> покажет точный размер каждой базы на диске в МБ/ГБ!).</td>
 </tr>
 <tr>
 <td><code>\c dbname</code></td>
-<td>Переключиться (Connect) на базу данных <code>dbname</code>.</td>
+<td>Мгновенно переключиться (Connect) на работу внутри базы данных <code>dbname</code>.</td>
 </tr>
 <tr>
 <td><code>\dt</code> / <code>\dt+</code></td>
-<td>Показать список всех таблиц в текущей схеме (с <code>+</code> — включая размер каждой таблицы на диске!).</td>
+<td>Показать список всех таблиц в текущей базе (вариант <code>\dt+</code> выведет физический вес каждой конкретной таблицы на диске — позволяет за секунду найти таблицу, забившую раздел <code>/var</code>).</td>
 </tr>
 <tr>
 <td><code>\d table_name</code></td>
-<td>Показать структуру конкретной таблицы (колонки, типы данных, ключи, индексы).</td>
+<td>Вывести полный технический паспорт таблицы <code>table_name</code>: названия всех колонок, их типы данных, ограничения <code>NOT NULL</code>, привязанные к таблице индексы и внешние ключи.</td>
+</tr>
+<tr>
+<td><code>\du</code></td>
+<td>Показать список всех зарегистрированных пользователей (ролей) СУБД и их права доступа (Superuser, Create DB и т. д.).</td>
+</tr>
+<tr>
+<td><code>\timing</code></td>
+<td>Включить встроенный секундомер: после каждого выполненного запроса <code>psql</code> будет писать точное время его выполнения в миллисекундах.</td>
+</tr>
+<tr>
+<td><code>\q</code></td>
+<td>Корректно закрыть соединение и выйти из клиента <code>psql</code> в оболочку Linux (также работает комбинация клавиш <code>Ctrl+D</code>).</td>
 </tr>
 </tbody>
 </table>
-<p>|
-| <code>\du</code> | Показать список всех пользователей (ролей) и их привилегии. |
-| <code>\timing</code> | Включить секундомер выполнения каждого SQL-запроса в миллисекундах. |
-| <code>\q</code> | Выйти из <code>psql</code> (или нажать <code>Ctrl+D</code>). |</p>
 <hr />
 <h2 id="2-ddl">Блок 2. Проектирование схемы данных (DDL): таблицы, типы и связи</h2>
-<p>Язык SQL делится на подмножества:</p>
-<ul>
-<li>
-<p><strong>DDL (Data Definition Language):</strong> Создание, изменение и удаление структуры таблиц (<code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>TRUNCATE</code>).</p>
-</li>
-<li>
-<p><strong>DML (Data Manipulation Language):</strong> Работа с самими строками данных (<code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</p>
-</li>
-<li>
-<p><strong>DCL (Data Control Language):</strong> Управление правами доступа (<code>GRANT</code>, <code>REVOKE</code>).</p>
-</li>
-</ul>
+<p>Язык структурированных запросов <strong>SQL (Structured Query Language)</strong> логически разделен на три функциональных подмножества:
+* <strong>DDL (Data Definition Language — Язык описания данных):</strong> Команды проектирования самой архитектуры базы — создание, модификация и удаление таблиц и индексов (<code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>TRUNCATE</code>).
+* <strong>DML (Data Manipulation Language — Язык манипуляции данными):</strong> Повседневная работа с содержимым таблиц — чтение, вставка, обновление и удаление строк (<code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).
+* <strong>DCL (Data Control Language — Язык управления доступом):</strong> Выдача и отзыв прав доступа у пользователей (<code>GRANT</code>, <code>REVOKE</code>).</p>
 <hr />
-<h3 id="21-constraints">2.1. Ключевые типы данных и ограничения (Constraints)</h3>
-<h4 id="postgresql">Основные типы данных в PostgreSQL</h4>
-<p>:</p>
+<h3 id="21-constraints">2.1. Ключевые типы данных и ограничения целостности (Constraints)</h3>
+<p>При создании таблицы в PostgreSQL для каждой колонки задается строгий тип данных. Правильный выбор типа экономит гигабайты диска и защищает базу от некорректных записей:</p>
 <ul>
-<li><strong>Числа:</strong> <code>INTEGER</code> (<code>INT</code>), <code>BIGINT</code> (для больших ID), <code>NUMERIC(10, 2)</code> (точные дробные числа для денег без ошибок округления).</li>
-<li><strong>Автоинкремент:</strong> <code>SERIAL</code> / <code>BIGSERIAL</code> или современный стандарт SQL <code>GENERATED ALWAYS AS IDENTITY</code>.</li>
-<li>
-<p><strong>Строки:</strong> <code>VARCHAR(n)</code> (строка с лимитом длины $n$), <code>TEXT</code> (строка произвольной длины — в PostgreSQL работает так же быстро, как <code>VARCHAR</code>).</p>
-</li>
-<li>
-<p><strong>Дата и время:</strong> <code>DATE</code>, <code>TIMESTAMP</code> (без часового пояса), <strong><code>TIMESTAMPTZ</code></strong> (<code>TIMESTAMP WITH TIME ZONE</code> — <strong>золотой стандарт для серверов</strong>, всегда хранит время в UTC).</p>
-</li>
-<li>
-<p><strong>Логический тип:</strong> <code>BOOLEAN</code> (<code>true</code> / <code>false</code>).</p>
-</li>
-<li><strong>Специальные типы (суперсила Postgres):</strong> <code>UUID</code>, <strong><code>JSONB</code></strong> (бинарный индексируемый JSON для хранения полуструктурированных данных и конфигов), <code>INET</code> (для хранения IP-адресов и подсетей!).</li>
+<li><strong>Числовые типы:</strong> <code>INTEGER</code> (или <code>INT</code> — стандартные целые числа до 2 миллиардов), <code>BIGINT</code> (для огромных таблиц логов и транзакций), <code>NUMERIC(10, 2)</code> (тип фиксированной точности без малейших погрешностей округления — обязателен для хранения денежных сумм и финансовых расчетов).</li>
+<li><strong>Автоинкрементные идентификаторы:</strong> Псевдотипы <code>SERIAL</code> / <code>BIGSERIAL</code> (или современный стандарт SQL <code>GENERATED ALWAYS AS IDENTITY</code>), которые автоматически создают счетчик (<code>sequence</code>) и присваивают каждой новой строке следующий уникальный номер <code>1, 2, 3...</code>.</li>
+<li><strong>Текстовые типы:</strong> <code>VARCHAR(n)</code> (строка с жестким лимитом длины в <code>n</code> символов, например для логина или кода страны) и <code>TEXT</code> (текст произвольной длины — под капотом в PostgreSQL работает с той же скоростью, что и <code>VARCHAR</code>).</li>
+<li><strong>Дата и время:</strong> <code>DATE</code> (только календарная дата), <code>TIMESTAMP</code> (дата и время без привязки к часовому поясу) и <strong><code>TIMESTAMPTZ</code></strong> (<code>TIMESTAMP WITH TIME ZONE</code> — <strong>золотой стандарт для распределенных серверных систем</strong>: автоматически переводит и хранит любое время в едином всемирном координированном времени UTC, избавляя от путаницы при переезде серверов между дата-центрами).</li>
+<li><strong>Логический тип:</strong> <code>BOOLEAN</code> (принимает значения <code>true</code>, <code>false</code> или <code>NULL</code>).</li>
+<li><strong>Специализированные типы (суперсила PostgreSQL):</strong> <code>UUID</code> (глобально уникальные 128-битные идентификаторы), <strong><code>JSONB</code></strong> (бинарный сжатый JSON с поддержкой индексации — позволяет хранить внутри реляционной БД гибкие документы и конфиги со скоростью NoSQL-баз!) и сетевой тип <strong><code>INET</code></strong> (специально созданный для хранения и валидации IPv4/IPv6-адресов и масок подсетей!).</li>
 </ul>
 <h4 id="constraints">Ограничения целостности (Constraints)</h4>
-<p>:</p>
+<p>Чтобы переложить защиту данных с хрупкого кода приложения на плечи ядра СУБД, на колонки накладываются жесткие правила валидации — <strong>ограничения (Constraints)</strong>:</p>
 <ul>
-<li>
-<p><strong><code>PRIMARY KEY</code> (Первичный ключ):</strong> Уникальный идентификатор строки в таблице (не может быть пустым <code>NULL</code> и не может повторяться).</p>
-</li>
-<li>
-<p><strong><code>FOREIGN KEY</code> (Внешний ключ):</strong> Ссылка на <code>PRIMARY KEY</code> другой таблицы — создает связь между таблицами и не позволяет записать «висячую» ссылку на несуществующий объект.</p>
-</li>
-<li>
-<p><strong><code>NOT NULL</code>:</strong> Запрещает оставлять поле пустым.</p>
-</li>
-<li>
-<p><strong><code>UNIQUE</code>:</strong> Гарантирует уникальность значения во всей колонке (например, <code>hostname</code> или <code>email</code>).</p>
-</li>
-<li>
-<p><strong><code>CHECK</code>:</strong> Проверяет значение по условию (например, <code>CHECK (cpu_cores &gt; 0)</code>).</p>
-</li>
-<li>
-<p><strong><code>DEFAULT</code>:</strong> Задает значение по умолчанию (например, <code>DEFAULT NOW()</code>).</p>
-</li>
+<li><strong><code>PRIMARY KEY</code> (Первичный ключ):</strong> Главный паспорт строки в таблице. Гарантирует, что значение в этой колонке (обычно <code>id</code>) уникально, никогда не повторяется и не может быть пустым (<code>NOT NULL</code>), а также автоматически строит по нему быстрый индекс.</li>
+<li><strong><code>FOREIGN KEY</code> (Внешний ключ):</strong> Механизм связывания таблиц между собой. Указывает, что значение в этой колонке обязано ссылаться на реально существующий <code>PRIMARY KEY</code> в другой родительской таблице. База физически не позволит записать строку со ссылкой на несуществующий объект («сироту»).</li>
+<li><strong><code>NOT NULL</code>:</strong> Запрещает оставлять поле незаполненным при вставке или обновлении строки.</li>
+<li><strong><code>UNIQUE</code>:</strong> Гарантирует, что во всей таблице не может появиться двух строк с одинаковым значением в этом поле (например, для колонки <code>hostname</code> сервера или <code>email</code> пользователя).</li>
+<li><strong><code>CHECK</code>:</strong> Произвольное логическое условие проверки значения перед записью (например, <code>CHECK (cpu_cores &gt; 0)</code> не даст по ошибке записать сервер с отрицательным числом ядер).</li>
+<li><strong><code>DEFAULT</code>:</strong> Автоматически подставляет заданное значение по умолчанию, если при <code>INSERT</code> колонка не была указана явно (например, <code>DEFAULT NOW()</code> автоматически проставит точное время создания записи).</li>
 </ul>
 <hr />
-<h3 id="22-on-delete-cascade">2.2. Создание таблиц, связей и каскадное удаление (<code>ON DELETE CASCADE</code>)</h3>
-<p>Представим схему данных для учета инфраструктуры:</p>
+<h3 id="22-on-delete-cascade">2.2. Создание связанных таблиц и логика каскадного удаления (<code>ON DELETE CASCADE</code>)</h3>
+<p>Спроектируем реляционную схему базы данных для внутренней платформы учета инфраструктуры и релизов компании, состоящую из трех таблиц, связанных отношением <em>Один-ко-Многим (<code>1:N</code>)</em>:</p>
 <ol>
-<li>Таблица <strong><code>environments</code></strong> (Окружения: <code>production</code>, <code>staging</code>, <code>dev</code>).</li>
-<li>
-<p>Таблица <strong><code>servers</code></strong> (Серверы, каждый привязан к своему окружению: связь <em>Один-ко-Многим</em> — <code>1:N</code>).</p>
-</li>
-<li>
-<p>Таблица <strong><code>deployments</code></strong> (История выкаток сервисов на эти серверы).</p>
-</li>
+<li>Справочник <strong><code>environments</code></strong> (Контуры окружений: <code>production</code>, <code>staging</code>, <code>development</code>).</li>
+<li>Таблица <strong><code>servers</code></strong> (Физические и виртуальные серверы компании, где каждый сервер внешним ключом <code>env_id</code> привязан к своему окружению).</li>
+<li>Журнал <strong><code>deployments</code></strong> (История выкаток микросервисов на конкретные серверы, привязанная внешним ключом <code>server_id</code> к таблице <code>servers</code>).</li>
 </ol>
-<h4 id="on-delete">Как работает каскадное удаление (<code>ON DELETE</code>)</h4>
-<p>:</p>
-<p>Что должно произойти с записями в таблице <code>deployments</code>, если мы удалим сервер из таблицы <code>servers</code>?</p>
+<h4 id="on-delete">Архитектурный выбор при удалении связанных данных (<code>ON DELETE</code>)</h4>
+<p>При создании внешнего ключа (<code>FOREIGN KEY ... REFERENCES ...</code>) мы обязаны объяснить СУБД, как она должна поступить с дочерними записями, если кто-то попытается удалить родительскую запись (например, мы списываем и удаляем тестовый сервер из таблицы <code>servers</code>, а на него в таблице <code>deployments</code> ссылаются 50 исторических записей о прошлых выкатках):</p>
 <ul>
-<li><code>ON DELETE RESTRICT</code> (по умолчанию) — база выдаст ошибку и <strong>запретит</strong> удалять сервер, пока на него ссылаются деплои.</li>
-<li>
-<p><code>ON DELETE CASCADE</code> — при удалении сервера PostgreSQL <strong>автоматически каскадно удалит</strong> все связанные с ним записи в <code>deployments</code>.</p>
-</li>
-<li>
-<p><code>ON DELETE SET NULL</code> — сервер удалится, а в таблице <code>deployments</code> в колонке <code>server_id</code> проставится <code>NULL</code> (история деплоев сохранится).</p>
-</li>
+<li><strong><code>ON DELETE RESTRICT</code></strong> (поведение по умолчанию) — строгая защита от удаления. База заблокирует запрос <code>DELETE</code> и выдаст ошибку, запрещая удалять родительский объект, пока на него ссылается хотя бы одна дочерняя строка (именно так мы защитим таблицу окружений <code>environments</code>: нельзя случайно удалить контур <code>production</code>, пока в нем числятся живые серверы!).</li>
+<li><strong><code>ON DELETE CASCADE</code> (Каскадное удаление)</strong> — автоматическая зачистка по цепочке. Как только мы удаляем сервер из таблицы <code>servers</code>, PostgreSQL в рамках одной транзакции <strong>автоматически находит и каскадно удаляет</strong> все привязанные к этому серверу строки из таблицы <code>deployments</code>.</li>
+<li><strong><code>ON DELETE SET NULL</code></strong> — мягкое открепление. Родительский сервер удаляется, а во всех связанных строках таблицы <code>deployments</code> в колонке <code>server_id</code> аккуратно проставляется пустое значение <code>NULL</code> (полезно, когда сервер списан, но саму историю деплоев нужно сохранить для годовой статистики).</li>
 </ul>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- 1. Создаем таблицу окружений</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- 1. Создаем родительскую таблицу окружений</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">environments</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">env_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
@@ -1528,7 +1512,7 @@
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">);</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">-- 2. Создаем таблицу серверов со связью на environments (FOREIGN KEY)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">-- 2. Создаем таблицу серверов с внешним ключом на environments и защитой от удаления (ON DELETE RESTRICT)</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="n">hostname</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
@@ -1539,7 +1523,7 @@
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span>
 </span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">);</span>
 </span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1">-- 3. Создаем таблицу деплоев с КАСКАДНЫМ удалением при удалении сервера</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1">-- 3. Создаем журнал деплоев с КАСКАДНЫМ удалением истории при списании сервера (ON DELETE CASCADE)</span>
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">deployments</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 </span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="n">service_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
@@ -1550,53 +1534,55 @@
 </span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="n">deployed_at</span><span class="w"> </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span>
 </span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="p">);</span>
 </span></code></pre></div>
-<h4 id="alter-drop">Изменение и удаление таблиц (<code>ALTER</code>, <code>DROP</code>)</h4>
-<p>:</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- Добавить новую колонку в существующую таблицу</span>
+<h4 id="alter-drop">Модификация структуры существующих таблиц (<code>ALTER</code>, <code>DROP</code>)</h4>
+<p>Когда система уже работает в продакшене, структура таблиц развивается без потери накопленных данных с помощью оператора <code>ALTER TABLE</code>:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- Безопасно добавить новую колонку с версией ОС во все существующие строки таблицы servers</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">os_version</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">'Ubuntu 24.04'</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">-- Переименовать колонку</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">-- Переименовать существующую колонку</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="k">RENAME</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">ram_gb</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">memory_gb</span><span class="p">;</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">-- Удалить колонку</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">-- Удалить ненужную колонку из таблицы</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">os_version</span><span class="p">;</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">-- Полностью удалить таблицу (и зависимые связи через CASCADE)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">-- Полное уничтожение таблицы вместе со всеми данными и внешними связями (использовать с осторожностью!)</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1">-- DROP TABLE deployments CASCADE;</span>
 </span></code></pre></div>
 <hr />
 <h2 id="3-dml-join">Блок 3. Манипуляция данными (DML), фильтрация, функции и <code>JOIN</code></h2>
 <h3 id="31-insert-update-delete">3.1. Добавление, изменение и удаление данных (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>)</h3>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">-- 1. Вставка данных (INSERT)</span>
+<p>Работа с записями внутри таблиц строится на трех базовых операторах модификации:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">-- 1. Пакетная вставка новых записей (INSERT INTO ... VALUES)</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">environments</span><span class="w"> </span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span><span class="w"> </span><span class="n">is_critical</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">(</span><span class="s1">'production'</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">),</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">(</span><span class="s1">'staging'</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">),</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="p">(</span><span class="s1">'development'</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">-- 2. Обновление записей с фильтрацией (UPDATE ... WHERE)</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">-- ВНИМАНИЕ: Никогда не запускайте UPDATE или DELETE без секции WHERE,</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1">-- иначе вы перезапишете или сотрете ВСЮ таблицу!</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">-- 2. Точечное обновление существующих записей по условию фильтрации (UPDATE ... SET ... WHERE)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">-- ЗОЛОТОЕ ПРАВИЛО БЕЗОПАСНОСТИ: Никогда не нажимайте Enter в запросах UPDATE или DELETE,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1">-- не перепроверив секцию WHERE! Запрос UPDATE без WHERE мгновенно перезапишет абсолютно ВСЕ строки в таблице!</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">servers</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">SET</span><span class="w"> </span><span class="n">memory_gb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span>
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'prod-api-01'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">cpu_cores</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1">-- 3. Удаление записей по фильтру (DELETE ... WHERE)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1">-- 3. Очистка устаревших записей по фильтру времени и статуса (DELETE FROM ... WHERE)</span>
 </span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">deployments</span>
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'FAILED'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">deployed_at</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">'30 days'</span><span class="p">;</span>
 </span></code></pre></div>
 <hr />
-<h3 id="32-cast">3.2. Выборки, операторы сравнения, сортировка и преобразование типов (<code>CAST</code>)</h3>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- Фильтрация (WHERE), операторы сравнения (=, !=, &gt;, &lt;, &gt;=, IN, BETWEEN, LIKE, IS NOT NULL)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">-- и сортировка (ORDER BY ... ASC / DESC) с лимитом строк (LIMIT)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">ip_address</span><span class="p">,</span><span class="w"> </span><span class="n">cpu_cores</span><span class="p">,</span><span class="w"> </span><span class="n">memory_gb</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">servers</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">cpu_cores</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">4</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'prod-%'</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">env_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">memory_gb</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="k">ASC</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1">-- Преобразование типов данных в SQL-запросах: функция CAST(val AS type) или оператор Postgres ::</span>
+<h3 id="32-cast">3.2. Выборки данных, фильтрация, сортировка и приведение типов (<code>CAST</code> / <code>::</code>)</h3>
+<p>Для извлечения данных и построения отчетов используется оператор <code>SELECT</code>. С его помощью можно гибко фильтровать строки (через операторы <code>=</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, списки <code>IN (...)</code>, диапазоны <code>BETWEEN</code>, текстовые маски <code>LIKE</code> и проверку на пустоту <code>IS NOT NULL</code>), сортировать выдачу (<code>ORDER BY ... ASC</code> по возрастанию или <code>DESC</code> по убыванию) и преобразовывать типы данных на лету:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- Выбрать серверы с 4+ ядрами, чье имя начинается на 'prod-', отсортировав от самых мощных по RAM к менее мощным</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">ip_address</span><span class="p">,</span><span class="w"> </span><span class="n">cpu_cores</span><span class="p">,</span><span class="w"> </span><span class="n">memory_gb</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">servers</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">cpu_cores</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">4</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'prod-%'</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">env_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">memory_gb</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="k">ASC</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">-- Явное преобразование типов данных в запросах:</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1">-- Стандартная SQL-функция CAST(значение AS тип) или фирменный лаконичный оператор PostgreSQL "::"</span>
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">SELECT</span><span class="w"> </span>
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="n">hostname</span><span class="p">,</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="n">ip_address</span><span class="p">::</span><span class="nb">TEXT</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ip_string</span><span class="p">,</span>
@@ -1605,47 +1591,41 @@
 </span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="k">FROM</span><span class="w"> </span><span class="n">servers</span><span class="p">;</span>
 </span></code></pre></div>
 <hr />
-<h3 id="33">3.3. Функции для работы со строками, датой и временем</h3>
+<h3 id="33">3.3. Встроенные функции обработки строк, дат и интервалов времени</h3>
+<p>Вместо того чтобы выгружать сырые данные в Python или Bash и форматировать их циклами, в PostgreSQL гораздо быстрее подготовить строки и рассчитать временные интервалы прямо внутри SQL-запроса на стороне самой СУБД:</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">SELECT</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="c1">-- Функции работы со строками:</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">UPPER</span><span class="p">(</span><span class="n">service_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">service_upper</span><span class="p">,</span><span class="w">                 </span><span class="c1">-- В верхний регистр</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">LOWER</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">status_lower</span><span class="p">,</span><span class="w">                        </span><span class="c1">-- В нижний регистр</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span><span class="w"> </span><span class="s1">':'</span><span class="p">,</span><span class="w"> </span><span class="k">version</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">image_tag</span><span class="p">,</span><span class="w">      </span><span class="c1">-- Склейка строк (или оператор ||)</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="k">SUBSTRING</span><span class="p">(</span><span class="k">version</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">major_minor</span><span class="p">,</span><span class="w">       </span><span class="c1">-- Вырезка подстроки</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">REPLACE</span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span><span class="w"> </span><span class="s1">'-service'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">short_name</span><span class="p">,</span><span class="w">  </span><span class="c1">-- Замена подстроки</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="k">LENGTH</span><span class="p">(</span><span class="n">service_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">name_len</span><span class="p">,</span><span class="w">                     </span><span class="c1">-- Длина строки</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="c1">-- Встроенные функции трансформации текста:</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">UPPER</span><span class="p">(</span><span class="n">service_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">service_upper</span><span class="p">,</span><span class="w">                 </span><span class="c1">-- Перевод в ВЕРХНИЙ РЕГИСТР</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">LOWER</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">status_lower</span><span class="p">,</span><span class="w">                        </span><span class="c1">-- Перевод в нижний регистр</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span><span class="w"> </span><span class="s1">':'</span><span class="p">,</span><span class="w"> </span><span class="k">version</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">image_tag</span><span class="p">,</span><span class="w">      </span><span class="c1">-- Склейка нескольких полей в единый Docker-тег</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="k">SUBSTRING</span><span class="p">(</span><span class="k">version</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">major_minor</span><span class="p">,</span><span class="w">       </span><span class="c1">-- Извлечение подстроки (первые 3 символа версии)</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">REPLACE</span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span><span class="w"> </span><span class="s1">'-svc'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">short_name</span><span class="p">,</span><span class="w">      </span><span class="c1">-- Замена подстроки на лету</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="k">LENGTH</span><span class="p">(</span><span class="n">service_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">name_len</span><span class="p">,</span><span class="w">                     </span><span class="c1">-- Подсчет длины строки в символах</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="c1">-- Функции работы с датой и временем:</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">current_time</span><span class="p">,</span><span class="w">                                </span><span class="c1">-- Текущее время с таймзоной</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">'day'</span><span class="p">,</span><span class="w"> </span><span class="n">deployed_at</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">deploy_day</span><span class="p">,</span><span class="w">         </span><span class="c1">-- Округление даты до дня/часа/месяца</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="k">EXTRACT</span><span class="p">(</span><span class="n">HOUR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">deployed_at</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">deploy_hour</span><span class="p">,</span><span class="w">        </span><span class="c1">-- Извлечь конкретный час (или YEAR, MONTH)</span>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">deployed_at</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">age_interval</span><span class="w">                   </span><span class="c1">-- Сколько времени прошло с момента деплоя</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="c1">-- Встроенные функции аналитики времени и дат:</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">current_time</span><span class="p">,</span><span class="w">                                </span><span class="c1">-- Точное текущее серверное время с таймзоной</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">'day'</span><span class="p">,</span><span class="w"> </span><span class="n">deployed_at</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">deploy_day</span><span class="p">,</span><span class="w">         </span><span class="c1">-- Округление (усечение) таймстемпа до начала дня/часа/месяца</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="k">EXTRACT</span><span class="p">(</span><span class="n">HOUR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">deployed_at</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">deploy_hour</span><span class="p">,</span><span class="w">        </span><span class="c1">-- Извлечение конкретного компонента даты (час, год, день недели)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">deployed_at</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">age_interval</span><span class="w">                   </span><span class="c1">-- Вычисление точного интервала времени, прошедшего с момента релиза</span>
 </span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="k">FROM</span><span class="w"> </span><span class="n">deployments</span><span class="p">;</span>
 </span></code></pre></div>
 <hr />
-<h3 id="34-group-by">3.4. Группировка данных (<code>GROUP BY</code>) и агрегирующие функции</h3>
-<p>Агрегирующие функции сворачивают множество строк в один итоговый показатель:</p>
+<h3 id="34-group-by-having">3.4. Группировка данных (<code>GROUP BY</code>), агрегирующие функции и фильтр <code>HAVING</code></h3>
+<p>Когда нужно получить сводную аналитику (например, сколько всего деплоев прошло по каждому микросервису и каково среднее время выкатки), используется группировка <strong><code>GROUP BY</code></strong> в паре с агрегирующими функциями, которые сворачивают группу строк в одно итоговое число:</p>
 <ul>
-<li>
-<p><strong><code>COUNT(*)</code></strong> — количество строк.</p>
-</li>
-<li>
-<p><strong><code>SUM(col)</code></strong> — сумма значений.</p>
-</li>
-<li>
-<p><strong><code>AVG(col)</code></strong> — среднее арифметическое.</p>
-</li>
-<li>
-<p>**<code>MIN(col)</code> / <code>MAX(col)**</code> — минимум и максимум.</p>
-</li>
+<li><strong><code>COUNT(*)</code></strong> — подсчитывает общее количество строк в группе.</li>
+<li><strong><code>SUM(col)</code></strong> — вычисляет сумму числового поля.</li>
+<li><strong><code>AVG(col)</code></strong> — вычисляет среднее арифметическое значение.</li>
+<li><strong><code>MIN(col)</code> и <code>MAX(col)</code></strong> — находят минимальное и максимальное значения в группе.</li>
 </ul>
 <blockquote>
-<p><strong>Разница между <code>WHERE</code> и <code>HAVING</code> (любимый вопрос на собеседованиях):</strong>
-* <code>WHERE</code> фильтрует <strong>исходные строки ДО группировки</strong>.
-* <code>HAVING</code> фильтрует **уже сгруппированные результаты ПОСЛЕ <code>GROUP BY**</code> (по агрегатным функциям).</p>
+<p><strong>Критическое различие между <code>WHERE</code> и <code>HAVING</code> (классический вопрос на технических интервью):</strong>
+Новички часто пытаются написать условие <code>WHERE COUNT(*) &gt; 1</code> и получают синтаксическую ошибку. Причина проста:
+* Секция <strong><code>WHERE</code></strong> фильтрует отдельные <strong>сырые строки таблицы ДО того</strong>, как сработает группировка <code>GROUP BY</code> (на этом этапе база еще понятия не имеет, чему будет равен итоговый <code>COUNT(*)</code>).
+* Секция <strong><code>HAVING</code></strong> вступает в игру <strong>ПОСЛЕ группировки <code>GROUP BY</code></strong> и фильтрует уже готовые схлопнутые группы по результатам агрегатных функций!</p>
 </blockquote>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- Посчитать статистику деплоев по каждому сервису и вывести только те сервисы,</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">-- которые деплоились больше 1 раза</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- Собрать статистику деплоев за последние 7 дней по каждому сервису и вывести в отчет только те сервисы,</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">-- которые выкатывались более 1 раза (фильтрация агрегата через HAVING)</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">SELECT</span><span class="w"> </span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">service_name</span><span class="p">,</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_deploys</span><span class="p">,</span>
@@ -1659,41 +1639,41 @@
 </span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_deploys</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </span></code></pre></div>
 <hr />
-<h3 id="35-join">3.5. Виды соединений таблиц (<code>JOIN</code>) и извлечение связанных данных</h3>
-<p>Чтобы собрать полную картину из нескольких связанных таблиц, используют операторы соединения <code>JOIN</code>:</p>
+<h3 id="35-join">3.5. Реляционные соединения таблиц (<code>JOIN</code>) и извлечение связанных данных</h3>
+<p>В реляционных базах данные нормализованы (разложены по разным таблицам, чтобы избежать дублирования). Чтобы собрать в одном отчете данные сразу из нескольких таблиц по связям их ключей (<code>PRIMARY KEY = FOREIGN KEY</code>), используются четыре типа оператора соединения <strong><code>JOIN</code></strong>:</p>
 <table>
 <thead>
 <tr>
-<th>Вид <code>JOIN</code><br></th>
-<th>Как работает</th>
-<th>Когда использовать</th>
+<th>Вид соединения <code>JOIN</code></th>
+<th>Механика объединения множеств</th>
+<th>Практический сценарий использования</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong><code>INNER JOIN</code></strong> (или просто <code>JOIN</code>)</td>
-<td>Возвращает <strong>только те строки, для которых нашлось совпадение в обеих таблицах</strong>.</td>
-<td>Показать все серверы и названия их окружений (серверы без окружения не попадут).</td>
+<td>Строгое пересечение: возвращает <strong>только те строки, для которых нашлось совпадение ключей в обеих таблицах</strong>.</td>
+<td>Вывести список всех деплоев вместе с именами серверов, на которые они ставились.</td>
 </tr>
 <tr>
-<td><strong><code>LEFT JOIN</code></strong></td>
-<td>Возвращает <strong>ВСЕ строки из левой таблицы</strong>, а из правой подтягивает совпадения (если совпадения нет — ставит <code>NULL</code>).</td>
-<td>Найти все серверы, включая те, на которые <strong>еще ни разу ничего не деплоили</strong> (<code>WHERE d.id IS NULL</code>)!</td>
+<td><strong><code>LEFT JOIN</code></strong> (Левое внешнее)</td>
+<td>Возвращает <strong>100% строк из левой (первой) таблицы</strong>, а из правой подтягивает совпадения. Если в правой таблице пары не нашлось, напротив левой строки проставляются пустые значения <code>NULL</code>.</td>
+<td>Незаменимо для поиска аномалий: найти все купленные серверы из таблицы <code>servers</code>, на которые <strong>еще ни разу ничего не деплоили</strong> (<code>WHERE d.id IS NULL</code>)!</td>
 </tr>
 <tr>
-<td><strong><code>RIGHT JOIN</code></strong></td>
-<td>Возвращает все строки из правой таблицы и совпадения из левой.</td>
-<td>Например, вывести все окружения из справочника, даже если в них пока нет ни одного сервера.</td>
+<td><strong><code>RIGHT JOIN</code></strong> (Правое внешнее)</td>
+<td>Зеркально <code>LEFT JOIN</code>: берет абсолютно все строки из правой таблицы и подтягивает совпадения из левой.</td>
+<td>Вывести полный список окружений из справочника <code>environments</code>, даже если в каких-то из них пока нет ни одного сервера.</td>
 </tr>
 <tr>
-<td><strong><code>FULL OUTER JOIN</code></strong></td>
-<td>Объединяет <code>LEFT</code> и <code>RIGHT</code> — возвращает все строки из обеих таблиц, заполняя пропуски через <code>NULL</code>.</td>
-<td>Сверка расхождений между двумя таблицами.</td>
+<td><strong><code>FULL OUTER JOIN</code></strong> (Полное внешнее)</td>
+<td>Объединяет <code>LEFT</code> и <code>RIGHT</code>: возвращает абсолютно все строки из обеих таблиц, заполняя любые пропуски с обеих сторон значениями <code>NULL</code>.</td>
+<td>Полная сверка расхождений между двумя независимыми реестрами данных.</td>
 </tr>
 </tbody>
 </table>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">-- Извлечение связанных данных сразу из 3 таблиц (INNER JOIN):</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">-- Какой сервис, на какой сервер и в какое окружение был выкачен?</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">-- 1. Сквозная выборка сразу из 3 связанных таблиц через цепочку INNER JOIN:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">-- Узнаем, какой сервис, на какой хост и в какой контур окружения был выкачен</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">SELECT</span><span class="w"> </span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">env_name</span><span class="p">,</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">hostname</span><span class="p">,</span>
@@ -1707,92 +1687,93 @@
 </span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">environments</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">env_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id</span>
 </span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deployed_at</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1">-- Поиск "простаивающих" серверов без единого деплоя через LEFT JOIN:</span>
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ip_address</span>
-</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="k">FROM</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="n">s</span>
-</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">deployments</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">server_id</span>
-</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1">-- 2. Классический инфраструктурный аудит через LEFT JOIN:</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="c1">-- Находим "простаивающие" серверы, у которых нет ни одной связанной записи в таблице deployments</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ip_address</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="k">FROM</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="n">s</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">deployments</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">server_id</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
 </span></code></pre></div>
 <hr />
 <h2 id="4-devops">Блок 4. Администрирование СУБД для DevOps: Индексы, Бэкапы и Миграции</h2>
-<h3 id="41-b-tree-explain-analyze">4.1. Индексы (<code>B-Tree</code>) и анализ производительности (<code>EXPLAIN ANALYZE</code>)</h3>
-<p>Если в таблице <code>deployments</code> 10 миллионов строк и вы делаете запрос <code>SELECT * FROM deployments WHERE service_name = 'auth-api'</code>, без индекса PostgreSQL вынужден читать с диска все 10 миллионов строк подряд (<strong><code>Seq Scan</code> — Sequential Scan</strong>). Это кладет диск сервера на лопатки.</p>
-<p>Создав индекс (<code>CREATE INDEX</code>), мы строим сбалансированное дерево поиска (<strong>B-Tree</strong>), по которому база находит нужные строки за 1 миллисекунду (<strong><code>Index Scan</code></strong>):</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">-- Создать индекс по колонке service_name и времени деплоя</span>
+<h3 id="41-b-tree-explain-analyze">4.1. Индексы (<code>B-Tree</code>) и диагностика плана запроса (<code>EXPLAIN ANALYZE</code>)</h3>
+<p>Представьте, что таблица <code>deployments</code> за год работы разрослась до 10 миллионов строк, и сервис мониторинга каждую секунду выполняет запрос: <code>SELECT * FROM deployments WHERE service_name = 'auth-api';</code>. </p>
+<p>Если на колонке <code>service_name</code> нет индекса, PostgreSQL вынужден каждый раз читать с диска от начала до конца все 10 миллионов строк подряд, сверяя каждую строчку с условием. В плане выполнения эта операция называется <strong><code>Seq Scan</code> (Sequential Scan — последовательное сканирование)</strong>. Под нагрузкой десятки параллельных <code>Seq Scan</code> мгновенно уводят диски сервера в 100% утилизацию (<code>iowait</code>), и база встает колом.</p>
+<p>Создавая индекс (<code>CREATE INDEX</code>), мы приказываем СУБД построить рядом с таблицей отсортированное сбалансированное дерево поиска (<strong>B-Tree</strong>), где каждому названию сервиса сопоставлены точные физические координаты его строк на диске. Теперь вместо перебора миллионов записей база за 1 миллисекунду спускается по дереву индекса прямо к нужным строкам (<strong><code>Index Scan</code></strong>):</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">-- Создать составной B-Tree индекс для мгновенного поиска по имени сервиса и сортировки по дате</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_deployments_service_date</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">deployments</span><span class="w"> </span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span><span class="w"> </span><span class="n">deployed_at</span><span class="w"> </span><span class="k">DESC</span><span class="p">);</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">-- В продакшене на живых таблицах ВСЕГДА используйте флаг CONCURRENTLY!</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">-- Обычный CREATE INDEX блокирует таблицу на запись, а CONCURRENTLY строит индекс в фоне без простоя:</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">CONCURRENTLY</span><span class="w"> </span><span class="n">idx_servers_ip</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="p">(</span><span class="n">ip_address</span><span class="p">);</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1">-- Посмотреть реальный план выполнения запроса и затраченное время:</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">ANALYZE</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">deployments</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">service_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'auth-api'</span><span class="p">;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">-- ВАЖНОЕ ПРАВИЛО ПРОДАКШЕНА: На живых высоконагруженных таблицах всегда добавляйте слово CONCURRENTLY!</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">-- Обычный CREATE INDEX на время построения блокирует таблицу от любых операций записи (INSERT/UPDATE),</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1">-- а флаг CONCURRENTLY строит индекс в фоновом режиме без блокировки трафика пользователей:</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">CONCURRENTLY</span><span class="w"> </span><span class="n">idx_servers_ip</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="p">(</span><span class="n">ip_address</span><span class="p">);</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1">-- Главный инструмент профилирования: выполнить запрос и показать реальный план оптимизатора</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1">-- (позволяет своими глазами увидеть переход от медленного Seq Scan к быстрому Index Scan и точное время в мс!)</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">ANALYZE</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">deployments</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">service_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'auth-api'</span><span class="p">;</span>
 </span></code></pre></div>
 <hr />
-<h3 id="42-acid">4.2. Транзакции (<code>ACID</code>) и блокировки</h3>
-<p>Любая серия изменений должна быть атомарной (либо выполнились все шаги, либо ни одного). В SQL это оборачивается в блок <code>BEGIN ... COMMIT</code> (или <code>ROLLBACK</code> при ошибке):</p>
+<h3 id="42-acid">4.2. Транзакции (<code>ACID</code>), блокировки и спасение зависшей базы</h3>
+<p>Любая критическая операция, состоящая из нескольких взаимосвязанных шагов (например, перевод сервера в новое окружение и одновременная запись об этом в журнал аудита), в реляционной БД должна подчиняться принципу атомарности (<strong>ACID</strong>): либо успешно применяются <strong>все</strong> шаги, либо (в случае любой ошибки на полпути) не применяется <strong>ни один</strong>. Для этого запросы оборачиваются в транзакционный блок <code>BEGIN ... COMMIT</code> (с возможностью полной отмены через <code>ROLLBACK</code>):</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">BEGIN</span><span class="p">;</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">servers</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">env_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'stage-node-01'</span><span class="p">;</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">deployments</span><span class="w"> </span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span><span class="w"> </span><span class="k">version</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">duration_sec</span><span class="p">,</span><span class="w"> </span><span class="n">server_id</span><span class="p">)</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">'billing-api'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2.1.0'</span><span class="p">,</span><span class="w"> </span><span class="s1">'SUCCESS'</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">COMMIT</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Если что-то пошло не так до COMMIT, команда ROLLBACK отменит всё!</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">COMMIT</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Фиксирует оба изменения одновременно. Если до COMMIT произошел сбой, команда ROLLBACK вернет всё назад!</span>
 </span></code></pre></div>
-<p><strong>Главный запрос DevOps-инженера при «зависании» базы в продакшене:</strong>
-Посмотреть текущие активные запросы и убить зависший запрос, который заблокировал таблицу:</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">-- 1. Найти долгие или зависшие запросы (системное представление pg_stat_activity)</span>
+<h4 id="_1">Экстренная диагностика: как найти и снять зависший запрос в продакшене</h4>
+<p>Частый сценарий инцидента: кто-то из разработчиков или аналитиков запустил тяжелый неоптимизированный запрос (или открыл транзакцию <code>BEGIN</code>, изменил строку и ушел пить чай, забыв сделать <code>COMMIT</code>), чем заблокировал таблицу для остальных сервисов. У каждого DevOps-инженера под рукой должны быть три системные команды для мгновенного расследования и разблокировки базы через представление <code>pg_stat_activity</code>:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">-- 1. Найти все активные (не простаивающие) запросы, отсортировав их по длительности выполнения (кто висит дольше всех?)</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">query_start</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">duration</span><span class="p">,</span><span class="w"> </span><span class="n">usename</span><span class="p">,</span><span class="w"> </span><span class="k">state</span><span class="p">,</span><span class="w"> </span><span class="n">query</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">pg_stat_activity</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">WHERE</span><span class="w"> </span><span class="k">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">'idle'</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1">-- 2. Мягко отменить запрос по его PID (аналог SIGTERM для запроса)</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1">-- 2. Мягко остановить конкретный зависший запрос по его PID (безопасный аналог SIGTERM только для текущего SQL-запроса)</span>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">pg_cancel_backend</span><span class="p">(</span><span class="mi">12345</span><span class="p">);</span>
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1">-- 3. Жестко разорвать соединение с базой, если мягкая отмена не помогла</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1">-- 3. Принудительно разорвать всю клиентскую сессию и снять все её блокировки, если мягкая отмена не помогла</span>
 </span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">pg_terminate_backend</span><span class="p">(</span><span class="mi">12345</span><span class="p">);</span>
 </span></code></pre></div>
 <hr />
-<h3 id="43-pg_dump-pg_restore">4.3. Резервное копирование и восстановление (<code>pg_dump</code> и <code>pg_restore</code>)</h3>
-<p>Логический бэкап с помощью <code>pg_dump</code> не блокирует работу базы — он читает согласованный снимок данных (snapshot) прямо во время работы пользователей.</p>
-<p><strong>Два главных формата <code>pg_dump</code>:</strong></p>
+<h3 id="43-pg_dump-pg_restore">4.3. Резервное копирование и аварийное восстановление (<code>pg_dump</code> и <code>pg_restore</code>)</h3>
+<p>Золотая аксиома системного администрирования гласит: <em>«Делать бэкапы не нужно — нужно уметь из них восстанавливаться»</em>. Штатная утилита логического резервного копирования <strong><code>pg_dump</code></strong> работает поверх механизма многоверсионности (MVCC): она снимает непротиворечивый слепок всей базы данных на момент старта бэкапа <strong>в горячем режиме</strong>, совершенно не блокируя чтение и запись для работающих пользователей.</p>
+<p>При выборе формата бэкапа в <code>pg_dump</code> важно понимать разницу между двумя подходами:</p>
 <ol>
-<li><strong>Plain SQL (<code>.sql</code> / <code>.sql.gz</code>)</strong> — обычный текстовый файл с командами <code>CREATE TABLE</code> и <code>COPY</code>. Удобно читать глазами, восстанавливается через <code>psql</code>.</li>
-<li><strong>Custom Format (<code>-Fc</code>, файл <code>.dump</code>) — стандарт для продакшена:</strong> Сжат по умолчанию, позволяет восстанавливать данные в несколько потоков (<code>-j 4</code>) или вытащить из бэкапа <strong>только одну случайно удаленную таблицу</strong>, не трогая всю остальную базу!</li>
+<li><strong>Plain-Text SQL (по умолчанию, файлы <code>.sql</code>):</strong> Генерирует обычный текстовый скрипт с командами <code>CREATE TABLE</code> и <code>COPY</code>. Его удобно открыть глазами в текстовом редакторе, но для больших баз он неудобен — восстанавливается медленно в один поток через <code>psql</code> и не позволяет выбрать при восстановлении отдельную таблицу.</li>
+<li><strong>Custom Format (флаг <code>-Fc</code>, файлы <code>.dump</code>) — промышленный стандарт для продакшена:</strong> Бинарный архивный формат PostgreSQL. Во-первых, он автоматически сжимает данные на лету. Во-вторых, в паре с утилитой <strong><code>pg_restore</code></strong> он позволяет разворачивать гигабайтные базы с огромной скоростью <strong>в несколько параллельных потоков CPU (<code>-j 4</code>)</strong>. А главное — если разработчик случайно удалил только одну таблицу из ста, флаг <code>-t &lt;имя_таблицы&gt;</code> позволяет за секунду вытащить и восстановить из огромного архива <strong>исключительно эту пострадавшую таблицу</strong>, не затрагивая работу остальной базы!</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 1. Снять бэкап в сжатом профессиональном формате Custom (-Fc)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 1. Снять полный бэкап базы infra_db в профессиональном сжатом формате Custom (-Fc)</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>pg_dump<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>infra_db<span class="w"> </span>-Fc<span class="w"> </span>-f<span class="w"> </span>/backups/infra_db_<span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>.dump
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># 2. Восстановить базу целиком из Custom-бэкапа в 4 потока (-j 4) с очисткой старых объектов (--clean)</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>pg_restore<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>infra_db<span class="w"> </span>--clean<span class="w"> </span>--if-exists<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span><span class="w"> </span>/backups/infra_db_2026-10-18.dump
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># 3. Восстановить из огромного бэкапа ТОЛЬКО ОДНУ случайно удаленную таблицу (-t deployments)</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>pg_restore<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>infra_db<span class="w"> </span>-t<span class="w"> </span>deployments<span class="w"> </span>/backups/infra_db_2026-10-18.dump
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># 2. Восстановить базу целиком из Custom-дампа в 4 параллельных потока (-j 4)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Флаги --clean --if-exists аккуратно пересоздадут объекты поверх существующих без ошибок</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>pg_restore<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>infra_db<span class="w"> </span>--clean<span class="w"> </span>--if-exists<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span><span class="w"> </span>/backups/infra_db_2026-10-18.dump
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># 3. Ювелирное восстановление: вытащить из общего дампа ТОЛЬКО ОДНУ таблицу deployments (-t)</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>pg_restore<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>infra_db<span class="w"> </span>-t<span class="w"> </span>deployments<span class="w"> </span>/backups/infra_db_2026-10-18.dump
 </span></code></pre></div>
 <hr />
-<h3 id="44-cicd-flyway-liquibase-alembic">4.4. Миграции схемы БД в CI/CD (Flyway / Liquibase / Alembic)</h3>
-<p>В реальных проектах никто не заходит в базу руками, чтобы выполнить <code>ALTER TABLE</code>. Изменения структуры таблиц хранятся в Git в виде версионированных файлов <strong>миграций</strong>:</p>
-<ul>
-<li><code>V1__init_schema.sql</code></li>
-<li><code>V2__add_os_version_to_servers.sql</code></li>
-</ul>
-<p>Инструмент миграций (например, <strong>Flyway</strong>, <strong>Liquibase</strong> или <strong>Alembic</strong> для Python) создает в базе служебную таблицу <code>schema_version</code>, сверяет, какие файлы уже были применены, и при деплое новой версии в CI/CD автоматически накатывает только недостающие скрипты.</p>
+<h3 id="44-cicd-flyway-liquibase-alembic">4.4. Автоматизация миграций схемы БД в CI/CD (Flyway / Liquibase / Alembic)</h3>
+<p>В зрелых командах ни один инженер или разработчик никогда не подключается к продакшен-базе вручную, чтобы создать таблицу или добавить колонку. Любое изменение структуры БД управляется точно так же, как код приложения — через версионированные файлы <strong>миграций схемы данных</strong>, хранящиеся в Git-репозитории:
+* <code>V1__init_schema.sql</code>
+* <code>V2__add_os_version_to_servers.sql</code></p>
+<p>Специализированный инструмент миграций (<strong>Flyway</strong>, <strong>Liquibase</strong>, <strong>golang-migrate</strong> или <strong>Alembic</strong> в экосистеме Python) автоматически создает внутри базы служебную таблицу учета <code>schema_version</code>, где фиксирует контрольные суммы всех уже примененных файлов. Во время каждого деплоя в CI/CD мигратор сверяет папку в Git с этой таблицей и автоматически накатывает только новые скрипты в строгом хронологическом порядке.</p>
 <blockquote>
-<p>Золотое правило Zero-Downtime миграций (Backward Compatibility):
-Никогда не переименовывайте и не удаляйте колонку одним шагом в один релиз! Пока обновляются контейнеры, старая версия кода еще работает и упадет с ошибкой <code>Column not found</code>.
-<strong>Паттерн Expand and Contract (В 3 шага):</strong></p>
-<ol>
-<li><em>Релиз 1:</em> Добавить новую колонку (без <code>NOT NULL</code> или с <code>DEFAULT</code>), начать писать данные в обе колонки.</li>
-<li><em>Релиз 2:</em> Переключить чтение в коде на новую колонку.</li>
-<li><em>Релиз 3:</em> Удалить старую ненужную колонку.</li>
-</ol>
+<p><strong>Золотое правило Zero-Downtime миграций (Обратная совместимость схемы / Паттерн Expand and Contract):</strong>
+Представьте, что вы переименовываете или удаляете колонку в таблице, а ваш кластер обновляется без простоя методом <code>Rolling Update</code> (когда несколько минут старые контейнеры <code>v1.0</code> и новые <code>v1.1</code> работают параллельно поверх одной общей БД)[cite: 4, 8]. Если миграция переименует колонку одним шагом, старые контейнеры <code>v1.0</code> в ту же секунду упадут с фатальной ошибкой <code>Column not found</code>!</p>
+<p>Чтобы избежать простоя и сохранить возможность мгновенного отката кода, изменения схемы всегда проводятся по безопасному трехэтапному паттерну <strong>Expand and Contract (Расширение и Сжатие)</strong>:
+1. <em>Релиз 1 (Expand — Расширение):</em> Миграция только добавляет новую колонку рядом со старой (без жесткого <code>NOT NULL</code> или со значением <code>DEFAULT</code>), а код приложения учится дублировать запись в обе колонки.
+2. <em>Релиз 2 (Migrate — Переключение):</em> Фоновый скрипт копирует исторические данные из старой колонки в новую, и все чтение в коде переключается на новую колонку.
+3. <em>Релиз 3 (Contract — Сжатие):</em> Когда в кластере не осталось ни одного старого контейнера, знающего про старую колонку, третья миграция безопасно удаляет старую колонку из базы.</p>
 </blockquote>
 <hr />
-<h2 id="3">🛠 Практический проект Модуля 3: Создание БД, аналитика, каскадное удаление и бэкап</h2>
-<p>Мы поднимем сервер PostgreSQL 16 в Docker-контейнере с постоянным томом, создадим базу учета инфраструктуры и деплоев, наполним её данными, выполним все виды аналитических запросов (группировки, фильтрацию при обновлении, <code>JOIN</code>, каскадное удаление связанного объекта) и отработаем аварийное восстановление из бэкапа!</p>
+<h2 id="3">🛠 Практический проект Модуля 3: Проектирование БД инфраструктуры, аналитика, каскадное удаление и аварийное восстановление</h2>
+<p>Переходим к комплексному практикуму. Сейчас мы развернем боевой сервер <strong>PostgreSQL 16</strong> в контейнере с постоянным томом данных, спроектируем и свяжем внешними ключами три таблицы учета серверов и деплоев (<code>environments</code>, <code>servers</code>, <code>deployments</code>), напишем аналитические отчеты с объединением таблиц (<code>INNER</code> / <code>LEFT JOIN</code>), группировками и фильтрацией, проверим в бою механику каскадного удаления связанных объектов (<code>ON DELETE CASCADE</code>) и отработаем процедуру спасения данных из бинарного бэкапа <code>pg_dump</code> / <code>pg_restore</code>!</p>
 <hr />
-<h3 id="1-postgresql-16">Этап 1. Запуск PostgreSQL 16 и инициализация базы данных</h3>
+<h3 id="1-postgresql-16">Этап 1. Запуск сервера PostgreSQL 16 с постоянным томом данных</h3>
 <ol>
-<li>Запусти контейнер PostgreSQL 16 с именованным томом <code>pg_devops_data</code>:</li>
+<li>Создадим выделенный именованный том <code>pg_devops_data</code> и запустим контейнер PostgreSQL 16, передав параметры инициализации суперпользователя и первичной базы данных <code>devops_inventory</code>:</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>pg_devops_data
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
@@ -1807,20 +1788,20 @@
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">  </span>postgres:16-alpine
 </span></code></pre></div>
 <ol>
-<li>Подожди 5 секунд и проверь подключение к терминалу <code>psql</code> внутри контейнера:</li>
+<li>Подожди 5 секунд (пока <code>postmaster</code> инициализирует директорию <code>PGDATA</code> и журнал <code>WAL</code>) и проверь готовность сервера, выполнив первый SQL-запрос через консольный клиент <code>psql</code> прямо внутри контейнера:</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>pg-server<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>admin<span class="w"> </span>-d<span class="w"> </span>devops_inventory<span class="w"> </span>-c<span class="w"> </span><span class="s2">"SELECT version();"</span>
 </span></code></pre></div>
 <hr />
-<h3 id="2">Этап 2. Создание схемы данных, связей и наполнение таблиц</h3>
-<p>Скопируй и выполни этот блок — он передаст SQL-скрипт напрямую в <code>psql</code>, создаст 3 связанные таблицы (<code>environments</code>, <code>servers</code>, <code>deployments</code>) и заполнит их реалистичными данными:</p>
+<h3 id="2">Этап 2. Создание реляционной схемы данных, связей и наполнение таблиц</h3>
+<p>Скопируй и выполни этот блок целиком. Через стандартный поток ввода (<code>-i</code>) мы передадим в <code>psql</code> транзакционный скрипт, который создаст три таблицы со строгими типами данных (<code>INET</code> для IP-адресов, <code>TIMESTAMPTZ</code> для времени, <code>CHECK</code> для валидации статусов и ядер CPU), настроит каскадные связи и наполнит базу реалистичной историей работы нашей инфраструктуры:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>pg-server<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>admin<span class="w"> </span>-d<span class="w"> </span>devops_inventory<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="s">-- 1. Очистка на случай повторного запуска</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="s">-- 1. Идемпотентная очистка на случай повторного запуска скрипта</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="s">DROP TABLE IF EXISTS deployments CASCADE;</span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="s">DROP TABLE IF EXISTS servers CASCADE;</span>
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="s">DROP TABLE IF EXISTS environments CASCADE;</span>
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="s">-- 2. Создание таблиц со связями и ограничениями</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="s">-- 2. Проектирование таблиц со связями (DDL)</span>
 </span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="s">CREATE TABLE environments (</span>
 </span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="s">    id SERIAL PRIMARY KEY,</span>
 </span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="s">    env_name VARCHAR(50) NOT NULL UNIQUE,</span>
@@ -1847,7 +1828,7 @@
 </span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="s">    deployed_at TIMESTAMPTZ DEFAULT NOW()</span>
 </span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="s">);</span>
 </span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>
-</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="s">-- 3. Добавление данных в таблицы</span>
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="s">-- 3. Наполнение справочника окружений, парка серверов и журнала деплоев (DML)</span>
 </span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a><span class="s">INSERT INTO environments (env_name, is_critical) VALUES</span>
 </span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a><span class="s">    ('production', true),</span>
 </span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="s">    ('staging', false),</span>
@@ -1871,10 +1852,10 @@
 </span><span id="__span-14-55"><a id="__codelineno-14-55" name="__codelineno-14-55" href="#__codelineno-14-55"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <hr />
-<h3 id="3-join">Этап 3. Отработка аналитических запросов, <code>JOIN</code>, группировки и обновлений</h3>
-<p>Выполни этот аналитический блок и изучи результаты в терминале:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>pg-server<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>admin<span class="w"> </span>-d<span class="w"> </span>devops_inventory<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s">\echo '=== 1. Сводный отчет по деплоям с объединением 3 таблиц (INNER JOIN) и функциями строк/дат ==='</span>
+<h3 id="3-join-update">Этап 3. Отработка аналитических запросов: <code>JOIN</code>, группировки, функции и массовый <code>UPDATE</code></h3>
+<p>Теперь выполним серию из четырех профессиональных запросов к нашей базе данных и проанализируем полученные таблицы прямо в терминале:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>pg-server<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>admin<span class="w"> </span>-d<span class="w"> </span>devops_inventory<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s">\echo '=== 1. Сводный отчет по деплоям с объединением сразу 3 таблиц (INNER JOIN) и форматированием строк/дат ==='</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="s">SELECT </span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="s">    UPPER(e.env_name) AS env,</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="s">    s.hostname,</span>
@@ -1887,13 +1868,13 @@
 </span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="s">JOIN environments e ON s.env_id = e.id</span>
 </span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="s">ORDER BY d.deployed_at DESC;</span>
 </span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
-</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="s">\echo '=== 2. Поиск серверов, на которые еще не было ни одного деплоя (LEFT JOIN) ==='</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="s">\echo '=== 2. Аудит инфраструктуры: поиск серверов, на которые еще не было ни одного деплоя (LEFT JOIN) ==='</span>
 </span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="s">SELECT s.hostname, s.ip_address::TEXT, s.cpu_cores, s.memory_gb</span>
 </span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="s">FROM servers s</span>
 </span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="s">LEFT JOIN deployments d ON s.id = d.server_id</span>
 </span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="s">WHERE d.id IS NULL;</span>
 </span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
-</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="s">\echo '=== 3. Группировка (GROUP BY) и агрегатные функции по окружениям ==='</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="s">\echo '=== 3. Агрегация ресурсов (GROUP BY): сколько ядер CPU и гигабайт RAM выделено под каждое окружение? ==='</span>
 </span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="s">SELECT </span>
 </span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="s">    e.env_name,</span>
 </span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="s">    COUNT(s.id) AS server_count,</span>
@@ -1905,50 +1886,50 @@
 </span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="s">GROUP BY e.env_name</span>
 </span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="s">ORDER BY total_ram_gb DESC;</span>
 </span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a>
-</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="s">\echo '=== 4. Обновление записей с фильтрацией (апгрейд RAM для всех staging и dev серверов) ==='</span>
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="s">\echo '=== 4. Массовое обновление с фильтрацией (удваиваем объем RAM для всех некритичных staging и dev серверов) ==='</span>
 </span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="s">UPDATE servers</span>
 </span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="s">SET memory_gb = memory_gb * 2</span>
 </span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a><span class="s">WHERE env_id IN (SELECT id FROM environments WHERE is_critical = false)</span>
 </span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a><span class="s">RETURNING hostname, memory_gb AS new_memory_gb;</span>
 </span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="s">EOF</span>
 </span></code></pre></div>
+<em>(Обрати внимание на элегантную конструкцию <code>RETURNING</code> в конце запроса <code>UPDATE</code>: это фирменная возможность PostgreSQL, которая позволяет сразу вывести на экран измененные строки без необходимости делать дополнительный <code>SELECT</code>!)</em></p>
 <hr />
-<h3 id="4">Этап 4. Снятие бэкапа, проверка каскадного удаления и восстановление</h3>
-<p>Теперь проверим, как работает <strong><code>ON DELETE CASCADE</code></strong>, а затем восстановим удаленные данные из бэкапа <code>pg_dump</code>:</p>
+<h3 id="4">Этап 4. Снятие бэкапа, испытание каскадного удаления и аварийное восстановление</h3>
+<p>Настало время проверить в действии связь <code>ON DELETE CASCADE</code> и процедуру Disaster Recovery (восстановление после сбоя):</p>
 <ol>
-<li>Создай резервную копию базы данных в формате Custom (<code>.dump</code>) внутри контейнера:</li>
+<li>Перед проведением опасных операций снимем горячий логический бэкап нашей базы в сжатом бинарном формате Custom (<code>-Fc</code>):</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>pg-server<span class="w"> </span>pg_dump<span class="w"> </span>-U<span class="w"> </span>admin<span class="w"> </span>-d<span class="w"> </span>devops_inventory<span class="w"> </span>-Fc<span class="w"> </span>-f<span class="w"> </span>/tmp/inventory_backup.dump
 </span></code></pre></div>
 <ol>
-<li>Протестируй каскадное удаление связанных объектов:
-У нас на сервер <code>stage-app-01</code> (<code>id = 4</code>) было выкачено 2 релиза сервиса <code>frontend-ui</code>. Удалим сам сервер <code>stage-app-01</code> из таблицы <code>servers</code> и убедимся, что все связанные с ним деплои из таблицы <code>deployments</code> <strong>автоматически удалились каскадом</strong>:</li>
+<li>Испытаем каскадное удаление связанных объектов:
+   В нашей базе на тестовый сервер <code>stage-app-01</code> (<code>id = 4</code>) было выкачено 2 релиза сервиса <code>frontend-ui</code>. Выполним команду удаления самого сервера <code>stage-app-01</code> из родительской таблицы <code>servers</code> и посмотрим, что произойдет с общим числом записей в дочерней таблице <code>deployments</code>:</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>pg-server<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>admin<span class="w"> </span>-d<span class="w"> </span>devops_inventory<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s">\echo '--- Количество деплоев ДО удаления сервера stage-app-01 ---'</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s">\echo '--- Общее количество записей о деплоях ДО удаления сервера stage-app-01 ---'</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s">SELECT COUNT(*) AS deployments_before FROM deployments;</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s">-- Удаляем сервер stage-app-01</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s">-- Удаляем запись о сервере stage-app-01 из таблицы servers</span>
 </span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="s">DELETE FROM servers WHERE hostname = 'stage-app-01';</span>
 </span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="s">\echo '--- Количество деплоев ПОСЛЕ удаления сервера (2 связанных деплоя удалились каскадно!) ---'</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="s">\echo '--- Количество записей о деплоях ПОСЛЕ удаления сервера (2 связанных деплоя удалились автоматически каскадом!) ---'</span>
 </span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="s">SELECT COUNT(*) AS deployments_after FROM deployments;</span>
 </span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <ol>
-<li>Восстанови базу из бэкапа с помощью <code>pg_restore</code>:
-Представим, что удаление сервера было ошибочным. Восстановим базу за 1 секунду из нашего дампа <code>/tmp/inventory_backup.dump</code>:</li>
+<li>Отработаем аварийное восстановление (<code>pg_restore</code>):
+   Представим, что удаление сервера <code>stage-app-01</code> и его истории деплоев произошло по ошибке. Восстановим состояние базы данных за одну секунду из нашего страховочного архива <code>/tmp/inventory_backup.dump</code>:</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>pg-server<span class="w"> </span>pg_restore<span class="w"> </span>-U<span class="w"> </span>admin<span class="w"> </span>-d<span class="w"> </span>devops_inventory<span class="w"> </span>--clean<span class="w"> </span>--if-exists<span class="w"> </span>/tmp/inventory_backup.dump
 </span></code></pre></div>
 <hr />
 <h3 id="-3">✅ Чек-лист самопроверки по Модулю 3</h3>
-<p>Проверь, что после <code>pg_restore</code> наш сервер <code>stage-app-01</code> и все 7 записей о деплоях снова на месте:</p>
+<p>Убедись, что процедура восстановления <code>pg_restore</code> отработала штатно и вернула как удаленный сервер <code>stage-app-01</code>, так и все связанные с ним исторические записи о деплоях:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>pg-server<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>admin<span class="w"> </span>-d<span class="w"> </span>devops_inventory<span class="w"> </span>-c<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="s2">"SELECT s.hostname, COUNT(d.id) AS deploy_count FROM servers s LEFT JOIN deployments d ON s.id = d.server_id GROUP BY s.hostname ORDER BY deploy_count DESC;"</span>
 </span></code></pre></div>
-<p><em>Ожидаемый результат:</em> В таблице снова отображаются все 5 серверов (включая <code>stage-app-01</code> с 2 деплоями).</p>
-<hr />
+<p><em>Ожидаемый результат:</em> В итоговой сводке снова присутствуют все 5 серверов компании, включая возвращенный в строй <code>stage-app-01</code> с двумя привязанными к нему деплоями.</p>
 
 
 

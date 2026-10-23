@@ -473,19 +473,19 @@
   <a href="#11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. Мониторинг против Наблюдаемости
+        1.1. Мониторинг против Наблюдаемости: эволюция подхода
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.1. Мониторинг против Наблюдаемости">
+    <nav class="md-nav" aria-label="1.1. Мониторинг против Наблюдаемости: эволюция подхода">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#three-pillars-of-observability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Три столпа наблюдаемости (Three Pillars of Observability):
+        Три столпа наблюдаемости (Three Pillars of Observability)
       
     </span>
   </a>
@@ -498,10 +498,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-use-red-4-sre" class="md-nav__link">
+  <a href="#12-use-red" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2. Методологии мониторинга: USE, RED и 4 золотых сигнала SRE
+        1.2. Инженерные методологии: USE и RED
       
     </span>
   </a>
@@ -529,7 +529,7 @@
   <a href="#21-prometheus-pull-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Архитектура Prometheus и Pull-модель
+        2.1. Архитектура Prometheus и преимущества Pull-модели
       
     </span>
   </a>
@@ -540,7 +540,7 @@
   <a href="#22-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Четыре типа метрик в Prometheus
+        2.2. Четыре фундаментальных типа метрик в Prometheus
       
     </span>
   </a>
@@ -551,7 +551,7 @@
   <a href="#23-promql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3. Основы языка запросов PromQL
+        2.3. Язык аналитических запросов PromQL
       
     </span>
   </a>
@@ -567,19 +567,19 @@
   <a href="#3-grafana-loki" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 3. Обработка логов и их передача в Grafana Loki
+        Блок 3. Централизованный сбор логов и передача в Grafana Loki
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 3. Обработка логов и их передача в Grafana Loki">
+    <nav class="md-nav" aria-label="Блок 3. Централизованный сбор логов и передача в Grafana Loki">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-loki-elk-elasticsearch" class="md-nav__link">
+  <a href="#31-loki-elk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Почему Loki, а не тяжелый ELK (Elasticsearch)?
+        3.1. Архитектурный выбор: почему Loki вытесняет тяжелый стек ELK?
       
     </span>
   </a>
@@ -587,30 +587,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-docker-promtail-loki-grafana" class="md-nav__link">
+  <a href="#32-docker-promtail-loki-grafana-logql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Архитектура доставки логов: Docker -&gt; Promtail -&gt; Loki -&gt; Grafana
+        3.2. Конвейер доставки логов (Docker -&gt; Promtail -&gt; Loki -&gt; Grafana) и язык LogQL
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="3.2. Архитектура доставки логов: Docker -&gt; Promtail -&gt; Loki -&gt; Grafana">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Примеры запросов на языке LogQL:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -623,19 +606,19 @@
   <a href="#4-grafana-alertmanager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 4. Визуализация в Grafana и алертинг в Alertmanager
+        Блок 4. Визуализация в Grafana и умный алертинг в Alertmanager
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 4. Визуализация в Grafana и алертинг в Alertmanager">
+    <nav class="md-nav" aria-label="Блок 4. Визуализация в Grafana и умный алертинг в Alertmanager">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-grafana" class="md-nav__link">
+  <a href="#41-provisioning-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Дашборды в Grafana
+        4.1. Дашборды и декларативный Provisioning в Grafana
       
     </span>
   </a>
@@ -646,7 +629,7 @@
   <a href="#42-prometheus-rules-alertmanager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Реализация алертинга: Prometheus Rules + Alertmanager
+        4.2. Архитектура проактивного алертинга: Prometheus Rules + Alertmanager
       
     </span>
   </a>
@@ -659,22 +642,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#5-full-observability-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 5: Построение полной системы наблюдаемости
+        🛠 Практический проект Модуля 5: Построение полноценной платформы наблюдаемости (Full Observability Stack)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 5: Построение полной системы наблюдаемости">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 5: Построение полноценной платформы наблюдаемости (Full Observability Stack)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Подготовка директорий и инструментация микросервиса
+        Этап 1. Подготовка структуры каталогов и инструментация микросервиса
       
     </span>
   </a>
@@ -696,7 +679,7 @@
   <a href="#3-alertmanager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Конфигурация Alertmanager
+        Этап 3. Конфигурация диспетчера уведомлений Alertmanager
       
     </span>
   </a>
@@ -707,7 +690,7 @@
   <a href="#4-loki-promtail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 4. Конфигурация Loki и агента Promtail (Централизованное логирование)
+        Этап 4. Конфигурация хранилища Loki и агента сбора логов Promtail
       
     </span>
   </a>
@@ -718,7 +701,7 @@
   <a href="#5-provisioning-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 5. Автоматический Provisioning источников данных в Grafana
+        Этап 5. Декларативный Provisioning источников данных в Grafana
       
     </span>
   </a>
@@ -729,7 +712,7 @@
   <a href="#6-composeyaml-observability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 6. Сборка единого compose.yaml и запуск стека Observability
+        Этап 6. Сборка единого манифеста compose.yaml и запуск стека Observability
       
     </span>
   </a>
@@ -752,7 +735,7 @@
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Генерация рабочего трафика и проверка сырых метрик
+        1. Генерация рабочего трафика и проверка экспорта сырых метрик
       
     </span>
   </a>
@@ -763,7 +746,7 @@
   <a href="#2-targets-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Проверка целей (Targets) в Prometheus
+        2. Проверка статуса скрейпинга целей (Targets) в Prometheus
       
     </span>
   </a>
@@ -771,10 +754,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-grafana-3000" class="md-nav__link">
+  <a href="#3-promql-logql-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Исследование метрик и логов в Grafana (порт 3000)
+        3. Расследование метрик (PromQL) и логов (LogQL) в интерфейсе Grafana
       
     </span>
   </a>
@@ -782,10 +765,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-alertmanager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Симуляция аварии и срабатывание боевого алерта!
+        4. Боевая тревога: симуляция аварии БД и срабатывание алерта в Alertmanager!
       
     </span>
   </a>
@@ -1014,19 +997,19 @@
   <a href="#11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. Мониторинг против Наблюдаемости
+        1.1. Мониторинг против Наблюдаемости: эволюция подхода
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.1. Мониторинг против Наблюдаемости">
+    <nav class="md-nav" aria-label="1.1. Мониторинг против Наблюдаемости: эволюция подхода">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#three-pillars-of-observability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Три столпа наблюдаемости (Three Pillars of Observability):
+        Три столпа наблюдаемости (Three Pillars of Observability)
       
     </span>
   </a>
@@ -1039,10 +1022,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-use-red-4-sre" class="md-nav__link">
+  <a href="#12-use-red" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2. Методологии мониторинга: USE, RED и 4 золотых сигнала SRE
+        1.2. Инженерные методологии: USE и RED
       
     </span>
   </a>
@@ -1070,7 +1053,7 @@
   <a href="#21-prometheus-pull-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Архитектура Prometheus и Pull-модель
+        2.1. Архитектура Prometheus и преимущества Pull-модели
       
     </span>
   </a>
@@ -1081,7 +1064,7 @@
   <a href="#22-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Четыре типа метрик в Prometheus
+        2.2. Четыре фундаментальных типа метрик в Prometheus
       
     </span>
   </a>
@@ -1092,7 +1075,7 @@
   <a href="#23-promql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3. Основы языка запросов PromQL
+        2.3. Язык аналитических запросов PromQL
       
     </span>
   </a>
@@ -1108,19 +1091,19 @@
   <a href="#3-grafana-loki" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 3. Обработка логов и их передача в Grafana Loki
+        Блок 3. Централизованный сбор логов и передача в Grafana Loki
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 3. Обработка логов и их передача в Grafana Loki">
+    <nav class="md-nav" aria-label="Блок 3. Централизованный сбор логов и передача в Grafana Loki">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-loki-elk-elasticsearch" class="md-nav__link">
+  <a href="#31-loki-elk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Почему Loki, а не тяжелый ELK (Elasticsearch)?
+        3.1. Архитектурный выбор: почему Loki вытесняет тяжелый стек ELK?
       
     </span>
   </a>
@@ -1128,30 +1111,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-docker-promtail-loki-grafana" class="md-nav__link">
+  <a href="#32-docker-promtail-loki-grafana-logql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Архитектура доставки логов: Docker -&gt; Promtail -&gt; Loki -&gt; Grafana
+        3.2. Конвейер доставки логов (Docker -&gt; Promtail -&gt; Loki -&gt; Grafana) и язык LogQL
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="3.2. Архитектура доставки логов: Docker -&gt; Promtail -&gt; Loki -&gt; Grafana">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Примеры запросов на языке LogQL:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1164,19 +1130,19 @@
   <a href="#4-grafana-alertmanager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 4. Визуализация в Grafana и алертинг в Alertmanager
+        Блок 4. Визуализация в Grafana и умный алертинг в Alertmanager
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 4. Визуализация в Grafana и алертинг в Alertmanager">
+    <nav class="md-nav" aria-label="Блок 4. Визуализация в Grafana и умный алертинг в Alertmanager">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-grafana" class="md-nav__link">
+  <a href="#41-provisioning-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Дашборды в Grafana
+        4.1. Дашборды и декларативный Provisioning в Grafana
       
     </span>
   </a>
@@ -1187,7 +1153,7 @@
   <a href="#42-prometheus-rules-alertmanager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Реализация алертинга: Prometheus Rules + Alertmanager
+        4.2. Архитектура проактивного алертинга: Prometheus Rules + Alertmanager
       
     </span>
   </a>
@@ -1200,22 +1166,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#5-full-observability-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 5: Построение полной системы наблюдаемости
+        🛠 Практический проект Модуля 5: Построение полноценной платформы наблюдаемости (Full Observability Stack)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 5: Построение полной системы наблюдаемости">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 5: Построение полноценной платформы наблюдаемости (Full Observability Stack)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Подготовка директорий и инструментация микросервиса
+        Этап 1. Подготовка структуры каталогов и инструментация микросервиса
       
     </span>
   </a>
@@ -1237,7 +1203,7 @@
   <a href="#3-alertmanager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Конфигурация Alertmanager
+        Этап 3. Конфигурация диспетчера уведомлений Alertmanager
       
     </span>
   </a>
@@ -1248,7 +1214,7 @@
   <a href="#4-loki-promtail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 4. Конфигурация Loki и агента Promtail (Централизованное логирование)
+        Этап 4. Конфигурация хранилища Loki и агента сбора логов Promtail
       
     </span>
   </a>
@@ -1259,7 +1225,7 @@
   <a href="#5-provisioning-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 5. Автоматический Provisioning источников данных в Grafana
+        Этап 5. Декларативный Provisioning источников данных в Grafana
       
     </span>
   </a>
@@ -1270,7 +1236,7 @@
   <a href="#6-composeyaml-observability" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 6. Сборка единого compose.yaml и запуск стека Observability
+        Этап 6. Сборка единого манифеста compose.yaml и запуск стека Observability
       
     </span>
   </a>
@@ -1293,7 +1259,7 @@
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Генерация рабочего трафика и проверка сырых метрик
+        1. Генерация рабочего трафика и проверка экспорта сырых метрик
       
     </span>
   </a>
@@ -1304,7 +1270,7 @@
   <a href="#2-targets-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Проверка целей (Targets) в Prometheus
+        2. Проверка статуса скрейпинга целей (Targets) в Prometheus
       
     </span>
   </a>
@@ -1312,10 +1278,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-grafana-3000" class="md-nav__link">
+  <a href="#3-promql-logql-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Исследование метрик и логов в Grafana (порт 3000)
+        3. Расследование метрик (PromQL) и логов (LogQL) в интерфейсе Grafana
       
     </span>
   </a>
@@ -1323,10 +1289,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-alertmanager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Симуляция аварии и срабатывание боевого алерта!
+        4. Боевая тревога: симуляция аварии БД и срабатывание алерта в Alertmanager!
       
     </span>
   </a>
@@ -1360,160 +1326,181 @@
 
 
 
-<h1 id="observability">Наблюдаемость Observability и мониторинг</h1>
-<p>Поднять многоконтейнерный кластер — это только половина дела. Если сервис тормозит или возвращает ошибки <code>500</code> в 3 часа ночи, инженер не должен узнавать об этом от разгневанных пользователей. </p>
-<p>В этом модуле мы разберем разницу между классическим мониторингом и наблюдаемостью (<strong>Observability</strong>), изучим сбор метрик в <strong>Prometheus</strong>, централизованный сбор логов в <strong>Grafana Loki</strong>, построение дашбордов в <strong>Grafana</strong> и настройку автоматических уведомлений о сбоях через <strong>Alertmanager</strong>.</p>
+<h1 id="observability">Наблюдаемость (Observability) и мониторинг</h1>
+<p>Поднять многоконтейнерный кластер и настроить балансировку нагрузки — это лишь половина инженерной задачи. В реальной эксплуатации любая распределенная система рано или поздно сталкивается с деградацией: заканчивается пул соединений к базе данных, утекает память в одном из воркеров или возрастает сетевая задержка. Если сервис начинает отдавать ошибки <code>HTTP 500</code> в три часа ночи, DevOps-инженер не должен узнавать об этом утром из гневных сообщений пользователей или от руководства.</p>
+<p>В этом модуле мы разберем фундаментальную разницу между классическим мониторингом и современной наблюдаемостью (<strong>Observability</strong>), выстроим сбор числовых метрик через <strong>Prometheus</strong>, организуем централизованный сбор и парсинг логов всех контейнеров в <strong>Grafana Loki</strong>, свяжем их в единую панель управления <strong>Grafana</strong> и настроим проактивное оповещение об авариях через <strong>Alertmanager</strong>.</p>
 <hr />
 <h2 id="1-observability">Блок 1. Основы мониторинга и наблюдаемости (Observability)</h2>
-<h3 id="11">1.1. Мониторинг против Наблюдаемости</h3>
+<h3 id="11">1.1. Мониторинг против Наблюдаемости: эволюция подхода</h3>
+<p>Долгое время в системном администрировании доминировал классический мониторинг, но с переходом к микросервисам его оказалось недостаточно. Важно четко разделять эти два понятия:</p>
 <ul>
-<li><strong>Мониторинг (Monitoring):</strong> Отвечает на вопрос <strong>«Работает ли система?»</strong> по заранее известным порогам (например: <em>«Диск заполнен на 90%»</em> или <em>«Сервер не отвечает на ping»</em>).</li>
-<li><strong>Наблюдаемость (Observability):</strong> Свойство системы, позволяющее ответить на вопрос <strong>«ПОЧЕМУ она сломалась или тормозит?»</strong>, исследуя её внутреннее состояние по внешним данным без выпуска нового кода.</li>
+<li><strong>Мониторинг (Monitoring):</strong> Отвечает на вопрос <strong>«Работает ли система прямо сейчас?»</strong>, опираясь на заранее известные пороги и сценарии отказов (<em>Known Unknowns</em>). Например, мы заранее знаем, что на сервере может закончиться диск или упасть процесс Nginx, и ставим простые проверки: <em>«Если диск заполнен на 90% — бить тревогу»</em> или <em>«Если хост не отвечает на ping — слать СМС»</em>.</li>
+<li><strong>Наблюдаемость (Observability):</strong> Это свойство самой архитектуры системы, позволяющее ответить на куда более сложный вопрос: <strong>«ПОЧЕМУ система сломалась или начала тормозить?»</strong> в ситуациях, которые никто не мог предсказать заранее (<em>Unknown Unknowns</em>). Наблюдаемая система позволяет инженеру расследовать любую внутреннюю аномалию по внешним сигналам (метрикам, логам и трассировкам) на лету, без необходимости дописывать в код новые отладочные <code>print</code> и перезапускать продакшен.</li>
 </ul>
-<h4 id="three-pillars-of-observability">Три столпа наблюдаемости (Three Pillars of Observability):</h4>
+<h4 id="three-pillars-of-observability">Три столпа наблюдаемости (Three Pillars of Observability)</h4>
+<p>Полноценная картина происходящего в кластере складывается из трех взаимодополняющих типов телеметрии:</p>
 <ol>
-<li><strong>Метрики (Metrics — <em>Что происходит?</em>):</strong> Числовые показатели во времени (временные ряды / Time Series). Занимают мало места, идеальны для графиков и триггеров алертов (инструмент: <strong>Prometheus</strong>).</li>
-<li><strong>Логи (Logs — <em>Почему это произошло?</em>):</strong> Детальные текстовые или JSON-записи о конкретных событиях с временной меткой (инструменты: <strong>Grafana Loki</strong>, ELK).</li>
-<li><strong>Трейсы (Traces — <em>Где именно застрял запрос?</em>):</strong> Цепочка прохождения одного пользовательского запроса через десяток микросервисов и баз данных (инструменты: <strong>Jaeger</strong>, <strong>OpenTelemetry</strong>, <strong>Grafana Tempo</strong>).</li>
+<li><strong>Метрики (Metrics — отвечают на вопрос <em>«Что происходит и когда началось?»</em>):</strong> Сжатые числовые показатели, привязанные к шкале времени (временные ряды / Time Series). Они весят считанные байты, хранятся месяцами, мгновенно агрегируются математическими функциями и идеально подходят для построения дашбордов и срабатывания триггеров тревоги (индустриальный стандарт — <strong>Prometheus</strong>, <strong>VictoriaMetrics</strong>).</li>
+<li><strong>Логи (Logs — отвечают на вопрос <em>«Почему это произошло?»</em>):</strong> Детальные текстовые или структурированные JSON-записи о конкретных событиях, произошедших в конкретную миллисекунду внутри приложения (например, полный стектрейс ошибки подключения к таблице БД). Логи дают исчерпывающий контекст сбоя (инструменты — <strong>Grafana Loki</strong>, <strong>ELK / OpenSearch</strong>).</li>
+<li><strong>Трейсы (Traces — отвечают на вопрос <em>«Где именно застрял запрос?»</em>):</strong> Полная сквозная карта прохождения одного конкретного пользовательского запроса через цепочку из десяти микросервисов, очередей и баз данных с точным временем, потраченным на каждом участке (инструменты — <strong>OpenTelemetry</strong>, <strong>Jaeger</strong>, <strong>Grafana Tempo</strong>).</li>
 </ol>
 <hr />
-<h3 id="12-use-red-4-sre">1.2. Методологии мониторинга: USE, RED и 4 золотых сигнала SRE</h3>
-<p>Чтобы не мониторить тысячи бесполезных графиков, индустрия выработала две четкие формулы:</p>
+<h3 id="12-use-red">1.2. Инженерные методологии: USE и RED</h3>
+<p>Когда новичок настраивает мониторинг, он часто выводит на экран сотни случайных графиков, в которых невозможно ориентироваться во время ночной аварии. Чтобы сразу видеть корень проблемы, в SRE (Site Reliability Engineering) используются две четкие взаимодополняющие формулы: метод <strong>USE</strong> для аппаратной части и метод <strong>RED</strong> для самих сервисов:</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Методология</th>
-<th style="text-align: left;">Для чего применяется</th>
-<th style="text-align: left;">Расшифровка показателей</th>
+<th style="text-align: left;">Объект наблюдения</th>
+<th style="text-align: left;">Расшифровка трех ключевых показателей</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Метод USE</strong> <em>(Брендан Грегг)</em></td>
-<td style="text-align: left;"><strong>Для «железа» и инфраструктуры</strong> (CPU, RAM, диски, сеть хоста)</td>
-<td style="text-align: left;">1. <strong>U</strong>tilization (Утилизация): процент занятости ресурса (например, CPU 85%).<br>2. <strong>S</strong>aturation (Насыщение): длина очереди ожидания ресурса (например, <code>Load Average</code> или очередь к диску).<br>3. <strong>E</strong>rrors (Ошибки): количество аппаратных/сетевых ошибок (dropped packets, disk read errors).</td>
+<td style="text-align: left;"><strong>Метод USE</strong> <em>(автор — Брендан Грегг)</em></td>
+<td style="text-align: left;"><strong>Аппаратные ресурсы и ОС хоста</strong> (ядра CPU, плашки RAM, диски, сетевые карты)</td>
+<td style="text-align: left;">1. <strong>U</strong>tilization (Утилизация): процент времени или объема, на который сейчас занят ресурс (например, CPU загружен на 85%, RAM занята на 90%).<br>2. <strong>S</strong>aturation (Насыщение): длина очереди задач, которым не хватило ресурса и которые вынуждены ждать (например, показатель <code>Load Average</code> или очередь запросов к диску <code>await</code>).<br>3. <strong>E</strong>rrors (Ошибки): счетчик аппаратных или системных сбоев ресурса (отброшенные сетевые пакеты <code>dropped packets</code>, ошибки чтения секторов диска).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Метод RED</strong> <em>(Том Уилки)</em></td>
-<td style="text-align: left;"><strong>Для микросервисов и API</strong> (HTTP/gRPC трафик)</td>
-<td style="text-align: left;">1. <strong>R</strong>ate (Частота): количество запросов в секунду (<strong>RPS</strong>).<br>2. <strong>E</strong>rrors (Ошибки): количество запросов в секунду, завершившихся ошибкой (<code>HTTP 5xx</code>).<br>3. <strong>D</strong>uration (Длительность): время ответа сервиса (Latency — обычно смотрят 95-й и 99-й перцентили).</td>
+<td style="text-align: left;"><strong>Метод RED</strong> <em>(автор — Том Уилки)</em></td>
+<td style="text-align: left;"><strong>Микросервисы и бизнес-логика</strong> (HTTP/gRPC API, бэкенды, балансировщики)</td>
+<td style="text-align: left;">1. <strong>R</strong>ate (Частота трафика): количество входящих запросов к сервису в секунду (<strong>RPS — Requests Per Second</strong>).<br>2. <strong>E</strong>rrors (Ошибки): количество запросов в секунду, которые завершились серверной ошибкой (например, коды ответа <code>HTTP 5xx</code>).<br>3. <strong>D</strong>uration (Длительность): время, за которое сервис обрабатывает запрос и отдает ответ клиенту (<strong>Latency</strong> — измеряется строго по 95-му и 99-му перцентилям).</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Почему среднее время ответа (Average Latency) врет?</strong>
-Если 99 запросов выполнились за <code>10 мс</code>, а 1 запрос завис на <code>10 секунд</code> ($10\,000\text{ мс}$), среднее арифметическое составит всего ~<code>110 мс</code> — на графике всё будет выглядеть отлично! Поэтому в DevOps всегда используют <strong>перцентили (квантили)</strong>: например, $p95 = 250\text{ мс}$ означает, что 95% пользователей получили ответ быстрее чем за $250\text{ мс}$, а 5% самых медленных запросов превысили этот порог.</p>
+<p><strong>Математическая ловушка: почему среднее время ответа (<code>Average Latency</code>) всегда врет?</strong>
+Представьте, что за минуту ваш сервис обработал 100 запросов от клиентов. Для 99 пользователей ответ прилетел мгновенно — за <code>10 мс</code>, а у одного VIP-клиента при оформлении корзины база заблокировалась, и его запрос провисел целых <code>10 секунд</code> (<code>10 000 мс</code>). </p>
+<p>Если вы выведете на дашборд простое среднее арифметическое (<code>avg</code>), график покажет вполне здоровые ~<code>110 мс</code> — и вы даже не узнаете, что часть пользователей страдает от десятисекундных зависаний! Именно поэтому в профессиональном DevOps для оценки задержек используют <strong>перцентили (квантили)</strong> — <code>p90</code>, <code>p95</code> и <code>p99</code>. Показатель <strong><code>p95 = 250 мс</code></strong> дает честную картину: он гарантирует, что 95% всех запросов уложились быстрее чем в 250 миллисекунд, и отделяет 5% самых тяжелых аномальных «хвостов».</p>
 </blockquote>
 <hr />
 <h2 id="2-prometheus">Блок 2. Сбор метрик через Prometheus</h2>
-<h3 id="21-prometheus-pull-">2.1. Архитектура Prometheus и Pull-модель</h3>
-<p>В отличие от старых систем (где агенты сами пушили данные на сервер), <strong>Prometheus работает по Pull-модели</strong>: он сам по расписанию (<code>scrape_interval</code>, обычно каждые 15 секунд) ходит по HTTP на заданные адреса (<code>targets</code>) по пути <code>/metrics</code> и забирает текстовый слепок метрик.</p>
-<p><strong>Откуда берутся метрики?</strong>
-1. <strong>Прикладные метрики (Instrumentation):</strong> Наше приложение на Python/Go/Java подключает клиентскую библиотеку Prometheus и само отдает свои бизнес-метрики на <code>/metrics</code>.
-2. <strong>Экспортеры (Exporters):</strong> Для сервисов, которые не умеют отдавать метрики в формате Prometheus natively, рядом запускается маленький агент-переводчик:
-   * <strong><code>node-exporter</code></strong> — собирает метрики самого Linux-сервера (CPU, RAM, Disk, Network).
-   * <strong><code>cAdvisor</code></strong> — собирает метрики всех запущенных Docker-контейнеров.
-   * <strong><code>postgres-exporter</code> / <code>redis-exporter</code> / <code>nginx-exporter</code></strong> — переводят внутреннюю статистику БД и веб-сервера в формат Prometheus.</p>
+<h3 id="21-prometheus-pull-">2.1. Архитектура Prometheus и преимущества Pull-модели</h3>
+<p>В отличие от классических систем мониторинга прошлого поколения (где агенты на серверах сами открывали соединения и пушили данные на центральный сервер), <strong>Prometheus построен вокруг Pull-модели (вытягивания данных)</strong>. </p>
+<p>Сервер Prometheus выступает активным сборщиком: строго по расписанию (параметр <code>scrape_interval</code>, обычно каждые 10–15 секунд) он сам обходит по протоколу HTTP список зарегистрированных целей (<code>targets</code>) по стандартному пути <code>/metrics</code> и скачивает текущие текстовые слепки показателей в свою встроенную базу данных временных рядов (<strong>TSDB — Time Series Database</strong>). Pull-модель дает огромное преимущество: приложение не знает, где находится сервер мониторинга, и никогда не сможет перегрузить его лавиной сетевых пакетов при всплеске трафика, а сам факт того, что Prometheus не смог достучаться до цели (метрика <code>up == 0</code>), мгновенно сигнализирует о падении сервиса.</p>
+<p><strong>Из каких двух источников Prometheus забирает метрики?</strong>
+1. <strong>Прямая инструментация кода (Direct Instrumentation):</strong> В код нашего микросервиса на Python, Go или Java подключается официальная клиентская библиотека (<code>prometheus-client</code>), и приложение само открывает эндпоинт <code>/metrics</code>, отдавая как технические показатели (RED), так и продуктовые бизнес-метрики (например, количество оплаченных заказов в минуту).
+2. <strong>Агенты-экспортеры (Exporters):</strong> Операционная система Linux, СУБД PostgreSQL, Redis или Nginx изначально не умеют отдавать статистику в формате Prometheus. Для них рядом запускается легковесный демон-переводчик — <strong>экспортер</strong>:
+   * <strong><code>node-exporter</code></strong> — читает псевдофайловые системы ядра <code>/proc</code> и <code>/sys</code> и отдает полную телеметрию физического или виртуального сервера по методу USE (CPU, память, диски, сеть).
+   * <strong><code>cAdvisor</code></strong> — снимает низкоуровневую статистику <code>cgroups</code> по каждому запущенному Docker-контейнеру.
+   * <strong><code>postgres-exporter</code> / <code>redis-exporter</code> / <code>nginx-exporter</code></strong> — подключаются к соответствующей службе, забирают её внутреннюю статистику и переводят на язык метрик Prometheus.</p>
 <hr />
-<h3 id="22-prometheus">2.2. Четыре типа метрик в Prometheus</h3>
-<p>Каждая метрика в Prometheus — это имя + набор меток (<code>labels</code> в фигурных скобках) + числовое значение:
+<h3 id="22-prometheus">2.2. Четыре фундаментальных типа метрик в Prometheus</h3>
+<p>Внутри базы Prometheus каждая метрика хранится как уникальное имя, дополненное набором ключевых тегов-измерений (<strong>меток — <code>labels</code></strong> в фигурных скобках) и числовым значением с плавающей точкой:
 <code>http_requests_total{method="GET", path="/api/visit", status="200"} 1452</code></p>
+<p>При разработке и чтении метрик инженер оперирует четырьмя базовыми типами данных:</p>
 <ol>
-<li><strong><code>Counter</code> (Счетчик):</strong> Монотонно растущее число, которое может <strong>только увеличиваться</strong> (и сбрасываться в <code>0</code> при перезапуске процесса). Примеры: общее число запросов <code>http_requests_total</code>, общее число ошибок.</li>
-<li><strong><code>Gauge</code> (Датчик / Шкала):</strong> Число, которое может как расти, так и уменьшаться. Примеры: текущая температура CPU, объем свободной памяти RAM, число активных соединений в моменте.</li>
-<li><strong><code>Histogram</code> (Гистограмма):</strong> Распределяет величины (например, время ответа запроса) по заранее заданным «корзинам» (<code>buckets</code>: <code>le="0.05"</code>, <code>le="0.1"</code>, <code>le="0.5"</code>...). Позволяет считать 95-й и 99-й перцентили времени ответа на стороне сервера Prometheus.</li>
-<li><strong><code>Summary</code>:</strong> Похожа на гистограмму, но вычисляет квантили прямо на стороне приложения (нельзя агрегировать между несколькими репликами сервиса).</li>
+<li><strong><code>Counter</code> (Накопительный счетчик):</strong> Монотонно растущее число, которое в процессе жизни приложения может <strong>только увеличиваться</strong> (и сбрасывается в <code>0</code> исключительно при перезапуске контейнера). В <code>Counter</code> считают общие накопленные итоги с момента старта: общее число обслуженных HTTP-запросов <code>http_requests_total</code>, общее число ошибок или отправленных байт трафика.</li>
+<li><strong><code>Gauge</code> (Динамический датчик / Шкала):</strong> Показатель мгновенного состояния, который может свободно двигаться как вверх, так и вниз (словно стрелка спидометра или термометра). Примеры: текущий объем свободной оперативной памяти в байтах, температура процессора, количество прямо сейчас открытых соединений к базе данных.</li>
+<li><strong><code>Histogram</code> (Гистограмма распределения):</strong> Самый важный тип для измерения времени ответа (<code>Duration</code>) и размера запросов. Гистограмма не хранит каждое измерение отдельно — она раскладывает запросы по заранее нарезанным временным «корзинам» (<code>buckets</code> с верхней границей <code>le</code> — <em>less or equal</em>: быстрее <code>0.05</code> сек, быстрее <code>0.1</code> сек, быстрее <code>0.5</code> сек и т. д.). Именно по этим корзинам сервер Prometheus математически вычисляет 95-й и 99-й перцентили времени ответа сразу по всему кластеру реплик!</li>
+<li><strong><code>Summary</code> (Сводка):</strong> Похожа на гистограмму, но вычисляет готовые перцентили прямо внутри памяти самого приложения на клиенте. Имеет серьезное архитектурное ограничение: предрассчитанные перцентили из <code>Summary</code> математически нельзя складывать и усреднять между несколькими репликами микросервиса, поэтому в кластерах почти всегда выбирают <code>Histogram</code>.</li>
 </ol>
 <hr />
-<h3 id="23-promql">2.3. Основы языка запросов PromQL</h3>
-<p>Чтобы построить график в Grafana или написать правило алерта, используют язык <strong>PromQL</strong>:</p>
-<div class="language-promql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Текущее значение свободной памяти (Gauge) в гигабайтах</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">node_memory_MemAvailable_bytes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 2. Функция rate() — главный инструмент для Counter!</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Вычисляет скорость роста счетчика в секунду (RPS) за последние 1 минуту [1m]:</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kr">rate</span><span class="o">(</span><span class="nv">http_requests_total</span><span class="p">[</span><span class="s">1m</span><span class="p">]</span><span class="o">)</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># 3. Агрегация sum() by () — сумма RPS по всем репликам с группировкой по HTTP-статусу:</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">sum</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="nv">status</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="kr">rate</span><span class="o">(</span><span class="nv">http_requests_total</span><span class="p">[</span><span class="s">1m</span><span class="p">]</span><span class="o">))</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># 4. Доля ошибок 5xx в процентах от общего трафика (Error Rate по методу RED):</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">sum</span><span class="o">(</span><span class="kr">rate</span><span class="o">(</span><span class="nv">http_requests_total</span><span class="p">{</span><span class="nl">status</span><span class="o">=~</span><span class="p">"</span><span class="s">5..</span><span class="p">"}[</span><span class="s">1m</span><span class="p">]</span><span class="o">))</span><span class="w"> </span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="o">/</span><span class="w"> </span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">sum</span><span class="o">(</span><span class="kr">rate</span><span class="o">(</span><span class="nv">http_requests_total</span><span class="p">[</span><span class="s">1m</span><span class="p">]</span><span class="o">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># 5. Вычисление 95-го перцентиля времени ответа по гистограмме (Duration по методу RED):</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="kr">histogram_quantile</span><span class="o">(</span><span class="mf">0.95</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="nv">le</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="kr">rate</span><span class="o">(</span><span class="nv">http_request_duration_seconds_bucket</span><span class="p">[</span><span class="s">5m</span><span class="p">]</span><span class="o">)))</span>
+<h3 id="23-promql">2.3. Язык аналитических запросов PromQL</h3>
+<p>Чтобы превратить сырые колонки цифр в информативные графики в Grafana и задать условия срабатывания алертов, в Prometheus встроен специализированный функциональный язык запросов <strong>PromQL (Prometheus Query Language)</strong>. Разберем пять главных конструкций, на которых строятся 95% всех боевых дашбордов:</p>
+<div class="language-promql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Работа с датчиками (Gauge) и арифметика:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Берем текущее значение свободной памяти из node-exporter в байтах и переводим в гигабайты</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">node_memory_MemAvailable_bytes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 2. Главная функция для счетчиков (Counter) — rate():</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Выводить на график сырой Counter бессмысленно (это просто вечно ползущая вверх линия).</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Функция rate(...[1m]) берет прирост счетчика за последнюю 1 минуту и вычисляет СКОРОСТЬ в секунду (RPS)!</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kr">rate</span><span class="o">(</span><span class="nv">http_requests_total</span><span class="p">[</span><span class="s">1m</span><span class="p">]</span><span class="o">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># 3. Пространственная агрегация по репликам — sum by ():</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Складывает RPS со всех запущенных контейнеров бэкенда, группируя линии графика по HTTP-коду ответа (200, 404, 500)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">sum</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="nv">status</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="kr">rate</span><span class="o">(</span><span class="nv">http_requests_total</span><span class="p">[</span><span class="s">1m</span><span class="p">]</span><span class="o">))</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># 4. Формула Error Rate (Доля ошибок по методу RED в процентах):</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Делим скорость появления ошибок 5xx (регулярное выражение status=~"5..") на общую скорость всех запросов и умножаем на 100</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">sum</span><span class="o">(</span><span class="kr">rate</span><span class="o">(</span><span class="nv">http_requests_total</span><span class="p">{</span><span class="nl">status</span><span class="o">=~</span><span class="p">"</span><span class="s">5..</span><span class="p">"}[</span><span class="s">1m</span><span class="p">]</span><span class="o">))</span><span class="w"> </span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="o">/</span><span class="w"> </span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">sum</span><span class="o">(</span><span class="kr">rate</span><span class="o">(</span><span class="nv">http_requests_total</span><span class="p">[</span><span class="s">1m</span><span class="p">]</span><span class="o">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># 5. Расчет 95-го перцентиля времени ответа (Duration по методу RED) из гистограммы за 5-минутное окно:</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="kr">histogram_quantile</span><span class="o">(</span><span class="mf">0.95</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="nv">le</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="kr">rate</span><span class="o">(</span><span class="nv">http_request_duration_seconds_bucket</span><span class="p">[</span><span class="s">5m</span><span class="p">]</span><span class="o">)))</span>
 </span></code></pre></div>
 <hr />
-<h2 id="3-grafana-loki">Блок 3. Обработка логов и их передача в Grafana Loki</h2>
-<h3 id="31-loki-elk-elasticsearch">3.1. Почему Loki, а не тяжелый ELK (Elasticsearch)?</h3>
-<p>Классический стек <strong>ELK (Elasticsearch + Logstash + Kibana)</strong> индексирует <strong>каждое слово</strong> в каждом логе. Из-за этого кластер Elasticsearch под логи потребляет десятки гигабайт оперативной памяти и сотни гигабайт диска.</p>
-<p><strong>Grafana Loki</strong> спроектирована по принципу <em>«Like Prometheus, but for logs»</em>:
-* Loki <strong>не индексирует текст лога</strong>! Она индексирует только компактный набор метаданных — <strong>меток (<code>labels</code>)</strong>: например, <code>{job="docker", service="backend", env="prod"}</code>.
-* Сами текстовые строки сжимаются и сохраняются дешевыми блоками (в локальную папку или S3). Благодаря этому Loki потребляет в 10 раз меньше RAM, чем Elasticsearch!</p>
-<h3 id="32-docker-promtail-loki-grafana">3.2. Архитектура доставки логов: <code>Docker -&gt; Promtail -&gt; Loki -&gt; Grafana</code></h3>
+<h2 id="3-grafana-loki">Блок 3. Централизованный сбор логов и передача в Grafana Loki</h2>
+<h3 id="31-loki-elk">3.1. Архитектурный выбор: почему Loki вытесняет тяжелый стек ELK?</h3>
+<p>Когда у вас 20 контейнеров на разных серверах, заходить на каждый хост и искать ошибки через <code>docker logs</code> невозможно — логи должны стекаться в единое централизованное хранилище. </p>
+<p>Долгое время стандартом для этого считался стек <strong>ELK (Elasticsearch + Logstash + Kibana)</strong>. У него мощный полнотекстовый поиск, но огромная цена эксплуатации: движок Elasticsearch разбирает и индексирует <strong>абсолютно каждое слово</strong> в каждой строчке лога. В результате для хранения обычных текстовых логов небольшой компании кластер Elasticsearch требует десятки гигабайт оперативной памяти (Java Heap) и огромные дисковые массивы под индексы.</p>
+<p>Создатели Grafana решили эту проблему, выпустив <strong>Grafana Loki</strong> — систему логирования, спроектированную по принципу <em>«Like Prometheus, but for logs»</em> (Как Prometheus, только для логов):
+* <strong>Loki намеренно НЕ индексирует сам текст сообщений лога!</strong>
+* Вместо этого Loki индексирует только компактный набор метаданных потока — точно такие же <strong>метки (<code>labels</code>)</strong>, какие используются в Prometheus: например, <code>{job="docker", service="backend", env="prod"}</code>.
+* Сами же текстовые строки логов склеиваются в пачки (chunks), сильно сжимаются алгоритмами компрессии и складываются как дешевые бинарные файлы на обычный диск или в объектное хранилище S3. Благодаря этому архитектурному решению Loki потребляет <strong>в 10–15 раз меньше оперативной памяти и диска</strong>, чем Elasticsearch, и разворачивается за секунду в одном легком контейнере!</p>
+<hr />
+<h3 id="32-docker-promtail-loki-grafana-logql">3.2. Конвейер доставки логов (<code>Docker -&gt; Promtail -&gt; Loki -&gt; Grafana</code>) и язык LogQL</h3>
+<p>Как строчка лога из нашего Python-приложения попадает на экран инженера в этой архитектуре?</p>
 <ol>
-<li>Приложение пишет логи в стандартный поток вывода (<code>stdout</code> / <code>stderr</code>).</li>
-<li>Демон Docker сохраняет их в JSON-файлы в <code>/var/lib/docker/containers/&lt;ID&gt;/&lt;ID&gt;-json.log</code>.</li>
-<li>Агент <strong><code>Promtail</code></strong> (или <strong>Alloy / Vector</strong>) читает эти файлы, автоматически обогащает их метками из Docker Socket (имя контейнера, имя сервиса Compose) и отправляет по HTTP в <strong>Loki</strong>.</li>
-<li>Инженер читает и фильтрует логи в <strong>Grafana</strong> с помощью языка запросов <strong>LogQL</strong>.</li>
+<li>Следуя методологии 12-Factor App, микросервис внутри контейнера ничего не знает о файлах логов — он просто печатает события (желательно в структурированном однострочном формате <strong>JSON</strong>) в стандартный поток вывода <code>stdout</code> / <code>stderr</code>.</li>
+<li>Демон Docker перехватывает этот поток и аккуратно складывает его на диск хоста в файл <code>/var/lib/docker/containers/&lt;ID&gt;/&lt;ID&gt;-json.log</code>.</li>
+<li>На сервере работает легковесный агент-сборщик <strong><code>Promtail</code></strong> (или современный универсальный агент <strong>Grafana Alloy / Vector</strong>). Через подключенный сокет <code>/var/run/docker.sock</code> агент автоматически обнаруживает все контейнеры на сервере, читает их логи в реальном времени, сам навешивает на них удобные метки (<code>service="backend"</code>, имя контейнера) и отправляет сжатыми пачками по HTTP в хранилище <strong>Loki</strong>.</li>
+<li>Инженер открывает <strong>Grafana</strong> и мгновенно фильтрует миллионы строк с помощью языка запросов <strong>LogQL</strong> (чей синтаксис специально сделан близнецом PromQL!):</li>
 </ol>
-<h4 id="logql">Примеры запросов на языке LogQL:</h4>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a># 1. Показать все логи контейнеров сервиса backend
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a># 1. Выбрать поток всех логов контейнеров сервиса backend по индексированной метке
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>{service="backend"}
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a># 2. Отфильтровать строки, содержащие слово "ERROR", и исключить проверки "/health"
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a># 2. Полнотекстовая фильтрация (grep на лету): найти строки, содержащие "ERROR", и отбросить шум проверок "/health"
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>{service="backend"} |= "ERROR" != "/health"
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a># 3. Распарсить JSON-лог на лету и найти запросы, которые выполнялись дольше 0.5 сек
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>{service="backend"} | json | duration &gt; 0.5
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a># 4. Превратить логи в числовую метрику: количество ошибок в секунду за 1 минуту!
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>rate({service="backend"} |= "ERROR" [1m])
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a># 3. Суперсила структурированного логирования: распарсить JSON-строку на лету (| json)
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a># и отфильтровать только те медленные запросы, где числовое поле duration_sec превысило 0.1 секунды!
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>{service="backend"} | json | duration_sec &gt; 0.1
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a># 4. Превращение логов в числовую метрику для графика: посчитать частоту появления ошибок в логах в секунду!
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>rate({service="backend"} |= "ERROR" [1m])
 </span></code></pre></div>
 <hr />
-<h2 id="4-grafana-alertmanager">Блок 4. Визуализация в Grafana и алертинг в Alertmanager</h2>
-<h3 id="41-grafana">4.1. Дашборды в Grafana</h3>
-<p><strong>Grafana</strong> — это единое окно визуализации, которое подключается одновременно к <strong>Data Source Prometheus</strong> (для графиков метрик) и к <strong>Data Source Loki</strong> (для просмотра логов).
-* Увидев всплеск ошибок <code>500</code> на графике Prometheus в <code>14:05</code>, инженер в один клик нажимает <em>Split View</em>, открывает логи Loki ровно за <code>14:05</code> и сразу видит текст исключения Python/Postgres!
-* Все настройки источников данных (<code>datasources</code>) и сами дашборды (в формате JSON) в DevOps принято подключать <strong>декларативно через механизм Provisioning</strong> (чтобы при старте контейнера Grafana всё уже было настроено без ручных кликов мышкой).</p>
+<h2 id="4-grafana-alertmanager">Блок 4. Визуализация в Grafana и умный алертинг в Alertmanager</h2>
+<h3 id="41-provisioning-grafana">4.1. Дашборды и декларативный Provisioning в Grafana</h3>
+<p><strong>Grafana</strong> выступает единым командным центром наблюдаемости. Поскольку в ней одновременно подключены и источник метрик <strong>Prometheus</strong>, и источник логов <strong>Loki</strong> с одинаковыми метками (<code>service="backend"</code>), инженер получает бесшовный рабочий процесс расследования инцидентов:
+* Вы видите на графике Prometheus резкий скачок ошибок <code>HTTP 500</code> ровно в <code>03:14</code> ночи.
+* В один клик нажимаете кнопку <em>Split View</em> (разделить экран) и открываете панель логов Loki за тот же самый временной интервал <code>03:14</code>. Вам не нужно ничего искать вручную — прямо перед глазами открывается JSON-лог с текстом фатального исключения базы данных!</p>
+<p>При этом в профессиональной практике DevOps никто не добавляет адреса баз данных в Grafana руками через веб-интерфейс после старта контейнера. Используется механизм <strong>декларативного Provisioning</strong>: мы кладем YAML-файлы описания источников данных (<code>datasources.yml</code>) и JSON-модели готовых дашбордов в папку <code>/etc/grafana/provisioning/</code>, и при первом же холодном старте контейнер Grafana автоматически настраивает все подключения без единого клика мышью!</p>
 <hr />
-<h3 id="42-prometheus-rules-alertmanager">4.2. Реализация алертинга: Prometheus Rules + Alertmanager</h3>
-<p>Алертинг разделен на две части:
-1. <strong>Prometheus (Генератор тревоги):</strong> Каждые 15 секунд проверяет правила (<code>alert_rules.yml</code>). Если условие выполняется дольше заданного времени (секция <strong><code>for: 1m</code></strong>, чтобы не дергать дежурного из-за секундного скачка), алерт переходит из статуса <code>Pending</code> в статус <strong><code>Firing</code></strong> и отправляется в Alertmanager.
-2. <strong>Alertmanager (Диспетчер уведомлений):</strong> Принимает алерты от Prometheus и отвечает за умную доставку:
-   * <strong>Grouping (Группировка):</strong> Если на сервере упала база и 10 микросервисов одновременно выдали ошибки, Alertmanager склеит их в <strong>одно компактное сообщение</strong> в Telegram/Slack, а не пришлет 100 отдельных СМС.
-   * <strong>Inhibition (Подавление):</strong> Если недоступен весь физический сервер, подавить мелкие алерты о сервисах внутри него.
-   * <strong>Silences (Заглушки):</strong> Временное отключение уведомлений на время плановых технических работ.</p>
+<h3 id="42-prometheus-rules-alertmanager">4.2. Архитектура проактивного алертинга: Prometheus Rules + Alertmanager</h3>
+<p>Система оповещения об авариях в стеке Prometheus намеренно разделена на два независимых узла, чтобы отделить <em>вычисление проблемы</em> от <em>логики доставки сообщений</em>:</p>
+<ol>
+<li><strong>Prometheus Server (Генератор тревоги):</strong> Каждые 10–15 секунд (<code>evaluation_interval</code>) прогоняет математические условия из файла правил <code>alert_rules.yml</code>. Чтобы дежурного инженера не будили ложные срабатывания из-за случайного секундного всплеска сети, в каждом правиле задается временной фильтр выдержки — директива <strong><code>for: 1m</code></strong>. Как только порог нарушен, алерт переходит в режим ожидания (<code>Pending</code>), и лишь если проблема не рассосалась сама и держится непрерывно всю минуту, алерт переводится в боевой статус <strong><code>Firing</code> (Тревога!)</strong> и отправляется в Alertmanager.</li>
+<li><strong>Alertmanager (Интеллектуальный диспетчер уведомлений):</strong> Принимает поток сработавших алертов от Prometheus и решает три важнейшие эксплуатационные задачи перед отправкой сообщения в Telegram, Slack или PagerDuty:</li>
+<li><strong>Grouping (Группировка и защита от спама):</strong> Представьте, что в дата-центре моргнула сеть и 50 микросервисов одновременно потеряли связь с БД. Вместо того чтобы обрушить на телефон дежурного 50 отдельных уведомлений за секунду (в которых невозможно найти причину), Alertmanager аккуратно склеит все однотипные сбои в <strong>одно компактное сводное сообщение</strong> со списком затронутых узлов!</li>
+<li><strong>Inhibition (Иерархическое подавление шума):</strong> Если упал весь физический сервер целиком (сработал критический алерт <code>HostDown</code>), Alertmanager автоматически подавит десятки мелких вторичных предупреждений о том, что на этом сервере не отвечают Nginx и Redis.</li>
+<li><strong>Silences (Режим тишины на время работ):</strong> Позволяет инженеру в два клика временно приглушить отправку уведомлений по конкретному контуру на 30 минут, пока идут плановые технические работы по обновлению сервера.</li>
+</ol>
 <hr />
-<h2 id="5">🛠 Практический проект Модуля 5: Построение полной системы наблюдаемости</h2>
-<p>Мы возьмем наш микросервисный стек и развернем полноценную Production-grade систему наблюдаемости из <strong>9 компонентов</strong>:
-1. <strong>Бэкенд-сервис (Python/Flask)</strong> — добавим генерацию реальных метрик Prometheus (RED: счетчик запросов, гистограмма времени ответа, датчик ошибок) и структурированных JSON-логов.
-2. <strong>PostgreSQL + Redis + Nginx</strong> — рабочее ядро приложения.
-3. <strong>Node Exporter</strong> — сбор системных метрик самого Linux-хоста (CPU, RAM, Disk).
-4. <strong>Prometheus</strong> — сбор всех метрик и вычисление правил тревоги (<code>alert_rules.yml</code>).
-5. <strong>Alertmanager + Webhook Receiver</strong> — перехват и доставка алертов.
-6. <strong>Loki + Promtail</strong> — автоматический сбор логов со всех контейнеров Docker с привязкой к именам сервисов.
-7. <strong>Grafana</strong> — с автоматическим Provisioning источников данных Prometheus и Loki со старта!</p>
+<h2 id="5-full-observability-stack">🛠 Практический проект Модуля 5: Построение полноценной платформы наблюдаемости (Full Observability Stack)</h2>
+<p>Переходим к сборке одного из самых красивых и мощных проектов курса. Сейчас мы поднимем на твоей машине полноценный промышленный стек наблюдаемости из <strong>7 взаимосвязанных сервисов</strong>, полностью настроенный через код:</p>
+<ol>
+<li><strong>Инструментированный Backend API (Python / Flask + <code>prometheus-client</code>)</strong> — микросервис, который сам считает свои метрики по методу <strong>RED</strong> (счетчик запросов <code>Counter</code>, гистограмма задержек <code>Histogram</code> по корзинам, датчик активных соединений <code>Gauge</code>), пишет структурированные <strong>JSON-логи</strong> в <code>stdout</code> и имеет специальный эндпоинт симуляции сбоя <code>/api/fail</code>.</li>
+<li><strong>Node Exporter</strong> — системный агент, снимающий аппаратные метрики твоего Linux-хоста по методу <strong>USE</strong> (CPU, RAM, Disk, Network).</li>
+<li><strong>Prometheus</strong> — центральный сервер сбора метрик с подключенными правилами боевого алертинга (<code>alert_rules.yml</code>).</li>
+<li><strong>Alertmanager</strong> — диспетчер группировки и маршрутизации тревог.</li>
+<li><strong>Grafana Loki</strong> — высокоэффективное хранилище логов.</li>
+<li><strong>Promtail</strong> — агент, подключенный к сокету Docker, который в реальном времени находит все контейнеры на сервере, собирает их логи и размечает тегами сервисов.</li>
+<li><strong>Grafana</strong> — центр визуализации, который благодаря механизму <strong>Provisioning</strong> со старта автоматически подключен и к Prometheus, и к Loki!</li>
+</ol>
 <hr />
-<h3 id="1">Этап 1. Подготовка директорий и инструментация микросервиса</h3>
-<p>Создадим проект <code>~/observability-stack</code> с папками под конфигурации всех систем мониторинга:</p>
+<h3 id="1">Этап 1. Подготовка структуры каталогов и инструментация микросервиса</h3>
+<p>Создадим рабочую директорию <code>~/observability-stack</code> со всеми подпапками для конфигурационных файлов нашего стека:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/observability-stack/<span class="o">{</span>app,prometheus,alertmanager,loki,promtail,grafana/provisioning/datasources<span class="o">}</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>~/observability-stack
 </span></code></pre></div>
 <ol>
-<li>
-<p>Создай <code>app/requirements.txt</code> с библиотекой <code>prometheus-client</code>:
+<li>Зафиксируем зависимости нашего микросервиса в <code>app/requirements.txt</code>, включив официальную библиотеку <code>prometheus-client</code>:</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/requirements.txt</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s">flask==3.0.3</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s">prometheus-client==0.20.0</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">gunicorn==23.0.0</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Создай код приложения <code>app/main.py</code> (сервис отдает метрики на <code>/metrics</code>, пишет структурированные JSON-логи в <code>stdout</code> и имеет специальный эндпоинт <code>/api/fail</code>, чтобы мы могли искусственно вызвать каскад ошибок <code>500</code> и проверить срабатывание боевого алерта!):
+</span></code></pre></div>
+<ol>
+<li>Создадим исходный код приложения <code>app/main.py</code>. Изучи устройство этого файла:</li>
+<li>Функция <code>log_json()</code> формирует эталонный однострочный JSON-лог с полями <code>timestamp</code>, <code>level</code>, <code>service</code>, <code>node</code> и временем выполнения запроса <code>duration_sec</code>, который идеально парсится в Loki на лету.</li>
+<li>В начале объявлены три метрики Prometheus (<code>REQUEST_COUNT</code>, <code>REQUEST_LATENCY</code> с нарезанными корзинами <code>buckets</code> и <code>ACTIVE_REQUESTS</code>), которые автоматически отдаются на эндпоинте <code>/metrics</code>.</li>
+<li>Эндпоинт <code>/api/order</code> симулирует штатную обработку заказа (со случайной задержкой от <code>20</code> до <code>150 мс</code>), а эндпоинт <code>/api/fail</code> искусственно генерирует ошибку базы данных <code>HTTP 500</code>, чтобы мы могли вживую протестировать срабатывание боевой тревоги в Prometheus и Alertmanager!</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/main.py</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">import os</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">import time</span>
@@ -1524,7 +1511,7 @@
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s">from flask import Flask, jsonify, request, Response</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s">from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s"># Настраиваем вывод чистых JSON-логов в stdout для Promtail/Loki</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s"># Настраиваем чистый вывод в stdout без лишних префиксов для отправки JSON-логов в Promtail/Loki</span>
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">logging.basicConfig(level=logging.INFO, format='%(message)s')</span>
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">logger = logging.getLogger("backend")</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
@@ -1541,7 +1528,7 @@
 </span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
 </span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="s">app = Flask(__name__)</span>
 </span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>
-</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="s"># --- Метрики Prometheus (Метод RED) ---</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="s"># --- Инструментация метрик Prometheus по методологии RED ---</span>
 </span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="s">REQUEST_COUNT = Counter(</span>
 </span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="s">    "http_requests_total",</span>
 </span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="s">    "Total HTTP requests count",</span>
@@ -1570,7 +1557,7 @@
 </span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="s">def order():</span>
 </span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="s">    ACTIVE_REQUESTS.inc()</span>
 </span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="s">    start_time = time.time()</span>
-</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="s">    # Симулируем рабочую задержку от 20 до 150 мс</span>
+</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="s">    # Симулируем реальную работу бизнес-логики (задержка от 20 до 150 миллисекунд)</span>
 </span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="s">    delay = random.uniform(0.02, 0.15)</span>
 </span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="s">    time.sleep(delay)</span>
 </span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="s">    duration = time.time() - start_time</span>
@@ -1594,10 +1581,10 @@
 </span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="s">    log_json("ERROR", "Database transaction deadlock detected!", endpoint="/api/fail", status=500, error_code="DB_DEADLOCK")</span>
 </span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a><span class="s">    return jsonify({"error": "Internal Server Error"}), 500</span>
 </span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Создай <code>app/Dockerfile</code>:
+</span></code></pre></div>
+<ol>
+<li>Создадим <code>app/Dockerfile</code> для сборки нашего сервиса:</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/Dockerfile</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s">FROM python:3.12-slim</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s">WORKDIR /app</span>
@@ -1609,20 +1596,20 @@
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s">EXPOSE 8000</span>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "1", "main:app"]</span>
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-</ol>
+</span></code></pre></div>
 <hr />
 <h3 id="2-prometheus-alert_rulesyml">Этап 2. Конфигурация Prometheus и правил алертинга (<code>alert_rules.yml</code>)</h3>
 <ol>
-<li>
-<p>Создай правила алертинга <code>prometheus/alert_rules.yml</code> (два боевых алерта: на падение любого сервиса <code>InstanceDown</code> и на всплеск ошибок <code>HighErrorRate</code> при появлении <code>HTTP 500</code>):
+<li>Создадим файл боевых правил тревоги <code>prometheus/alert_rules.yml</code> с двумя классическими правилами SRE:</li>
+<li><strong><code>ServiceInstanceDown</code></strong> — срабатывает (уровень <code>critical</code>), если любой из наблюдаемых сервисов перестал отвечать на сбор метрик (<code>up == 0</code>) дольше 15 секунд.</li>
+<li><strong><code>BackendHighErrorRate</code></strong> — срабатывает (уровень <code>warning</code>), если частота появления ошибок <code>HTTP 500</code> на нашем бэкенде превышает <code>0.1</code> запроса в секунду на протяжении 10 секунд.</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; prometheus/alert_rules.yml</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s">groups:</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s">  - name: devops_service_alerts</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s">    interval: 10s</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s">    rules:</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">      # Алерт 1: Любой сервис перестал отдавать метрики</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">      # Правило 1: Падение любого наблюдаемого узла или контейнера</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s">      - alert: ServiceInstanceDown</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s">        expr: up == 0</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s">        for: 15s</span>
@@ -1632,7 +1619,7 @@
 </span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="s">          summary: "Сервис {{ $labels.job }} ({{ $labels.instance }}) НЕДОСТУПЕН!"</span>
 </span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="s">          description: "Экземпляр {{ $labels.instance }} не отвечает на запросы скрейпинга более 15 секунд."</span>
 </span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="s">      # Алерт 2: Всплеск HTTP 500 ошибок на бэкенде</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="s">      # Правило 2: Превышение порога серверных ошибок HTTP 500 (по методу RED)</span>
 </span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="s">      - alert: BackendHighErrorRate</span>
 </span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="s">        expr: sum(rate(http_requests_total{status="500"}[1m])) &gt; 0.1</span>
 </span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="s">        for: 10s</span>
@@ -1640,50 +1627,48 @@
 </span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="s">          severity: warning</span>
 </span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="s">        annotations:</span>
 </span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="s">          summary: "Высокий уровень ошибок HTTP 500 на backend-api!"</span>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="s">          description: "Частота ошибок 500 превысила порог (текущее значение: {{ $value | printf \"%.2f\" }} req/s)."</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="s">          description: "Частота ошибок 500 превысила допустимый порог (текущее значение: {{ $value | printf \"%.2f\" }} req/s)."</span>
 </span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Создай главный конфиг <code>prometheus/prometheus.yml</code>:
+</span></code></pre></div>
+<ol>
+<li>Создадим главный конфигурационный файл <code>prometheus/prometheus.yml</code>, который связывает сервер с Alertmanager и настраивает сбор метрик (Scraping) каждые 10 секунд с трех контуров: самого себя, системного <code>node-exporter</code> и нашего <code>backend-api</code>:</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; prometheus/prometheus.yml</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s">global:</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">  scrape_interval: 10s</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s">  evaluation_interval: 10s</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s"># Подключаем файл правил алертинга</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s"># Подключаем файл правил проактивного алертинга</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s">rule_files:</span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s">  - "/etc/prometheus/alert_rules.yml"</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s"># Настраиваем отправку сработавших алертов в Alertmanager</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s"># Указываем адрес диспетчера Alertmanager для отправки сработавших тревог (Firing)</span>
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">alerting:</span>
 </span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s">  alertmanagers:</span>
 </span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="s">    - static_configs:</span>
 </span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="s">        - targets: ["alertmanager:9093"]</span>
 </span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
 </span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="s">scrape_configs:</span>
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="s">  # 1. Самомониторинг Prometheus</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="s">  # 1. Самомониторинг состояния сервера Prometheus</span>
 </span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="s">  - job_name: "prometheus"</span>
 </span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="s">    static_configs:</span>
 </span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="s">      - targets: ["localhost:9090"]</span>
 </span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
-</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="s">  # 2. Системные метрики Linux-сервера (Node Exporter)</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="s">  # 2. Сбор аппаратных метрик Linux-хоста (USE: CPU, RAM, Disk, Network)</span>
 </span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="s">  - job_name: "node-exporter"</span>
 </span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="s">    static_configs:</span>
 </span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="s">      - targets: ["node-exporter:9100"]</span>
 </span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>
-</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="s">  # 3. Прикладные метрики нашего микросервиса (RED)</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="s">  # 3. Сбор прикладных метрик нашего микросервиса (RED: Rate, Errors, Duration)</span>
 </span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="s">  - job_name: "backend-api"</span>
 </span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="s">    metrics_path: "/metrics"</span>
 </span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="s">    static_configs:</span>
 </span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="s">      - targets: ["backend:8000"]</span>
 </span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-</ol>
+</span></code></pre></div>
 <hr />
-<h3 id="3-alertmanager">Этап 3. Конфигурация Alertmanager</h3>
-<p>Создай конфигурацию <code>alertmanager/alertmanager.yml</code>. Мы настроим группировку алертов по имени сервиса и отправку уведомлений (при желании ты можешь подставить сюда свой <code>bot_token</code> и <code>chat_id</code> для Telegram, а по умолчанию алерты будут отображаться в веб-интерфейсе Alertmanager и Grafana):</p>
+<h3 id="3-alertmanager">Этап 3. Конфигурация диспетчера уведомлений Alertmanager</h3>
+<p>Создадим файл <code>alertmanager/alertmanager.yml</code>. Мы настроим умную группировку входящих тревог по имени алерта и сервиса (<code>group_by: ['alertname', 'job']</code>) и направим вебхук-уведомления (при желании в секцию <code>receivers</code> в реальном проекте одной строчкой добавляется <code>telegram_configs</code> с токеном бота и ID вашего рабочего чата):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; alertmanager/alertmanager.yml</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">global:</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">  resolve_timeout: 5m</span>
@@ -1698,16 +1683,16 @@
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="s">receivers:</span>
 </span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="s">  - name: 'default-webhook'</span>
 </span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="s">    webhook_configs:</span>
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="s">      # Отправляем вебхук-уведомление (можно заменить на telegram_configs)</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="s">      # Отправляем HTTP-вебхук о срабатывании и разрешении (send_resolved) инцидента</span>
 </span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="s">      - url: 'http://backend:8000/health'</span>
 </span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="s">        send_resolved: true</span>
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <hr />
-<h3 id="4-loki-promtail">Этап 4. Конфигурация Loki и агента Promtail (Централизованное логирование)</h3>
+<h3 id="4-loki-promtail">Этап 4. Конфигурация хранилища Loki и агента сбора логов Promtail</h3>
 <ol>
-<li>
-<p>Создай конфигурацию <code>loki/loki-config.yml</code>:
+<li>Создадим конфигурацию <code>loki/loki-config.yml</code> с современным движком индексации меток <code>tsdb</code> и хранением сжатых блоков в локальной файловой системе контейнера:</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; loki/loki-config.yml</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s">auth_enabled: false</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
@@ -1736,10 +1721,10 @@
 </span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="s">        prefix: index_</span>
 </span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="s">        period: 24h</span>
 </span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Создай конфигурацию <code>promtail/promtail-config.yml</code> с автоматическим обнаружением всех контейнеров через Docker Socket (<code>docker_sd_configs</code>):
+</span></code></pre></div>
+<ol>
+<li>Создадим конфигурацию агента <code>promtail/promtail-config.yml</code>. Обрати внимание на блок <code>docker_sd_configs</code> и правила <code>relabel_configs</code>: вместо того чтобы прописывать пути к логам вручную, Promtail подключается к UNIX-сокету Docker, сам находит все запущенные контейнеры на сервере, извлекает из метаданных имя контейнера и название сервиса Docker Compose и автоматически превращает их в удобные индексируемые метки <code>container</code> и <code>service</code> внутри Loki!</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; promtail/promtail-config.yml</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s">server:</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s">  http_listen_port: 9080</span>
@@ -1757,19 +1742,17 @@
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s">      - host: unix:///var/run/docker.sock</span>
 </span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s">        refresh_interval: 5s</span>
 </span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="s">    relabel_configs:</span>
-</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="s">      # Автоматически превращаем имя контейнера и имя сервиса Compose в метки (labels) в Loki!</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="s">      # Автоматически преобразуем метаданные Docker в чистые метки (labels) в базе Loki!</span>
 </span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="s">      - source_labels: ['__meta_docker_container_name']</span>
 </span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="s">        regex: '/(.*)'</span>
 </span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="s">        target_label: 'container'</span>
 </span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="s">      - source_labels: ['__meta_docker_container_label_com_docker_compose_service']</span>
 </span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="s">        target_label: 'service'</span>
 </span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="s">EOF</span>
-</span></code></pre></div></p>
-</li>
-</ol>
+</span></code></pre></div>
 <hr />
-<h3 id="5-provisioning-grafana">Этап 5. Автоматический Provisioning источников данных в Grafana</h3>
-<p>Чтобы при входе в Grafana не настраивать ничего вручную, создай файл <code>grafana/provisioning/datasources/datasources.yml</code> — он автоматически подключит и Prometheus, и Loki:</p>
+<h3 id="5-provisioning-grafana">Этап 5. Декларативный Provisioning источников данных в Grafana</h3>
+<p>Чтобы при открытии Grafana нам не пришлось настраивать подключения руками, создадим манифест автоконфигурации <code>grafana/provisioning/datasources/datasources.yml</code>, который автоматически свяжет Grafana с контейнерами <code>prometheus:9090</code> и <code>loki:3100</code> при старте:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; grafana/provisioning/datasources/datasources.yml</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s">apiVersion: 1</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
@@ -1789,11 +1772,11 @@
 </span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <hr />
-<h3 id="6-composeyaml-observability">Этап 6. Сборка единого <code>compose.yaml</code> и запуск стека Observability</h3>
-<p>Создай файл <code>compose.yaml</code> в корне <code>~/observability-stack/</code>:</p>
+<h3 id="6-composeyaml-observability">Этап 6. Сборка единого манифеста <code>compose.yaml</code> и запуск стека Observability</h3>
+<p>Объединим все 7 компонентов платформы наблюдаемости в файле <code>~/observability-stack/compose.yaml</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; compose.yaml</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="s">services:</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="s">  # 1. Наше приложение с метриками и JSON-логами</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="s">  # 1. Инструментированный микросервис (отдает RED-метрики и пишет JSON-логи)</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="s">  backend:</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="s">    build: ./app</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="s">    ports:</span>
@@ -1802,7 +1785,7 @@
 </span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="s">      - obs-net</span>
 </span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="s">    restart: unless-stopped</span>
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="s">  # 2. Экспортер системных метрик Linux-хоста (CPU, RAM, Disk)</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="s">  # 2. Системный экспортер метрик самого Linux-хоста (USE: CPU, RAM, Disk)</span>
 </span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="s">  node-exporter:</span>
 </span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="s">    image: prom/node-exporter:v1.8.2</span>
 </span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="s">    command:</span>
@@ -1813,7 +1796,7 @@
 </span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="s">      - obs-net</span>
 </span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="s">    restart: unless-stopped</span>
 </span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>
-</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="s">  # 3. Сервер сбора метрик Prometheus</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="s">  # 3. Центральный сервер сбора метрик и проверки правил тревоги Prometheus</span>
 </span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="s">  prometheus:</span>
 </span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="s">    image: prom/prometheus:v2.54.1</span>
 </span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="s">    command:</span>
@@ -1830,7 +1813,7 @@
 </span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="s">      - obs-net</span>
 </span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="s">    restart: unless-stopped</span>
 </span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>
-</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="s">  # 4. Менеджер оповещений Alertmanager</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="s">  # 4. Диспетчер группировки и маршрутизации оповещений Alertmanager</span>
 </span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="s">  alertmanager:</span>
 </span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="s">    image: prom/alertmanager:v0.27.0</span>
 </span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="s">    ports:</span>
@@ -1841,7 +1824,7 @@
 </span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="s">      - obs-net</span>
 </span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="s">    restart: unless-stopped</span>
 </span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a>
-</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="s">  # 5. Хранилище логов Grafana Loki</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="s">  # 5. Централизованное хранилище логов Grafana Loki</span>
 </span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="s">  loki:</span>
 </span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="s">    image: grafana/loki:3.1.1</span>
 </span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="s">    ports:</span>
@@ -1854,7 +1837,7 @@
 </span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="s">      - obs-net</span>
 </span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a><span class="s">    restart: unless-stopped</span>
 </span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a>
-</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="s">  # 6. Агент сбора логов контейнеров Promtail</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="s">  # 6. Агент автоматического сбора логов всех контейнеров Promtail</span>
 </span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="s">  promtail:</span>
 </span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="s">    image: grafana/promtail:3.1.1</span>
 </span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a><span class="s">    command: -config.file=/etc/promtail/config.yml</span>
@@ -1868,7 +1851,7 @@
 </span><span id="__span-12-75"><a id="__codelineno-12-75" name="__codelineno-12-75" href="#__codelineno-12-75"></a><span class="s">      - loki</span>
 </span><span id="__span-12-76"><a id="__codelineno-12-76" name="__codelineno-12-76" href="#__codelineno-12-76"></a><span class="s">    restart: unless-stopped</span>
 </span><span id="__span-12-77"><a id="__codelineno-12-77" name="__codelineno-12-77" href="#__codelineno-12-77"></a>
-</span><span id="__span-12-78"><a id="__codelineno-12-78" name="__codelineno-12-78" href="#__codelineno-12-78"></a><span class="s">  # 7. Система визуализации и дашбордов Grafana</span>
+</span><span id="__span-12-78"><a id="__codelineno-12-78" name="__codelineno-12-78" href="#__codelineno-12-78"></a><span class="s">  # 7. Панель визуализации и расследования инцидентов Grafana</span>
 </span><span id="__span-12-79"><a id="__codelineno-12-79" name="__codelineno-12-79" href="#__codelineno-12-79"></a><span class="s">  grafana:</span>
 </span><span id="__span-12-80"><a id="__codelineno-12-80" name="__codelineno-12-80" href="#__codelineno-12-80"></a><span class="s">    image: grafana/grafana:11.2.0</span>
 </span><span id="__span-12-81"><a id="__codelineno-12-81" name="__codelineno-12-81" href="#__codelineno-12-81"></a><span class="s">    ports:</span>
@@ -1897,40 +1880,39 @@
 </span><span id="__span-12-104"><a id="__codelineno-12-104" name="__codelineno-12-104" href="#__codelineno-12-104"></a><span class="s">  grafana_data:</span>
 </span><span id="__span-12-105"><a id="__codelineno-12-105" name="__codelineno-12-105" href="#__codelineno-12-105"></a><span class="s">EOF</span>
 </span></code></pre></div>
-<p>Запусти весь стек одной командой:
+<p>Запустим всю платформу наблюдаемости одной командой:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
-</span></code></pre></div></p>
+</span></code></pre></div>
 <hr />
 <h3 id="-5">✅ Чек-лист самопроверки и боевые испытания по Модулю 5</h3>
-<p>Выполни эти 4 шага, чтобы увидеть всю мощь Observability своими глазами:</p>
-<h4 id="1_1">1. Генерация рабочего трафика и проверка сырых метрик</h4>
-<p>Сгенерируй 20 успешных заказов и посмотри, как они отразились в текстовом выводе <code>/metrics</code>:
+<p>Выполни четыре практических шага, чтобы испытать связку метрик, логов и алертинга в реальном бою:</p>
+<h4 id="1_1">1. Генерация рабочего трафика и проверка экспорта сырых метрик</h4>
+<p>Сгенерируем в цикле 20 успешных клиентских заказов к нашему микросервису и посмотрим, как изменилась отдача на его служебном эндпоинте <code>/metrics</code>:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..20<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/api/order<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/metrics<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>http_requests_total
 </span></code></pre></div>
-<em>Ожидаемый результат:</em> Строка <code>http_requests_total{endpoint="/api/order",method="GET",status="200"} 20.0</code>.</p>
-<h4 id="2-targets-prometheus">2. Проверка целей (Targets) в Prometheus</h4>
+<em>Ожидаемый результат:</em> В выводе появится строка счетчика <code>http_requests_total{endpoint="/api/order",method="GET",status="200"} 20.0</code>.</p>
+<h4 id="2-targets-prometheus">2. Проверка статуса скрейпинга целей (<code>Targets</code>) в Prometheus</h4>
 <ul>
-<li>Открой в браузере <code>http://localhost:9090/targets</code> (или проверь через <code>curl -s http://localhost:9090/api/v1/targets | grep -o '"health":"up"'</code>).</li>
-<li>Все 3 цели (<code>backend-api</code>, <code>node-exporter</code>, <code>prometheus</code>) должны гореть зеленым статусом <strong><code>UP</code></strong>.</li>
+<li>Открой в браузере страницу целей Prometheus по адресу <strong><code>http://localhost:9090/targets</code></strong> (либо проверь прямо из консоли командой <code>curl -s http://localhost:9090/api/v1/targets | grep -o '"health":"up"'</code>).</li>
+<li><em>Ожидаемый результат:</em> Все три контура (<code>backend-api</code>, <code>node-exporter</code> и <code>prometheus</code>) горят зеленым статусом <strong><code>UP</code></strong>.</li>
 </ul>
-<h4 id="3-grafana-3000">3. Исследование метрик и логов в Grafana (порт <code>3000</code>)</h4>
+<h4 id="3-promql-logql-grafana">3. Расследование метрик (PromQL) и логов (LogQL) в интерфейсе Grafana</h4>
 <ol>
-<li>Открой в браузере <strong><code>http://localhost:3000</code></strong> (логин: <code>admin</code>, пароль: <code>admin</code>).</li>
-<li>Перейди в меню слева в раздел <strong>Explore</strong> (иконка компаса):</li>
-<li>Выбери сверху источник <strong>Prometheus</strong>, переключись в режим <em>Code</em> и введи запрос:
-     <code>sum by (status) (rate(http_requests_total[1m]))</code> — ты увидишь график RPS в реальном времени!</li>
-<li>Переключи источник сверху на <strong>Loki</strong> и введи запрос:
-     <code>{service="backend"} | json</code> — ты увидишь все структурированные JSON-логи своего контейнера с распарсенными полями <code>duration_sec</code>, <code>node</code> и <code>status</code>!</li>
-<li><strong>Импорт готового дашборда Linux-сервера за 10 секунд:</strong>
-   Перейди в <strong>Dashboards $\rightarrow$ New $\rightarrow$ Import</strong>, введи популярный ID официального дашборда Node Exporter <strong><code>1860</code></strong>, нажми <strong>Load</strong>, выбери Data Source <code>Prometheus</code> и нажми <strong>Import</strong> — перед тобой откроется профессиональный пульт управления всеми ресурсами твоего сервера!</li>
+<li>Открой в браузере веб-интерфейс Grafana по адресу <strong><code>http://localhost:3000</code></strong> (введи логин <code>admin</code> и пароль <code>admin</code>).</li>
+<li>В левом меню перейди в раздел <strong>Explore</strong> (иконка компаса):</li>
+<li>В выпадающем списке сверху уже готов наш автоматически подключенный источник <strong>Prometheus</strong>. Переключи редактор справа в режим <em>Code</em> и выполни запрос частоты трафика по кодам ответа:
+     <code>sum by (status) (rate(http_requests_total[1m]))</code> — перед тобой построится живой график RPS твоего сервиса!</li>
+<li>Теперь переключи источник данных сверху на <strong>Loki</strong>, введи запрос <code>{service="backend"} | json</code> и нажми <em>Run query</em> — ты увидишь все структурированные JSON-логи своего контейнера, где каждое поле (<code>duration_sec</code>, <code>node</code>, <code>status</code>) автоматически распознано и доступно для фильтрации!</li>
+<li><strong>Импорт эталонного дашборда Linux-сервера за 10 секунд:</strong>
+   Перейди в меню <strong>Dashboards → New → Import</strong>, введи в поле ID номер самого популярного в мире официального дашборда Node Exporter Full — <strong><code>1860</code></strong>, нажми <strong>Load</strong>, выбери внизу источник <code>Prometheus</code> и нажми <strong>Import</strong>. На экране развернется профессиональный центр управления полетами со всеми параметрами CPU, памяти, дисков и сети твоего сервера в реальном времени!</li>
 </ol>
-<h4 id="4">4. Симуляция аварии и срабатывание боевого алерта!</h4>
-<p>Вызовем серию ошибок <code>HTTP 500</code> на нашем бэкенде:
+<h4 id="4-alertmanager">4. Боевая тревога: симуляция аварии БД и срабатывание алерта в Alertmanager!</h4>
+<p>Давай искусственно вызовем каскад ошибок <code>HTTP 500</code> на нашем бэкенде в течение 15 секунд:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..15<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/api/fail<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </span></code></pre></div>
-* Открой страницу алертов Prometheus <strong><code>http://localhost:9090/alerts</code></strong> и интерфейс Alertmanager <strong><code>http://localhost:9093</code></strong>:
-* Алерт <strong><code>BackendHighErrorRate</code></strong> перейдет в красный статус <strong><code>FIRING</code></strong>, а в Loki по запросу <code>{service="backend"} |= "ERROR"</code> ты мгновенно увидишь причину сбоя: <code>"Database transaction deadlock detected!"</code>.</p>
+* Сразу открой страницу правил тревоги в Prometheus <strong><code>http://localhost:9090/alerts</code></strong> и панель диспетчера Alertmanager <strong><code>http://localhost:9093</code></strong>.
+* <em>Ожидаемый результат:</em> Наш алерт <strong><code>BackendHighErrorRate</code></strong> мгновенно засечет превышение порога ошибок, переключится в красный боевой статус <strong><code>FIRING</code></strong> и появится в активном списке инцидентов Alertmanager, а в панели <strong>Loki</strong> по запросу <code>{service="backend"} |= "ERROR"</code> ты за секунду увидишь точную причину ночной аварии: <code>"Database transaction deadlock detected!"</code>.</p>
 
 
 

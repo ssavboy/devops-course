@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ci" class="md-skip">
+        <a href="#ci-continuous-integration" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -500,19 +500,19 @@
   <a href="#11-ci-fast-feedback" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)
+        1.1. Суть CI и принцип Fast Feedback (Быстрая обратная связь)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)">
+    <nav class="md-nav" aria-label="1.1. Суть CI и принцип Fast Feedback (Быстрая обратная связь)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#lean-fail-fast" class="md-nav__link">
+  <a href="#fail-fast" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lean-подход к проектированию конвейеров (Fail Fast):
+        Проектирование конвейера по принципу Fail Fast (Падай быстро)
       
     </span>
   </a>
@@ -528,19 +528,19 @@
   <a href="#12-gitlab-ci-runners" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)
+        1.2. Архитектура GitLab CI: Координатор против Раннеров (Runners)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)">
+    <nav class="md-nav" aria-label="1.2. Архитектура GitLab CI: Координатор против Раннеров (Runners)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#executors-gitlab-runner" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Типы исполнителей (Executors) у GitLab Runner:
+        Выбор среды исполнения: типы Executors у GitLab Runner
       
     </span>
   </a>
@@ -561,19 +561,19 @@
   <a href="#2-gitlab-ciyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 2. Анатомия файла .gitlab-ci.yml
+        Блок 2. Анатомия манифеста .gitlab-ci.yml
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 2. Анатомия файла .gitlab-ci.yml">
+    <nav class="md-nav" aria-label="Блок 2. Анатомия манифеста .gitlab-ci.yml">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#21-stages-jobs-image-services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Базовые сущности: stages, jobs, image, services
+        2.1. Базовые строительные блоки: stages, jobs, image, services
       
     </span>
   </a>
@@ -592,10 +592,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-dag-needs-rules" class="md-nav__link">
+  <a href="#23-needs-dag-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3. Ускорение пайплайна с помощью DAG (needs:) и правил (rules:)
+        2.3. Оптимизация скорости через граф needs: (DAG) и управление условиями rules:
       
     </span>
   </a>
@@ -611,19 +611,19 @@
   <a href="#3-quality-gates-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI
+        Блок 3. Контроль качества кода (Quality Gates) и безопасная сборка образов в CI
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI">
+    <nav class="md-nav" aria-label="Блок 3. Контроль качества кода (Quality Gates) и безопасная сборка образов в CI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#31-shift-left-security" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Эшелонированная проверка качества (Shift-Left Security)
+        3.1. Эшелонированная оборона качества (Концепция Shift-Left Security)
       
     </span>
   </a>
@@ -634,7 +634,7 @@
   <a href="#32-docker-docker-dind-vs-kaniko" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Как собирать Docker-образы внутри Docker-раннера: DinD vs Kaniko
+        3.2. Архитектурная дилемма: как собирать Docker-образы внутри Docker-контейнера раннера (DinD vs Kaniko)
       
     </span>
   </a>
@@ -650,7 +650,7 @@
   <a href="#4-ci-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 4. Типичные антипаттерны в CI-конвейерах
+        Блок 4. Типичные антипаттерны в CI-конвейерах (и как их искоренить)
       
     </span>
   </a>
@@ -658,22 +658,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-ci-" class="md-nav__link">
+  <a href="#6-ci-quality-gates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества
+        🛠 Практический проект Модуля 6: Создание промышленного CI-конвейера с автоматическими Quality Gates
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 6: Создание промышленного CI-конвейера с автоматическими Quality Gates">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Подготовка репозитория с тестами и проверками качества
+        Этап 1. Оснащение репозитория автоматическими тестами и инструментами контроля качества
       
     </span>
   </a>
@@ -684,7 +684,7 @@
   <a href="#2-gitlab-ciyml_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 2. Проектирование эталонного .gitlab-ci.yml
+        Этап 2. Проектирование эталонного манифеста .gitlab-ci.yml
       
     </span>
   </a>
@@ -692,10 +692,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-ci-docker" class="md-nav__link">
+  <a href="#3-ci-docker-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Локальный прогон всех стадий CI-конвейера в Docker
+        Этап 3. Боевой прогон всех стадий CI-конвейера в локальном Docker-окружении
       
     </span>
   </a>
@@ -706,7 +706,7 @@
   <a href="#-6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ Чек-лист самопроверки по Модулю 6
+        ✅ Чек-лист самопроверки и тест срабатывания защиты по Модулю 6
       
     </span>
   </a>
@@ -903,19 +903,19 @@
   <a href="#11-ci-fast-feedback" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)
+        1.1. Суть CI и принцип Fast Feedback (Быстрая обратная связь)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)">
+    <nav class="md-nav" aria-label="1.1. Суть CI и принцип Fast Feedback (Быстрая обратная связь)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#lean-fail-fast" class="md-nav__link">
+  <a href="#fail-fast" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lean-подход к проектированию конвейеров (Fail Fast):
+        Проектирование конвейера по принципу Fail Fast (Падай быстро)
       
     </span>
   </a>
@@ -931,19 +931,19 @@
   <a href="#12-gitlab-ci-runners" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)
+        1.2. Архитектура GitLab CI: Координатор против Раннеров (Runners)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)">
+    <nav class="md-nav" aria-label="1.2. Архитектура GitLab CI: Координатор против Раннеров (Runners)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#executors-gitlab-runner" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Типы исполнителей (Executors) у GitLab Runner:
+        Выбор среды исполнения: типы Executors у GitLab Runner
       
     </span>
   </a>
@@ -964,19 +964,19 @@
   <a href="#2-gitlab-ciyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 2. Анатомия файла .gitlab-ci.yml
+        Блок 2. Анатомия манифеста .gitlab-ci.yml
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 2. Анатомия файла .gitlab-ci.yml">
+    <nav class="md-nav" aria-label="Блок 2. Анатомия манифеста .gitlab-ci.yml">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#21-stages-jobs-image-services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Базовые сущности: stages, jobs, image, services
+        2.1. Базовые строительные блоки: stages, jobs, image, services
       
     </span>
   </a>
@@ -995,10 +995,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-dag-needs-rules" class="md-nav__link">
+  <a href="#23-needs-dag-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3. Ускорение пайплайна с помощью DAG (needs:) и правил (rules:)
+        2.3. Оптимизация скорости через граф needs: (DAG) и управление условиями rules:
       
     </span>
   </a>
@@ -1014,19 +1014,19 @@
   <a href="#3-quality-gates-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI
+        Блок 3. Контроль качества кода (Quality Gates) и безопасная сборка образов в CI
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI">
+    <nav class="md-nav" aria-label="Блок 3. Контроль качества кода (Quality Gates) и безопасная сборка образов в CI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#31-shift-left-security" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Эшелонированная проверка качества (Shift-Left Security)
+        3.1. Эшелонированная оборона качества (Концепция Shift-Left Security)
       
     </span>
   </a>
@@ -1037,7 +1037,7 @@
   <a href="#32-docker-docker-dind-vs-kaniko" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Как собирать Docker-образы внутри Docker-раннера: DinD vs Kaniko
+        3.2. Архитектурная дилемма: как собирать Docker-образы внутри Docker-контейнера раннера (DinD vs Kaniko)
       
     </span>
   </a>
@@ -1053,7 +1053,7 @@
   <a href="#4-ci-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 4. Типичные антипаттерны в CI-конвейерах
+        Блок 4. Типичные антипаттерны в CI-конвейерах (и как их искоренить)
       
     </span>
   </a>
@@ -1061,22 +1061,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-ci-" class="md-nav__link">
+  <a href="#6-ci-quality-gates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества
+        🛠 Практический проект Модуля 6: Создание промышленного CI-конвейера с автоматическими Quality Gates
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 6: Создание промышленного CI-конвейера с автоматическими Quality Gates">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Подготовка репозитория с тестами и проверками качества
+        Этап 1. Оснащение репозитория автоматическими тестами и инструментами контроля качества
       
     </span>
   </a>
@@ -1087,7 +1087,7 @@
   <a href="#2-gitlab-ciyml_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 2. Проектирование эталонного .gitlab-ci.yml
+        Этап 2. Проектирование эталонного манифеста .gitlab-ci.yml
       
     </span>
   </a>
@@ -1095,10 +1095,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-ci-docker" class="md-nav__link">
+  <a href="#3-ci-docker-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Локальный прогон всех стадий CI-конвейера в Docker
+        Этап 3. Боевой прогон всех стадий CI-конвейера в локальном Docker-окружении
       
     </span>
   </a>
@@ -1109,7 +1109,7 @@
   <a href="#-6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ Чек-лист самопроверки по Модулю 6
+        ✅ Чек-лист самопроверки и тест срабатывания защиты по Модулю 6
       
     </span>
   </a>
@@ -1138,74 +1138,74 @@
 
 
 
-<h1 id="ci">Автоматизация сборки и CI</h1>
-<p>До этого момента мы собирали Docker-образы, проверяли код и запускали сканер уязвимостей Trivy вручную в терминале. В реальной командной разработке ручная сборка запрещена: человек может забыть прогнать тесты, собрать образ из несохраненного локального файла или случайно запушить сломанный код.</p>
-<p><strong>Continuous Integration (Непрерывная интеграция)</strong> — это инженерная практика, при которой каждое изменение кода в Git автоматически запускает конвейер (Pipeline): код проверяется линтерами, тестируется, сканируется на уязвимости и упаковывается в версионированный артефакт без участия человека.</p>
+<h1 id="ci-continuous-integration">Автоматизация сборки и CI (Continuous Integration)</h1>
+<p>Во всех предыдущих модулях мы собирали Docker-образы, проверяли код и запускали сканер уязвимостей Trivy вручную в терминале своего компьютера. Для локальных экспериментов это допустимо, но в реальной командной разработке ручная сборка категорически запрещена. Человеческий фактор неизбежно приводит к ошибкам: разработчик может забыть прогнать тесты перед сборкой, случайно упаковать в образ несохраненный локальный файл с отладочными костылями или запушить в реестр нерабочий код в пятницу вечером.</p>
+<p><strong>Continuous Integration (Непрерывная интеграция)</strong> решает эту проблему на системном уровне. Это инженерная практика, при которой каждый <code>git push</code> в репозиторий автоматически запускает стандартизированный конвейер (Pipeline): роботы без участия человека проверяют синтаксис кода, прогоняют тесты с базой данных, сканируют зависимости на уязвимости и упаковывают приложение в неизменяемый версионированный артефакт.</p>
 <hr />
 <h2 id="1-ci-lean-">Блок 1. Архитектура CI-конвейеров и Lean-подход</h2>
-<h3 id="11-ci-fast-feedback">1.1. Что такое CI и принцип Fast Feedback (Быстрая обратная связь)</h3>
-<p>Главная цель CI — <strong>обнаружить ошибку как можно раньше и дешевле</strong>. Если разработчик допустил синтаксическую ошибку или сломал API, он должен узнать об этом через <strong>2–3 минуты</strong> после <code>git push</code>, а не через неделю на продакшене.</p>
-<h4 id="lean-fail-fast">Lean-подход к проектированию конвейеров (Fail Fast):</h4>
-<p>В соответствии с принципами бережливого производства (Lean), этапы конвейера всегда выстраиваются <strong>от самых быстрых и дешевых к самым долгим и ресурсоемким</strong>:</p>
+<h3 id="11-ci-fast-feedback">1.1. Суть CI и принцип Fast Feedback (Быстрая обратная связь)</h3>
+<p>Главная экономическая и техническая цель любого CI-конвейера — <strong>обнаружить ошибку как можно раньше и дешевле</strong>. Если программист случайно пропустил скобку, нарушил стандарт безопасности или сломал контракт API, он должен получить красное уведомление об ошибке уже через <strong>2–3 минуты</strong> после отправки коммита (пока контекст задачи еще в голове), а не через неделю во время ночного релиза на продакшене.</p>
+<h4 id="fail-fast">Проектирование конвейера по принципу Fail Fast (Падай быстро)</h4>
+<p>Опираясь на философию бережливого производства (Lean), этапы любого сборочного конвейера всегда выстраиваются строго по возрастанию их «стоимости» — <strong>от самых быстрых и легких проверок к самым долгим и ресурсоемким</strong>:</p>
 <ol>
-<li><strong>Линтинг и проверка форматирования (<code>lint</code> — 10–20 сек):</strong> Мгновенно отсекает синтаксические ошибки в Python/Go/JS, <code>Dockerfile</code> и YAML-файлах. Нет смысла запускать тяжелую сборку Docker, если в коде пропущена скобка.</li>
-<li><strong>Модульные тесты и SAST (<code>test</code> — 30–60 сек):</strong> Проверка бизнес-логики изолированными unit-тестами и статический анализ безопасности исходного кода.</li>
-<li><strong>Сборка образа (<code>build</code> — 1–3 мин):</strong> Упаковка приложения в Docker-образ.</li>
-<li><strong>Сканирование образа и интеграционные тесты (<code>security</code> / <code>integration</code> — 1–2 мин):</strong> Проверка готового образа через Trivy и тестовый запуск связки с БД.</li>
-<li><strong>Публикация артефакта (<code>publish</code> — 20 сек):</strong> Отправка проверенного образа в Container Registry.</li>
+<li><strong>Линтинг и проверка форматирования (<code>lint</code> — занимает 10–20 секунд):</strong> Мгновенно отсекает синтаксические ошибки и нарушения стиля в коде Python/Go/JS, проверяет правильность <code>Dockerfile</code> и YAML-манифестов. Нет никакого смысла греть процессоры и запускать тяжелую сборку образа, если в коде банальная опечатка.</li>
+<li><strong>Модульные тесты и статический анализ безопасности SAST (<code>test</code> — 30–60 секунд):</strong> Быстрая проверка бизнес-логики изолированными unit-тестами и автоматический поиск потенциальных уязвимостей прямо в исходном коде.</li>
+<li><strong>Сборка артефакта (<code>build</code> — 1–3 минуты):</strong> Компиляция приложения и упаковка его в версионированный Docker-образ.</li>
+<li><strong>Сканирование образа и интеграционные тесты (<code>security</code> / <code>integration</code> — 1–2 минуты):</strong> Глубокая проверка готового образа сканером Trivy на наличие системных CVE и прогон тестов в связке с реальными контейнерами СУБД.</li>
+<li><strong>Публикация артефакта (<code>publish</code> — 20 секунд):</strong> Отправка кристально чистого, проверенного образа в корпоративный Container Registry.</li>
 </ol>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[git push] ──► (Stage 1: Lint) ──► (Stage 2: Unit Tests &amp; SAST) ──► (Stage 3: Docker Build) ──► (Stage 4: Trivy Scan) ──► (Stage 5: Push Registry)
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                  ~15 sec                   ~45 sec                       ~90 sec                    ~40 sec                   ~15 sec
 </span></code></pre></div>
 <hr />
-<h3 id="12-gitlab-ci-runners">1.2. Архитектура GitLab CI: Сервер против Раннеров (Runners)</h3>
-<p>Многие начинающие инженеры думают, что сборка кода происходит прямо внутри самого сервера GitLab. <strong>Это критическое заблуждение.</strong> Если бы тяжелые сборки шли на основном сервере GitLab, веб-интерфейс и Git-репозитории всей компании зависали бы при каждом коммите.</p>
-<p>Архитектура разделена на два независимых компонента:</p>
+<h3 id="12-gitlab-ci-runners">1.2. Архитектура GitLab CI: Координатор против Раннеров (Runners)</h3>
+<p>Одна из самых частых ошибок начинающих инженеров — думать, что сборка проектов и прогон тестов происходят прямо внутри самого сервера GitLab. <strong>В реальной архитектуре это категорически запрещено.</strong> Если бы десятки разработчиков одновременно запустили тяжелую компиляцию кода и сборку Docker-образов на основном сервере GitLab, они мгновенно исчерпали бы всю его оперативную память и процессор, положив веб-интерфейс и Git-репозитории всей компании.</p>
+<p>Поэтому архитектура GitLab CI жестко разделена на два независимых эшелона:</p>
 <ol>
-<li><strong>GitLab Server (Coordinator):</strong> Хранит Git-репозитории, читает файл <code>.gitlab-ci.yml</code>, управляет очередью задач и отображает статус пайплайнов в веб-интерфейсе.</li>
-<li><strong>GitLab Runner (Агент-исполнитель):</strong> Легковесный демон на языке Go, который устанавливается на <strong>отдельные виртуальные машины или в Kubernetes-кластер</strong>. Раннер сам опрашивает сервер GitLab по HTTP/HTTPS (Pull-модель), забирает задачи (<code>Jobs</code>), выполняет их и отправляет обратно логи и статус выполнения.</li>
+<li><strong>GitLab Server (Центральный координатор):</strong> Хранит сам Git-репозиторий, парсит файл <code>.gitlab-ci.yml</code>, выстраивает очередь задач и отображает красивые зеленые или красные галочки в браузере. Сам сервер никогда не выполняет команды сборки.</li>
+<li><strong>GitLab Runner (Изолированный агент-исполнитель):</strong> Легковесный демон, написанный на языке Go, который устанавливается на <strong>отдельные выделенные виртуальные машины или в кластер Kubernetes</strong>. Раннер работает по безопасной Pull-модели: он сам стучится по HTTP/HTTPS на сервер GitLab, забирает из очереди новую задачу (<code>Job</code>), выполняет всю тяжелую работу на своих мощностях и возвращает серверу текстовый лог консоли и итоговый код возврата (<code>0</code> или ошибка).</li>
 </ol>
-<h4 id="executors-gitlab-runner">Типы исполнителей (Executors) у GitLab Runner:</h4>
-<p>При регистрации раннера мы выбираем, <em>в какой среде</em> он будет выполнять команды из <code>.gitlab-ci.yml</code>:</p>
+<h4 id="executors-gitlab-runner">Выбор среды исполнения: типы Executors у GitLab Runner</h4>
+<p>При регистрации каждого раннера инженер выбирает его <strong>Executor (Исполнитель)</strong> — механизм, определяющий, <em>внутри какой именно среды</em> раннер будет запускать команды из вашего <code>.gitlab-ci.yml</code>:</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Тип Executor</th>
-<th style="text-align: left;">Как работает</th>
-<th style="text-align: left;">Плюсы и минусы</th>
+<th style="text-align: left;">Механика работы под капотом</th>
+<th style="text-align: left;">Архитектурные плюсы и минусы</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong><code>shell</code></strong></td>
-<td style="text-align: left;">Выполняет команды напрямую в bash хостовой ОС, где стоит раннер.</td>
-<td style="text-align: left;">Быстро, но <strong>опасно и грязно</strong>: задачи разных проектов влияют друг на друга, остаются временные файлы, нет изоляции.</td>
+<td style="text-align: left;">Запускает команды напрямую в локальной оболочке Bash прямо на хостовой ОС сервера, где установлен раннер.</td>
+<td style="text-align: left;">Минимальные накладные расходы, но <strong>крайне опасно и грязно в эксплуатации</strong>: сборки разных проектов конфликтуют по версиям библиотек, оставляют мусор на диске и не имеют никакой изоляции.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><code>docker</code> (Стандарт)</strong></td>
-<td style="text-align: left;">На каждую джобу (<code>job</code>) раннер поднимает <strong>чистый одноразовый Docker-контейнер</strong> с нужным образом (например, <code>python:3.12</code>), выполняет команды и удаляет контейнер.</td>
-<td style="text-align: left;">Идеальная изоляция, воспроизводимость, на одном сервере можно одновременно собирать Python, Go, Node.js и Terraform.</td>
+<td style="text-align: left;"><strong><code>docker</code> (Промышленный стандарт)</strong></td>
+<td style="text-align: left;">На каждую отдельную задачу (<code>job</code>) раннер поднимает <strong>абсолютно чистый одноразовый Docker-контейнер</strong> с нужным образом (например, <code>python:3.12</code> для первой задачи и <code>golang:1.23</code> для второй), выполняет скрипт и бесследно уничтожает контейнер.</td>
+<td style="text-align: left;">Стопроцентная изоляция и воспроизводимость сборок; на одной виртуальной машине можно параллельно и безопасно собирать проекты на любых языках программирования.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong><code>kubernetes</code></strong></td>
-<td style="text-align: left;">На каждую джобу создает отдельный <code>Pod</code> в кластере Kubernetes.</td>
-<td style="text-align: left;">Автоматическое масштабирование от 0 до сотен сборок параллельно в облаке.</td>
+<td style="text-align: left;">На каждую задачу конвейера создает отдельный временный <code>Pod</code> внутри кластера Kubernetes.</td>
+<td style="text-align: left;">Идеально для крупных компаний: позволяет автоматически масштабировать ферму сборки от нуля до сотен параллельных подов в часы пик и гасить их ночью для экономии бюджета в облаке.</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="2-gitlab-ciyml">Блок 2. Анатомия файла <code>.gitlab-ci.yml</code></h2>
-<p>Конвейер описывается декларативно в файле <code>.gitlab-ci.yml</code> в корне Git-репозитория.</p>
-<h3 id="21-stages-jobs-image-services">2.1. Базовые сущности: <code>stages</code>, <code>jobs</code>, <code>image</code>, <code>services</code></h3>
+<h2 id="2-gitlab-ciyml">Блок 2. Анатомия манифеста <code>.gitlab-ci.yml</code></h2>
+<p>Весь сценарий работы конвейера описывается декларативно в едином файле <strong><code>.gitlab-ci.yml</code></strong>, который лежит в корне Git-репозитория и версионируется вместе с кодом приложения.</p>
+<h3 id="21-stages-jobs-image-services">2.1. Базовые строительные блоки: <code>stages</code>, <code>jobs</code>, <code>image</code>, <code>services</code></h3>
 <ul>
-<li><strong><code>stages</code> (Стадии):</strong> Определяют глобальный порядок этапов. Все джобы внутри одной стадии выполняются <strong>параллельно</strong>, а следующая стадия начинается только тогда, когда <strong>все</strong> джобы предыдущей завершились успешно (код возврата <code>0</code>).</li>
-<li><strong><code>jobs</code> (Задачи):</strong> Сами блоки команд (<code>script:</code>), привязанные к конкретной стадии.</li>
-<li><strong><code>image</code>:</strong> В каком Docker-образе должна запуститься данная джоба (например, <code>python:3.12-slim</code> для тестов или <code>hadolint/hadolint</code> для проверки Dockerfile).</li>
-<li><strong><code>services</code> (Вспомогательные контейнеры):</strong> Позволяют поднять рядом с джобой временную базу данных (например, <code>postgres:16-alpine</code> или <code>redis:7-alpine</code>) специально на время прогона интеграционных тестов!</li>
+<li><strong><code>stages</code> (Стадии конвейера):</strong> Задают глобальный скелет и последовательность этапов (например: <code>lint</code> → <code>test</code> → <code>build</code>). По умолчанию работает четкое правило: все задачи внутри одной стадии запускаются <strong>одновременно (параллельно)</strong> на свободных раннерах, а следующая стадия стартует только после того, как <strong>абсолютно все</strong> задачи предыдущей стадии завершились с кодом <code>0</code>.</li>
+<li><strong><code>jobs</code> (Задачи):</strong> Самостоятельные единицы работы, привязанные к конкретной стадии и содержащие секцию <code>script:</code> с массивом консольных команд.</li>
+<li><strong><code>image</code>:</strong> Указывает Docker-раннеру, внутри какого именно базового образа нужно поднять контейнер для выполнения данной конкретной задачи (например, <code>python:3.12-slim</code> для запуска <code>pytest</code> или специализированный образ <code>hadolint/hadolint</code> для аудита <code>Dockerfile</code>).</li>
+<li><strong><code>services</code> (Вспомогательные контейнеры окружения):</strong> Блестящая возможность GitLab CI для интеграционного тестирования! Если вашему коду во время прогона тестов нужна живая база данных, вы просто указываете в секции <code>services:</code> образы <code>postgres:16-alpine</code> и <code>redis:7-alpine</code>. Раннер автоматически поднимет эти СУБД в одной виртуальной сети с вашим тестовым контейнером ровно на время выполнения задачи, а после завершения тестов сам уничтожит их!</li>
 </ul>
 <hr />
 <h3 id="22-cache-artifacts">2.2. Кэширование (<code>cache</code>) против Артефактов (<code>artifacts</code>)</h3>
-<p>На собеседованиях постоянно спрашивают разницу между <code>cache</code> и <code>artifacts</code>. Оба механизма передают файлы между джобами, но у них совершенно разное назначение:</p>
+<p>На технических собеседованиях по DevOps практически всегда просят объяснить разницу между механизмами <code>cache:</code> и <code>artifacts:</code>. На первый взгляд оба они сохраняют папки и файлы после завершения джобы, но у них принципиально разная инженерная природа и назначение:</p>
 <table>
 <thead>
 <tr>
@@ -1216,146 +1216,154 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Назначение</strong></td>
-<td style="text-align: left;"><strong>Ускорение скачивания зависимостей</strong> из интернета (папки <code>.cache/pip</code>, <code>node_modules/</code>, <code>.m2/</code>).</td>
-<td style="text-align: left;"><strong>Передача результата работы</strong> одной стадии в следующую (скомпилированный бинарник, отчет о тестах, HTML-отчет Trivy).</td>
+<td style="text-align: left;"><strong>Главное назначение</strong></td>
+<td style="text-align: left;"><strong>Экономия времени на скачивании внешних библиотек</strong> из интернета (сохранение папок <code>.cache/pip</code>, <code>node_modules/</code>, <code>.m2/</code>, <code>vendor/</code>).</td>
+<td style="text-align: left;"><strong>Передача готового результата сборки</strong> от одного этапа конвейера к следующему внутри пайплайна (скомпилированный бинарник, упакованный архив образа, отчеты тестов и сканеров).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Область действия</strong></td>
-<td style="text-align: left;">Сохраняется <strong>между разными пайплайнами (коммитами)</strong> по ключу <code>key:</code> (например, хэшу файла <code>requirements.txt</code>).</td>
-<td style="text-align: left;">Передается строго <strong>внутри одного текущего пайплайна</strong> от ранних стадий к поздним и доступен для скачивания в UI GitLab.</td>
+<td style="text-align: left;"><strong>Жизненный цикл и область видимости</strong></td>
+<td style="text-align: left;">Живет <strong>между разными пайплайнами и разными коммитами</strong>, индексируясь по уникальному ключу <code>key:</code> (например, по хэшу файла <code>requirements.txt</code>).</td>
+<td style="text-align: left;">Передается строго <strong>внутри одного текущего пайплайна</strong> вниз по цепочке стадий и прикрепляется к сборке в веб-интерфейсе GitLab для скачивания инженером.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Гарантия доставки</strong></td>
-<td style="text-align: left;">Best-effort (если кэш пуст или сброшен, джоба всё равно должна успешно скачать пакеты сама).</td>
-<td style="text-align: left;">Гарантированная доставка (хранится на сервере GitLab или в S3 до истечения срока <code>expire_in</code>).</td>
+<td style="text-align: left;"><strong>Гарантия наличия файлов</strong></td>
+<td style="text-align: left;"><strong>Best-effort (Без гарантии):</strong> если кэш устарел или был очищен, задача не должна падать — она просто скачает библиотеки из сети заново чуть медленнее.</td>
+<td style="text-align: left;"><strong>Стопроцентная гарантия:</strong> хранится на сервере координатора (или в S3) в течение заданного времени жизни (<code>expire_in: 7 days</code>), без него следующие стадии не смогут продолжить работу.</td>
 </tr>
 </tbody>
 </table>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Пример правильного кэширования pip-пакетов по хэшу файла requirements.txt:</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Кэш обновится только тогда, когда разработчик изменит список библиотек!</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">cache</span><span class="p">:</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">key</span><span class="p">:</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">files</span><span class="p">:</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app/requirements.txt</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">paths</span><span class="p">:</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.cache/pip</span>
-</span></code></pre></div>
+<p><strong>Профессиональный паттерн настройки кэша по контрольной сумме файла зависимостей (<code>cache:key:files</code>):</strong>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># GitLab вычисляет SHA-хэш от содержимого файла app/requirements.txt и делает его именем архива кэша.</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Пока программист не изменит список библиотек в этом файле, все последующие коммиты</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># будут мгновенно подхватывать готовый кэш; как только файл изменится — кэш пересоберется автоматически!</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">cache</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">key</span><span class="p">:</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">files</span><span class="p">:</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app/requirements.txt</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">paths</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.cache/pip</span>
+</span></code></pre></div></p>
 <hr />
-<h3 id="23-dag-needs-rules">2.3. Ускорение пайплайна с помощью DAG (<code>needs:</code>) и правил (<code>rules:</code>)</h3>
+<h3 id="23-needs-dag-rules">2.3. Оптимизация скорости через граф <code>needs:</code> (DAG) и управление условиями <code>rules:</code></h3>
+<p>В крупных пайплайнах классическое ожидание завершения всей стадии целиком иногда создает искусственные задержки (например, быстрый линтер <code>Dockerfile</code> отработал за 2 секунды, но сборка ждет еще 3 минуты, пока в первой стадии крутится другой долгий анализ).</p>
 <ul>
-<li><strong>Директива <code>needs:</code> (Directed Acyclic Graph):</strong> Позволяет джобе не ждать завершения всей предыдущей стадии целиком, а стартовать мгновенно, как только завершилась конкретная нужная ей джоба.</li>
-<li><strong>Директива <code>rules:</code> (Замена устаревших <code>only</code> / <code>except</code>):</strong> Управляет тем, <em>когда</em> запускать джобу. Например: тесты гонять на каждый коммит в любой ветке, а сборку и пуш релизного образа в Registry — только при слиянии в ветку <code>main</code> или создании git-тега!</li>
+<li><strong>Директива <code>needs:</code> (Directed Acyclic Graph — Направленный ациклический граф):</strong> Позволяет сломать жесткие границы между стадиями и указать прямые зависимости между конкретными задачами. Джоба с указанным списком <code>needs:</code> стартует в ту же секунду, как только успешно завершились перечисленные в ней задачи, не дожидаясь остальных соседей по стадии.</li>
+<li><strong>Директива <code>rules:</code> (современная замена устаревших <code>only</code> / <code>except</code>):</strong> Гибкий механизм маршрутизации, определяющий, <em>при каких условиях</em> вообще нужно включать данную задачу в пайплайн. Например, линтеры и тесты мы запускаем на абсолютно каждый коммит в любой рабочей ветке, а тяжелую публикацию релизного образа в Registry — строго при слиянии кода в защищенную ветку <code>main</code> и только в том случае, если в коммите реально менялись файлы внутри папки <code>app/</code>:</li>
 </ul>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">rules</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="c1"># Запускать только в ветке main и только если изменились файлы внутри папки app/</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="c1"># Включать задачу в пайплайн только для ветки main и только при изменении кода внутри директории app/</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_BRANCH == "main"</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">changes</span><span class="p">:</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app/**/*</span>
 </span></code></pre></div>
 <hr />
-<h2 id="3-quality-gates-ci">Блок 3. Контроль качества кода (Quality Gates) и сборка контейнеров в CI</h2>
-<h3 id="31-shift-left-security">3.1. Эшелонированная проверка качества (Shift-Left Security)</h3>
-<p>Вместо того чтобы искать баги после релиза, мы сдвигаем проверки безопасности максимально влево (<strong>Shift-Left</strong>) — на этап коммита:</p>
+<h2 id="3-quality-gates-ci">Блок 3. Контроль качества кода (Quality Gates) и безопасная сборка образов в CI</h2>
+<h3 id="31-shift-left-security">3.1. Эшелонированная оборона качества (Концепция Shift-Left Security)</h3>
+<p>В современной практике <strong>DevSecOps</strong> проверки безопасности не откладывают на момент перед выкаткой в продакшен — их сдвигают максимально влево по временной шкале разработки (<strong>Shift-Left</strong>), встраивая автоматические «ворота качества» (<strong>Quality Gates</strong>) прямо на первые секунды CI-пайплайна:</p>
 <ol>
-<li><strong>Линтинг кода (<code>ruff</code> / <code>flake8</code> для Python):</strong> Проверяет стиль кода (PEP8), неиспользуемые импорты и синтаксические ошибки за 2 секунды.</li>
-<li><strong>Линтинг Dockerfile (<code>hadolint</code>):</strong> Проверяет <code>Dockerfile</code> на соблюдение лучших практик безопасности и кэширования слоев.</li>
-<li><strong>SAST (Static Application Security Testing — <code>bandit</code> / <code>semgrep</code>):</strong> Анализирует исходный код на наличие потенциальных дыр в безопасности (SQL-инъекции, захардкоженные пароли, небезопасная десериализация).</li>
-<li><strong>Unit и Интеграционные тесты (<code>pytest</code>):</strong> Проверяют работу функций и реальное подключение к тестовым контейнерам PostgreSQL и Redis, поднятым через секцию <code>services:</code>.</li>
+<li><strong>Синтаксический линтинг кода (<code>ruff</code> / <code>flake8</code> для Python, <code>golangci-lint</code> для Go):</strong> За 1–2 секунды проверяет код на соответствие стандартам оформления (PEP8), находит неиспользуемые импорты, необъявленные переменные и мертвый код.</li>
+<li><strong>Аудит практик контейнеризации (<code>hadolint</code>):</strong> Специализированный линтер для <code>Dockerfile</code>, который парсит инструкции сборки в AST-дерево и бьет по рукам, если разработчик забыл очистить кэш <code>apt</code>, использовал <code>ADD</code> вместо <code>COPY</code> или запустил команду в небезопасной shell-форме.</li>
+<li><strong>SAST (Static Application Security Testing — Статический анализ безопасности кода через <code>bandit</code> или <code>semgrep</code>):</strong> Сканирует исходный код приложения без его запуска, выискивая опасные конструкции: уязвимости SQL-инъекций (склейку SQL-запросов через <code>f-строки</code>), захардкоженные пароли, использование слабых криптографических хэшей (<code>md5</code>) или небезопасные вызовы системной оболочки (<code>subprocess</code> с <code>shell=True</code>).</li>
+<li><strong>Автоматическое тестирование (<code>pytest</code>):</strong> Проверяет как изолированные функции (Unit-тесты), так и реальную запись и чтение данных в поднятые через <code>services:</code> тестовые контейнеры PostgreSQL и Redis (Интеграционные тесты).</li>
 </ol>
 <hr />
-<h3 id="32-docker-docker-dind-vs-kaniko">3.2. Как собирать Docker-образы внутри Docker-раннера: DinD vs Kaniko</h3>
-<p>Когда сама джоба уже бежит внутри Docker-контейнера, возникает вопрос: <em>как собрать новый Docker-образ внутри контейнера?</em> Есть 3 подхода:</p>
+<h3 id="32-docker-docker-dind-vs-kaniko">3.2. Архитектурная дилемма: как собирать Docker-образы внутри Docker-контейнера раннера (DinD vs Kaniko)</h3>
+<p>Поскольку сама задача GitLab Runner уже выполняется внутри изолированного Docker-контейнера, возникает классический технический вопрос: <em>а как изнутри одного контейнера вызвать сборку нового Docker-образа</em>? В индустрии применяются три архитектурных решения этой задачи:</p>
 <ol>
-<li><strong>Проброс сокета хоста (<code>/var/run/docker.sock</code> binding):</strong>
-   Быстро (использует общий кэш хоста), но несет риски безопасности на общих серверах (контейнер получает полный доступ к демону Docker на хосте).</li>
+<li><strong>Проброс сокета хоста (<code>Docker Socket Binding</code> — монтирование <code>/var/run/docker.sock</code>):</strong>
+   Контейнер раннера напрямую подключается к демону Docker самой хостовой виртуальной машины. Это дает максимальную скорость (все сборки используют единый общий кэш слоев на диске хоста), но несет серьезные риски безопасности на общих серверах: любой код внутри сборочного контейнера получает полный бесконтрольный доступ ко всем остальным контейнерам на этой машине[cite: 3, 7].</li>
 <li><strong>Docker-in-Docker (<code>docker:dind</code> service):</strong>
-   Поднимает изолированный демон Docker как <code>service</code> рядом с джобой. Требует флага <code>privileged: true</code> в настройках раннера.</li>
-<li><strong>Kaniko (<code>gcr.io/kaniko-project/executor</code>) — стандарт DevSecOps:</strong>
-   Инструмент от Google, который собирает образы из <code>Dockerfile</code> прямо в пространстве пользователя <strong>вообще без демона Docker и без привилегированного режима (<code>privileged: false</code>)</strong>!</li>
+   Рядом со сборочной задачей через секцию <code>services:</code> поднимается отдельный изолированный контейнер <code>docker:27-dind</code>, внутри которого крутится свой собственный независимый демон Docker. Это изолирует сборки друг от друга, но требует включения опасного флага <strong><code>privileged: true</code></strong> (привилегированный режим с полным доступом к ядру хоста) в конфигурации раннера.</li>
+<li><strong>Сборка без демона в пространстве пользователя (<code>Kaniko</code> / <code>Buildah</code>) — эталон для Kubernetes и строгого DevSecOps:</strong>
+   Инструмент <strong>Kaniko</strong> (<code>gcr.io/kaniko-project/executor</code>), созданный инженерами Google, вообще не использует демон <code>dockerd</code>! Он читает <code>Dockerfile</code>, сам пошагово распаковывает файловые системы и собирает слои образа прямо в пользовательском пространстве (<code>User Space</code>), не требуя ни сокета хоста, ни привилегированного режима (<code>privileged: false</code>), после чего напрямую отправляет готовый образ в Registry.</li>
 </ol>
 <hr />
-<h2 id="4-ci-">Блок 4. Типичные антипаттерны в CI-конвейерах</h2>
+<h2 id="4-ci-">Блок 4. Типичные антипаттерны в CI-конвейерах (и как их искоренить)</h2>
+<p>Даже настроенный конвейер может приносить вред вместо пользы, если при его проектировании допущены четыре классические ошибки эксплуатации:</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Антипаттерн в CI</th>
-<th style="text-align: left;">К чему приводит</th>
-<th style="text-align: left;">Как сделать правильно</th>
+<th style="text-align: left;">К каким последствиям приводит в работе команды</th>
+<th style="text-align: left;">Правильное инженерное решение</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>1. Отсутствие кэширования зависимостей</strong></td>
-<td style="text-align: left;">При каждом коммите <code>pip install</code> или <code>npm install</code> заново качает сотни мегабайт из сети. Пайплайн идет 15 минут вместо 1 минуты.</td>
-<td style="text-align: left;">Настроить секцию <code>cache:</code> с ключом по файлу <code>requirements.txt</code> / <code>package-lock.json</code>.</td>
+<td style="text-align: left;"><strong>1. Отсутствие кэширования пакетов (<code>pip</code>, <code>npm</code>, <code>go mod</code>)</strong></td>
+<td style="text-align: left;">На каждый мелкий коммит раннер заново выкачивает сотни мегабайт библиотек из интернета. Конвейер тормозит по 15 минут, забивая сетевой канал и сжигая минуты облачных раннеров.</td>
+<td style="text-align: left;">Настроить блок <code>cache:</code> с привязкой ключа <code>key: files:</code> к файлу фиксации зависимостей (<code>requirements.txt</code>, <code>package-lock.json</code>).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>2. Игнорирование упавших тестов (<code>allow_failure: true</code> на тестах)</strong></td>
-<td style="text-align: left;">Разработчики перестают чинить упавшие тесты, в <code>main</code> вливается нерабочий код.</td>
-<td style="text-align: left;">Любое падение линтера, unit-теста или критической CVE в Trivy должно <strong>жестко валить пайплайн</strong> (<code>exit 1</code>).</td>
+<td style="text-align: left;"><strong>2. Подавление ошибок на тестах и сканерах (<code>allow_failure: true</code>)</strong></td>
+<td style="text-align: left;">Чтобы «не блокировать срочный релиз», упавшим тестам разрешают гореть желтым предупреждением. Через месяц никто не обращает на них внимания, и в <code>main</code> беспрепятственно течет сломанный и уязвимый код.</td>
+<td style="text-align: left;">Жесткая дисциплина Quality Gates: любое срабатывание линтера, падение теста или обнаружение <code>CRITICAL</code> уязвимости в Trivy обязано завершать задачу с кодом возврата <code>1</code> (<code>--exit-code 1</code>), намертво останавливая конвейер.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>3. Хранение паролей и токенов в <code>.gitlab-ci.yml</code></strong></td>
-<td style="text-align: left;">Любой разработчик с доступом к репозиторию видит продакшен-секреты.</td>
-<td style="text-align: left;">Хранить секреты строго в <strong>Settings $\rightarrow$ CI/CD $\rightarrow$ Variables</strong> с флагами <strong><code>Masked</code></strong> (скрывать в логах звездочками <code>[MASKED]</code>) и <strong><code>Protected</code></strong> (доступны только в защищенной ветке <code>main</code>).</td>
+<td style="text-align: left;"><strong>3. Хранение паролей от Registry и токенов внутри <code>.gitlab-ci.yml</code></strong></td>
+<td style="text-align: left;">Любой сотрудник или подрядчик с доступом на чтение кода репозитория получает ключи от боевой инфраструктуры[cite: 2, 7].</td>
+<td style="text-align: left;">Выносить все чувствительные данные строго в защищенное хранилище <strong>Settings → CI/CD → Variables</strong> с обязательным включением галочек <strong><code>Masked</code></strong> (автоматически заменять значение в логах консоли на <code>[MASKED]</code>) и <strong><code>Protected</code></strong> (передавать секрет только в задачи защищенной ветки <code>main</code>).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>4. Сборка образа заново на каждой стадии</strong></td>
-<td style="text-align: left;">На стадии <code>test</code> собрали один образ, а на стадии <code>publish</code> собрали его еще раз с нуля (нарушение принципа <em>Build Once</em>).</td>
-<td style="text-align: left;">Собрать образ <strong>один раз</strong> с тегом по SHA коммита (<code>:$CI_COMMIT_SHORT_SHA</code>), протестировать именно его, и при успехе просто присвоить ему релизный тег (<code>docker tag</code> + <code>docker push</code>).</td>
+<td style="text-align: left;"><strong>4. Пересборка Docker-образа заново на каждой стадии конвейера</strong></td>
+<td style="text-align: left;">На стадии <code>test</code> собрали один образ и прогнали на нем тесты, а на стадии <code>publish</code> выполнили <code>docker build</code> еще раз с нуля. Нарушается фундаментальный принцип <strong>Build Once</strong>: за эти 5 минут в сети могла обновиться транзитивная библиотека, и в продакшен уедет образ, который на самом деле не проходил тесты!</td>
+<td style="text-align: left;">Собирать образ <strong>строго один раз</strong> на стадии <code>build</code> с тегом по хэшу коммита (<code>:$CI_COMMIT_SHORT_SHA</code>), передавать его как неизменяемый артефакт на проверку в <code>security</code>, а на стадии <code>publish</code> просто присваивать этому же проверенному образу релизный тег (<code>docker tag</code> + <code>docker push</code>).</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="6-ci-">🛠 Практический проект Модуля 6: Создание сборочного CI-конвейера с автоматическим контролем качества</h2>
-<p>Мы создадим промышленный многоэтапный конвейер <code>.gitlab-ci.yml</code> для нашего микросервиса из предыдущих модулей и <strong>протестируем его работу локально прямо на твоем компьютере</strong> (с помощью Docker и GitLab Runner), даже не поднимая тяжелый сервер GitLab!</p>
+<h2 id="6-ci-quality-gates">🛠 Практический проект Модуля 6: Создание промышленного CI-конвейера с автоматическими Quality Gates</h2>
+<p>Переходим к практике. Сейчас мы возьмем наш микросервисный проект из четвертого модуля (<code>~/compose-cluster</code>), оснастим его настоящими автоматическими тестами на фреймворке <strong><code>pytest</code></strong>, напишем для него эталонный пятиступенчатый конвейер <strong><code>.gitlab-ci.yml</code></strong> по принципу <em>Fail Fast</em>, а затем <strong>выполним полный локальный прогон всех стадий этого конвейера в изолированных Docker-контейнерах прямо на твоем компьютере</strong> (с точностью до команды воспроизведя работу промышленного GitLab Runner с Docker Executor, без необходимости поднимать тяжелый сервер GitLab!).</p>
 <hr />
-<h3 id="1">Этап 1. Подготовка репозитория с тестами и проверками качества</h3>
-<p>Перейдем в папку нашего кластера <code>~/compose-cluster</code> (или создадим её) и добавим автоматические тесты <code>pytest</code> для нашего API:</p>
+<h3 id="1">Этап 1. Оснащение репозитория автоматическими тестами и инструментами контроля качества</h3>
+<p>Перейдем в директорию нашего кластера <code>~/compose-cluster</code> и создадим тестовый контур <code>app/tests/</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/compose-cluster/app/tests<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/compose-cluster
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># 1. Добавим в зависимости для разработки быстрый линтер ruff, SAST-сканер bandit и pytest</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/requirements-dev.txt</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">-r requirements.txt</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s">pytest==8.3.2</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">ruff==0.6.2</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">bandit==1.7.9</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">EOF</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># 2. Напишем автоматические тесты (Unit + интеграционная проверка БД и Redis)</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/tests/test_app.py</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s">import os</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s">import sys</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s">sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="s">from main import app</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">def test_health_endpoint():</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="s">    """Проверяем, что сервис отвечает 200 OK на /health при живых БД и Redis"""</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="s">    client = app.test_client()</span>
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="s">    response = client.get("/health")</span>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="s">    assert response.status_code == 200</span>
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="s">    data = response.get_json()</span>
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="s">    assert data["status"] == "healthy"</span>
-</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="s">def test_visit_increments_counter():</span>
-</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="s">    """Проверяем, что /api/visit корректно пишет в PostgreSQL и увеличивает счетчик в Redis"""</span>
-</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="s">    client = app.test_client()</span>
-</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="s">    resp1 = client.get("/api/visit").get_json()</span>
-</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="s">    resp2 = client.get("/api/visit").get_json()</span>
-</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="s">    assert resp2["redis_hits"] == resp1["redis_hits"] + 1</span>
-</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="s">    assert resp2["postgres_saved_rows"] == resp1["postgres_saved_rows"] + 1</span>
-</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="s">EOF</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># 1. Создаем отдельный файл зависимостей для CI и разработки (requirements-dev.txt):</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># он наследует основные пакеты (-r requirements.txt) и добавляет сверхбыстрый линтер ruff,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># SAST-сканер безопасности кода bandit и тестовый фреймворк pytest</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/requirements-dev.txt</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">-r requirements.txt</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">pytest==8.3.2</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">ruff==0.6.2</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s">bandit==1.7.9</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">EOF</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># 2. Разрабатываем автоматические тесты (app/tests/test_app.py):</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># Тест №1 проверяет работу эндпоинта самодиагностики /health,</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># а Тест №2 выполняет реальную сквозную интеграционную проверку записи в PostgreSQL и инкремента в Redis!</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app/tests/test_app.py</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="s">import os</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="s">import sys</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="s">from main import app</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="s">def test_health_endpoint():</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="s">    """Проверяем, что сервис отвечает 200 OK на /health при живых подключениях к БД и Redis"""</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="s">    client = app.test_client()</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="s">    response = client.get("/health")</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="s">    assert response.status_code == 200</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="s">    data = response.get_json()</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="s">    assert data["status"] == "healthy"</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="s">def test_visit_increments_counter():</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="s">    """Интеграционный тест: проверяем, что /api/visit реально пишет строки в PostgreSQL и увеличивает счетчик в Redis"""</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="s">    client = app.test_client()</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="s">    resp1 = client.get("/api/visit").get_json()</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="s">    resp2 = client.get("/api/visit").get_json()</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="s">    assert resp2["redis_hits"] == resp1["redis_hits"] + 1</span>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="s">    assert resp2["postgres_saved_rows"] == resp1["postgres_saved_rows"] + 1</span>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <hr />
-<h3 id="2-gitlab-ciyml_1">Этап 2. Проектирование эталонного <code>.gitlab-ci.yml</code></h3>
-<p>Создай в корне проекта файл <code>.gitlab-ci.yml</code>, реализующий 5 стадий конвейера по принципу <strong>Fail Fast</strong>:
-1. <strong><code>lint</code>:</strong> Проверка Python-кода линтером <code>ruff</code> и проверка <code>Dockerfile</code> линтером <code>hadolint</code> (запускаются параллельно!).
-2. <strong><code>test</code>:</strong> Запуск SAST-анализатора безопасности кода <code>bandit</code> и прогон тестов <code>pytest</code> с автоматическим поднятием временных контейнеров <code>postgres:16-alpine</code> и <code>redis:7-alpine</code> через секцию <code>services:</code>.
-3. <strong><code>build</code>:</strong> Сборка Docker-образа с версионированием по короткому хэшу коммита (<code>$CI_COMMIT_SHORT_SHA</code>).
-4. <strong><code>security</code>:</strong> Автоматическое сканирование собранного образа через <strong>Trivy</strong> с сохранением отчета в <code>artifacts:</code>.
-5. <strong><code>publish</code>:</strong> Публикация проверенного образа в GitLab Container Registry (только для ветки <code>main</code>).</p>
+<h3 id="2-gitlab-ciyml_1">Этап 2. Проектирование эталонного манифеста <code>.gitlab-ci.yml</code></h3>
+<p>Создадим в корне проекта файл <code>.gitlab-ci.yml</code>, реализующий 5 эшелонов автоматического контроля качества:
+1. <strong>Стадия <code>lint</code>:</strong> Параллельный запуск синтаксического анализатора Python (<code>ruff</code>) и аудитора <code>Dockerfile</code> (<code>hadolint</code>).
+2. <strong>Стадия <code>test</code>:</strong> Статический поиск уязвимостей в коде через SAST-сканер <code>bandit</code> и запуск интеграционных тестов <code>pytest</code> с автоматическим поднятием чистых баз <code>postgres:16-alpine</code> и <code>redis:7-alpine</code> в секции <code>services:</code> (с формированием отчета в формате JUnit XML для отображения прямо в интерфейсе Merge Request!).
+3. <strong>Стадия <code>build</code>:</strong> Однократная сборка образа (<code>Build Once</code>) с тегом по хэшу коммита <code>$CI_COMMIT_SHORT_SHA</code> и сохранением слепка в <code>artifacts:</code>.
+4. <strong>Стадия <code>security</code>:</strong> Загрузка собранного артефакта и жесткая проверка сканером <strong>Trivy</strong> (<code>--exit-code 1</code> остановит конвейер при наличии неисправленных критических CVE!).
+5. <strong>Стадия <code>publish</code>:</strong> Публикация проверенного образа в реестр (защищена правилом <code>rules:</code> — выполняется только в главной ветке <code>main</code>).</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; .gitlab-ci.yml</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">stages:</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">  - lint</span>
@@ -1364,13 +1372,13 @@
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s">  - security</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">  - publish</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s"># Глобальные переменные конвейера</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s"># Глобальные переменные конвейера (включая встроенные переменные окружения GitLab CI)</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s">variables:</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"</span>
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">  IMAGE_TAG: "$CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHORT_SHA"</span>
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">  IMAGE_LATEST: "$CI_REGISTRY_IMAGE/backend:latest"</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s"># Кэширование скачанных Python-пакетов между запусками по хэшу файла зависимостей</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s"># Умное кэширование скачанных pip-пакетов между пайплайнами по контрольной сумме файла зависимостей</span>
 </span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="s">cache:</span>
 </span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="s">  key:</span>
 </span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="s">    files:</span>
@@ -1379,7 +1387,7 @@
 </span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="s">    - .cache/pip</span>
 </span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
 </span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="s"># ==========================================================</span>
-</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="s"># STAGE 1: LINT (Быстрая проверка синтаксиса и стиля &lt; 15 сек)</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="s"># STAGE 1: LINT (Мгновенная проверка синтаксиса и стиля &lt; 15 сек)</span>
 </span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="s"># ==========================================================</span>
 </span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="s">lint:python:</span>
 </span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="s">  stage: lint</span>
@@ -1392,11 +1400,11 @@
 </span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="s">  stage: lint</span>
 </span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="s">  image: hadolint/hadolint:latest-debian</span>
 </span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="s">  script:</span>
-</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="s">    # Игнорируем DL3008 (версии системных пакетов apt), проверяем остальное строго</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="s">    # Проверяем Dockerfile по лучшим практикам (игнорируя DL3008 — требование пиннинга минорных версий в apt)</span>
 </span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="s">    - hadolint --ignore DL3008 app/Dockerfile</span>
 </span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>
 </span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="s"># ==========================================================</span>
-</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="s"># STAGE 2: TEST &amp; SAST (Проверка безопасности кода и тесты с БД)</span>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="s"># STAGE 2: TEST &amp; SAST (Аудит безопасности кода и интеграционные тесты с БД)</span>
 </span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="s"># ==========================================================</span>
 </span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="s">sast:bandit:</span>
 </span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="s">  stage: test</span>
@@ -1404,14 +1412,14 @@
 </span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="s">  needs: ["lint:python"]</span>
 </span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="s">  script:</span>
 </span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="s">    - pip install --quiet bandit==1.7.9</span>
-</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="s">    # Проверяем код на уязвимости высокой и средней критичности (-ll)</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="s">    # Сканируем исходный код на предмет дыр в безопасности средней и высокой критичности (-ll)</span>
 </span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="s">    - bandit -r app/main.py -ll</span>
 </span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>
 </span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="s">unit-and-integration:pytest:</span>
 </span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="s">  stage: test</span>
 </span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="s">  image: python:3.12-slim</span>
 </span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="s">  needs: ["lint:python"]</span>
-</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="s">  # GitLab Runner автоматически поднимет эти контейнеры рядом с джобой!</span>
+</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="s">  # GitLab Runner автоматически поднимет временные контейнеры СУБД в одной сети с задачей!</span>
 </span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="s">  services:</span>
 </span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="s">    - name: postgres:16-alpine</span>
 </span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="s">      alias: db</span>
@@ -1433,7 +1441,7 @@
 </span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="s">    expire_in: 7 days</span>
 </span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a>
 </span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="s"># ==========================================================</span>
-</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="s"># STAGE 3: BUILD (Сборка Docker-образа)</span>
+</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="s"># STAGE 3: BUILD (Однократная сборка неизменяемого Docker-образа)</span>
 </span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a><span class="s"># ==========================================================</span>
 </span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="s">build:image:</span>
 </span><span id="__span-4-81"><a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a><span class="s">  stage: build</span>
@@ -1450,7 +1458,7 @@
 </span><span id="__span-4-92"><a id="__codelineno-4-92" name="__codelineno-4-92" href="#__codelineno-4-92"></a><span class="s">    expire_in: 1 hour</span>
 </span><span id="__span-4-93"><a id="__codelineno-4-93" name="__codelineno-4-93" href="#__codelineno-4-93"></a>
 </span><span id="__span-4-94"><a id="__codelineno-4-94" name="__codelineno-4-94" href="#__codelineno-4-94"></a><span class="s"># ==========================================================</span>
-</span><span id="__span-4-95"><a id="__codelineno-4-95" name="__codelineno-4-95" href="#__codelineno-4-95"></a><span class="s"># STAGE 4: SECURITY SCAN (Проверка образа через Trivy)</span>
+</span><span id="__span-4-95"><a id="__codelineno-4-95" name="__codelineno-4-95" href="#__codelineno-4-95"></a><span class="s"># STAGE 4: SECURITY SCAN (Проверка собранного образа сканером Trivy)</span>
 </span><span id="__span-4-96"><a id="__codelineno-4-96" name="__codelineno-4-96" href="#__codelineno-4-96"></a><span class="s"># ==========================================================</span>
 </span><span id="__span-4-97"><a id="__codelineno-4-97" name="__codelineno-4-97" href="#__codelineno-4-97"></a><span class="s">security:trivy:</span>
 </span><span id="__span-4-98"><a id="__codelineno-4-98" name="__codelineno-4-98" href="#__codelineno-4-98"></a><span class="s">  stage: security</span>
@@ -1459,7 +1467,7 @@
 </span><span id="__span-4-101"><a id="__codelineno-4-101" name="__codelineno-4-101" href="#__codelineno-4-101"></a><span class="s">    entrypoint: [""]</span>
 </span><span id="__span-4-102"><a id="__codelineno-4-102" name="__codelineno-4-102" href="#__codelineno-4-102"></a><span class="s">  needs: ["build:image"]</span>
 </span><span id="__span-4-103"><a id="__codelineno-4-103" name="__codelineno-4-103" href="#__codelineno-4-103"></a><span class="s">  script:</span>
-</span><span id="__span-4-104"><a id="__codelineno-4-104" name="__codelineno-4-104" href="#__codelineno-4-104"></a><span class="s">    # Сканируем собранный tar-архив образа; если есть CRITICAL уязвимости в коде — валим сборку (--exit-code 1)</span>
+</span><span id="__span-4-104"><a id="__codelineno-4-104" name="__codelineno-4-104" href="#__codelineno-4-104"></a><span class="s">    # Сканируем tar-архив образа; флаг --exit-code 1 жестко заблокирует пайплайн при наличии CRITICAL/HIGH уязвимостей!</span>
 </span><span id="__span-4-105"><a id="__codelineno-4-105" name="__codelineno-4-105" href="#__codelineno-4-105"></a><span class="s">    - trivy image --input image.tar --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 --format table -o trivy-report.txt</span>
 </span><span id="__span-4-106"><a id="__codelineno-4-106" name="__codelineno-4-106" href="#__codelineno-4-106"></a><span class="s">    - cat trivy-report.txt</span>
 </span><span id="__span-4-107"><a id="__codelineno-4-107" name="__codelineno-4-107" href="#__codelineno-4-107"></a><span class="s">  artifacts:</span>
@@ -1469,7 +1477,7 @@
 </span><span id="__span-4-111"><a id="__codelineno-4-111" name="__codelineno-4-111" href="#__codelineno-4-111"></a><span class="s">    expire_in: 30 days</span>
 </span><span id="__span-4-112"><a id="__codelineno-4-112" name="__codelineno-4-112" href="#__codelineno-4-112"></a>
 </span><span id="__span-4-113"><a id="__codelineno-4-113" name="__codelineno-4-113" href="#__codelineno-4-113"></a><span class="s"># ==========================================================</span>
-</span><span id="__span-4-114"><a id="__codelineno-4-114" name="__codelineno-4-114" href="#__codelineno-4-114"></a><span class="s"># STAGE 5: PUBLISH (Публикация в Registry только из ветки main)</span>
+</span><span id="__span-4-114"><a id="__codelineno-4-114" name="__codelineno-4-114" href="#__codelineno-4-114"></a><span class="s"># STAGE 5: PUBLISH (Публикация проверенного артефакта в Registry только из ветки main)</span>
 </span><span id="__span-4-115"><a id="__codelineno-4-115" name="__codelineno-4-115" href="#__codelineno-4-115"></a><span class="s"># ==========================================================</span>
 </span><span id="__span-4-116"><a id="__codelineno-4-116" name="__codelineno-4-116" href="#__codelineno-4-116"></a><span class="s">publish:registry:</span>
 </span><span id="__span-4-117"><a id="__codelineno-4-117" name="__codelineno-4-117" href="#__codelineno-4-117"></a><span class="s">  stage: publish</span>
@@ -1488,18 +1496,18 @@
 </span><span id="__span-4-130"><a id="__codelineno-4-130" name="__codelineno-4-130" href="#__codelineno-4-130"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <hr />
-<h3 id="3-ci-docker">Этап 3. Локальный прогон всех стадий CI-конвейера в Docker</h3>
-<p>Чтобы убедиться, что каждый шаг нашего конвейера работает безупречно (точно так же, как его выполнит Docker Executor в GitLab Runner), выполни локальный прогон всех стадий одной командой:</p>
+<h3 id="3-ci-docker-">Этап 3. Боевой прогон всех стадий CI-конвейера в локальном Docker-окружении</h3>
+<p>Чтобы не просто посмотреть на YAML-файл, а реально испытать работу каждого из пяти наших Quality Gates, выполним локальный прогон всех стадий конвейера в одноразовых Docker-контейнерах (ровно так, как их запускает под капотом GitLab Runner):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/compose-cluster
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 1.1] Запуск линтера Python (Ruff) ==="</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 1.1] Запуск синтаксического линтера Python (Ruff) ==="</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/work"</span><span class="w"> </span>-w<span class="w"> </span>/work<span class="w"> </span>python:3.12-slim<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q ruff==0.6.2 &amp;&amp; ruff check app/"</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 1.2] Запуск линтера Dockerfile (Hadolint) ==="</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 1.2] Запуск аудитора лучших практик Dockerfile (Hadolint) ==="</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-i<span class="w"> </span>hadolint/hadolint:latest-debian<span class="w"> </span>hadolint<span class="w"> </span>--ignore<span class="w"> </span>DL3008<span class="w"> </span>-<span class="w"> </span>&lt;<span class="w"> </span>app/Dockerfile
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 2.1] Статический анализ безопасности кода (Bandit SAST) ==="</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 2.1] Статический анализ безопасности исходного кода (Bandit SAST) ==="</span>
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/work"</span><span class="w"> </span>-w<span class="w"> </span>/work<span class="w"> </span>python:3.12-slim<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q bandit==1.7.9 &amp;&amp; bandit -r app/main.py -ll"</span>
 </span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
@@ -1516,36 +1524,36 @@
 </span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">  </span>python:3.12-slim<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q -r app/requirements-dev.txt &amp;&amp; pytest app/tests/ -v"</span>
 </span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
-</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 3 &amp; 4] Сборка образа и проверка безопасности через Trivy ==="</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== [STAGE 3 &amp; 4] Сборка релизного образа и жесткий аудит безопасности через Trivy ==="</span>
 </span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>compose-cluster-backend:ci-test<span class="w"> </span>./app
 </span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">  </span>aquasec/trivy:latest<span class="w"> </span>image<span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>--ignore-unfixed<span class="w"> </span>--exit-code<span class="w"> </span><span class="m">1</span><span class="w"> </span>compose-cluster-backend:ci-test
 </span></code></pre></div>
 <hr />
-<h3 id="-6">✅ Чек-лист самопроверки по Модулю 6</h3>
+<h3 id="-6">✅ Чек-лист самопроверки и тест срабатывания защиты по Модулю 6</h3>
 <ol>
-<li><strong>Проверка зеленого пайплайна:</strong>
-   Все 5 шагов скрипта выше должны пройти без единой ошибки:</li>
-<li><code>ruff check app/</code>: <code>All checks passed!</code></li>
-<li><code>bandit</code>: <code>No issues identified.</code></li>
-<li><code>pytest</code>: <code>2 passed in 0.45s</code></li>
+<li><strong>Проверка чистого прохождения конвейера (Green Pipeline):</strong>
+   Убедись, что все 5 проверочных шагов завершились со статусом успеха (<code>Exit Code 0</code>):</li>
+<li>Линтер <code>ruff check app/</code> вывел: <code>All checks passed!</code></li>
+<li>Анализатор безопасности <code>bandit</code> подтвердил: <code>No issues identified.</code></li>
+<li>Тестовый раннер <code>pytest</code> подключился к живым контейнерам БД и выдал: <code>2 passed</code>.</li>
 <li>
-<p><code>trivy</code>: <code>0 (HIGH: 0, CRITICAL: 0)</code></p>
+<p>Сканер <code>trivy</code> подтвердил отсутствие критических уязвимостей: <code>0 (HIGH: 0, CRITICAL: 0)</code>.</p>
 </li>
 <li>
-<p><strong>Тест на срабатывание Quality Gate (проверка принципа Fail Fast):</strong>
-   Давай намеренно внесем неиспользуемую переменную или синтаксическую ошибку в <code>app/main.py</code> и убедимся, что линтер мгновенно заблокирует пайплайн на первой же секунде:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Добавим неиспользуемый импорт в начало файла</span>
+<p><strong>Испытание принципа Fail Fast (блокировка некачественного кода на первой секунде):</strong>
+   Давай представим, что разработчик в спешке оставил в начале файла <code>app/main.py</code> неиспользуемый системный импорт <code>import subprocess</code>, и проверим, как отреагирует первая же стадия нашего конвейера:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Искусственно вносим "мусорный" импорт в первую строчку кода</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'1i import subprocess'</span><span class="w"> </span>app/main.py
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Запустим стадию линтинга</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Запускаем первый шаг конвейера (линтер Ruff)</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/work"</span><span class="w"> </span>-w<span class="w"> </span>/work<span class="w"> </span>python:3.12-slim<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q ruff==0.6.2 &amp;&amp; ruff check app/"</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"pip install -q ruff==0.6.2 &amp;&amp; ruff check app/"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"🚨 ПАЙПЛАЙН ОСТАНОВЛЕН QUALITY GATE!"</span>
 </span></code></pre></div>
-   <em>Ожидаемый результат:</em> <code>F401 [*] subprocess imported but unused. Found 1 error.</code> Код возврата <code>1</code> — конвейер остановлен до начала долгой сборки!</p>
+   <em>Ожидаемый результат:</em> Линтер за долю секунды ловит ошибку <code>F401 [*] subprocess imported but unused. Found 1 error.</code> и возвращает ненулевой код возврата <code>1</code>, мгновенно блокируя дальнейшую сборку и экономя ресурсы серверов!</p>
 </li>
 </ol>
-<p><em>(Не забудь вернуть файл в исходное чистое состояние командой <code>sed -i '1d' app/main.py</code>)</em>.</p>
+<p><em>(После проверки обязательно верни файл в эталонное состояние, удалив добавленную первую строчку командой: <code>sed -i '1d' app/main.py</code>)</em>.</p>
 
 
 

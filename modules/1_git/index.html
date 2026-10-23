@@ -465,7 +465,7 @@
   <a href="#41-git-diff" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Сравнение версий (git diff)
+        4.1. Контроль дельты изменений (git diff)
       
     </span>
   </a>
@@ -473,22 +473,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-git-merge-vs-git-rebase" class="md-nav__link">
+  <a href="#42-git-merge-git-rebase" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. git merge vs git rebase и поддержание чистоты истории
+        4.2. git merge против git rebase: битва за чистоту истории
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2. git merge vs git rebase и поддержание чистоты истории">
+    <nav class="md-nav" aria-label="4.2. git merge против git rebase: битва за чистоту истории">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-git-merge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. git merge (Слияние)
+        1. git merge (Классическое слияние)
       
     </span>
   </a>
@@ -510,7 +510,7 @@
   <a href="#git-rebase-i-squashing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Интерактивный ребейз (git rebase -i) и Squashing
+        Интерактивный ребейз (git rebase -i) и склеивание мусорных коммитов (Squashing)
       
     </span>
   </a>
@@ -526,7 +526,7 @@
   <a href="#43-merge-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3. Анатомия и разрешение Merge-конфликтов
+        4.3. Анатомия и алгоритм разрешения Merge-конфликтов
       
     </span>
   </a>
@@ -588,7 +588,7 @@
   <a href="#git-reflog" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Спасательный круг инженера: git reflog
+        Спасательный круг инженера: локальная машина времени git reflog
       
     </span>
   </a>
@@ -640,10 +640,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-interactive-rebase-squash" class="md-nav__link">
+  <a href="#3-reset-soft-squash" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Очистка истории ветки (Interactive Rebase &amp; Squash)
+        Этап 3. Очистка истории ветки (Reset Soft &amp; Squash)
       
     </span>
   </a>
@@ -1108,7 +1108,7 @@
   <a href="#41-git-diff" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Сравнение версий (git diff)
+        4.1. Контроль дельты изменений (git diff)
       
     </span>
   </a>
@@ -1116,22 +1116,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-git-merge-vs-git-rebase" class="md-nav__link">
+  <a href="#42-git-merge-git-rebase" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. git merge vs git rebase и поддержание чистоты истории
+        4.2. git merge против git rebase: битва за чистоту истории
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2. git merge vs git rebase и поддержание чистоты истории">
+    <nav class="md-nav" aria-label="4.2. git merge против git rebase: битва за чистоту истории">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-git-merge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. git merge (Слияние)
+        1. git merge (Классическое слияние)
       
     </span>
   </a>
@@ -1153,7 +1153,7 @@
   <a href="#git-rebase-i-squashing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Интерактивный ребейз (git rebase -i) и Squashing
+        Интерактивный ребейз (git rebase -i) и склеивание мусорных коммитов (Squashing)
       
     </span>
   </a>
@@ -1169,7 +1169,7 @@
   <a href="#43-merge-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3. Анатомия и разрешение Merge-конфликтов
+        4.3. Анатомия и алгоритм разрешения Merge-конфликтов
       
     </span>
   </a>
@@ -1231,7 +1231,7 @@
   <a href="#git-reflog" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Спасательный круг инженера: git reflog
+        Спасательный круг инженера: локальная машина времени git reflog
       
     </span>
   </a>
@@ -1283,10 +1283,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-interactive-rebase-squash" class="md-nav__link">
+  <a href="#3-reset-soft-squash" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 3. Очистка истории ветки (Interactive Rebase &amp; Squash)
+        Этап 3. Очистка истории ветки (Reset Soft &amp; Squash)
       
     </span>
   </a>
@@ -1348,201 +1348,241 @@
 
 
 
-<h1 id="devops-git">Введение в DevOps и системы контроля версий Git</h1>
-<p>В современном DevOps <strong>всё является кодом</strong>: исходный код приложений, конфигурация серверов (Ansible), описание облачной инфраструктуры (Terraform), манифесты кластера (Kubernetes) и сами пайплайны сборки (CI/CD). Поэтому Git — это единый источник истины (Single Source of Truth), с которого начинается любое изменение в инфраструктуре.</p>
+<h1 id="devops-git">Введение в DevOps и системы контроля версий (Git)</h1>
+<p>В современной инженерной практике <strong>всё является кодом (Everything as Code)</strong>. Если раньше в системе контроля версий хранили только исходники приложений на Python, Go или Java, то сегодня там же живет вся инфраструктура компании: сценарии настройки серверов (Ansible), описание облачных сетей и виртуальных машин (Terraform), манифесты кластеров (Kubernetes), правила мониторинга и сами конвейеры сборки (CI/CD). </p>
+<p>Ручные правки конфигураций напрямую на боевых серверах по SSH ушли в прошлое, так как они не оставляют следов и делают систему невоспроизводимой. Сегодня <strong>Git</strong> выступает единым источником истины (Single Source of Truth), с коммита в который начинается любое легитимное изменение в продакшене. Но прежде чем разбирать внутреннее устройство Git, важно понять инженерную культуру, ради которой эти инструменты создавались.</p>
 <hr />
 <h2 id="1-devops">Блок 1. Философия и культура DevOps</h2>
 <h3 id="11-wall-of-confusion">1.1. Историческая проблема: «Стена отчуждения» (Wall of Confusion)</h3>
-<p>До появления DevOps разработка (Development) и эксплуатация (Operations) имели прямо противоположные KPI:</p>
+<p>До появления методологии DevOps ИТ-подразделения любой компании были жестко разделены на два изолированных лагеря — разработку (Development) и эксплуатацию (Operations). Проблема заключалась не в людях, а в том, что бизнес ставил перед этими отделами прямо противоположные показатели эффективности (KPI):</p>
 <ul>
-<li><strong>Цель разработчиков (Dev):</strong> Как можно быстрее выпускать новые фичи для бизнеса (Изменения = хорошо).</li>
-<li><strong>Цель администраторов (Ops):</strong> Чтобы серверы работали стабильно и ничего не падало (Изменения = риск падения).</li>
+<li><strong>Задача разработчиков (Dev):</strong> Как можно быстрее выпускать новые функции для бизнеса и пользователей. С точки зрения разработки, любые изменения — это благо и развитие продукта.</li>
+<li><strong>Задача системных администраторов (Ops):</strong> Обеспечивать стопроцентную стабильность и доступность серверов. С точки зрения эксплуатации, любое изменение — это прямая угроза стабильности и главная причина ночных аварий.</li>
 </ul>
-<p>Разработчики перекидывали код «через забор» со словами <em>«У меня на ноутбуке всё работало!»</em>, а админы вручную деплоили его по ночам и блокировали частые релизы. <strong>DevOps</strong> убирает эту стену, объединяя процессы, людей и инструменты вокруг общей цели — быстрой и безопасной доставки ценности конечному пользователю.</p>
+<p>Между отделами вырастала так называемая «Стена отчуждения» (Wall of Confusion). Разработчики писали код в изоляции и буквально перебрасывали готовый архив «через забор» администраторам с классической фразой: <em>«У меня на ноутбуке всё работало, дальше ваши проблемы!»</em>. Администраторы же, не зная внутренней архитектуры приложения, вручную разворачивали его по ночам, сталкивались с несовпадением версий библиотек и всеми силами пытались заблокировать или отложить частые релизы.</p>
+<p><strong>DevOps</strong> разрушает эту стену. Это не просто название должности, а инженерная методология, которая объединяет разработку, тестирование и эксплуатацию вокруг общей бизнес-цели — быстрой, предсказуемой и безопасной доставки ценности конечному пользователю.</p>
 <hr />
 <h3 id="12-calms">1.2. Модель CALMS и её влияние на скорость разработки</h3>
-<p>Акроним <strong>CALMS</strong> (предложенный Джезом Хамблом) описывает 5 столпов зрелого DevOps-процесса:</p>
+<p>Чтобы DevOps не превратился в простую смену таблички на двери отдела системных администраторов, Джез Хамбл (соавтор книги <em>Continuous Delivery</em>) сформулировал акроним <strong>CALMS</strong>, описывающий пять фундаментальных столпов зрелого инженерного процесса:</p>
 <table>
 <thead>
 <tr>
 <th>Буква</th>
 <th>Расшифровка</th>
-<th>Суть и влияние на Time-to-Market</th>
+<th>Суть принципа и влияние на Time-to-Market</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>C</strong></td>
 <td><strong>Culture</strong> (Культура)</td>
-<td>Отказ от поиска виноватых (<strong>Blameless Postmortems</strong>). Если упал прод — виноват не человек, который нажал кнопку, а процесс, который позволил ошибке дойти до прода без проверок. Общая ответственность: <em>«You build it, you run it»</em>.</td>
+<td>Отказ от поиска виноватых после аварий (<strong>Blameless Postmortems</strong>). Если упал продакшен — виноват не инженер, который нажал кнопку деплоя, а несовершенство процесса, который позволил ошибке беспрепятственно пройти все стадии проверок. Команда живет по принципу общей ответственности: <em>«You build it, you run it»</em> (кто написал сервис, тот и отвечает за его работу в бою).</td>
 </tr>
 <tr>
 <td><strong>A</strong></td>
 <td><strong>Automation</strong> (Автоматизация)</td>
-<td>Устранение ручного труда (toil). Ручная настройка серверов по SSH запрещена — всё делается через CI/CD, Terraform и Ansible. Это ускоряет релизы с недель до минут.</td>
+<td>Систематическое искоренение рутинного ручного труда (toil). Ручная настройка серверов по SSH запрещена — сборка, тестирование, выделение облачных ресурсов и выкатка кода выполняются автоматически через CI/CD, Terraform и Ansible. Это сокращает путь фичи до продакшена с недель до нескольких минут.</td>
+</tr>
+<tr>
+<td><strong>L</strong></td>
+<td><strong>Lean</strong> (Бережливое производство)</td>
+<td>Движение маленькими итерациями (<strong>Small Batch Sizes</strong>) и устранение потерь времени на ожидание ручных согласований. Намного проще, быстрее и безопаснее выкатить, протестировать и при необходимости откатить коммит на 15 строк кода, чем гигантский полугодовой релиз на 50 000 строк.</td>
+</tr>
+<tr>
+<td><strong>M</strong></td>
+<td><strong>Measurement</strong> (Измерения)</td>
+<td>Инженерная аксиома: «То, что нельзя измерить, нельзя улучшить». Измеряется всё: от утилизации CPU и времени ответа базы данных до продуктовых показателей и скорости работы самого конвейера доставки кода (<strong>DORA-метрики</strong>).</td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td><strong>Sharing</strong> (Обмен знаниями)</td>
+<td>Ликвидация «незаменимых шаманов», которые единственные знают, как работает старый сервер (повышение <strong>Bus Factor</strong>). Вся инфраструктура документирована в открытых репозиториях, команды проводят совместные разборы инцидентов и делятся экспертизой между Dev, QA и Ops.</td>
 </tr>
 </tbody>
 </table>
-<p>|
-| <strong>L</strong> | <strong>Lean</strong> (Бережливое производство) | Фокус на маленьких партиях изменений (Small Batch Sizes) и устранении потерь времени (ожиданий ревью, ручного тестирования). Проще выкатить и протестировать 10 строчек кода, чем релиз за полгода на 50 000 строк.</p>
-<p>|
-| <strong>M</strong> | <strong>Measurement</strong> (Измерения) | Если вы что-то не измеряете, вы не можете это улучшить. Измеряется всё: от загрузки CPU до бизнес-метрик и скорости доставки кода (<strong>DORA-метрики</strong>).</p>
-<p>|
-| <strong>S</strong> | <strong>Sharing</strong> (Обмен знаниями) | Отсутствие «незаменимых шаманов» (низкого Bus Factor). Единая документация, открытые репозитории, совместные разборы инцидентов и взаимное обучение между Dev, QA и Ops. |</p>
 <hr />
 <h3 id="13-dora-">1.3. Четыре ключевые DORA-метрики эффективности</h3>
-<p>Исследовательская группа DORA выделила 4 метрики, которые объективно показывают качество инженерных процессов в компании:</p>
+<p>Как объективно оценить, помогает ли внедрение DevOps-практик бизнесу, или команда просто тратит время на модные инструменты? Исследовательская группа <strong>DORA</strong> (DevOps Research and Assessment) выделила четыре стандартные метрики, две из которых отвечают за <strong>скорость</strong>, а две — за <strong>стабильность</strong> инженерных процессов:</p>
 <ol>
-<li><strong>Deployment Frequency (Частота релизов):</strong> Как часто команда успешно выкатывает код в продакшен (у лидеров индустрии — по запросу, десятки раз в день).</li>
-<li><strong>Lead Time for Changes (Время вывода изменений):</strong> Время от момента создания коммита до того, как этот код начал работать в продакшене (цель — менее часа).</li>
-<li><strong>Change Failure Rate (Доля неуспешных изменений):</strong> Какой процент деплоев приводит к деградации сервиса, хотфиксам или откату (цель — $0\text{–}15\%$).</li>
-<li><strong>MTTR (Mean Time to Restore / Recovery):</strong> Среднее время восстановления сервиса после аварии (цель — менее часа, достигается за счет мониторинга и автоматического отката).</li>
+<li><strong>Deployment Frequency (Частота релизов):</strong> Показывает, как часто команда успешно доставляет изменения в продакшен. У зрелых технологических компаний выкатка происходит по требованию — десятки раз в день.</li>
+<li><strong>Lead Time for Changes (Время вывода изменений):</strong> Измеряет интервал времени от момента, когда разработчик сделал <code>git commit</code>, до момента, когда этот код начал обслуживать реальных клиентов в продакшене (целевой ориентир индустрии — менее одного часа).</li>
+<li><strong>Change Failure Rate (Доля неуспешных изменений):</strong> Какой процент релизов в продакшен приводит к деградации сервиса, авариям, необходимости экстренных хотфиксов или откату (целевой показатель — в пределах 0–15%).</li>
+<li><strong>MTTR (Mean Time to Restore / Recovery):</strong> Среднее время, которое требуется команде на восстановление работоспособности системы после инцидента (цель — менее часа, что достигается за счет мгновенного алертинга и автоматического отката релиза).</li>
 </ol>
 <hr />
 <h2 id="2-git">Блок 2. Внутреннее устройство Git: репозитории, коммиты и история</h2>
 <h3 id="21-git">2.1. Как Git хранит данные под капотом</h3>
-<p>В отличие от старых систем (SVN), которые хранили разницу между файлами (дельты), <strong>Git хранит полные слепки состояния (snapshots)</strong> в виде направленного ациклического графа (DAG) в папке <code>.git/objects/</code>.</p>
-<p>Внутри Git есть 4 основных типа объектов, идентифицируемых по SHA-1 хэшу (40 шестнадцатеричных символов):</p>
+<p>Чтобы уверенно распутывать сложные конфликты и никогда не терять код, нужно понимать, как Git устроен внутри. В отличие от систем контроля версий прошлого поколения (таких как SVN или CVS), которые хранили базовый файл и список построчных изменений (дельт) от версии к версии, <strong>Git мыслит полными слепками состояния файловой системы (snapshots)</strong>.</p>
+<p>Каждый раз, когда вы фиксируете изменения, Git фотографирует состояние всех файлов в проекте и сохраняет этот слепок в свою внутреннюю базу данных в скрытой директории <code>.git/objects/</code>, выстраивая историю в виде направленного ациклического графа (<strong>DAG</strong>). Если какой-то файл не изменился по сравнению с прошлым коммитом, Git не копирует его заново, а просто ставит ссылку на уже существующую версию файла.</p>
+<p>Все данные внутри базы <code>.git/objects/</code> представлены четырьмя фундаментальными типами объектов, каждый из которых адресуется уникальным 40-символьным криптографическим хэшем <strong>SHA-1</strong> (вычисленным от содержимого объекта):</p>
 <ul>
-<li><strong><code>blob</code>:</strong> Содержимое конкретного файла (без имени файла и прав).</li>
-<li><strong><code>tree</code>:</strong> Аналог директории — содержит список имен файлов, их права и ссылки на <code>blob</code>-объекты и другие <code>tree</code>.</li>
-<li><strong><code>commit</code>:</strong> Слепок проекта. Содержит ссылку на корневой объект <code>tree</code>, метаданные автора, сообщение коммита и ссылку на родительский коммит (<code>parent</code>).</li>
-<li><strong><code>tag</code>:</strong> Постоянная именная метка, привязанная к конкретному коммиту (например, <code>v1.2.0</code>).</li>
+<li><strong><code>blob</code> (Binary Large Object):</strong> Хранит сжатое содержимое конкретного файла. Примечательно, что объект <code>blob</code> ничего не знает ни об имени файла, ни о правах доступа к нему — только чистые данные. Если в разных папках проекта лежат два одинаковых по содержимому файла, в базе Git это будет один и тот же <code>blob</code>.</li>
+<li><strong><code>tree</code> (Дерево):</strong> Полный аналог директории в файловой системе. Внутри объекта <code>tree</code> записан список имен файлов, их права доступа и ссылки на соответствующие им хэши <code>blob</code>-объектов (а также ссылки на вложенные <code>tree</code> для подпапок).</li>
+<li><strong><code>commit</code> (Коммит):</strong> Завершенный слепок истории проекта. Содержит ссылку на хэш корневого объекта <code>tree</code> (состояние корневой папки проекта на этот момент), имя и почту автора, временную метку, текстовое описание коммита и ссылку на хэш родительского коммита (<code>parent</code>), от которого было сделано изменение.</li>
+<li><strong><code>tag</code> (Тег):</strong> Постоянная человекочитаемая метка (например, релизная версия <code>v1.2.0</code>), намертво привязанная к хэшу конкретного коммита.</li>
 </ul>
 <blockquote>
-<p><strong>Что такое ветка (Branch)?</strong> Ветка в Git — это не копия файлов! Это просто крошечный текстовый файл (весом 41 байт) в <code>.git/refs/heads/</code>, внутри которого записан SHA-1 хэш последнего коммита. Поэтому создание и переключение веток в Git происходит мгновенно. Указатель <strong><code>HEAD</code></strong> показывает, на какой ветке или коммите вы находитесь прямо сейчас.</p>
+<p><strong>Что такое ветка (Branch) с точки зрения файловой системы?</strong>
+Многие начинающие инженеры представляют ветку как отдельную папку с копией всех файлов проекта. На самом деле ветка в Git — это просто крошечный текстовый файл весом <strong>41 байт</strong>, лежащий по пути <code>.git/refs/heads/&lt;имя_ветки&gt;</code>, внутри которого записана всего одна строка — 40 символов SHA-1 хэша последнего коммита в этой линии разработки. Именно поэтому создание новой ветки или переключение между ними в Git не требует копирования гигабайтов кода и происходит за доли миллисекунды. А специальный системный указатель <strong><code>HEAD</code></strong> просто хранит ссылку на ту ветку (или коммит), которые в данный момент развернуты в вашей рабочей папке.</p>
 </blockquote>
 <hr />
 <h3 id="22-git">2.2. Четыре зоны состояния файлов в Git</h3>
+<p>Работа с любым изменением в Git проходит через четыре последовательных контура изоляции. Понимание того, в какой зоне сейчас находится файл, избавляет от страха случайно затереть несохраненную работу:</p>
 <ol>
-<li><strong>Working Directory (Рабочая директория):</strong> Файлы, которые вы прямо сейчас редактируете на диске.</li>
-<li><strong>Staging Area / Index (Индекс):</strong> Промежуточная зона подготовки. Сюда вы складываете (<code>git add</code>) только те изменения, которые должны войти в следующий осмысленный коммит.</li>
-<li>
-<p><strong>Local Repository (<code>.git</code>):</strong> Ваша локальная база данных коммитов (<code>git commit</code>).</p>
-</li>
-<li>
-<p><strong>Remote Repository (<code>origin</code>):</strong> Удаленный сервер (GitLab, GitHub), куда пушатся изменения (<code>git push</code>).</p>
-</li>
+<li><strong>Working Directory (Рабочая директория):</strong> Обычные файлы проекта на диске вашего компьютера, которые вы прямо сейчас редактируете в IDE или терминальном редакторе.</li>
+<li><strong>Staging Area / Index (Индекс или зона подготовки):</strong> Промежуточный буфер перед созданием коммита. Представьте, что вы отредактировали за час 10 разных файлов, но логически они относятся к двум разным задачам. С помощью команды <code>git add</code> вы кладете в Индекс только те файлы (или даже отдельные строчки), которые должны войти в следующий осмысленный коммит, оставляя остальные изменения ждать своей очереди в рабочей директории.</li>
+<li><strong>Local Repository (Локальный репозиторий <code>.git</code>):</strong> Ваша персональная база истории коммитов на диске. Команда <code>git commit</code> берет подготовленный снимок из Индекса и навсегда запечатывает его в граф истории с уникальным SHA-1 хэшем.</li>
+<li><strong>Remote Repository (Удаленный репозиторий, по умолчанию именуемый <code>origin</code>):</strong> Центральный сервер командной работы (GitLab, GitHub, Gitea), куда вы синхронизируете свои локальные коммиты по сети командой <code>git push</code>.</li>
 </ol>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Working Dir]  --(git add)--&gt;  [Staging / Index]  --(git commit)--&gt;  [Local Repo]  --(git push)--&gt;  [Remote Repo]
 </span></code></pre></div>
-<p><strong>Базовая настройка и навигация по истории:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Обязательная первичная настройка имени и почты</span>
+<p><strong>Обязательная первичная настройка и команды исследования истории:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Первичная идентификация инженера (эти данные зашиваются внутрь каждого создаваемого вами объекта commit)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Ivan Petrov"</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"i.petrov@example.com"</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Красивый граф истории коммитов со всеми ветками в терминале</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Вывести наглядный текстовый граф истории коммитов со всеми ветками и тегами прямо в терминале</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--decorate<span class="w"> </span>--all
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Посмотреть, какие именно строки изменились в каждом коммите</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Посмотреть детальную историю последних 2 коммитов вместе с конкретными измененными строками кода (патчем -p)</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>git<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Узнать, кто и каким коммитом изменил каждую строчку в конфиге (незаменимо при разборе полетов!)</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>git<span class="w"> </span>blame<span class="w"> </span>nginx.conf
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Инструмент расследования инцидентов: построчно показать, кто именно, когда и каким коммитом</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># изменил каждую конкретную строчку в конфигурационном файле</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>git<span class="w"> </span>blame<span class="w"> </span>nginx.conf
 </span></code></pre></div>
 <hr />
 <h2 id="3-branching-strategies">Блок 3. Стратегии ветвления (Branching Strategies)</h2>
-<p>Выбор стратегии ветвления напрямую влияет на то, как вы будете строить CI/CD пайплайны в следующих модулях.</p>
-<p>| Характеристика | GitFlow</p>
-<p>| GitHub Flow</p>
-<p>| Trunk-Based Development (TBD) |
-| --- | --- | --- | --- |
-| <strong>Основные ветки</strong> | <code>main</code>, <code>develop</code>, <code>feature/*</code>, <code>release/*</code>, <code>hotfix/*</code> | <code>main</code> + короткоживущие <code>feature/*</code> | <code>main</code> (trunk) + микро-ветки на пару часов |
-| <strong>Жизненный цикл фичи</strong> | Длинный: <code>feature</code> $\rightarrow$ <code>develop</code> $\rightarrow$ <code>release</code> $\rightarrow$ <code>main</code> | Простой: <code>feature</code> $\rightarrow$ Pull Request $\rightarrow$ <code>main</code> $\rightarrow$ Деплой | Сверхбыстрый: слияние в <code>main</code> минимум раз в день (использование Feature Flags)</p>
-<p>|
-| <strong>Плюсы</strong> | Строгий контроль версий, удобно поддерживать несколько старых релизов параллельно | Простота, прозрачность, быстрый вывод фич в прод | Нет болезненных merge-конфликтов, максимальная скорость CI/CD |
-| <strong>Минусы</strong> | Огромная бюрократия, долгоживущие ветки, тяжелые конфликты слияния | Требует надежных автотестов в CI перед слиянием в <code>main</code> | Требует высокой зрелости команды и умения работать с Feature Flags |
-| <strong>Где применяется</strong> | Коробочный софт, мобильные приложения, легаси-банкинг | 80% современных веб-сервисов и инфраструктурных репозиториев (IaC) | Зрелые продуктовые компании с непрерывным деплоем (CD) |</p>
+<p>То, как команда договаривается создавать и сливать ветки в репозитории, напрямую определяет архитектуру ваших будущих конвейеров CI/CD. В индустрии доминируют три классические модели ветвления:</p>
+<table>
+<thead>
+<tr>
+<th>Характеристика</th>
+<th>GitFlow</th>
+<th>GitHub Flow</th>
+<th>Trunk-Based Development (TBD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Архитектура веток</strong></td>
+<td>Сложная: две вечные ветки (<code>main</code> и <code>develop</code>) плюс контуры <code>feature/*</code>, <code>release/*</code>, <code>hotfix/*</code></td>
+<td>Простая: одна главная ветка <code>main</code> + короткоживущие ветки задач <code>feature/*</code></td>
+<td>Сверхкомпактная: единый ствол <code>main</code> (trunk) + микро-ветки, живущие несколько часов</td>
+</tr>
+<tr>
+<td><strong>Путь кода в продакшен</strong></td>
+<td>Длинный: <code>feature</code> → <code>develop</code> → <code>release</code> → <code>main</code></td>
+<td>Прямой: <code>feature</code> → Pull Request → <code>main</code> → Деплой</td>
+<td>Непрерывный: вливание в <code>main</code> минимум раз в день (неготовый функционал скрыт за Feature Flags)</td>
+</tr>
+<tr>
+<td><strong>Сильные стороны</strong></td>
+<td>Жесткий контроль релизных циклов; удобно, когда нужно одновременно поддерживать несколько старых версий продукта (например, <code>v1.x</code> и <code>v2.x</code>)</td>
+<td>Понятный процесс, отсутствие лишних промежуточных веток, быстрая доставка изменений</td>
+<td>Полное отсутствие тяжелых конфликтов слияния, максимальная скорость доставки (True Continuous Integration)</td>
+</tr>
+<tr>
+<td><strong>Слабые стороны</strong></td>
+<td>Огромная бюрократия слияний, ветки живут неделями и сильно расходятся друг с другом, порождая болезненные merge-конфликты</td>
+<td>Требует качественных автоматических тестов в CI, которые проверяют каждый Pull Request до его слияния в <code>main</code></td>
+<td>Требует высокой инженерной зрелости команды, идеального покрытия автотестами и культуры работы с Feature Flags</td>
+</tr>
+<tr>
+<td><strong>Основная ниша применения</strong></td>
+<td>Коробочное ПО, мобильные приложения с модерацией в сторах, консервативный энтерпрайз</td>
+<td>80% современных веб-сервисов, микросервисов и инфраструктурных репозиториев (Terraform / Ansible)</td>
+<td>Высокотехнологичные продуктовые компании с практикой непрерывного развертывания (Continuous Deployment)</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="4">Блок 4. Сравнение версий, разрешение конфликтов и чистота истории</h2>
-<h3 id="41-git-diff">4.1. Сравнение версий (<code>git diff</code>)</h3>
-<p>Перед тем как делать коммит или вливать чужую ветку, инженер всегда проверяет дельту изменений:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Что изменилось в рабочей папке, но еще НЕ добавлено в индекс (git add)</span>
+<h3 id="41-git-diff">4.1. Контроль дельты изменений (<code>git diff</code>)</h3>
+<p>Золотое правило инженера — никогда не коммитить изменения вслепую. Перед созданием коммита или слиянием веток необходимо проверить точную построчную разницу (<code>diff</code>), чтобы убедиться, что в код не попали отладочные выводы, временные костыли или случайно измененные отступы:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Показать изменения в рабочей директории, которые еще НЕ были добавлены в индекс (unstaged)</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>diff
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Что уже лежит в индексе (staged) и прямо сейчас войдет в коммит</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Показать изменения, которые уже лежат в индексе (после git add) и прямо сейчас войдут в следующий коммит</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>diff<span class="w"> </span>--staged
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Сравнить две ветки между собой (например, main и feature/nginx-tuning)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Сравнить состояние кода между двумя ветками (например, стабильной main и рабочей feature/nginx-tuning)</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>git<span class="w"> </span>diff<span class="w"> </span>main..feature/nginx-tuning
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Показать только список измененных файлов между двумя коммитами</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Вывести только компактный список измененных файлов (и тип операции: Modified, Added, Deleted) между двумя коммитами</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>git<span class="w"> </span>diff<span class="w"> </span>--name-status<span class="w"> </span>a1b2c3d<span class="w"> </span>f4e5d6c
 </span></code></pre></div>
 <hr />
-<h3 id="42-git-merge-vs-git-rebase">4.2. <code>git merge</code> vs <code>git rebase</code> и поддержание чистоты истории</h3>
-<p>Когда вы работаете в своей ветке <code>feature</code>, основная ветка <code>main</code> успевает уйти вперед. Объединить изменения можно двумя способами:</p>
-<h4 id="1-git-merge">1. <code>git merge</code> (Слияние)</h4>
+<h3 id="42-git-merge-git-rebase">4.2. <code>git merge</code> против <code>git rebase</code>: битва за чистоту истории</h3>
+<p>Представим стандартную рабочую ситуацию: в понедельник вы отпочковали свою рабочую ветку <code>feature</code> от ветки <code>main</code>. Пока вы три дня писали код, ваши коллеги уже влили в <code>main</code> несколько новых коммитов. Теперь вам нужно объединить наработки. В Git для этого существуют два принципиально разных механизма:</p>
+<h4 id="1-git-merge">1. <code>git merge</code> (Классическое слияние)</h4>
 <ul>
-<li>Создает специальный <strong>merge-коммит</strong>, имеющий сразу двух родителей.</li>
-<li><strong>Плюс:</strong> Сохраняет точную хронологическую правду.</li>
-<li><strong>Минус:</strong> Если разработчики постоянно подтягивают <code>main</code> в свои ветки через <code>merge</code>, история превращается в нечитаемую «гитару» из переплетенных линий.</li>
+<li><strong>Как работает:</strong> Git берет последний коммит вашей ветки и последний коммит ветки <code>main</code>, находит их общего предка и связывает их вместе, создавая новый специальный <strong>merge-коммит</strong> (у которого сразу два родителя).</li>
+<li><strong>Плюс:</strong> Полностью сохраняет хронологическую правду истории без перезаписи существующих коммитов.</li>
+<li><strong>Минус:</strong> Если в команде из 20 человек каждый разработчик будет ежедневно подтягивать обновления из <code>main</code> в свою рабочую ветку через <code>git merge</code>, граф истории превратится в нечитаемую «железнодорожную развязку» из десятков переплетенных линий и бессмысленных сообщений <code>Merge branch 'main' into feature...</code>.</li>
 </ul>
 <h4 id="2-git-rebase">2. <code>git rebase</code> (Перебазирование)</h4>
 <ul>
-<li>Берет ваши коммиты из ветки <code>feature</code>, временно откладывает их, перематывает ветку на самый свежий коммит <code>main</code> и по очереди применяет ваши коммиты поверх (переписывая их хэши).</li>
-<li>
-<p><strong>Плюс:</strong> Идеально прямая, линейная история коммитов без лишнего шума.</p>
-</li>
-<li>
-<p><strong>Золотое правило безопасности Rebase:</strong> <strong>Никогда не делайте <code>rebase</code> публичных общих веток (<code>main</code>, <code>develop</code>)</strong>, в которых уже работают другие люди! Делать <code>rebase</code> можно только для своей локальной фича-ветки перед отправкой в Pull Request.</p>
-</li>
+<li><strong>Как работает:</strong> Команда <code>git rebase main</code> берет все коммиты, которые вы сделали в своей ветке <code>feature</code>, временно снимает их и откладывает в сторону. Затем она перематывает вашу ветку на самый свежий коммит из <code>main</code> и по очереди накладывает ваши коммиты поверх него — так, словно вы только что отпочковались от самой актуальной версии <code>main</code> (при этом хэши ваших коммитов пересчитываются заново).</li>
+<li><strong>Плюс:</strong> Формирует идеально прямую, линейную и легко читаемую историю проекта без единого лишнего merge-коммита.</li>
 </ul>
-<h4 id="git-rebase-i-squashing">Интерактивный ребейз (<code>git rebase -i</code>) и Squashing</h4>
-<p>В процессе работы над задачей вы могли сделать 5 черновых коммитов: <code>WIP</code>, <code>fix typo</code>, <code>try again</code>, <code>almost working</code>. Вливать такой мусор в <code>main</code> — дурной тон.</p>
-<p>Перед открытием Pull Request их склеивают (<strong>squash</strong>) в один чистый коммит:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Открыть интерактивный ребейз для последних 4 коммитов</span>
+<blockquote>
+<p><strong>Золотое правило безопасности <code>rebase</code>:</strong> <strong>Никогда не делайте <code>rebase</code> публичных общих веток (<code>main</code>, <code>develop</code>)</strong>, которые уже скачали себе другие разработчики! Поскольку <code>rebase</code> переписывает историю и меняет SHA-1 хэши коммитов, у всех ваших коллег локальная история разойдется с серверной. Правильный инженерный паттерн: использовать <code>rebase</code> для наведения порядка в своей <strong>локальной фича-ветке</strong> перед тем, как влить её в общий <code>main</code>.</p>
+</blockquote>
+<h4 id="git-rebase-i-squashing">Интерактивный ребейз (<code>git rebase -i</code>) и склеивание мусорных коммитов (Squashing)</h4>
+<p>Во время отладки сложного конфигурационного файла или пайплайна инженер часто делает серию черновых коммитов с техническими названиями: <code>WIP</code>, <code>fix typo</code>, <code>try again</code>, <code>almost working</code>. Выносить эту внутреннюю кухню в основную ветку <code>main</code> считается дурным тоном — в основной истории каждый коммит должен представлять собой законченную, рабочую единицу функциональности.</p>
+<p>Перед открытием Pull Request такие черновые коммиты объединяют (<strong>squash</strong>) в один чистый атомарный коммит с помощью интерактивного ребейза:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Запустить интерактивную перезапись для последних 4 коммитов от текущего положения HEAD</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>HEAD~4
 </span></code></pre></div>
-<p>В открывшемся редакторе у первого коммита оставляем слово <code>pick</code>, а у остальных меняем <code>pick</code> на <code>squash</code> (или <code>s</code>) — они сольются в один аккуратный коммит.</p>
+<p>Откроется текстовый редактор со списком ваших последних 4 коммитов в хронологическом порядке (сверху — самый старый). Достаточно оставить у первой строчки команду <code>pick</code> (взять за основу), а у трех последующих заменить слово <code>pick</code> на <code>squash</code> (или просто букву <code>s</code> — склеить с предыдущим). После сохранения файла Git объединит все изменения четырех шагов в один аккуратный коммит и предложит дать ему красивое итоговое название.</p>
 <hr />
-<h3 id="43-merge-">4.3. Анатомия и разрешение Merge-конфликтов</h3>
-<p>Конфликт возникает, когда в двух сливаемых ветках была изменена <strong>одна и та же строка одного и того же файла</strong> (или в одной ветке файл удалили, а в другой отредактировали).</p>
-<p>При возникновении конфликта Git помечает проблемный участок специальными маркерами:</p>
+<h3 id="43-merge-">4.3. Анатомия и алгоритм разрешения Merge-конфликтов</h3>
+<p>Git умеет автоматически сливать изменения в 95% случаев — даже если два инженера одновременно правили один и тот же файл, но в разных его частях (например, на 10-й и на 200-й строках). </p>
+<p>Настоящий <strong>конфликт слияния (Merge Conflict)</strong> возникает только тогда, когда в двух сливаемых ветках была по-разному изменена <strong>одна и та же строка одного и того же файла</strong> (либо когда один человек отредактировал файл, а второй этот же файл удалил). Автоматика здесь бессильна и передает право принятия архитектурного решения человеку.</p>
+<p>Остановив процесс слияния, Git записывает прямо внутрь спорного файла специальные текстовые маркеры конфликта:</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">worker_processes 4;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">=</span><span class="s">======</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">worker_processes auto;</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/optimize-nginx</span>
 </span></code></pre></div>
-<ul>
-<li>Между <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> и <code>=======</code> — то, что находится в вашей текущей ветке.</li>
-<li>Между <code>=======</code> и <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/...</code> — то, что пришло из вливаемой ветки.</li>
-</ul>
-<p><strong>Алгоритм разрешения конфликта:</strong></p>
+<p>Читается эта конструкция следующим образом:
+* Блок между <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> и разделителем <code>=======</code> показывает версию кода, которая прямо сейчас находится в вашей текущей базовой ветке.
+* Блок между разделителем <code>=======</code> и нижней границей <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/...</code> показывает конфликтующий вариант, который пришел из вливаемой ветки.</p>
+<p><strong>Четкий четырехшаговый алгоритм разрешения любого конфликта:</strong></p>
 <ol>
-<li>Посмотреть список конфликтующих файлов: <code>git status</code>.</li>
-<li>Открыть файл в редакторе, выбрать правильный вариант кода и **полностью удалить строки с маркерами <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;**</code>.</li>
-<li>Отметить, что конфликт решен: <code>git add &lt;имя_файла&gt;</code>.</li>
-<li>Завершить слияние: <code>git commit</code> (для merge) или <code>git rebase --continue</code> (для rebase).
-<em>(Если всё пошло не так и хочется вернуть как было до начала слияния: <code>git merge --abort</code> или <code>git rebase --abort</code>)</em>.</li>
+<li>Выполните <code>git status</code> — Git явно перечислит все файлы со статусом <code>both modified</code> (конфликт в обоих источниках).</li>
+<li>Откройте проблемный файл в редакторе, примите решение, какая из версий кода должна остаться (или напишите объединенный вариант), и <strong>полностью удалите служебные строки с маркерами <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> и <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code></strong>.</li>
+<li>Сообщите Git, что конфликт в файле улажен, добавив файл в индекс: <code>git add &lt;имя_файла&gt;</code>.</li>
+<li>Завершите операцию слияния командой <code>git commit</code> (если вы делали <code>merge</code>) или командой <code>git rebase --continue</code> (если вы находились в процессе <code>rebase</code>).</li>
 </ol>
+<p><em>(Важная страховка: если в процессе разбора сложного конфликта вы запутались и хотите немедленно отменить слияние, вернув репозиторий ровно в то состояние, которое было секунду назад до ввода команды, просто выполните <code>git merge --abort</code> или <code>git rebase --abort</code>)</em>.</p>
 <hr />
 <h2 id="5-pull-merge-requests">Блок 5. Командная работа через Pull / Merge Requests и антипаттерны</h2>
 <h3 id="51-conventional-commits">5.1. Стандарты оформления коммитов (Conventional Commits)</h3>
-<p>Чтобы по истории репозитория можно было автоматически генерировать Changelog и понимать суть правок за секунду, используют стандарт <strong>Conventional Commits</strong>:</p>
+<p>Когда в репозитории тысячи коммитов, сообщения вроде <code>fix</code>, <code>update</code> или <code>правки</code> делают историю бесполезной. В профессиональной разработке принята спецификация <strong>Conventional Commits</strong>, где каждое сообщение начинается со стандартизированного префикса типа изменений. Это позволяет с первого взгляда понимать суть правки, а утилитам в CI/CD — автоматически определять следующую версию релиза и генерировать файл <code>CHANGELOG.md</code>:</p>
 <ul>
-<li><code>feat: add prometheus exporter config</code> — новая функциональность.</li>
-<li><code>fix: resolve port conflict in nginx.conf</code> — исправление ошибки.</li>
-<li><code>refactor: simplify backup bash script</code> — рефакторинг без изменения логики.</li>
-<li><code>docs: update README deployment guide</code> — обновление документации.</li>
-<li><code>ci: add linter stage to gitlab-ci</code> — правки конвейера сборки.</li>
+<li><code>feat: add prometheus exporter config</code> — добавление новой функциональности или компонента (<code>feature</code>).</li>
+<li><code>fix: resolve port conflict in nginx.conf</code> — исправление бага или сбоя.</li>
+<li><code>refactor: simplify backup bash script</code> — улучшение структуры кода без изменения его внешнего поведения.</li>
+<li><code>docs: update README deployment guide</code> — обновление документации и комментариев.</li>
+<li><code>ci: add linter stage to gitlab-ci</code> — изменение конфигураций конвейера сборки и скриптов автоматизации.</li>
+<li><code>chore: add .gitignore and untrack temp files</code> — рутинное обслуживание репозитория, обновление зависимостей.</li>
 </ul>
+<hr />
 <h3 id="52-pull-requests-github-merge-requests-gitlab">5.2. Культура Pull Requests (GitHub) / Merge Requests (GitLab)</h3>
-<p>Ветка <code>main</code> в реальных проектах всегда закрыта от прямого <code>git push</code> (<strong>Protected Branch</strong>). Любое изменение попадает туда только через PR/MR:</p>
+<p>В боевых проектах главная ветка <code>main</code> всегда технически защищена настройками сервера от прямых коммитов (<strong>Protected Branch</strong>): даже технический директор не может сделать <code>git push origin main</code> напрямую со своего ноутбука. Любая строчка кода попадает в основную ветку исключительно через процедуру <strong>Pull Request (PR)</strong> в GitHub или <strong>Merge Request (MR)</strong> в GitLab:</p>
 <ol>
-<li>Инженер пушит ветку <code>feat/add-firewall</code> на сервер и открывает PR/MR.</li>
-<li>
-<p>Автоматически запускается CI-пайплайн (линтеры, тесты, проверка безопасности).</p>
-</li>
-<li>
-<p>Коллеги проводят <strong>Code Review</strong> (оставляют комментарии к строкам кода, проверяют архитектуру).</p>
-</li>
-<li>После получения аппрувов (например, минимум 1–2 <code>Approve</code>) и зеленого статуса пайплайна ветка вливается в <code>main</code> (часто с галочкой <em>Squash commits</em> и <em>Delete source branch</em>).</li>
+<li>Инженер создает изолированную ветку под задачу (<code>feat/add-firewall</code>), пушит её на сервер и открывает в веб-интерфейсе заявку на слияние — PR/MR.</li>
+<li>Открытие PR/MR автоматически запускает проверочный конвейер <strong>CI (Continuous Integration)</strong>: роботы прогоняют синтаксические линтеры, модульные тесты и сканеры безопасности. Если проверка упала — кнопка слияния блокируется автоматически.</li>
+<li>Коллеги по команде проводят <strong>Code Review</strong>: просматривают <code>diff</code> изменений в браузере, оставляют комментарии к конкретным строкам, указывают на потенциальные узкие места и уязвимости.</li>
+<li>Только после получения необходимого числа одобрений от коллег (например, минимум 2 <code>Approve</code>) и полностью зеленого статуса всех проверок CI ветка вливается в <code>main</code> (зачастую с автоматической установкой галочек <em>Squash commits</em> и <em>Delete source branch</em>).</li>
 </ol>
 <hr />
 <h3 id="53-git">5.3. Типичные антипаттерны в работе с Git (и как их лечить)</h3>
+<p>В работе с инфраструктурными репозиториями существуют четыре классические ошибки, каждая из которых может привести к компрометации серверов или параличу разработки:</p>
 <table>
 <thead>
 <tr>
@@ -1553,43 +1593,53 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>1. Коммит секретов в Git</strong> (пароли, приватные SSH-ключи, <code>.env</code>, токены AWS/Yandex Cloud)</td>
-<td>Даже если вы удалите файл следующим коммитом, <strong>он навсегда останется в истории <code>.git</code>!</strong> Любой, у кого есть доступ на чтение репозитория, вытащит ключ за 5 секунд.</td>
-<td>1. Немедленно отозвать (перевыпустить) скомпрометированный ключ!<br></td>
+<td><strong>1. Коммит секретов в Git</strong> (пароли от БД, приватные SSH-ключи, файлы <code>.env</code>, облачные токены AWS / Yandex Cloud)</td>
+<td>Критическая уязвимость. Даже если вы спохватились и удалили файл следующим коммитом (<code>git rm</code>), <strong>пароль навсегда остался внутри базы <code>.git/objects/</code> в старом коммите!</strong> Любой человек или бот с доступом на чтение репозитория извлечет его из истории за 5 секунд.</td>
+<td>1. <strong>Немедленно отозвать и перевыпустить</strong> скомпрометированный пароль/ключ в самой системе (считать его украденным)!<br>2. Выжечь файл из всей глубины истории репозитория (<code>git filter-repo</code> или <code>filter-branch</code>).<br>3. Внести <code>*.env</code> и <code>*.key</code> в <code>.gitignore</code>.</td>
+</tr>
+<tr>
+<td><strong>2. Хранение тяжелых бинарников, архивов и логов</strong> (<code>*.tar.gz</code>, дампы баз <code>.sql</code>, папки зависимостей <code>node_modules/</code>, <code>venv/</code>, <code>.terraform/</code>)</td>
+<td>Поскольку Git хранит каждый слепок бинарного файла целиком, папка <code>.git</code> быстро раздувается до десятков гигабайт. Клонирование репозитория на раннерах CI/CD начинает занимать по 15–20 минут.</td>
+<td>С первого же дня жизни проекта настраивать строгий файл <strong><code>.gitignore</code></strong>. Зависимости скачивать при сборке, а тяжелые артефакты и бэкапы хранить в S3 или Registry.</td>
+</tr>
+<tr>
+<td><strong>3. Гигантские коммиты («Божественный коммит»)</strong></td>
+<td>В один коммит на 80 файлов свалены рефакторинг, фикс бага авторизации и правка конфига Nginx с общим описанием <code>fix</code>. Когда этот коммит положит продакшен, вы не сможете ни провести нормальное Code Review, ни аккуратно откатить (<code>git revert</code>) только проблемную часть, не задев остальной код.</td>
+<td>Соблюдать дисциплину <strong>атомарных коммитов</strong>: одно логическое изменение = один отдельный коммит.</td>
+</tr>
+<tr>
+<td><strong>4. Слепой <code>git add .</code> и принудительный <code>git push --force</code></strong></td>
+<td>Команда <code>git add .</code> без проверки затягивает в коммит временный мусор из корня папки, а <code>git push --force</code> вслепую перезаписывает историю на сервере, безвозвратно стирая коммиты, которые успел запушить ваш коллега минуту назад.</td>
+<td>Всегда проверять <code>git status</code> перед добавлением (или использовать поблочный режим <code>git add -p</code>). А при пуше после ребейза вместо <code>--force</code> всегда использовать безопасный флаг <strong><code>--force-with-lease</code></strong> (он проверит, не обновил ли кто-то ветку на сервере, и откажется затирать чужие коммиты).</td>
 </tr>
 </tbody>
 </table>
-<p><br>2. Вычистить историю утилитой <code>git-filter-repo</code>.<br></p>
-<p><br>3. Добавить <code>.env</code> и <code>*.key</code> в <code>.gitignore</code>. |
-| <strong>2. Хранение тяжелых бинарников и логов</strong> (архивы <code>.tar.gz</code>, дампы БД, <code>node_modules/</code>, <code>__pycache__/</code>, <code>.terraform/</code>) | Репозиторий раздувается до гигабайтов, <code>git clone</code> в CI/CD идет по 15 минут. | Настроить жесткий файл <strong><code>.gitignore</code></strong> в корне проекта с первого дня. Артефакты хранить в S3 / Registry.</p>
-<p>|
-| <strong>3. Гигантские коммиты («Божественный коммит»)</strong> | В одном коммите на 80 файлов смешаны рефакторинг, фикс бага и новая фича с сообщением <code>fix</code>. Если он сломает прод, вы не сможете аккуратно откатить (<code>git revert</code>) только проблемную часть. | Правило <strong>Атомарных коммитов</strong>: 1 логическое изменение = 1 коммит. |
-| <strong>4. Слепой <code>git add .</code> или <code>git push --force</code></strong> | Случайное добавление временных мусорных файлов или затирание коммитов коллег в общей ветке. | Использовать <code>git status</code> и <code>git add -p</code> (поблочное добавление). Вместо <code>--force</code> всегда использовать безопасный флаг <strong><code>--force-with-lease</code></strong> (он не перезапишет ветку, если кто-то успел запушить туда новые коммиты). |</p>
-<h4 id="git-reflog">Спасательный круг инженера: <code>git reflog</code></h4>
-<p>Если вы случайно сделали <code>git reset --hard</code>, удалили не ту ветку или неудачно сделали <code>rebase</code>, «потеряв» коммиты — не паникуйте. Git хранит локальный журнал всех перемещений указателя <code>HEAD</code> минимум 30–90 дней:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Посмотреть историю всех ваших действий в репозитории</span>
+<h4 id="git-reflog">Спасательный круг инженера: локальная машина времени <code>git reflog</code></h4>
+<p>Что делать, если вы случайно выполнили жесткий сброс <code>git reset --hard</code>, удалили ветку с неслитым кодом или неудачно провели <code>rebase</code>, и ваши коммиты исчезли из вывода <code>git log</code>? Главное — не паниковать. </p>
+<p>Пока сборщик мусора Git не очистил неиспользуемые объекты (а он хранит их минимум 30–90 дней), ни один закоммиченный байт не потерян. Утилита <strong><code>git reflog</code> (Reference Log)</strong> ведет локальный бортовой журнал абсолютно всех перемещений указателя <code>HEAD</code> в вашем репозитории (каждый коммит, переключение ветки, ребейз и сброс):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Открыть хронологический журнал всех ваших действий с указателем HEAD</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>reflog
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Восстановить состояние на момент любого шага из reflog</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Найти в списке строчку состояния ДО роковой ошибки (например, HEAD@{2}) и мгновенно вернуться в неё!</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD@<span class="o">{</span><span class="m">2</span><span class="o">}</span>
 </span></code></pre></div>
 <hr />
 <h2 id="1">🛠 Практический проект Модуля 1: Рефакторинг проблемного репозитория</h2>
-<p>Представь реальную рабочую ситуацию: тебе достался инфраструктурный репозиторий от уволившегося джуна. В нём полный хаос:</p>
+<p>Переходим к практике. Представь реальную рабочую ситуацию: ты пришел в проект на место уволившегося младшего инженера, и тебе в наследство достался инфраструктурный репозиторий настройки сервиса. При первом же аудите выясняется, что в репозитории нарушены все правила инженерной гигиены:</p>
 <ul>
-<li>В историю попал файл с паролями от базы <code>secrets.env</code> и мусорные логи <code>*.log</code>.</li>
-<li>Нет файла <code>.gitignore</code>.</li>
-<li>В рабочей ветке куча кривых мелких коммитов (<code>test</code>, <code>oops</code>, <code>fix2</code>).</li>
-<li>Между ветками висит неразрешенный конфликт в конфигурационном файле.</li>
+<li>Прямо в историю первого коммита попал файл с боевыми паролями от базы данных <code>secrets.env</code> и отладочные логи <code>debug.log</code>.</li>
+<li>В проекте полностью отсутствует защитный фильтр <code>.gitignore</code>.</li>
+<li>В рабочей ветке <code>feature/prod-tuning</code> навалена куча мелких неряшливых коммитов (<code>update workers</code>, <code>wip</code>, <code>oops forgot log level</code>) с временными заметками прямо в конфиге.</li>
+<li>Между веткой <code>main</code> и рабочей веткой назрел жесткий конфликт слияния в конфигурационном файле <code>app.conf</code>.</li>
 </ul>
-<p>Твоя задача — провести полный рефакторинг репозитория прямо в терминале.</p>
+<p>Твоя задача — шаг за шагом провести полный профессиональный рефакторинг и санацию этого репозитория в терминале.</p>
 <hr />
 <h3 id="1_1">Этап 1. Генерация «проблемного» репозитория (стенд задачи)</h3>
-<p>Скопируй и выполни этот блок команд целиком — он автоматически создаст на твоей машине учебный репозиторий <code>messy-infra-repo</code> со всеми типичными ошибками:</p>
+<p>Скопируй и выполни этот блок команд целиком. Он автоматически развернет в твоей домашней папке учебный репозиторий <code>~/messy-infra-repo</code> и воспроизведет в нем всю цепочку ошибок нашего предшественника:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/messy-infra-repo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/messy-infra-repo
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>init<span class="w"> </span>-b<span class="w"> </span>main
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 1. Первый коммит с конфигом и случайно добавленными секретами и логами</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 1. Первый коммит: вместе с конфигом случайно закоммичены секреты и лог-файл</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app.conf</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">PORT=8080</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s">WORKERS=2</span>
@@ -1602,7 +1652,7 @@
 </span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>git<span class="w"> </span>add<span class="w"> </span>.
 </span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"initial commit"</span>
 </span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># 2. Создаем ветку фичи с "грязной" историей коммитов и конфликтующим изменением</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># 2. Создаем фича-ветку с "грязной" историей из трех мелких коммитов</span>
 </span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/prod-tuning
 </span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/WORKERS=2/WORKERS=8/'</span><span class="w"> </span>app.conf
 </span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"update workers"</span>
@@ -1613,16 +1663,16 @@
 </span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/LOG_LEVEL=debug/LOG_LEVEL=warn/'</span><span class="w"> </span>app.conf
 </span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"oops forgot log level"</span>
 </span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>
-</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="c1"># 3. Возвращаемся в main и создаем встречное изменение в той же строке (провоцируем конфликт!)</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="c1"># 3. Возвращаемся в main и правим ту же самую строчку WORKERS (создаем реальный конфликт версий!)</span>
 </span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
 </span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/WORKERS=2/WORKERS=4/'</span><span class="w"> </span>app.conf
 </span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"hotfix workers count in main"</span>
 </span></code></pre></div>
-<p>Посмотри на текущее состояние с помощью <code>git log --oneline --graph --all</code>. Теперь начинаем наводить порядок по шагам!</p>
+<p>Оцени масштаб бедствия, взглянув на раздвоенное дерево истории с помощью команды <code>git log --oneline --graph --all</code>. Теперь начинаем наводить образцовый порядок.</p>
 <hr />
 <h3 id="2-gitignore">Этап 2. Удаление секретов и мусора из индекса и настройка <code>.gitignore</code></h3>
 <ol>
-<li>Создай правильный файл <code>.gitignore</code>, чтобы логи, секреты и временные файлы больше никогда не попадали в Git:</li>
+<li>Первым делом создадим в корне репозитория жесткий фильтр <code>.gitignore</code>, чтобы файлы окружения, приватные ключи и логи больше никогда не могли случайно попасть в отслеживание Git:</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; .gitignore</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s"># Secrets and environments</span>
@@ -1637,40 +1687,45 @@
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <ol>
-<li>Удали <code>secrets.env</code> и <code>debug.log</code> <strong>из отслеживания Git</strong>, но оставь сам файл <code>secrets.env</code> лежать локально на диске (флаг <code>--cached</code> удаляет файл только из индекса Git, не стирая его с диска!):</li>
+<li>Теперь нужно убрать <code>secrets.env</code> и <code>debug.log</code> из-под контроля версий. Но тут есть важный нюанс: если просто выполнить <code>git rm secrets.env</code>, Git удалит файл и из репозитория, и <strong>физически сотрет его с твоего диска</strong>, а этот файл нужен приложению для локальной работы! Поэтому для файла с секретами мы применяем флаг <strong><code>--cached</code></strong> — он удаляет файл только из индекса Git, оставляя его нетронутым в рабочей папке на диске:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>secrets.env
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>debug.log
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Перестаем отслеживать secrets.env в Git, но сохраняем сам файл локально на диске (--cached)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>secrets.env
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>git<span class="w"> </span>add<span class="w"> </span>.gitignore
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: add .gitignore and untrack sensitive files"</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># А ненужный отладочный лог удаляем полностью</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>git<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>debug.log
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Фиксируем создание .gitignore и очистку индекса по стандарту Conventional Commits</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>git<span class="w"> </span>add<span class="w"> </span>.gitignore
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: add .gitignore and untrack sensitive files"</span>
 </span></code></pre></div>
 <hr />
-<h3 id="3-interactive-rebase-squash">Этап 3. Очистка истории ветки (<code>Interactive Rebase &amp; Squash</code>)</h3>
-<p>Переключись в ветку <code>feature/prod-tuning</code> и посмотри на её неряшливую историю:</p>
+<h3 id="3-reset-soft-squash">Этап 3. Очистка истории ветки (<code>Reset Soft &amp; Squash</code>)</h3>
+<p>Переключимся в рабочую ветку <code>feature/prod-tuning</code> и посмотрим на её неряшливую историю:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>feature/prod-tuning
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span>
 </span></code></pre></div>
-<p>Мы видим три мелких коммита (<code>oops forgot log level</code>, <code>wip</code>, <code>update workers</code>). Склеим их в один атомарный коммит с правильным сообщением по стандарту Conventional Commits:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Сбрасываем мягко (soft) 3 последних коммита, оставляя все их изменения в индексе (staged)</span>
+<p>Мы видим три мелких коммита (<code>oops forgot log level</code>, <code>wip</code>, <code>update workers</code>), которые по сути решают одну задачу — подготовку конфига к продакшену. Схлопнем (squash) их в один чистый атомарный коммит. </p>
+<p>Вместо вызова текстового редактора через <code>rebase -i</code>, применим элегантный и быстрый прием профессиональных инженеров — мягкий сброс указателя ветки на 3 шага назад (<strong><code>git reset --soft HEAD~3</code></strong>). Флаг <code>--soft</code> отменяет сами 3 коммита, но бережно оставляет абсолютно все сделанные в них изменения файлов готовыми в Индексе (Staging Area), позволяя нам причесать код и закоммитить его заново одним шагом:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Мягко откатываем 3 последних черновых коммита, сохраняя все их правки в индексе</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD~3
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Убираем мусорную строчку "# temp note" из файла app.conf</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Удаляем забытую мусорную заметку "# temp note" из файла app.conf</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/# temp note/d'</span><span class="w"> </span>app.conf
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Делаем один чистый и понятный коммит</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Формируем один чистый, атомарный коммит по стандарту Conventional Commits</span>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>git<span class="w"> </span>add<span class="w"> </span>app.conf
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat(config): optimize workers count and set warn log level"</span>
 </span></code></pre></div>
-<p>Проверь <code>git log --oneline</code> — вместо трёх мусорных коммитов остался один образцовый!</p>
+<p>Проверь <code>git log --oneline</code> — вместо трех мусорных шагов в ветке остался один эталонный коммит!</p>
 <hr />
 <h3 id="4-main">Этап 4. Перебазирование на <code>main</code> и разрешение конфликта</h3>
-<p>Теперь подтянем актуальные изменения из ветки <code>main</code>, используя <code>rebase</code>, чтобы история осталась идеально линейной:</p>
+<p>Теперь нам нужно синхронизировать нашу очищенную ветку с ушедшей вперед веткой <code>main</code>. Чтобы сохранить историю проекта идеально прямой без лишних merge-узлов, запускаем перебазирование:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>rebase<span class="w"> </span>main
 </span></code></pre></div>
-<p>Git остановится и сообщит о конфликте: <code>CONFLICT (content): Merge conflict in app.conf</code>.</p>
+<p>Как мы и ожидали, Git останавливает процесс и сигнализирует о конфликте версий: <code>CONFLICT (content): Merge conflict in app.conf</code> (в <code>main</code> кто-то поменял число воркеров на <code>4</code>, а в нашей ветке мы ставим <code>8</code>).</p>
 <ol>
-<li>Посмотри на конфликт внутри файла <code>cat app.conf</code>:</li>
+<li>Посмотрим на маркеры конфликта внутри файла <code>cat app.conf</code>:</li>
 </ol>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="na">PORT</span><span class="o">=</span><span class="s">8080</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="na">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
@@ -1682,7 +1737,7 @@
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="na">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feat(config)</span><span class="o">:</span><span class="w"> </span><span class="s">optimize workers count...</span>
 </span></code></pre></div>
 <ol>
-<li>Разреши конфликт вручную (оставляем финальные продакшен-настройки <code>WORKERS=8</code> и <code>LOG_LEVEL=warn</code> без маркеров конфликта):</li>
+<li>Разрешим конфликт: мы точно знаем, что для продакшена целевыми являются наши настройки <code>WORKERS=8</code> и <code>LOG_LEVEL=warn</code>. Запишем чистую итоговую версию конфига без служебных маркеров <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>:</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app.conf</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s">PORT=8080</span>
@@ -1691,14 +1746,13 @@
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <ol>
-<li>Добавь исправленный файл в индекс и заверши ребейз:</li>
+<li>Пометим конфликт как решенный и продолжим остановленный ребейз (используем переменную <code>GIT_EDITOR=true</code>, чтобы Git не открывал интерактивное окно редактора для подтверждения старого имени коммита):</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>add<span class="w"> </span>app.conf
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nv">GIT_EDITOR</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
 </span></code></pre></div>
-<p><em>(Если откроется текстовый редактор для подтверждения сообщения коммита — в <code>nano</code> нажми <code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>, а в <code>vim</code> введи <code>:wq</code> и <code>Enter</code>)</em>.</p>
 <ol>
-<li>Влей чистую ветку в <code>main</code> и удали отработанную фича-ветку:</li>
+<li>Теперь наша фича-ветка лежит строго поверх свежего <code>main</code>. Переключаемся в <code>main</code>, выполняем быстрое слияние (Fast-Forward) и удаляем отработанную рабочую ветку:</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>git<span class="w"> </span>merge<span class="w"> </span>feature/prod-tuning
@@ -1706,31 +1760,38 @@
 </span></code></pre></div>
 <hr />
 <h3 id="5-devsecops-git">Этап 5 (Продвинутый DevSecOps). Полная зачистка пароля из глубокой истории Git</h3>
-<p>Мы удалили <code>secrets.env</code> во втором этапе, но если выполнить <code>git log -p</code>, пароль <code>SuperSecretProdPass123!</code> <strong>всё еще виден в самом первом коммите (<code>initial commit</code>)</strong>!</p>
-<p>Вычистим файл <code>secrets.env</code> из всех исторических коммитов репозитория:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--index-filter<span class="w"> </span><span class="se">\</span>
+<p>Казалось бы, всё готово: в текущей папке файла <code>secrets.env</code> в индексе нет. Но давай проверим репозиторий глазами аудитора безопасности или хакера — выполним поиск по истории патчей <code>git log -p</code>. </p>
+<p>И мы увидим критическую проблему: несмотря на то что мы удалили файл на Этапе 2, строка <code>DB_PASSWORD=SuperSecretProdPass123!</code> <strong>всё еще лежит открытым текстом внутри самого первого коммита (<code>initial commit</code>) в базе <code>.git/objects/</code></strong>!</p>
+<p>Чтобы полностью выжечь упоминание файла <code>secrets.env</code> из всех исторических коммитов от самого начала времен, перезапишем дерево истории с помощью фильтрации индекса:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">FILTER_branch_SQUELCH_WARNING</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--index-filter<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="s2">"git rm --cached --ignore-unmatch secrets.env"</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span>--prune-empty<span class="w"> </span>--tag-name-filter<span class="w"> </span>cat<span class="w"> </span>--<span class="w"> </span>--all
 </span></code></pre></div>
 <hr />
 <h3 id="-1">✅ Чек-лист самопроверки по Модулю 1</h3>
-<p>Выполни эти 3 проверочные команды в папке <code>~/messy-infra-repo</code>:</p>
+<p>Выполни три контрольные команды в директории <code>~/messy-infra-repo</code>, чтобы убедиться, что рефакторинг прошел безупречно:</p>
 <ol>
-<li><strong>Проверка линейности и чистоты истории:</strong></li>
+<li>
+<p><strong>Проверка линейности и чистоты графа истории:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--all
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em> Идеально прямая вертикальная линия из 4 осмысленных коммитов без единого ответвления и без черновых сообщений <code>wip</code>/<code>oops</code>.</p>
+</li>
+<li>
+<p><strong>Проверка работы защитного фильтра <code>.gitignore</code>:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>status
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>ls<span class="w"> </span>-la<span class="w"> </span>secrets.env
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em> <code>git status</code> сообщает <code>nothing to commit, working tree clean</code> — при том, что сам файл <code>secrets.env</code> физически лежит на диске для локальной работы, но Git его полностью игнорирует.</p>
+</li>
+<li>
+<p><strong>Аудит безопасности на отсутствие утечки пароля во всей глубине истории:</strong>
+   Используем специальный флаг <code>-S</code> (Pickaxe-поиск Git, который ищет появление или исчезновение конкретной строки текста по всем коммитам в истории репозитория):
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>log<span class="w"> </span>-S<span class="w"> </span><span class="s2">"SuperSecretProdPass123!"</span><span class="w"> </span>--oneline
+</span></code></pre></div>
+   <em>Ожидаемый результат:</em> Абсолютно пустой вывод! Компрометирующий пароль бесследно вычищен из истории проекта.</p>
+</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--all
-</span></code></pre></div>
-<p><em>Ожидаемый результат:</em> Прямая линия из 4 аккуратных коммитов без лишних веток и коммитов <code>wip</code>/<code>oops</code>.
-2. <strong>Проверка работы <code>.gitignore</code>:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>status
-</span></code></pre></div></p>
-<p><em>Ожидаемый результат:</em> <code>nothing to commit, working tree clean</code> (при том, что файл <code>secrets.env</code> продолжает лежать в папке <code>ls -la</code>, но Git его полностью игнорирует).
-3. <strong>Проверка отсутствия утечки пароля во всей истории коммитов:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>log<span class="w"> </span>-S<span class="w"> </span><span class="s2">"SuperSecretProdPass123!"</span><span class="w"> </span>--oneline
-</span></code></pre></div>
-<p><em>Ожидаемый результат:</em> Пустой вывод! Пароль бесследно стерт из истории репозитория.</p>
-<hr />
-<p>Как только прогонишь этот практикум или если появятся вопросы по командам Git — дай знать, и мы переходим к <strong>Модулю 2: Контейнеризация приложений (Docker)</strong>!</p>
 
 
 
