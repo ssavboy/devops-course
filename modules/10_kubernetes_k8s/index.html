@@ -351,7 +351,7 @@
   <span class="md-ellipsis">
     
   
-    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+    Реляционные базы данных (SQL и администрирование СУБД)
   
 
     
@@ -630,7 +630,7 @@
   <a href="#13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3. Варианты развёртывания кластера
+        1.3. Инструменты развёртывания кластера: от ноутбука до облака
       
     </span>
   </a>
@@ -655,10 +655,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-namespace-pod-replicaset-deployment" class="md-nav__link">
+  <a href="#21-namespace-deployment-replicaset-pod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Иерархия рабочих нагрузок: Namespace, Pod, ReplicaSet, Deployment
+        2.1. Иерархия рабочих нагрузок: Namespace → Deployment → ReplicaSet → Pod
       
     </span>
   </a>
@@ -669,7 +669,7 @@
   <a href="#22-kubectl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Профессиональная диагностика с помощью kubectl
+        2.2. Профессиональный алгоритм диагностики сбоев с помощью kubectl
       
     </span>
   </a>
@@ -697,7 +697,7 @@
   <a href="#31-probes-zero-downtime" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Три типа проверок здоровья (Probes) для Zero-Downtime
+        3.1. Три типа проверок здоровья (Probes) — фундамент Zero-Downtime
       
     </span>
   </a>
@@ -708,19 +708,19 @@
   <a href="#32-requests-limits-hpa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Ресурсы (requests и limits) и автоскейлинг (HPA)
+        3.2. Управление ресурсами (requests и limits) и автоскейлинг (HPA)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.2. Ресурсы (requests и limits) и автоскейлинг (HPA)">
+    <nav class="md-nav" aria-label="3.2. Управление ресурсами (requests и limits) и автоскейлинг (HPA)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#horizontal-pod-autoscaler-hpa" class="md-nav__link">
+  <a href="#horizontalpodautoscaler-hpa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Horizontal Pod Autoscaler (HPA):
+        Горизонтальное автомасштабирование (HorizontalPodAutoscaler — HPA)
       
     </span>
   </a>
@@ -733,13 +733,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-stateful-statefulset-pv-pvc-storageclass" class="md-nav__link">
+  <a href="#33-stateful-kubernetes-statefulset-pv-pvc-storageclass" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3. Stateful-сервисы: StatefulSet, PV, PVC и StorageClass
+        3.3. Stateful-приложения в Kubernetes: StatefulSet, PV, PVC и StorageClass
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3.3. Stateful-приложения в Kubernetes: StatefulSet, PV, PVC и StorageClass">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-storageclass-pvc-pv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Архитектура дисковой подсистемы Kubernetes (StorageClass → PVC → PV)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -752,19 +769,19 @@
   <a href="#4-networkpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 4. Конфигурации, Секреты, Сеть и Безопасность (NetworkPolicy)
+        Блок 4. Конфигурации, Секреты, Сетевая маршрутизация и NetworkPolicy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 4. Конфигурации, Секреты, Сеть и Безопасность (NetworkPolicy)">
+    <nav class="md-nav" aria-label="Блок 4. Конфигурации, Секреты, Сетевая маршрутизация и NetworkPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#41-configmap-secret" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Управление конфигурациями (ConfigMap) и секретами (Secret)
+        4.1. Внешняя конфигурация (ConfigMap) и управление секретами (Secret)
       
     </span>
   </a>
@@ -775,19 +792,19 @@
   <a href="#42-service-ingress-networkpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Сетевое взаимодействие: Service, Ingress и NetworkPolicy
+        4.2. Сетевая архитектура: Service, Ingress и микросегментация NetworkPolicy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2. Сетевое взаимодействие: Service, Ingress и NetworkPolicy">
+    <nav class="md-nav" aria-label="4.2. Сетевая архитектура: Service, Ingress и микросегментация NetworkPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
+  <a href="#service-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Четыре типа Service:
+        Четыре архитектурных типа Service в Kubernetes:
       
     </span>
   </a>
@@ -795,10 +812,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingress" class="md-nav__link">
+  <a href="#httphttps-ingress" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Внешний доступ через Ingress:
+        Маршрутизация внешнего HTTP/HTTPS-трафика через Ingress
       
     </span>
   </a>
@@ -806,10 +823,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#networkpolicy" class="md-nav__link">
+  <a href="#networkpolicy-zero-trust-networking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Сетевые политики безопасности (NetworkPolicy — Брандмауэр внутри кластера):
+        Сетевая безопасность внутри кластера (NetworkPolicy — Zero-Trust Networking)
       
     </span>
   </a>
@@ -827,10 +844,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-helm" class="md-nav__link">
+  <a href="#5-kubernetes-helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 5. Пакетное управление приложениями с помощью Helm
+        Блок 5. Пакетное управление и шаблонизация в Kubernetes с помощью Helm
       
     </span>
   </a>
@@ -841,19 +858,19 @@
   <a href="#10-kubernetes-helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 10: Деплой отказоустойчивого многокомпонентного приложения в Kubernetes через Helm
+        🛠 Практический проект Модуля 10: Развёртывание отказоустойчивого микросервисного стека в кластере Kubernetes через Helm
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 10: Деплой отказоустойчивого многокомпонентного приложения в Kubernetes через Helm">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 10: Развёртывание отказоустойчивого микросервисного стека в кластере Kubernetes через Helm">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-kubectl-kind-helm-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Установка kubectl, kind, helm и запуск кластера Kubernetes
+        Этап 1. Автоматическая установка kubectl, kind, helm и поднятие кластера Kubernetes
       
     </span>
   </a>
@@ -861,10 +878,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-docker-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 2. Сборка образа микросервиса и загрузка в кластер
+        Этап 2. Сборка Docker-образа микросервиса и загрузка внутрь нод кластера
       
     </span>
   </a>
@@ -884,10 +901,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-configmap-secret-statefulset-persistentvolumeclaim-stateful-templatesstateful-and-configyaml" class="md-nav__link">
+  <a href="#1-stateful-templatesstateful-and-configyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. ConfigMap, Secret и StatefulSet (с PersistentVolumeClaim) для Stateful-слоя (templates/stateful-and-config.yaml):
+        1. Шаблон конфигурации и Stateful-слоя БД (templates/stateful-and-config.yaml):
       
     </span>
   </a>
@@ -895,10 +912,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-deployment-service-hpa-ingress-networkpolicy-templatesbackend-stackyaml" class="md-nav__link">
+  <a href="#2-stateless-templatesbackend-stackyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Deployment, Service, HPA, Ingress и NetworkPolicy (templates/backend-stack.yaml):
+        2. Шаблон Stateless-бэкенда, автоскейлера и сетевой защиты (templates/backend-stack.yaml):
       
     </span>
   </a>
@@ -911,10 +928,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-helm-rollback" class="md-nav__link">
+  <a href="#4-helm-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 4. Валидация Helm-чарта, деплой в кластер, обновление и откат (Rollback)!
+        Этап 4. Валидация Helm-чарта, выкатка релиза в кластер и инспекция ресурсов
       
     </span>
   </a>
@@ -922,10 +939,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-10" class="md-nav__link">
+  <a href="#-rollingupdate-rollback-10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ Чек-лист самопроверки по Модулю 10
+        ✅ Чек-лист самопроверки и испытания RollingUpdate / Rollback по Модулю 10
       
     </span>
   </a>
@@ -1036,7 +1053,7 @@
   <a href="#13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3. Варианты развёртывания кластера
+        1.3. Инструменты развёртывания кластера: от ноутбука до облака
       
     </span>
   </a>
@@ -1061,10 +1078,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-namespace-pod-replicaset-deployment" class="md-nav__link">
+  <a href="#21-namespace-deployment-replicaset-pod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Иерархия рабочих нагрузок: Namespace, Pod, ReplicaSet, Deployment
+        2.1. Иерархия рабочих нагрузок: Namespace → Deployment → ReplicaSet → Pod
       
     </span>
   </a>
@@ -1075,7 +1092,7 @@
   <a href="#22-kubectl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Профессиональная диагностика с помощью kubectl
+        2.2. Профессиональный алгоритм диагностики сбоев с помощью kubectl
       
     </span>
   </a>
@@ -1103,7 +1120,7 @@
   <a href="#31-probes-zero-downtime" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Три типа проверок здоровья (Probes) для Zero-Downtime
+        3.1. Три типа проверок здоровья (Probes) — фундамент Zero-Downtime
       
     </span>
   </a>
@@ -1114,19 +1131,19 @@
   <a href="#32-requests-limits-hpa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Ресурсы (requests и limits) и автоскейлинг (HPA)
+        3.2. Управление ресурсами (requests и limits) и автоскейлинг (HPA)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.2. Ресурсы (requests и limits) и автоскейлинг (HPA)">
+    <nav class="md-nav" aria-label="3.2. Управление ресурсами (requests и limits) и автоскейлинг (HPA)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#horizontal-pod-autoscaler-hpa" class="md-nav__link">
+  <a href="#horizontalpodautoscaler-hpa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Horizontal Pod Autoscaler (HPA):
+        Горизонтальное автомасштабирование (HorizontalPodAutoscaler — HPA)
       
     </span>
   </a>
@@ -1139,13 +1156,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-stateful-statefulset-pv-pvc-storageclass" class="md-nav__link">
+  <a href="#33-stateful-kubernetes-statefulset-pv-pvc-storageclass" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3. Stateful-сервисы: StatefulSet, PV, PVC и StorageClass
+        3.3. Stateful-приложения в Kubernetes: StatefulSet, PV, PVC и StorageClass
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3.3. Stateful-приложения в Kubernetes: StatefulSet, PV, PVC и StorageClass">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-storageclass-pvc-pv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Архитектура дисковой подсистемы Kubernetes (StorageClass → PVC → PV)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1158,19 +1192,19 @@
   <a href="#4-networkpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 4. Конфигурации, Секреты, Сеть и Безопасность (NetworkPolicy)
+        Блок 4. Конфигурации, Секреты, Сетевая маршрутизация и NetworkPolicy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Блок 4. Конфигурации, Секреты, Сеть и Безопасность (NetworkPolicy)">
+    <nav class="md-nav" aria-label="Блок 4. Конфигурации, Секреты, Сетевая маршрутизация и NetworkPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#41-configmap-secret" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Управление конфигурациями (ConfigMap) и секретами (Secret)
+        4.1. Внешняя конфигурация (ConfigMap) и управление секретами (Secret)
       
     </span>
   </a>
@@ -1181,19 +1215,19 @@
   <a href="#42-service-ingress-networkpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Сетевое взаимодействие: Service, Ingress и NetworkPolicy
+        4.2. Сетевая архитектура: Service, Ingress и микросегментация NetworkPolicy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2. Сетевое взаимодействие: Service, Ingress и NetworkPolicy">
+    <nav class="md-nav" aria-label="4.2. Сетевая архитектура: Service, Ingress и микросегментация NetworkPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
+  <a href="#service-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Четыре типа Service:
+        Четыре архитектурных типа Service в Kubernetes:
       
     </span>
   </a>
@@ -1201,10 +1235,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingress" class="md-nav__link">
+  <a href="#httphttps-ingress" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Внешний доступ через Ingress:
+        Маршрутизация внешнего HTTP/HTTPS-трафика через Ingress
       
     </span>
   </a>
@@ -1212,10 +1246,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#networkpolicy" class="md-nav__link">
+  <a href="#networkpolicy-zero-trust-networking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Сетевые политики безопасности (NetworkPolicy — Брандмауэр внутри кластера):
+        Сетевая безопасность внутри кластера (NetworkPolicy — Zero-Trust Networking)
       
     </span>
   </a>
@@ -1233,10 +1267,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-helm" class="md-nav__link">
+  <a href="#5-kubernetes-helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Блок 5. Пакетное управление приложениями с помощью Helm
+        Блок 5. Пакетное управление и шаблонизация в Kubernetes с помощью Helm
       
     </span>
   </a>
@@ -1247,19 +1281,19 @@
   <a href="#10-kubernetes-helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Практический проект Модуля 10: Деплой отказоустойчивого многокомпонентного приложения в Kubernetes через Helm
+        🛠 Практический проект Модуля 10: Развёртывание отказоустойчивого микросервисного стека в кластере Kubernetes через Helm
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 10: Деплой отказоустойчивого многокомпонентного приложения в Kubernetes через Helm">
+    <nav class="md-nav" aria-label="🛠 Практический проект Модуля 10: Развёртывание отказоустойчивого микросервисного стека в кластере Kubernetes через Helm">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-kubectl-kind-helm-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 1. Установка kubectl, kind, helm и запуск кластера Kubernetes
+        Этап 1. Автоматическая установка kubectl, kind, helm и поднятие кластера Kubernetes
       
     </span>
   </a>
@@ -1267,10 +1301,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-docker-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 2. Сборка образа микросервиса и загрузка в кластер
+        Этап 2. Сборка Docker-образа микросервиса и загрузка внутрь нод кластера
       
     </span>
   </a>
@@ -1290,10 +1324,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-configmap-secret-statefulset-persistentvolumeclaim-stateful-templatesstateful-and-configyaml" class="md-nav__link">
+  <a href="#1-stateful-templatesstateful-and-configyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. ConfigMap, Secret и StatefulSet (с PersistentVolumeClaim) для Stateful-слоя (templates/stateful-and-config.yaml):
+        1. Шаблон конфигурации и Stateful-слоя БД (templates/stateful-and-config.yaml):
       
     </span>
   </a>
@@ -1301,10 +1335,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-deployment-service-hpa-ingress-networkpolicy-templatesbackend-stackyaml" class="md-nav__link">
+  <a href="#2-stateless-templatesbackend-stackyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Deployment, Service, HPA, Ingress и NetworkPolicy (templates/backend-stack.yaml):
+        2. Шаблон Stateless-бэкенда, автоскейлера и сетевой защиты (templates/backend-stack.yaml):
       
     </span>
   </a>
@@ -1317,10 +1351,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-helm-rollback" class="md-nav__link">
+  <a href="#4-helm-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Этап 4. Валидация Helm-чарта, деплой в кластер, обновление и откат (Rollback)!
+        Этап 4. Валидация Helm-чарта, выкатка релиза в кластер и инспекция ресурсов
       
     </span>
   </a>
@@ -1328,10 +1362,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-10" class="md-nav__link">
+  <a href="#-rollingupdate-rollback-10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ Чек-лист самопроверки по Модулю 10
+        ✅ Чек-лист самопроверки и испытания RollingUpdate / Rollback по Модулю 10
       
     </span>
   </a>
@@ -1361,11 +1395,11 @@
 
 
 <h1 id="kubernetes">Kubernetes и оркестрация контейнеров в продакшене</h1>
-<p>В Модуле 4 мы научились запускать несколько контейнеров через <strong>Docker Compose</strong>. Но у Docker Compose есть фундаментальное ограничение: он работает <strong>только в пределах одного физического или виртуального сервера</strong>. Что произойдет, если этот единственный сервер выйдет из строя, у него сгорит диск или закончится оперативная память? Весь ваш проект мгновенно упадет.</p>
-<p><strong>Kubernetes (K8s)</strong> решает задачу управления контейнерами в масштабе <strong>кластера из десятков и сотен серверов</strong>. Вы больше не думаете о том, на каком конкретно сервере запустить контейнер — вы просто передаете кластеру YAML-манифест: <em>«Мне нужно 5 копий бэкенда, по 512 МБ RAM на каждую, и база данных с диском на 20 ГБ»</em>. Kubernetes сам найдет свободные серверы, запустит контейнеры, свяжет их единой сетью, а если один из серверов ночью физически отключится — автоматически за секунды переселит упавшие контейнеры на живые узлы!</p>
+<p>В четвертом модуле мы научились объединять несколько контейнеров в единую систему с помощью <strong>Docker Compose</strong>. Однако у Docker Compose есть фундаментальный архитектурный предел: он управляет контейнерами <strong>строго в рамках одной физической или виртуальной машины</strong>. Что произойдет с вашим бизнесом, если на этом единственном сервере выйдет из строя блок питания, деградирует SSD-диск или закончится оперативная память? Весь проект мгновенно остановится.</p>
+<p><strong>Kubernetes (K8s)</strong> выводит оркестрацию на уровень <strong>распределенного кластера из десятков и сотен серверов</strong>. С переходом на Kubernetes инженер перестает мыслить отдельными виртуальными машинами и вручную распределять контейнеры по хостам. Вместо этого вы передаете в API кластера декларативный YAML-манифест: <em>«Мне нужно 5 копий бэкенда с гарантией по 512 МБ RAM на каждую и реляционная база данных с постоянным диском на 20 ГБ»</em>. Kubernetes самостоятельно анализирует загруженность серверов, размещает контейнеры, связывает их виртуальной сетью, а если один из физических серверов в три часа ночи внезапно отключится — автоматически за считанные секунды перезапустит упавшие контейнеры на оставшихся в живых узлах кластера!</p>
 <hr />
 <h2 id="1-kubernetes">Блок 1. Архитектура Kubernetes и развёртывание кластера</h2>
-<p>Кластер Kubernetes состоит из двух типов узлов (серверов): управляющего слоя (<strong>Control Plane</strong>) и рабочих лошадок (<strong>Worker Nodes</strong>).</p>
+<p>Любой промышленный кластер Kubernetes разделен на два функциональных эшелона серверов: управляющий контур (<strong>Control Plane</strong> — «мозг» кластера, принимающий решения) и рабочие узлы (<strong>Worker Nodes</strong> — «мышцы» кластера, на которых непосредственно крутятся пользовательские приложения).</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>+-----------------------------------------------------------------------+
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|                        CONTROL PLANE (Мозг кластера)                  |
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>|                                                                       |
@@ -1389,209 +1423,238 @@
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>+-----------------------------------------------------------------------+
 </span></code></pre></div>
 <h3 id="11-control-plane">1.1. Компоненты Control Plane (Управляющий контур)</h3>
+<p>На мастер-узлах управления работают четыре ключевые системные службы:</p>
 <ol>
-<li><strong><code>kube-apiserver</code> (API-сервер):</strong> Главные и единственные входные ворота кластера. Все компоненты внутри кластера и администраторы (через утилиту <code>kubectl</code>) общаются <strong>только</strong> с API-сервером по HTTPS (REST API). Он отвечает за аутентификацию, авторизацию (RBAC) и валидацию манифестов.</li>
-<li><strong><code>etcd</code>:</strong> Распределенное, строго согласованное (алгоритм Raft) хранилище типа «ключ-значение». Здесь хранится <strong>всё состояние кластера</strong> (какие поды созданы, какие секреты загружены). <em>Потеря <code>etcd</code> = потеря всего кластера, поэтому его регулярно бэкапят.</em></li>
-<li><strong><code>kube-scheduler</code> (Планировщик):</strong> Следит за появлением новых подов, которым еще не назначен сервер, оценивает свободные ресурсы (CPU/RAM), правила привязки (Affinity/Taints) и решает: <em>«Этот Pod поедет на Worker Node №2»</em>.</li>
-<li><strong><code>kube-controller-manager</code>:</strong> Набор бесконечных циклов контроля (<strong>Reconciliation Loops</strong>). Он непрерывно сравнивает <em>желаемое состояние</em> (в <code>etcd</code> написано <code>replicas: 3</code>) с <em>фактическим</em> (живы только <code>2</code> пода) и дает команду создать недостающий под.</li>
+<li><strong><code>kube-apiserver</code> (API-сервер):</strong> Центральный шлюз и единственная точка входа в кластер. Ни один внутренний компонент и ни один инженер (работающий через консольную утилиту <code>kubectl</code>) никогда не обращаются к базе данных или узлам напрямую — абсолютно все взаимодействия идут исключительно через <code>kube-apiserver</code> по защищенному протоколу HTTPS (REST API). Именно этот сервис проверяет права доступа (аутентификацию и ролевую модель RBAC) и валидирует синтаксис ваших YAML-манифестов перед сохранением.</li>
+<li><strong><code>etcd</code>:</strong> Распределенное, строго согласованное (работающее на базе алгоритма консенсуса Raft) хранилище типа «ключ-значение». Внутри <code>etcd</code> записана <strong>вся правда о текущем и желаемом состоянии кластера</strong>: какие сервисы развернуты, какие конфигурации и секреты загружены, на каких узлах запущены поды. <em>Именно поэтому в продакшене потеря базы <code>etcd</code> без регулярного бэкапа равносильна полной потере всего кластера Kubernetes.</em></li>
+<li><strong><code>kube-scheduler</code> (Планировщик):</strong> Отвечает за расселение контейнеров по серверам. Как только в базе появляется запись о новом Поде, которому еще не назначен конкретный узел (<code>nodeName</code> пуст), планировщик за миллисекунды оценивает остатки свободных ресурсов CPU и RAM на всех рабочих нодах, проверяет правила притяжения и отталкивания (<code>Affinity</code> / <code>Taints</code>) и выносит вердикт: <em>«Этот Pod отправится работать на сервер Worker Node №2»</em>.</li>
+<li><strong><code>kube-controller-manager</code> (Менеджер контроллеров):</strong> Служба, внутри которой в бесконечном цикле крутятся десятки контроллеров согласования состояния (<strong>Reconciliation Loops</strong>). Их задача — непрерывно сверять <em>желаемое состояние</em> (например, в <code>etcd</code> записано <code>replicas: 3</code>) с <em>фактическим состоянием</em> в кластере (в живых осталось только <code>2</code> пода) и немедленно отдавать команду API-серверу на создание недостающего экземпляра.</li>
 </ol>
+<hr />
 <h3 id="12-worker-node">1.2. Компоненты Worker Node (Рабочий узел)</h3>
+<p>На каждом линейном сервере кластера, где запускаются ваши контейнеры, обязательно работают три инфраструктурных агента:</p>
 <ol>
-<li><strong><code>kubelet</code>:</strong> Главный агент на каждом рабочем сервере. Он получает команды от <code>kube-apiserver</code>, дает поручение контейнерному рантайму запустить контейнеры, проверяет их здоровье (Probes) и отчитывается обратно.</li>
-<li><strong>Container Runtime (<code>containerd</code> / <code>CRI-O</code>):</strong> Низкоуровневый движок, который непосредственно скачивает образы и запускает контейнеры в ядре Linux. <em>(Сам монолитный Docker в качестве рантайма K8s больше не используется — используется его быстрая сердцевина <code>containerd</code>)</em>.</li>
-<li><strong><code>kube-proxy</code>:</strong> Сетевой агент на каждом узле. Управляет правилами <code>iptables</code> или <code>IPVS</code>, обеспечивая маршрутизацию виртуальных IP-адресов сервисов (<code>Service</code>) до конкретных подов.</li>
+<li><strong><code>kubelet</code>:</strong> Главный представитель Kubernetes на рабочем сервере (обычный системный демон <code>systemd</code>). Он поддерживает постоянную связь с <code>kube-apiserver</code>, получает от него список Подов, назначенных на данную ноду, приказывает контейнерному движку скачать образы и запустить их, регулярно опрашивает контейнеры проверками здоровья (Probes) и отправляет отчеты о состоянии узла обратно в центр.</li>
+<li><strong>Container Runtime (<code>containerd</code> или <code>CRI-O</code>):</strong> Низкоуровневый движок, совместимый со стандартом CRI (Container Runtime Interface), который по команде от <code>kubelet</code> непосредственно настраивает <code>namespaces</code> и <code>cgroups</code> в ядре Linux и запускает процессы контейнеров. <em>(Важная деталь: сам тяжеловесный демон Docker в качестве рантайма внутри Kubernetes давно не используется — вместо него работает его быстрая и легкая сердцевина <code>containerd</code>)</em>.</li>
+<li><strong><code>kube-proxy</code>:</strong> Сетевой демон, живущий на каждом узле кластера. Он непрерывно синхронизирует правила сетевой фильтрации в ядре Linux (<code>iptables</code> или высокопроизводительные таблицы балансировки <code>IPVS</code>), обеспечивая прозрачную пересылку трафика от виртуальных IP-адресов сервисов (<code>Service</code>) к реальным IP-адресам живых подов на любых серверах кластера.</li>
 </ol>
-<h3 id="13">1.3. Варианты развёртывания кластера</h3>
+<hr />
+<h3 id="13">1.3. Инструменты развёртывания кластера: от ноутбука до облака</h3>
+<p>В зависимости от стоящей перед инженером задачи, Kubernetes разворачивается разными инструментами:</p>
 <ul>
-<li><strong>Для локальной разработки и тестирования (на ноутбуке или в CI):</strong></li>
-<li><strong><code>kind</code> (Kubernetes IN Docker):</strong> Запускает полноценный многоузловой кластер K8s, где роль серверов (нод) выполняют обычные Docker-контейнеры. Стартует за 20 секунд, идеален для практики!</li>
-<li><strong><code>minikube</code>:</strong> Классический локальный кластер в ВМ или контейнере.</li>
-<li><strong><code>k3s</code> (от Rancher):</strong> Облегченный сертифицированный дистрибутив K8s в одном бинарнике (потребляет всего 512 МБ RAM, идеален для Edge, IoT, Raspberry Pi / Argon и небольших продакшен-серверов).</li>
-<li><strong>Для боевого продакшена:</strong></li>
-<li><strong>Managed Kubernetes (Yandex Managed Service for Kubernetes, AWS EKS, Google GKE):</strong> Облачный провайдер сам держит и обновляет <code>Control Plane</code>, а вы управляете только <code>Worker Nodes</code>.</li>
-<li><strong>Self-Hosted (на своих серверах):</strong> Развертывание с помощью <strong><code>kubeadm</code></strong> или готового набора Ansible-ролей <strong><code>Kubespray</code></strong>.</li>
+<li><strong>Для локальной разработки, обучения и прогона автотестов в CI/CD:</strong></li>
+<li><strong><code>kind</code> (Kubernetes IN Docker):</strong> Элегантный инструмент от самих разработчиков Kubernetes, который поднимает полноценный кластер за 20 секунд, используя в качестве «серверов» (нод) обычные локальные Docker-контейнеры. Не требует тяжелых виртуальных машин и идеально подходит для отработки боевых сценариев.</li>
+<li><strong><code>minikube</code>:</strong> Классический инструмент запуска одноузлового локального кластера внутри виртуальной машины или контейнера.</li>
+<li><strong><code>k3s</code> (от компании Rancher / CNCF):</strong> Облегченный, полностью сертифицированный дистрибутив Kubernetes, упакованный в один бинарный файл весом менее 100 МБ. Потребляет всего около 512 МБ оперативной памяти, благодаря чему стал стандартом для Edge-вычислений, IoT, домашних лабораторий (Raspberry Pi) и небольших продакшен-проектов.</li>
+<li><strong>Для промышленного продакшена (Production):</strong></li>
+<li><strong>Managed Kubernetes (Yandex Managed Service for Kubernetes, AWS EKS, Google GKE):</strong> Самый популярный подход в бизнесе — облачный провайдер берет на себя всю головную боль по поддержке, резервному копированию и обновлению управляющего слоя <code>Control Plane</code>, а инженеры компании управляют только пулами рабочих узлов (<code>Worker Nodes</code>).</li>
+<li><strong>Self-Hosted (На собственном «железе» / Bare-Metal):</strong> Когда компания строит кластер в собственном дата-центре, его разворачивают с помощью штатного бутстраппера <strong><code>kubeadm</code></strong> или промышленного набора готовых Ansible-ролей <strong><code>Kubespray</code></strong>.</li>
 </ul>
 <hr />
 <h2 id="2-yaml-kubectl">Блок 2. Базовые ресурсы, YAML-манифесты и диагностика с <code>kubectl</code></h2>
-<p>Любой манифест в Kubernetes обязательно содержит <strong>4 корневых поля</strong>:
-* <code>apiVersion:</code> — версия API группы ресурса (<code>v1</code>, <code>apps/v1</code>, <code>networking.k8s.io/v1</code>).
-* <code>kind:</code> — тип объекта (<code>Pod</code>, <code>Deployment</code>, <code>Service</code>, <code>Ingress</code>).
-* <code>metadata:</code> — имя (<code>name</code>), пространство имен (<code>namespace</code>) и метки (<code>labels</code>).
-* <code>spec:</code> — желаемая спецификация (характеристики) объекта.</p>
-<h3 id="21-namespace-pod-replicaset-deployment">2.1. Иерархия рабочих нагрузок: <code>Namespace</code>, <code>Pod</code>, <code>ReplicaSet</code>, <code>Deployment</code></h3>
+<p>Вся работа с Kubernetes строится на отправке декларативных YAML-манифестов в API-сервер. Абсолютно любой манифест в мире K8s обязан содержать <strong>четыре корневых поля</strong> верхнего уровня:
+* <code>apiVersion:</code> — версия схемы API, к которой принадлежит данный объект (например, <code>v1</code> для базовых сущностей, <code>apps/v1</code> для контроллеров приложений или <code>networking.k8s.io/v1</code> для сетевых правил).
+* <code>kind:</code> — тип создаваемого ресурса (<code>Pod</code>, <code>Deployment</code>, <code>Service</code>, <code>StatefulSet</code>, <code>Ingress</code>).
+* <code>metadata:</code> — паспорт объекта: его уникальное имя (<code>name</code>), принадлежность к пространству имен (<code>namespace</code>) и произвольные текстовые метки (<code>labels</code>), по которым объекты находят друг друга.
+* <code>spec:</code> — желаемая техническая спецификация объекта (какой образ запустить, сколько реплик поддерживать, какие порты открыть).</p>
+<hr />
+<h3 id="21-namespace-deployment-replicaset-pod">2.1. Иерархия рабочих нагрузок: <code>Namespace</code> → <code>Deployment</code> → <code>ReplicaSet</code> → <code>Pod</code></h3>
+<p>Новички часто удивляются, почему в Kubernetes нельзя просто сказать «запусти контейнер». Вместо этого выстроена гибкая матрешка абстракций:</p>
 <ol>
-<li><strong><code>Namespace</code> (Пространство имен):</strong> Виртуальный «отдел» внутри кластера для логической изоляции сред или команд (<code>kube-system</code> — системные поды K8s, <code>monitoring</code>, <code>staging</code>, <code>production</code>).</li>
-<li><strong><code>Pod</code> (Под):</strong> Минимальная неделимая единица в Kubernetes. K8s управляет не отдельными контейнерами, а <strong>Подами</strong>!</li>
-<li>Внутри одного Пода находится один (в 95% случаев) или несколько тесно связанных контейнеров (например, основной контейнер приложения + вспомогательный <strong>Sidecar</strong>-контейнер сборщика логов или прокси).</li>
-<li>Все контейнеры внутри одного Пода делят <strong>один общий IP-адрес (<code>localhost</code>)</strong> и общие тома (<code>Volumes</code>).</li>
-<li><strong>Важно:</strong> Поды смертны (эфемерны). При перезапуске или переезде на другую ноду Под <strong>всегда получает новый IP-адрес</strong>. Поэтому в продакшене никто не создает голые Поды напрямую — ими управляют через <strong><code>Deployment</code></strong>!</li>
-<li><strong><code>Deployment</code> (Развертывание):</strong> Управляет <code>ReplicaSet</code>, который поддерживает нужное число копий Подов (<code>replicas: 3</code>) и отвечает за их плавное обновление (<code>RollingUpdate</code>) и откат (<code>kubectl rollout undo</code>).</li>
+<li><strong><code>Namespace</code> (Пространство имен):</strong> Виртуальный изолированный сегмент внутри единого физического кластера. Позволяет разделить на одном оборудовании системные службы самого кластера (<code>kube-system</code>), стек мониторинга (<code>monitoring</code>), тестовый стенд (<code>staging</code>) и боевой контур (<code>production</code>), выставив на каждый неймспейс свои квоты ресурсов и права доступа.</li>
+<li><strong><code>Pod</code> (Под — «капсула»):</strong> Минимальная неделимая единица развертывания в Kubernetes. Важно запомнить: Kubernetes оперирует не отдельными контейнерами, а Подами!</li>
+<li>В 95% случаев внутри одного Пода живет ровно один контейнер вашего приложения. Однако при необходимости в ту же капсулу Пода можно подселить вспомогательный контейнер (<strong>Sidecar</strong> — например, агент чтения логов, сетевой прокси Envoy или экспортер метрик).</li>
+<li>Все контейнеры внутри одного Пода разделяют одно сетевое пространство имен: у них <strong>один общий IP-адрес</strong>, они общаются друг с другом через <code>localhost</code> и могут монтировать общие дисковые папки (<code>Volumes</code>).</li>
+<li><strong>Эфемерность Подов:</strong> Поды в Kubernetes считаются «смертными» расходными единицами. Если Под упал или переехал на другой сервер, старый Под уничтожается и создается совершенно новый — <strong>с новым случайным IP-адресом</strong>! Именно поэтому в продакшене никто никогда не создает одиночные «голые» Поды напрямую — их жизнью всегда управляет контроллер верхнего уровня <strong><code>Deployment</code></strong>.</li>
+<li><strong><code>Deployment</code> (Развертывание) и <code>ReplicaSet</code>:</strong> Вы создаете объект <code>Deployment</code>, указывая в нем шаблон Пода и желаемое число копий (<code>replicas: 3</code>). Под капотом <code>Deployment</code> автоматически порождает контроллер <code>ReplicaSet</code> (который следит, чтобы в любую секунду в кластере было ровно 3 живых Пода), а сам <code>Deployment</code> управляет бесшовной сменой версий (<code>RollingUpdate</code>), хранит историю ревизий и позволяет откатить релиз одной командой (<code>kubectl rollout undo</code>).</li>
 </ol>
-<h3 id="22-kubectl">2.2. Профессиональная диагностика с помощью <code>kubectl</code></h3>
-<p>Когда приложение в Kubernetes не работает, инженер идет по четкому алгоритму диагностики из 5 команд:</p>
+<hr />
+<h3 id="22-kubectl">2.2. Профессиональный алгоритм диагностики сбоев с помощью <code>kubectl</code></h3>
+<p>Когда вы выкатили манифест, но приложение не отвечает, опытный DevOps-инженер никогда не гадает на кофейной гуще. Любая неисправность в Kubernetes локализуется за 30 секунд по статусу Пода в выводе <code>kubectl get pods</code> и пяти диагностическим командам:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Ситуация / Статус Пода</th>
-<th style="text-align: left;">Что означает ошибка</th>
-<th style="text-align: left;">Команда диагностики</th>
+<th style="text-align: left;">Статус Пода / Симптом</th>
+<th style="text-align: left;">Что реально происходит под капотом кластера</th>
+<th style="text-align: left;">Точная команда диагностики для инженера</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong><code>Pending</code></strong></td>
-<td style="text-align: left;">Под застрял в очереди планировщика: в кластере не хватает свободных CPU/RAM или не может примонтироваться диск (<code>PVC</code>).</td>
-<td style="text-align: left;"><code>kubectl describe pod &lt;имя_пода&gt;</code> (смотреть в самый низ в секцию <strong><code>Events</code></strong>!)</td>
+<td style="text-align: left;">Под создан в базе <code>etcd</code>, но застрял в очереди планировщика <code>kube-scheduler</code>: ни на одном сервере кластера не хватает свободной памяти/CPU под запрошенные <code>requests</code>, либо не может примонтироваться сетевой диск (<code>PVC</code>).</td>
+<td style="text-align: left;"><code>kubectl describe pod &lt;имя_пода&gt;</code> — прокрутить вывод в самый низ до таблицы <strong><code>Events</code></strong> (там открытым текстом написана причина, например <code>0/3 nodes are available: Insufficient memory</code>)!</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong><code>ImagePullBackOff</code> / <code>ErrImagePull</code></strong></td>
-<td style="text-align: left;">K8s не может скачать Docker-образ: опечатка в имени/теге образа или нет секрета авторизации (<code>imagePullSecrets</code>) к приватному реестру.</td>
-<td style="text-align: left;"><code>kubectl describe pod &lt;имя_пода&gt;</code></td>
+<td style="text-align: left;">Агент <code>kubelet</code> на ноде пытается скачать Docker-образ, но получает отказ от Registry: вы допустили опечатку в имени/теге образа, такого тега не существует, либо для приватного реестра не подключен секрет авторизации (<code>imagePullSecrets</code>).</td>
+<td style="text-align: left;"><code>kubectl describe pod &lt;имя_пода&gt;</code> — в секции <code>Events</code> будет точный ответ реестра (<code>manifest unknown</code> или <code>401 Unauthorized</code>).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong><code>CrashLoopBackOff</code></strong></td>
-<td style="text-align: left;">Контейнер скачался, запустился, но приложение внутри тут же упало с ненулевым кодом ошибки (например, нет связи с БД или синтаксическая ошибка).</td>
-<td style="text-align: left;"><code>kubectl logs &lt;имя_пода&gt;</code> и посмотреть логи <strong>предыдущего упавшего</strong> экземпляра: <code>kubectl logs &lt;имя_пода&gt; --previous</code></td>
+<td style="text-align: left;">Образ успешно скачался и контейнер стартовал, но главный процесс (<code>PID 1</code>) внутри него тут же завершился с ошибкой (например, синтаксическая ошибка в Python или нет связи с БД), после чего K8s в цикле пытается перезапустить его с растущей паузой.</td>
+<td style="text-align: left;">Читаем логи приложения: <code>kubectl logs &lt;имя_пода&gt;</code>, а если контейнер уже успел перезапуститься — смотрим предсмертный лог <strong>предыдущего упавшего экземпляра</strong>: <code>kubectl logs &lt;имя_пода&gt; --previous</code>!</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong><code>OOMKilled</code> (Exit Code 137)</strong></td>
-<td style="text-align: left;">Процесс внутри контейнера превысил жесткий лимит памяти (<code>limits.memory</code>), и ядро Linux убило его через <code>SIGKILL</code>.</td>
-<td style="text-align: left;">Увеличить <code>resources.limits.memory</code> в манифесте или искать утечку памяти в коде.</td>
+<td style="text-align: left;"><strong><code>OOMKilled</code> (Exit Code <code>137</code>)</strong></td>
+<td style="text-align: left;">Процесс внутри контейнера попытался потребить больше оперативной памяти, чем разрешено в его жестком потолке <code>resources.limits.memory</code>, и OOM Killer ядра Linux мгновенно уничтожил его сигналом <code>SIGKILL</code> ($128 + 9 = 137$).</td>
+<td style="text-align: left;">Проверить секцию <code>Last State</code> в <code>kubectl describe pod &lt;имя_пода&gt;</code>; увеличить лимит <code>memory</code> в манифесте или профилировать утечку памяти в коде.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Завис внутри, но не падает</strong></td>
-<td style="text-align: left;">Нужно зайти внутрь контейнера или проверить сеть.</td>
-<td style="text-align: left;"><code>kubectl exec -it &lt;имя_пода&gt; -- /bin/sh</code></td>
+<td style="text-align: left;"><strong>Статус <code>Running</code>, но сервис завис</strong></td>
+<td style="text-align: left;">Контейнер жив, но нужно проверить сетевую связность или файлы изнутри самой капсулы Пода.</td>
+<td style="text-align: left;">Открыть интерактивный терминал внутри работающего контейнера: <code>kubectl exec -it &lt;имя_пода&gt; -- /bin/sh</code>.</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="3-probes-stateful-">Блок 3. Бесперебойные обновления, Probes и Stateful-сервисы</h2>
-<h3 id="31-probes-zero-downtime">3.1. Три типа проверок здоровья (Probes) для Zero-Downtime</h3>
-<p>Чтобы при выкатке новой версии (<code>RollingUpdate</code>) пользователи не получали ошибок <code>502 Bad Gateway</code>, Kubernetes должен точно знать состояние каждого контейнера с помощью трех проб:</p>
+<h3 id="31-probes-zero-downtime">3.1. Три типа проверок здоровья (Probes) — фундамент Zero-Downtime</h3>
+<p>По умолчанию Kubernetes считает контейнер «готовым» в ту же миллисекунду, как только в ядре Linux стартовал процесс контейнера. Но, как мы помним, веб-приложению на Python, Go или Java требуется еще несколько секунд на загрузку библиотек и подключение к базе данных. Если пустить пользовательский трафик на такой контейнер мгновенно — клиенты получат каскад ошибок <code>502 Bad Gateway</code>!</p>
+<p>Чтобы сделать обновление абсолютно незаметным для пользователей, в манифест контейнера встраиваются три независимых сенсора здоровья (<strong>Probes</strong>), которые регулярно выполняет агент <code>kubelet</code>:</p>
 <ol>
-<li><strong><code>startupProbe</code> (Проба запуска):</strong> Проверяет, закончилась ли долгая первичная инициализация тяжелого приложения. Пока она не пройдет, остальные пробы не начинают работу.</li>
-<li><strong><code>readinessProbe</code> (Проба готовности принимать трафик) — ГЛАВНАЯ ДЛЯ ZERO-DOWNTIME:</strong></li>
-<li>Если <code>readinessProbe</code> возвращает ошибку, Kubernetes <strong>НЕ убивает под</strong>, но <strong>временно убирает его IP-адрес из балансировщика (<code>Service</code>)</strong>!</li>
-<li>При обновлении новый под сначала обязан пройти <code>readinessProbe</code>, только после этого на него пойдет трафик и только тогда старый под начнет гаситься.</li>
-<li><strong><code>livenessProbe</code> (Проба живучести):</strong> Проверяет, не зависло ли приложение в мертвом цикле (Deadlock). Если проба падает — <code>kubelet</code> <strong>убивает и перезапускает контейнер</strong>.</li>
+<li><strong><code>startupProbe</code> (Проба первичного запуска):</strong> Предназначена для тяжелых или легаси-приложений, которые могут долго прогревать кэши при старте. Пока <code>startupProbe</code> не вернет успех один раз, две остальные пробы поставлены на паузу и не мешают приложению загружаться.</li>
+<li><strong><code>readinessProbe</code> (Проба готовности принимать трафик) — ГЛАВНЫЙ МЕХАНИЗМ ZERO-DOWNTIME:</strong>
+   Проверяет, готов ли контейнер прямо сейчас обслуживать реальные запросы (например, стучится по HTTP на <code>/health</code>, где проверяется коннект к БД).</li>
+<li><strong>Критическая особенность:</strong> если <code>readinessProbe</code> возвращает ошибку, Kubernetes <strong>НЕ убивает и не перезапускает под</strong> — он просто <strong>временно вычеркивает IP-адрес этого пода из балансировщика нагрузки (<code>Service</code>)</strong>, прекращая подачу на него клиентского трафика до тех пор, пока под снова не отрапортует о готовности!</li>
+<li>Именно на <code>readinessProbe</code> держится плавное обновление <code>RollingUpdate</code>: Kubernetes поднимает рядом новый под <code>v2.0</code>, ждет, пока его <code>readinessProbe</code> загорится зеленым, включает его в балансировку и лишь после этого начинает гасить старый под <code>v1.0</code>.</li>
+<li><strong><code>livenessProbe</code> (Проба живучести):</strong> Проверяет, не завис ли процесс приложения намертво во взаимной блокировке (Deadlock). Если <code>livenessProbe</code> проваливается несколько раз подряд — <code>kubelet</code> принимает радикальное решение: <strong>принудительно убивает зависший контейнер и запускает его заново с чистого листа</strong>.</li>
 </ol>
 <blockquote>
-<p><strong>Важное правило:</strong> При выключении пода Kubernetes параллельно посылает ему <code>SIGTERM</code> и удаляет его IP из балансировщика. Чтобы за эти 1–2 секунды синхронизации сетевых правил на выключающийся под не прилетел новый запрос, добавляют хук <strong><code>lifecycle.preStop: exec: command: ["sleep", "5"]</code></strong>.</p>
+<p><strong>Тонкость идеального Graceful Shutdown (хук <code>preStop</code>):</strong>
+Когда Kubernetes решает остановить старый Под, он выполняет два действия <strong>одновременно (асинхронно)</strong>: <code>kubelet</code> посылает процессу в контейнере сигнал остановки <code>SIGTERM</code>, а сетевой демон <code>kube-proxy</code> начинает удалять IP-адрес этого Пода из таблиц маршрутизации <code>iptables</code> на всех узлах кластера. Поскольку обновление таблиц на десятках серверов занимает 1–2 секунды, может возникнуть гонка: ваше приложение уже закрылось по <code>SIGTERM</code>, а балансировщик по старой памяти еще секунду шлет на него пакеты! Чтобы исключить эту потерю пакетов на 100%, в промышленных манифестах добавляют короткую задержку перед выключением — хук <strong><code>lifecycle.preStop: exec: command: ["sleep", "5"]</code></strong>, дающий сети кластера время спокойно отвести весь трафик от уходящего пода до остановки процесса.</p>
 </blockquote>
-<h3 id="32-requests-limits-hpa">3.2. Ресурсы (<code>requests</code> и <code>limits</code>) и автоскейлинг (<code>HPA</code>)</h3>
-<p>В каждом контейнере обязательно задаются два параметра ресурсов:
-* <strong><code>requests</code> (Гарантированный минимум):</strong> Сколько CPU и RAM нужно контейнеру для старта. Именно по цифре <code>requests</code> планировщик <code>kube-scheduler</code> ищет свободную ноду!
-* <strong><code>limits</code> (Жесткий потолок):</strong> Больше этого значения контейнер потребить не может. При превышении <code>CPU</code> процесс начнет притормаживаться (<strong>CPU Throttling</strong>), а при превышении <code>Memory</code> — будет убит (<strong><code>OOMKilled</code></strong>).</p>
-<h4 id="horizontal-pod-autoscaler-hpa">Horizontal Pod Autoscaler (<code>HPA</code>):</h4>
-<p>Когда нагрузка на CPU или память превышает заданный процент (например, <code>70%</code> от <code>requests.cpu</code>), контроллер <strong>HPA</strong> автоматически увеличивает количество реплик в <code>Deployment</code> (например, с <code>2</code> до <code>10</code> подов), а ночью при спаде трафика — уменьшает обратно до <code>2</code>!</p>
-<h3 id="33-stateful-statefulset-pv-pvc-storageclass">3.3. Stateful-сервисы: <code>StatefulSet</code>, <code>PV</code>, <code>PVC</code> и <code>StorageClass</code></h3>
-<p>Обычный <code>Deployment</code> идеален для Stateless-бэкендов, где все поды одинаковы как близнецы и имеют случайные имена (<code>backend-7b9f8-x9z2k</code>). Но для баз данных (<strong>PostgreSQL, Redis, Kafka, Elasticsearch</strong>) нужен <strong><code>StatefulSet</code></strong>:</p>
+<hr />
+<h3 id="32-requests-limits-hpa">3.2. Управление ресурсами (<code>requests</code> и <code>limits</code>) и автоскейлинг (<code>HPA</code>)</h3>
+<p>Запускать контейнеры в боевом кластере без указания квот ресурсов категорически запрещено — один «прожорливый» сервис сожрет всю память рабочего узла и положит соседние поды. Для каждого контейнера задаются две границы по процессору (измеряется в тысячных долях ядра — <strong>милликорах <code>m</code></strong>, где <code>1000m</code> = 1 полное ядро CPU) и оперативной памяти (в мебибайтах <code>Mi</code> / гибибайтах <code>Gi</code>):</p>
 <ul>
-<li><strong>Предсказуемые постоянные имена:</strong> Поды получают строгие порядковые номера: <code>postgres-0</code>, <code>postgres-1</code>, <code>postgres-2</code>, которые не меняются при перезапуске!</li>
-<li><strong>Строгий порядок запуска и остановки:</strong> <code>postgres-1</code> не запустится, пока <code>postgres-0</code> (мастер) полностью не перейдет в статус <code>Ready</code>.</li>
-<li><strong>Персональное хранилище данных (<code>VolumeClaimTemplates</code>):</strong> За каждым подом <code>StatefulSet</code> навсегда закрепляется его собственный изолированный сетевой диск.</li>
+<li><strong><code>requests</code> (Гарантированный минимум):</strong> Объем CPU и RAM, который приложение гарантированно получает со старта. <strong>Важно:</strong> планировщик <code>kube-scheduler</code> принимает решение о размещении Пода на сервере, опираясь исключительно на сумму цифр <code>requests</code> (он бронирует этот объем на ноде за вашим подом)!</li>
+<li><strong><code>limits</code> (Жесткий потолок потребления):</strong> Максимальная планка, выше которой ядро Linux (<code>cgroups</code>) не позволит подняться контейнеру. При этом физика ограничения CPU и памяти принципиально различается:</li>
+<li>CPU — ресурс <em>сжимаемый</em>: если процесс упрется в <code>limits.cpu</code>, он не упадет — ядро просто начнет искусственно притормаживать его выполнение, пропуская такты процессора (<strong>CPU Throttling</strong>).</li>
+<li>Память RAM — ресурс <em>несжимаемый</em>: отобрать уже выделенную страницу памяти у процесса нельзя, поэтому в ту же секунду, когда контейнер превысит планку <code>limits.memory</code>, ядро уничтожит его со статусом <strong><code>OOMKilled</code></strong>.</li>
 </ul>
-<p><strong>Как работает дисковая подсистема в K8s:</strong>
-1. <strong><code>StorageClass</code>:</strong> Описывает «тип» облачного диска (например, быстрый <code>ssd</code> или дешевый <code>hdd</code>) и провиженер (CSI-драйвер), который умеет автоматически нарезать диски в облаке.
-2. <strong><code>PersistentVolumeClaim</code> (<code>PVC</code>):</strong> Заявка от разработчика: <em>«Выделите моему поду 10 ГБ диска класса <code>standard</code>»</em>.
-3. <strong><code>PersistentVolume</code> (<code>PV</code>):</strong> Сам реальный кусок хранилища, автоматически созданный и привязанный к заявке <code>PVC</code>.</p>
+<h4 id="horizontalpodautoscaler-hpa">Горизонтальное автомасштабирование (<code>HorizontalPodAutoscaler</code> — <code>HPA</code>)</h4>
+<p>Когда вы задали <code>requests.cpu</code>, в кластере открывается возможность автоматического эластичного масштабирования. Вы создаете ресурс <strong><code>HorizontalPodAutoscaler</code></strong>, указывая целевой порог (например, средняя загрузка CPU <code>70%</code> при диапазоне от <code>2</code> до <code>10</code> реплик). Как только в час пик нагрузка на поды превышает 70%, контроллер HPA автоматически увеличивает количество реплик в <code>Deployment</code>, поднимая новые копии сервиса, а ночью, когда трафик падает, сам гасит лишние поды обратно до минимума!</p>
 <hr />
-<h2 id="4-networkpolicy">Блок 4. Конфигурации, Секреты, Сеть и Безопасность (<code>NetworkPolicy</code>)</h2>
-<h3 id="41-configmap-secret">4.1. Управление конфигурациями (<code>ConfigMap</code>) и секретами (<code>Secret</code>)</h3>
-<p>Чтобы не зашивать конфиги и пароли внутрь Docker-образа:
-* <strong><code>ConfigMap</code>:</strong> Хранит несекретные настройки (переменные окружения <code>LOG_LEVEL=info</code> или целые конфигурационные файлы <code>nginx.conf</code>, которые можно примонтировать в папку контейнера как том).
-* <strong><code>Secret</code>:</strong> Хранит пароли, TLS-сертификаты и токены (в манифесте значения кодируются в <code>base64</code>, или создаются на лету через <code>kubectl create secret generic</code>).</p>
-<blockquote>
-<p><strong>Внимание по DevSecOps:</strong> Обычный <code>base64</code> — это кодировка, а не шифрование (<code>echo "cGFzcw==" | base64 -d</code> мгновенно вернет текст). Поэтому в боевом кластере включают шифрование <code>etcd</code> на диске (<code>EncryptionConfiguration</code>), а в Git хранят секреты через <strong>SealedSecrets</strong> или подтягивают их из <strong>HashiCorp Vault / External Secrets Operator</strong>.</p>
-</blockquote>
-<h3 id="42-service-ingress-networkpolicy">4.2. Сетевое взаимодействие: <code>Service</code>, <code>Ingress</code> и <code>NetworkPolicy</code></h3>
-<p>Поскольку IP-адреса Подов постоянно меняются, обращаться к Поду напрямую по IP нельзя. Для этого существует абстракция <strong><code>Service</code></strong>, которая дает группе Подов (по их меткам <code>selector: app: backend</code>) <strong>постоянный виртуальный IP и постоянное DNS-имя</strong> (например, <code>http://backend-svc.prod.svc.cluster.local:8000</code>).</p>
-<h4 id="service">Четыре типа <code>Service</code>:</h4>
+<h3 id="33-stateful-kubernetes-statefulset-pv-pvc-storageclass">3.3. Stateful-приложения в Kubernetes: <code>StatefulSet</code>, <code>PV</code>, <code>PVC</code> и <code>StorageClass</code></h3>
+<p>Контроллер <code>Deployment</code> идеален для Stateless-приложений: все поды в нем обезличены, получают случайные хэши в именах (<code>backend-7b9f8-x9z2k</code>), запускаются и удаляются в произвольном порядке. </p>
+<p>Но что, если нам нужно развернуть внутри Kubernetes базу данных с состоянием (<strong>PostgreSQL, Redis, Kafka, RabbitMQ, Elasticsearch</strong>)? Для них обезличенный подход смертелен, поэтому в Kubernetes используется специализированный контроллер <strong><code>StatefulSet</code></strong>, дающий три железобетонные гарантии:</p>
 <ol>
-<li><strong><code>ClusterIP</code> (По умолчанию):</strong> Внутренний IP, доступный <strong>только внутри кластера</strong>. Идеально для связи между микросервисами и БД (<code>Nginx</code> $\rightarrow$ <code>Backend</code> $\rightarrow$ <code>Postgres</code>).</li>
-<li><strong><code>NodePort</code>:</strong> Открывает статический порт (в диапазоне <code>30000–32767</code>) на IP-адресе каждого сервера кластера.</li>
-<li><strong><code>LoadBalancer</code>:</strong> Дает команду облачному провайдеру (Yandex Cloud / AWS) создать внешний облачный балансировщик с белым IP.</li>
-<li><strong><code>Headless Service</code> (<code>clusterIP: None</code>):</strong> Не балансирует сам, а возвращает DNS-записи каждого конкретного пода напрямую (обязателен для <code>StatefulSet</code> баз данных: <code>postgres-0.db-svc...</code>).</li>
+<li><strong>Предсказуемые, неизменные имена и сетевые паспорта:</strong> Поды внутри <code>StatefulSet</code> никогда не получают случайных хэшей — они именуются строго по порядковым индексам: <code>postgres-0</code>, <code>postgres-1</code>, <code>postgres-2</code>. Даже если под <code>postgres-0</code> умрет и пересоздастся на другом сервере, он вернется в строй под тем же самым именем <code>postgres-0</code>!</li>
+<li><strong>Строгая последовательность старта и обновления:</strong> Реплика <code>postgres-1</code> физически не начнет создаваться до тех пор, пока главный мастер-под <code>postgres-0</code> полностью не запустится и не пройдет проверку <code>readinessProbe</code>.</li>
+<li><strong>Персональное постоянное хранилище за каждой репликой (<code>volumeClaimTemplates</code>):</strong> У каждого пода в <code>StatefulSet</code> есть свой собственный изолированный сетевой диск, который следует за ним при переезде с сервера на сервер.</li>
 </ol>
-<h4 id="ingress">Внешний доступ через <code>Ingress</code>:</h4>
-<p>Создавать платный облачный <code>LoadBalancer</code> на каждый из 20 микросервисов — разорительно. Вместо этого в кластер ставится один <strong>Ingress Controller</strong> (обычно на базе Nginx, Traefik или Cilium), который получает один белый IP, терминирует HTTPS/TLS-сертификаты и по правилам объекта <strong><code>Ingress</code></strong> маршрутизирует трафик по доменам и путям (<code>api.example.com/v1</code> $\rightarrow$ <code>backend-svc:8000</code>).</p>
-<h4 id="networkpolicy">Сетевые политики безопасности (<code>NetworkPolicy</code> — Брандмауэр внутри кластера):</h4>
-<p>По умолчанию в Kubernetes действует правило <strong>«Все поды во всех неймспейсах могут общаться со всеми подами»</strong>. Если злоумышленник взломает уязвимый фронтенд-под, он сможет напрямую подключиться к поду базы данных!
-Объект <strong><code>NetworkPolicy</code></strong> работает как L3/L4 фаервол для подов: мы запрещаем весь входящий трафик по умолчанию (<code>Default Deny</code>) и разрешаем доступ к поду <code>postgres</code> <strong>строго от подов с меткой <code>app: backend</code> и только по порту <code>5432</code></strong>!</p>
+<h4 id="kubernetes-storageclass-pvc-pv">Архитектура дисковой подсистемы Kubernetes (<code>StorageClass</code> → <code>PVC</code> → <code>PV</code>)</h4>
+<p>Чтобы контейнеры не зависели от локальных дисков конкретной ноды, работа с хранилищем разделена на три слоя абстракции:
+* <strong><code>StorageClass</code> (Класс хранилища):</strong> Настраивается администратором кластера и описывает профиль облачного хранилища (например, <code>fast-nvme</code>, <code>network-ssd</code> или <code>cold-hdd</code>) и драйвер <strong>CSI (Container Storage Interface)</strong>, который умеет автоматически по API нарезать блочные диски в облаке Yandex Cloud или AWS.
+* <strong><code>PersistentVolumeClaim</code> (<code>PVC</code> — Заявка на том):</strong> Декларативный ордер-запрос от разработчика или <code>StatefulSet</code>: <em>«Прошу выделить моему поду 10 гигабайт постоянного диска из класса <code>network-ssd</code> в режиме чтения-записи (<code>ReadWriteOnce</code>)»</em>.
+* <strong><code>PersistentVolume</code> (<code>PV</code> — Физический том):</strong> Сам реальный выделенный сетевой диск в инфраструктуре, который автоматически создается провиженером при появлении заявки <code>PVC</code> и намертво связывается с ней (статус <strong><code>Bound</code></strong>). Когда Под удаляется, его <code>PVC</code> и <code>PV</code> со всеми таблицами базы данных остаются в полной сохранности и тут же подключаются обратно к новому Поду!</p>
 <hr />
-<h2 id="5-helm">Блок 5. Пакетное управление приложениями с помощью <code>Helm</code></h2>
-<p>Для деплоя одного микросервиса нужно написать 5–6 разных YAML-манифестов (<code>Deployment</code>, <code>Service</code>, <code>ConfigMap</code>, <code>Secret</code>, <code>Ingress</code>, <code>HPA</code>, <code>NetworkPolicy</code>). А если нужно выкатить этот же сервис на <code>dev</code>, <code>staging</code> и <code>production</code>, где отличаются только домен, число реплик и лимиты памяти? Копировать 6 файлов в 3 папки — это путь к хаосу.</p>
-<p><strong>Helm</strong> — это пакетный менеджер и шаблонизатор для Kubernetes (как <code>apt</code> для Ubuntu). Он упаковывает все манифесты приложения в единый версионированный пакет — <strong>Helm Chart</strong>:</p>
+<h2 id="4-networkpolicy">Блок 4. Конфигурации, Секреты, Сетевая маршрутизация и <code>NetworkPolicy</code></h2>
+<h3 id="41-configmap-secret">4.1. Внешняя конфигурация (<code>ConfigMap</code>) и управление секретами (<code>Secret</code>)</h3>
+<p>Следуя канонам 12-Factor App, мы никогда не зашиваем настройки окружения и пароли внутрь Docker-образа — для их инжекции в поды Kubernetes предоставляет две нативные сущности:</p>
+<ul>
+<li><strong><code>ConfigMap</code>:</strong> Объект для хранения несекретных параметров конфигурации. В него можно положить как отдельные пары «ключ-значение» (чтобы пробросить их в контейнер как переменные окружения <code>ENV</code>), так и целиком многострочные файлы конфигураций (<code>nginx.conf</code>, <code>prometheus.yml</code>), которые Kubernetes примонтирует внутрь контейнера как обычные файлы на диске!</li>
+<li><strong><code>Secret</code>:</strong> Специализированный объект для передачи паролей БД, приватных ключей и TLS-сертификатов. Внутри YAML-манифеста поля секрета хранятся в кодировке <code>base64</code> (либо удобно записываются обычным текстом через секцию <code>stringData:</code>, которую API-сервер сам переведет в <code>base64</code> при сохранении).</li>
+</ul>
+<blockquote>
+<p><strong>Критическое правило DevSecOps по работе с <code>Secret</code> в Kubernetes:</strong>
+Никогда не путайте <strong>кодировку <code>base64</code></strong> с криптографическим шифрованием! Любой человек, увидевший строку <code>cGFzcw==</code> в вашем Git-репозитории, раскодирует её за долю секунды стандартной командой <code>echo "cGFzcw==" | base64 -d</code>. Поэтому хранить сырые манифесты <code>kind: Secret</code> в открытом Git запрещено. В боевом продакшене применяются два стандарта защиты: на уровне самого кластера включают аппаратное шифрование базы <code>etcd</code> на диске (<code>EncryptionConfiguration</code>), а для доставки секретов из Git используют контроллер <strong>Bitnami SealedSecrets</strong> (асимметричное шифрование) или оператор <strong>External Secrets Operator (ESO)</strong>, который на лету вытягивает пароли в поды напрямую из защищенного хранилища <strong>HashiCorp Vault</strong> или облачного KMS!</p>
+</blockquote>
+<hr />
+<h3 id="42-service-ingress-networkpolicy">4.2. Сетевая архитектура: <code>Service</code>, <code>Ingress</code> и микросегментация <code>NetworkPolicy</code></h3>
+<p>Поскольку Поды постоянно пересоздаются и меняют свои внутренние IP-адреса при каждом обновлении, обращаться к Поду напрямую по его IP-адресу бессмысленно. Чтобы дать микросервису постоянную точку входа, перед группой Подов ставится абстракция <strong><code>Service</code> (Сервис)</strong>.</p>
+<p>Объект <code>Service</code> находит нужные Поды по совпадению их меток (<code>selector: app: backend</code>), выделяет им единый неизменный виртуальный IP-адрес и регистрирует во внутреннем DNS-сервере кластера (<strong>CoreDNS</strong>) постоянное доменное имя в формате <code>&lt;имя-сервиса&gt;.&lt;неймспейс&gt;.svc.cluster.local</code>. При этом <code>Service</code> автоматически балансирует трафик только между теми Подами, которые прямо сейчас проходят проверку <code>readinessProbe</code>!</p>
+<h4 id="service-kubernetes">Четыре архитектурных типа <code>Service</code> в Kubernetes:</h4>
+<ol>
+<li><strong><code>ClusterIP</code> (используется по умолчанию):</strong> Выделяет внутренний виртуальный IP, доступный <strong>исключительно внутри периметра самого кластера</strong>. Это стандарт для общения микросервисов между собой и с базами данных.</li>
+<li><strong><code>NodePort</code>:</strong> Помимо внутреннего <code>ClusterIP</code>, открывает статический порт (из зарезервированного диапазона <code>30000–32767</code>) напрямую на внешних сетевых картах абсолютно всех рабочих серверов (<code>Worker Nodes</code>) кластера.</li>
+<li><strong><code>LoadBalancer</code>:</strong> При создании такого сервиса в облачном Kubernetes (Yandex Cloud, AWS, GCP) кластер сам обращается по API к облачному провайдеру, автоматически заказывает внешний облачный балансировщик нагрузки с выделенным публичным («белым») IP-адресом и направляет его трафик в ваши поды.</li>
+<li><strong><code>Headless Service</code> (Безголовый сервис — задается параметром <code>clusterIP: None</code>):</strong> Специальный режим, обязательный для работы со <code>StatefulSet</code> баз данных. Вместо одного общего виртуального IP такой сервис при DNS-запросе возвращает прямые A-записи каждого конкретного пода по его имени (<code>postgres-0.db-svc...</code>, <code>postgres-1.db-svc...</code>), позволяя репликам БД находить мастера напрямую.</li>
+</ol>
+<h4 id="httphttps-ingress">Маршрутизация внешнего HTTP/HTTPS-трафика через <code>Ingress</code></h4>
+<p>Заказывать отдельный платный облачный <code>Service: LoadBalancer</code> с белым IP на каждый из 30 микросервисов компании дорого и неудобно в управлении SSL-сертификатами. Вместо этого в кластер устанавливается всего один входной шлюз — <strong>Ingress Controller</strong> (на базе Nginx, Traefik, HAProxy или Cilium), который получает единственный белый IP на весь кластер. А правила того, какой домен и какой URL-путь в какой внутренний <code>Service</code> направить (<code>api.example.com/v1</code> → <code>backend-svc:8000</code>), описываются легкими декларативными объектами <strong><code>kind: Ingress</code></strong>.</p>
+<h4 id="networkpolicy-zero-trust-networking">Сетевая безопасность внутри кластера (<code>NetworkPolicy</code> — Zero-Trust Networking)</h4>
+<p>Мало кто из новичков знает опасную особенность Kubernetes «из коробки»: <strong>по умолчанию сеть внутри кластера абсолютно плоская и открытая — любой Под в любом неймспейсе может без ограничений подключиться по сети к любому другому Поду</strong>! Это значит, что если злоумышленник найдет уязвимость в незначительном публичном контейнере лендинга, он сможет напрямую из него подключиться к поду вашей боевой базы данных PostgreSQL на порту <code>5432</code>!</p>
+<p>Чтобы выстроить эшелонированную защиту по принципу нулевого доверия (Zero-Trust), применяются объекты <strong><code>kind: NetworkPolicy</code></strong> — встроенный в сетевой плагин (CNI) межсетевой экран уровня L3/L4 для подов. С помощью <code>NetworkPolicy</code> мы закрываем под базы данных от всего мира и явно прописываем правило: <em>«Разрешить входящие соединения на порт TCP <code>5432</code> или <code>6379</code> исключительно от подов, имеющих метку <code>app: backend</code>»</em>!</p>
+<hr />
+<h2 id="5-kubernetes-helm">Блок 5. Пакетное управление и шаблонизация в Kubernetes с помощью <code>Helm</code></h2>
+<p>Для полноценного запуска всего одного микросервиса в Kubernetes требуется написать 5–6 связанных YAML-манифестов: <code>Deployment</code>, <code>Service</code>, <code>ConfigMap</code>, <code>Secret</code>, <code>HorizontalPodAutoscaler</code>, <code>Ingress</code> и <code>NetworkPolicy</code>. А теперь представьте, что этот сервис нужно выкатить в три разных контура — <code>dev</code>, <code>staging</code> и <code>production</code>, где манифесты на 95% идентичны, но отличаются лишь тегом образа, числом реплик и лимитами памяти. Копировать и синхронизировать десятки статических YAML-файлов вручную по разным папкам невозможно — вы неизбежно допустите опечатку.</p>
+<p>Эту задачу решает <strong>Helm</strong> — де-факто стандартный пакетный менеджер и шаблонизатор для Kubernetes (выполняющий для кластера ту же роль, что <code>apt</code> для Ubuntu). Helm позволяет превратить набор статических манифестов в единый параметризованный пакет — <strong>Helm Chart (Чарт)</strong> со строгой структурой каталогов:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>my-service-chart/
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── Chart.yaml            # Паспорт чарта: имя, версия чарта (version) и версия приложения (appVersion)
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── values.yaml           # Значения по умолчанию для шаблонов
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├── values-staging.yaml   # Переопределения для Staging (replicas: 1, debug: true)
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├── values-prod.yaml      # Переопределения для Production (replicas: 3, limits: 512Mi)
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>└── templates/            # Шаблоны манифестов на языке Go-templates
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    ├── deployment.yaml   # Подставляет {{ .Values.replicaCount }} и {{ .Values.image.tag }}
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── Chart.yaml            # Паспорт пакета: название, версия самого чарта (version) и версия приложения (appVersion)
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── values.yaml           # Базовые значения всех переменных по умолчанию
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├── values-staging.yaml   # Переопределения только для контура Staging (replicaCount: 1, debug: true)
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├── values-prod.yaml      # Переопределения для боевого контура Production (replicaCount: 3, autoscaling: true)
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>└── templates/            # Динамические шаблоны манифестов на языке Go-templates
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    ├── deployment.yaml   # Подставляет переменные вида {{ .Values.replicaCount }} и {{ .Values.image.tag }}
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    ├── service.yaml
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    ├── ingress.yaml
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    └── hpa.yaml
 </span></code></pre></div>
-<p><strong>Главные команды Helm для работы с релизами:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Проверить синтаксис чарта и срендерить итоговый YAML в консоль (без отправки в кластер!)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>helm<span class="w"> </span>lint<span class="w"> </span>./my-chart
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>helm<span class="w"> </span>template<span class="w"> </span>my-release<span class="w"> </span>./my-chart<span class="w"> </span>-f<span class="w"> </span>values-prod.yaml
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Установить или обновить релиз (флаг --atomic автоматически откатит релиз, если поды не пройдут readinessProbe!)</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>my-release<span class="w"> </span>./my-chart<span class="w"> </span>-n<span class="w"> </span>production<span class="w"> </span>--create-namespace<span class="w"> </span>-f<span class="w"> </span>values-prod.yaml<span class="w"> </span>--atomic
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># Посмотреть историю ревизий релиза и откатиться на любую предыдущую версию за 1 секунду!</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>helm<span class="w"> </span><span class="nb">history</span><span class="w"> </span>my-release<span class="w"> </span>-n<span class="w"> </span>production
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>helm<span class="w"> </span>rollback<span class="w"> </span>my-release<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span>production
-</span></code></pre></div></p>
+<p>Helm не просто рендерит шаблоны — он ведет прямо внутри кластера (в специальных секретах ревизий) <strong>полную версионированную историю всех ваших релизов</strong>, позволяя обновлять стек с автоматической проверкой здоровья и откатывать сломанный релиз целиком со всеми его конфигами за одну секунду:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Проверить синтаксис чарта встроенным линтером и вывести в терминал итоговый сгенерированный YAML</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># для визуальной проверки (Dry-Run без отправки в кластер!)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>helm<span class="w"> </span>lint<span class="w"> </span>./my-chart
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>helm<span class="w"> </span>template<span class="w"> </span>my-release<span class="w"> </span>./my-chart<span class="w"> </span>-f<span class="w"> </span>values-prod.yaml
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># 2. Установить релиз (если его еще нет) или обновить существующий:</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Флаг --atomic — лучший друг DevOps-инженера: если во время обновления новые поды упадут</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># и не пройдут readinessProbe в течение таймаута, Helm АВТОМАТИЧЕСКИ откатит весь релиз на прошлую рабочую версию!</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>my-release<span class="w"> </span>./my-chart<span class="w"> </span>-n<span class="w"> </span>production<span class="w"> </span>--create-namespace<span class="w"> </span>-f<span class="w"> </span>values-prod.yaml<span class="w"> </span>--atomic
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># 3. Просмотреть таблицу всех исторических ревизий релиза в кластере и мгновенно откатиться на ревизию №1</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>helm<span class="w"> </span><span class="nb">history</span><span class="w"> </span>my-release<span class="w"> </span>-n<span class="w"> </span>production
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>helm<span class="w"> </span>rollback<span class="w"> </span>my-release<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span>production
+</span></code></pre></div>
 <hr />
-<h2 id="10-kubernetes-helm">🛠 Практический проект Модуля 10: Деплой отказоустойчивого многокомпонентного приложения в Kubernetes через Helm</h2>
-<p>Мы развернем настоящий локальный кластер Kubernetes (<code>kind</code>), упакуем наш микросервис и базу данных в полноценный <strong>Helm-чарт</strong>, включающий:
-* <strong><code>StatefulSet</code> + <code>Headless Service</code> + <code>PVC</code></strong> для персистентного хранения базы данных Redis/Postgres.
-* <strong><code>Deployment</code></strong> бэкенда с настроенными <strong><code>readinessProbe</code> / <code>livenessProbe</code></strong>, <code>preStop</code> хуком и не-root контекстом безопасности (<code>securityContext</code>).
-* <strong><code>ConfigMap</code> и <code>Secret</code></strong> для разделения настроек и паролей.
-* <strong><code>NetworkPolicy</code></strong> для жесткой сетевой защиты слоя данных.
-* <strong><code>HorizontalPodAutoscaler</code> (<code>HPA</code>)</strong> для автоматического масштабирования.
-* <strong><code>Ingress</code></strong> для внешнего доступа.</p>
+<h2 id="10-kubernetes-helm">🛠 Практический проект Модуля 10: Развёртывание отказоустойчивого микросервисного стека в кластере Kubernetes через Helm</h2>
+<p>Переходим к практике промышленной оркестрации. Сейчас мы развернем на твоей машине настоящий кластер Kubernetes с помощью <strong><code>kind</code></strong>, соберем образ микросервиса, разработаем с нуля собственный <strong>Production-grade Helm-чарт</strong> и выкатим его в изолированный неймспейс <code>production</code>. </p>
+<p>Наш чарт объединит в себе все ключевые примитивы зрелой архитектуры Kubernetes:
+* <strong><code>StatefulSet</code> + <code>Headless Service</code> + <code>PersistentVolumeClaim</code> (<code>PVC</code>)</strong> — для персистентного хранения состояния базы данных Redis с автоматическим выделением постоянного диска.
+* <strong><code>Deployment</code></strong> бэкенда — с бесшовной стратегией обновления <code>RollingUpdate (maxUnavailable: 0)</code>, настроенными пробами <strong><code>readinessProbe</code> / <code>livenessProbe</code></strong>, защитным хуком <code>preStop</code> и запуском от непривилегированного пользователя (<code>securityContext: runAsNonRoot: true, runAsUser: 10001</code>).
+* <strong><code>ConfigMap</code> и <code>Secret</code></strong> — для централизованной инжекции настроек и паролей в поды.
+* <strong><code>NetworkPolicy</code></strong> — для жесткой изоляции базы данных на сетевом уровне.
+* <strong><code>HorizontalPodAutoscaler</code> (<code>HPA</code>)</strong> и <strong><code>Ingress</code></strong> — для автомасштабирования и маршрутизации трафика.</p>
 <hr />
-<h3 id="1-kubectl-kind-helm-kubernetes">Этап 1. Установка <code>kubectl</code>, <code>kind</code>, <code>helm</code> и запуск кластера Kubernetes</h3>
-<p>Выполни этот блок команд — он за 30 секунд проверит и при необходимости установит официальные бинарники <code>kubectl</code>, <code>kind</code> и <code>helm</code>, после чего поднимет кластер Kubernetes <code>devops-k8s</code>:</p>
+<h3 id="1-kubectl-kind-helm-kubernetes">Этап 1. Автоматическая установка <code>kubectl</code>, <code>kind</code>, <code>helm</code> и поднятие кластера Kubernetes</h3>
+<p>Выполни этот блок команд целиком. Скрипт проверит наличие официальных бинарных утилит <code>kubectl</code>, <code>kind</code> и <code>helm</code> (если их еще нет на машине — автоматически скачает и установит за 30 секунд), после чего развернет локальный кластер Kubernetes с именем <code>devops-k8s</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/k8s-practice<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/k8s-practice
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">ARCH</span><span class="o">=</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/x86_64/amd64/;s/aarch64/arm64/'</span><span class="k">)</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 1. Установка kubectl</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 1. Установка консольного клиента управления кластером kubectl</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>kubectl<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Устанавливаем kubectl..."</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="s2">"https://dl.k8s.io/release/v1.31.0/bin/linux/</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">/kubectl"</span><span class="w"> </span>-o<span class="w"> </span>/tmp/kubectl
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="s2">"[https://dl.k8s.io/release/v1.31.0/bin/linux/</span>$<span class="s2">](https://dl.k8s.io/release/v1.31.0/bin/linux/</span>$<span class="s2">){ARCH}/kubectl"</span><span class="w"> </span>-o<span class="w"> </span>/tmp/kubectl
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>/tmp/kubectl<span class="w"> </span>/usr/local/bin/kubectl
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">fi</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># 2. Установка kind (Kubernetes in Docker)</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># 2. Установка оркестратора локальных кластеров kind (Kubernetes in Docker)</span>
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>kind<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Устанавливаем kind..."</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="s2">"https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>-o<span class="w"> </span>/tmp/kind
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="s2">"[https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-</span>$<span class="s2">](https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-</span>$<span class="s2">){ARCH}"</span><span class="w"> </span>-o<span class="w"> </span>/tmp/kind
 </span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>/tmp/kind<span class="w"> </span>/usr/local/bin/kind
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">fi</span>
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1"># 3. Установка Helm</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1"># 3. Установка пакетного менеджера Helm 3</span>
 </span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>helm<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Устанавливаем Helm..."</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="o">[</span>https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3<span class="o">](</span>https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 </span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">fi</span>
 </span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="c1"># 4. Создаем кластер Kubernetes (если еще не создан)</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="c1"># 4. Поднимаем кластер Kubernetes devops-k8s (если он еще не запущен)</span>
 </span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span>kind<span class="w"> </span>get<span class="w"> </span>clusters<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">"devops-k8s"</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span>kind<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span>devops-k8s
 </span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="k">fi</span>
 </span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>
-</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>kubectl<span class="w"> </span>cluster-info
-</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-o<span class="w"> </span>wide
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="c1"># Проверяем связь с API-сервером и статус готовности ноды (Ready)</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>kubectl<span class="w"> </span>cluster-info
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-o<span class="w"> </span>wide
 </span></code></pre></div>
 <hr />
-<h3 id="2">Этап 2. Сборка образа микросервиса и загрузка в кластер</h3>
-<p>Соберем наш легкий образ бэкенда <code>hit-counter:2.0.0</code> (из Модуля 2) и загрузим его напрямую внутрь узлов кластера <code>kind</code> командой <code>kind load</code>:</p>
+<h3 id="2-docker-">Этап 2. Сборка Docker-образа микросервиса и загрузка внутрь нод кластера</h3>
+<p>Создадим легкий микросервис на Python (<code>app.py</code>), который отдает статус здоровья для проб Kubernetes на <code>/health</code> и возвращает паспорт пода (имя пода, версию релиза, окружение и статус загрузки секрета из <code>Secret</code>) на <code>/api/info</code>. </p>
+<p>Чтобы не пушить учебный образ во внешний интернет в Docker Hub, мы соберем сразу два релиза (<code>2.0.0</code> и <code>2.1.0</code>) и загрузим их напрямую в локальное хранилище <code>containerd</code> внутри ноды нашего кластера командой <strong><code>kind load docker-image</code></strong>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/k8s-practice/app<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/k8s-practice/app
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; app.py</span>
@@ -1640,7 +1703,7 @@
 </span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="s">ENTRYPOINT ["python3", "app.py"]</span>
 </span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="s">EOF</span>
 </span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>
-</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="c1"># Собираем версии 2.0.0 и 2.1.0 и загружаем их в ноды кластера Kubernetes</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="c1"># Собираем две версии артефакта и импортируем их напрямую внутрь узлов кластера kind</span>
 </span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>hit-counter:2.0.0<span class="w"> </span>.
 </span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>docker<span class="w"> </span>tag<span class="w"> </span>hit-counter:2.0.0<span class="w"> </span>hit-counter:2.1.0
 </span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>kind<span class="w"> </span>load<span class="w"> </span>docker-image<span class="w"> </span>hit-counter:2.0.0<span class="w"> </span>--name<span class="w"> </span>devops-k8s
@@ -1648,11 +1711,11 @@
 </span></code></pre></div>
 <hr />
 <h3 id="3-helm-chartswebapp">Этап 3. Разработка промышленного Helm-чарта (<code>charts/webapp</code>)</h3>
-<p>Создадим собственный Helm-чарт, который шаблонизирует все ресурсы под разные окружения (<code>staging</code> и <code>production</code>):</p>
+<p>Создадим структуру нашего Helm-чарта <code>~/k8s-practice/charts/webapp</code>, описав паспорт пакета <code>Chart.yaml</code> и конфигурационный словарь параметров <code>values.yaml</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/k8s-practice/charts/webapp/templates
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>~/k8s-practice/charts/webapp
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 1. Паспорт чарта (Chart.yaml)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 1. Паспорт пакета Helm (Chart.yaml)</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; Chart.yaml</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s">apiVersion: v2</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s">name: webapp</span>
@@ -1662,7 +1725,7 @@
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">appVersion: "2.0.0"</span>
 </span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="s">EOF</span>
 </span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># 2. Значения по умолчанию (values.yaml)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># 2. Базовые параметры конфигурации по умолчанию (values.yaml)</span>
 </span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; values.yaml</span>
 </span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="s">envName: production</span>
 </span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="s">replicaCount: 2</span>
@@ -1695,8 +1758,9 @@
 </span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="s">redisStorageSize: "1Gi"</span>
 </span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="s">EOF</span>
 </span></code></pre></div>
-<p>Теперь создадим шаблоны манифестов в папке <code>templates/</code>:</p>
-<h4 id="1-configmap-secret-statefulset-persistentvolumeclaim-stateful-templatesstateful-and-configyaml">1. <code>ConfigMap</code>, <code>Secret</code> и <code>StatefulSet</code> (с <code>PersistentVolumeClaim</code>) для Stateful-слоя (<code>templates/stateful-and-config.yaml</code>):</h4>
+<p>Теперь создадим два файла шаблонов внутри папки <code>templates/</code>, которые динамически подставляют значения из <code>.Values</code> и имя релиза <code>.Release.Name</code>:</p>
+<h4 id="1-stateful-templatesstateful-and-configyaml">1. Шаблон конфигурации и Stateful-слоя БД (<code>templates/stateful-and-config.yaml</code>):</h4>
+<p>Обрати внимание на связку <code>Service (clusterIP: None)</code> + <code>StatefulSet</code> + секцию <code>volumeClaimTemplates</code>: при создании пода <code>redis-0</code> Kubernetes сам автоматически закажет для него постоянный диск <code>PVC</code> размером <code>1Gi</code>!</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/k8s-practice/charts/webapp/templates/stateful-and-config.yaml</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s">apiVersion: v1</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s">kind: ConfigMap</span>
@@ -1713,7 +1777,7 @@
 </span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="s">stringData:</span>
 </span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="s">  API_SECRET_KEY: {{ .Values.secret.apiSecretKey | quote }}</span>
 </span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="s">---</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="s"># Headless Service для StatefulSet</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="s"># Headless Service (обязателен для прямой DNS-адресации подов внутри StatefulSet)</span>
 </span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="s">apiVersion: v1</span>
 </span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="s">kind: Service</span>
 </span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="s">metadata:</span>
@@ -1726,7 +1790,7 @@
 </span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="s">    - port: 6379</span>
 </span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="s">      name: redis</span>
 </span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="s">---</span>
-</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="s"># StatefulSet с автоматическим заказом постоянного диска (volumeClaimTemplates)</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="s"># Контроллер StatefulSet с автоматическим созданием постоянного диска через volumeClaimTemplates</span>
 </span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="s">apiVersion: apps/v1</span>
 </span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="s">kind: StatefulSet</span>
 </span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="s">metadata:</span>
@@ -1760,7 +1824,7 @@
 </span><span id="__span-6-61"><a id="__codelineno-6-61" name="__codelineno-6-61" href="#__codelineno-6-61"></a><span class="s">            storage: {{ .Values.redisStorageSize }}</span>
 </span><span id="__span-6-62"><a id="__codelineno-6-62" name="__codelineno-6-62" href="#__codelineno-6-62"></a><span class="s">EOF</span>
 </span></code></pre></div>
-<h4 id="2-deployment-service-hpa-ingress-networkpolicy-templatesbackend-stackyaml">2. <code>Deployment</code>, <code>Service</code>, <code>HPA</code>, <code>Ingress</code> и <code>NetworkPolicy</code> (<code>templates/backend-stack.yaml</code>):</h4>
+<h4 id="2-stateless-templatesbackend-stackyaml">2. Шаблон Stateless-бэкенда, автоскейлера и сетевой защиты (<code>templates/backend-stack.yaml</code>):</h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/k8s-practice/charts/webapp/templates/backend-stack.yaml</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s">apiVersion: apps/v1</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">kind: Deployment</span>
@@ -1770,7 +1834,7 @@
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s">    app: {{ .Release.Name }}-backend</span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s">spec:</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">  replicas: {{ .Values.replicaCount }}</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">  # Стратегия бесперебойного обновления (Zero-Downtime RollingUpdate)</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">  # Стратегия бесперебойного обновления без простоя (Zero-Downtime RollingUpdate)</span>
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">  strategy:</span>
 </span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s">    type: RollingUpdate</span>
 </span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="s">    rollingUpdate:</span>
@@ -1784,150 +1848,150 @@
 </span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="s">      labels:</span>
 </span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="s">        app: {{ .Release.Name }}-backend</span>
 </span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="s">    spec:</span>
-</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="s">      securityContext:</span>
-</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="s">        runAsNonRoot: true</span>
-</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="s">        runAsUser: 10001</span>
-</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="s">      containers:</span>
-</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="s">        - name: backend</span>
-</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="s">          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"</span>
-</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="s">          imagePullPolicy: {{ .Values.image.pullPolicy }}</span>
-</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="s">          ports:</span>
-</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="s">            - containerPort: 8000</span>
-</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="s">          env:</span>
-</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="s">            - name: APP_VERSION</span>
-</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="s">              value: {{ .Values.image.tag | quote }}</span>
-</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="s">          envFrom:</span>
-</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="s">            - configMapRef:</span>
-</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="s">                name: {{ .Release.Name }}-config</span>
-</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="s">            - secretRef:</span>
-</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="s">                name: {{ .Release.Name }}-secret</span>
-</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="s">          resources:</span>
-</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="s">            {{- toYaml .Values.resources | nindent 12 }}</span>
-</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="s">          # Readiness Probe гарантирует, что трафик пойдет только на готовый под!</span>
-</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="s">          readinessProbe:</span>
-</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a><span class="s">            httpGet:</span>
-</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="s">              path: /health</span>
-</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="s">              port: 8000</span>
-</span><span id="__span-7-48"><a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a><span class="s">            initialDelaySeconds: 2</span>
-</span><span id="__span-7-49"><a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a><span class="s">            periodSeconds: 5</span>
-</span><span id="__span-7-50"><a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a><span class="s">          livenessProbe:</span>
-</span><span id="__span-7-51"><a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="s">            httpGet:</span>
-</span><span id="__span-7-52"><a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a><span class="s">              path: /health</span>
-</span><span id="__span-7-53"><a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a><span class="s">              port: 8000</span>
-</span><span id="__span-7-54"><a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a><span class="s">            initialDelaySeconds: 5</span>
-</span><span id="__span-7-55"><a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a><span class="s">            periodSeconds: 10</span>
-</span><span id="__span-7-56"><a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a><span class="s">          # Плавный вывод пода из балансировки перед остановкой</span>
-</span><span id="__span-7-57"><a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a><span class="s">          lifecycle:</span>
-</span><span id="__span-7-58"><a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a><span class="s">            preStop:</span>
-</span><span id="__span-7-59"><a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a><span class="s">              exec:</span>
-</span><span id="__span-7-60"><a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a><span class="s">                command: ["sleep", "2"]</span>
-</span><span id="__span-7-61"><a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a><span class="s">---</span>
-</span><span id="__span-7-62"><a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a><span class="s">apiVersion: v1</span>
-</span><span id="__span-7-63"><a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a><span class="s">kind: Service</span>
-</span><span id="__span-7-64"><a id="__codelineno-7-64" name="__codelineno-7-64" href="#__codelineno-7-64"></a><span class="s">metadata:</span>
-</span><span id="__span-7-65"><a id="__codelineno-7-65" name="__codelineno-7-65" href="#__codelineno-7-65"></a><span class="s">  name: {{ .Release.Name }}-backend-svc</span>
-</span><span id="__span-7-66"><a id="__codelineno-7-66" name="__codelineno-7-66" href="#__codelineno-7-66"></a><span class="s">spec:</span>
-</span><span id="__span-7-67"><a id="__codelineno-7-67" name="__codelineno-7-67" href="#__codelineno-7-67"></a><span class="s">  type: ClusterIP</span>
-</span><span id="__span-7-68"><a id="__codelineno-7-68" name="__codelineno-7-68" href="#__codelineno-7-68"></a><span class="s">  selector:</span>
-</span><span id="__span-7-69"><a id="__codelineno-7-69" name="__codelineno-7-69" href="#__codelineno-7-69"></a><span class="s">    app: {{ .Release.Name }}-backend</span>
-</span><span id="__span-7-70"><a id="__codelineno-7-70" name="__codelineno-7-70" href="#__codelineno-7-70"></a><span class="s">  ports:</span>
-</span><span id="__span-7-71"><a id="__codelineno-7-71" name="__codelineno-7-71" href="#__codelineno-7-71"></a><span class="s">    - port: {{ .Values.service.port }}</span>
-</span><span id="__span-7-72"><a id="__codelineno-7-72" name="__codelineno-7-72" href="#__codelineno-7-72"></a><span class="s">      targetPort: 8000</span>
-</span><span id="__span-7-73"><a id="__codelineno-7-73" name="__codelineno-7-73" href="#__codelineno-7-73"></a><span class="s">---</span>
-</span><span id="__span-7-74"><a id="__codelineno-7-74" name="__codelineno-7-74" href="#__codelineno-7-74"></a><span class="s">{{- if .Values.autoscaling.enabled }}</span>
-</span><span id="__span-7-75"><a id="__codelineno-7-75" name="__codelineno-7-75" href="#__codelineno-7-75"></a><span class="s">apiVersion: autoscaling/v2</span>
-</span><span id="__span-7-76"><a id="__codelineno-7-76" name="__codelineno-7-76" href="#__codelineno-7-76"></a><span class="s">kind: HorizontalPodAutoscaler</span>
-</span><span id="__span-7-77"><a id="__codelineno-7-77" name="__codelineno-7-77" href="#__codelineno-7-77"></a><span class="s">metadata:</span>
-</span><span id="__span-7-78"><a id="__codelineno-7-78" name="__codelineno-7-78" href="#__codelineno-7-78"></a><span class="s">  name: {{ .Release.Name }}-hpa</span>
-</span><span id="__span-7-79"><a id="__codelineno-7-79" name="__codelineno-7-79" href="#__codelineno-7-79"></a><span class="s">spec:</span>
-</span><span id="__span-7-80"><a id="__codelineno-7-80" name="__codelineno-7-80" href="#__codelineno-7-80"></a><span class="s">  scaleTargetRef:</span>
-</span><span id="__span-7-81"><a id="__codelineno-7-81" name="__codelineno-7-81" href="#__codelineno-7-81"></a><span class="s">    apiVersion: apps/v1</span>
-</span><span id="__span-7-82"><a id="__codelineno-7-82" name="__codelineno-7-82" href="#__codelineno-7-82"></a><span class="s">    kind: Deployment</span>
-</span><span id="__span-7-83"><a id="__codelineno-7-83" name="__codelineno-7-83" href="#__codelineno-7-83"></a><span class="s">    name: {{ .Release.Name }}-backend</span>
-</span><span id="__span-7-84"><a id="__codelineno-7-84" name="__codelineno-7-84" href="#__codelineno-7-84"></a><span class="s">  minReplicas: {{ .Values.autoscaling.minReplicas }}</span>
-</span><span id="__span-7-85"><a id="__codelineno-7-85" name="__codelineno-7-85" href="#__codelineno-7-85"></a><span class="s">  maxReplicas: {{ .Values.autoscaling.maxReplicas }}</span>
-</span><span id="__span-7-86"><a id="__codelineno-7-86" name="__codelineno-7-86" href="#__codelineno-7-86"></a><span class="s">  metrics:</span>
-</span><span id="__span-7-87"><a id="__codelineno-7-87" name="__codelineno-7-87" href="#__codelineno-7-87"></a><span class="s">    - type: Resource</span>
-</span><span id="__span-7-88"><a id="__codelineno-7-88" name="__codelineno-7-88" href="#__codelineno-7-88"></a><span class="s">      resource:</span>
-</span><span id="__span-7-89"><a id="__codelineno-7-89" name="__codelineno-7-89" href="#__codelineno-7-89"></a><span class="s">        name: cpu</span>
-</span><span id="__span-7-90"><a id="__codelineno-7-90" name="__codelineno-7-90" href="#__codelineno-7-90"></a><span class="s">        target:</span>
-</span><span id="__span-7-91"><a id="__codelineno-7-91" name="__codelineno-7-91" href="#__codelineno-7-91"></a><span class="s">          type: Utilization</span>
-</span><span id="__span-7-92"><a id="__codelineno-7-92" name="__codelineno-7-92" href="#__codelineno-7-92"></a><span class="s">          averageUtilization: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}</span>
-</span><span id="__span-7-93"><a id="__codelineno-7-93" name="__codelineno-7-93" href="#__codelineno-7-93"></a><span class="s">{{- end }}</span>
-</span><span id="__span-7-94"><a id="__codelineno-7-94" name="__codelineno-7-94" href="#__codelineno-7-94"></a><span class="s">---</span>
-</span><span id="__span-7-95"><a id="__codelineno-7-95" name="__codelineno-7-95" href="#__codelineno-7-95"></a><span class="s"># Сетевая политика безопасности: разрешаем доступ к Redis ТОЛЬКО от подов бэкенда!</span>
-</span><span id="__span-7-96"><a id="__codelineno-7-96" name="__codelineno-7-96" href="#__codelineno-7-96"></a><span class="s">apiVersion: networking.k8s.io/v1</span>
-</span><span id="__span-7-97"><a id="__codelineno-7-97" name="__codelineno-7-97" href="#__codelineno-7-97"></a><span class="s">kind: NetworkPolicy</span>
-</span><span id="__span-7-98"><a id="__codelineno-7-98" name="__codelineno-7-98" href="#__codelineno-7-98"></a><span class="s">metadata:</span>
-</span><span id="__span-7-99"><a id="__codelineno-7-99" name="__codelineno-7-99" href="#__codelineno-7-99"></a><span class="s">  name: {{ .Release.Name }}-redis-netpol</span>
-</span><span id="__span-7-100"><a id="__codelineno-7-100" name="__codelineno-7-100" href="#__codelineno-7-100"></a><span class="s">spec:</span>
-</span><span id="__span-7-101"><a id="__codelineno-7-101" name="__codelineno-7-101" href="#__codelineno-7-101"></a><span class="s">  podSelector:</span>
-</span><span id="__span-7-102"><a id="__codelineno-7-102" name="__codelineno-7-102" href="#__codelineno-7-102"></a><span class="s">    matchLabels:</span>
-</span><span id="__span-7-103"><a id="__codelineno-7-103" name="__codelineno-7-103" href="#__codelineno-7-103"></a><span class="s">      app: {{ .Release.Name }}-redis</span>
-</span><span id="__span-7-104"><a id="__codelineno-7-104" name="__codelineno-7-104" href="#__codelineno-7-104"></a><span class="s">  policyTypes:</span>
-</span><span id="__span-7-105"><a id="__codelineno-7-105" name="__codelineno-7-105" href="#__codelineno-7-105"></a><span class="s">    - Ingress</span>
-</span><span id="__span-7-106"><a id="__codelineno-7-106" name="__codelineno-7-106" href="#__codelineno-7-106"></a><span class="s">  ingress:</span>
-</span><span id="__span-7-107"><a id="__codelineno-7-107" name="__codelineno-7-107" href="#__codelineno-7-107"></a><span class="s">    - from:</span>
-</span><span id="__span-7-108"><a id="__codelineno-7-108" name="__codelineno-7-108" href="#__codelineno-7-108"></a><span class="s">        - podSelector:</span>
-</span><span id="__span-7-109"><a id="__codelineno-7-109" name="__codelineno-7-109" href="#__codelineno-7-109"></a><span class="s">            matchLabels:</span>
-</span><span id="__span-7-110"><a id="__codelineno-7-110" name="__codelineno-7-110" href="#__codelineno-7-110"></a><span class="s">              app: {{ .Release.Name }}-backend</span>
-</span><span id="__span-7-111"><a id="__codelineno-7-111" name="__codelineno-7-111" href="#__codelineno-7-111"></a><span class="s">      ports:</span>
-</span><span id="__span-7-112"><a id="__codelineno-7-112" name="__codelineno-7-112" href="#__codelineno-7-112"></a><span class="s">        - protocol: TCP</span>
-</span><span id="__span-7-113"><a id="__codelineno-7-113" name="__codelineno-7-113" href="#__codelineno-7-113"></a><span class="s">          port: 6379</span>
-</span><span id="__span-7-114"><a id="__codelineno-7-114" name="__codelineno-7-114" href="#__codelineno-7-114"></a><span class="s">---</span>
-</span><span id="__span-7-115"><a id="__codelineno-7-115" name="__codelineno-7-115" href="#__codelineno-7-115"></a><span class="s"># Ingress для внешней маршрутизации HTTP-трафика</span>
-</span><span id="__span-7-116"><a id="__codelineno-7-116" name="__codelineno-7-116" href="#__codelineno-7-116"></a><span class="s">apiVersion: networking.k8s.io/v1</span>
-</span><span id="__span-7-117"><a id="__codelineno-7-117" name="__codelineno-7-117" href="#__codelineno-7-117"></a><span class="s">kind: Ingress</span>
-</span><span id="__span-7-118"><a id="__codelineno-7-118" name="__codelineno-7-118" href="#__codelineno-7-118"></a><span class="s">metadata:</span>
-</span><span id="__span-7-119"><a id="__codelineno-7-119" name="__codelineno-7-119" href="#__codelineno-7-119"></a><span class="s">  name: {{ .Release.Name }}-ingress</span>
-</span><span id="__span-7-120"><a id="__codelineno-7-120" name="__codelineno-7-120" href="#__codelineno-7-120"></a><span class="s">spec:</span>
-</span><span id="__span-7-121"><a id="__codelineno-7-121" name="__codelineno-7-121" href="#__codelineno-7-121"></a><span class="s">  rules:</span>
-</span><span id="__span-7-122"><a id="__codelineno-7-122" name="__codelineno-7-122" href="#__codelineno-7-122"></a><span class="s">    - host: "app.local"</span>
-</span><span id="__span-7-123"><a id="__codelineno-7-123" name="__codelineno-7-123" href="#__codelineno-7-123"></a><span class="s">      http:</span>
-</span><span id="__span-7-124"><a id="__codelineno-7-124" name="__codelineno-7-124" href="#__codelineno-7-124"></a><span class="s">        paths:</span>
-</span><span id="__span-7-125"><a id="__codelineno-7-125" name="__codelineno-7-125" href="#__codelineno-7-125"></a><span class="s">          - path: /</span>
-</span><span id="__span-7-126"><a id="__codelineno-7-126" name="__codelineno-7-126" href="#__codelineno-7-126"></a><span class="s">            pathType: Prefix</span>
-</span><span id="__span-7-127"><a id="__codelineno-7-127" name="__codelineno-7-127" href="#__codelineno-7-127"></a><span class="s">            backend:</span>
-</span><span id="__span-7-128"><a id="__codelineno-7-128" name="__codelineno-7-128" href="#__codelineno-7-128"></a><span class="s">              service:</span>
-</span><span id="__span-7-129"><a id="__codelineno-7-129" name="__codelineno-7-129" href="#__codelineno-7-129"></a><span class="s">                name: {{ .Release.Name }}-backend-svc</span>
-</span><span id="__span-7-130"><a id="__codelineno-7-130" name="__codelineno-7-130" href="#__codelineno-7-130"></a><span class="s">                port:</span>
-</span><span id="__span-7-131"><a id="__codelineno-7-131" name="__codelineno-7-131" href="#__codelineno-7-131"></a><span class="s">                  number: {{ .Values.service.port }}</span>
-</span><span id="__span-7-132"><a id="__codelineno-7-132" name="__codelineno-7-132" href="#__codelineno-7-132"></a><span class="s">EOF</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="s">      # Hardening на уровне пода: запрещаем запуск от root, жестко задаем UID 10001</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="s">      securityContext:</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="s">        runAsNonRoot: true</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="s">        runAsUser: 10001</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="s">      containers:</span>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="s">        - name: backend</span>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="s">          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="s">          imagePullPolicy: {{ .Values.image.pullPolicy }}</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="s">          ports:</span>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="s">            - containerPort: 8000</span>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="s">          env:</span>
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="s">            - name: APP_VERSION</span>
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="s">              value: {{ .Values.image.tag | quote }}</span>
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="s">          # Инжекция всех переменных из ConfigMap и Secret одной строчкой!</span>
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="s">          envFrom:</span>
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="s">            - configMapRef:</span>
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="s">                name: {{ .Release.Name }}-config</span>
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="s">            - secretRef:</span>
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="s">                name: {{ .Release.Name }}-secret</span>
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="s">          resources:</span>
+</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="s">            {{- toYaml .Values.resources | nindent 12 }}</span>
+</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a><span class="s">          # Сенсор готовности: трафик от Service пойдет на под только после ответа 200 OK на /health</span>
+</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="s">          readinessProbe:</span>
+</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="s">            httpGet:</span>
+</span><span id="__span-7-48"><a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a><span class="s">              path: /health</span>
+</span><span id="__span-7-49"><a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a><span class="s">              port: 8000</span>
+</span><span id="__span-7-50"><a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a><span class="s">            initialDelaySeconds: 2</span>
+</span><span id="__span-7-51"><a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="s">            periodSeconds: 5</span>
+</span><span id="__span-7-52"><a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a><span class="s">          # Сенсор живучести: перезапустит контейнер при зависании процесса</span>
+</span><span id="__span-7-53"><a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a><span class="s">          livenessProbe:</span>
+</span><span id="__span-7-54"><a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a><span class="s">            httpGet:</span>
+</span><span id="__span-7-55"><a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a><span class="s">              path: /health</span>
+</span><span id="__span-7-56"><a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a><span class="s">              port: 8000</span>
+</span><span id="__span-7-57"><a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a><span class="s">            initialDelaySeconds: 5</span>
+</span><span id="__span-7-58"><a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a><span class="s">            periodSeconds: 10</span>
+</span><span id="__span-7-59"><a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a><span class="s">          # Пауза перед остановкой для плавного вывода пода из таблиц балансировки iptables</span>
+</span><span id="__span-7-60"><a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a><span class="s">          lifecycle:</span>
+</span><span id="__span-7-61"><a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a><span class="s">            preStop:</span>
+</span><span id="__span-7-62"><a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a><span class="s">              exec:</span>
+</span><span id="__span-7-63"><a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a><span class="s">                command: ["sleep", "2"]</span>
+</span><span id="__span-7-64"><a id="__codelineno-7-64" name="__codelineno-7-64" href="#__codelineno-7-64"></a><span class="s">---</span>
+</span><span id="__span-7-65"><a id="__codelineno-7-65" name="__codelineno-7-65" href="#__codelineno-7-65"></a><span class="s">apiVersion: v1</span>
+</span><span id="__span-7-66"><a id="__codelineno-7-66" name="__codelineno-7-66" href="#__codelineno-7-66"></a><span class="s">kind: Service</span>
+</span><span id="__span-7-67"><a id="__codelineno-7-67" name="__codelineno-7-67" href="#__codelineno-7-67"></a><span class="s">metadata:</span>
+</span><span id="__span-7-68"><a id="__codelineno-7-68" name="__codelineno-7-68" href="#__codelineno-7-68"></a><span class="s">  name: {{ .Release.Name }}-backend-svc</span>
+</span><span id="__span-7-69"><a id="__codelineno-7-69" name="__codelineno-7-69" href="#__codelineno-7-69"></a><span class="s">spec:</span>
+</span><span id="__span-7-70"><a id="__codelineno-7-70" name="__codelineno-7-70" href="#__codelineno-7-70"></a><span class="s">  type: ClusterIP</span>
+</span><span id="__span-7-71"><a id="__codelineno-7-71" name="__codelineno-7-71" href="#__codelineno-7-71"></a><span class="s">  selector:</span>
+</span><span id="__span-7-72"><a id="__codelineno-7-72" name="__codelineno-7-72" href="#__codelineno-7-72"></a><span class="s">    app: {{ .Release.Name }}-backend</span>
+</span><span id="__span-7-73"><a id="__codelineno-7-73" name="__codelineno-7-73" href="#__codelineno-7-73"></a><span class="s">  ports:</span>
+</span><span id="__span-7-74"><a id="__codelineno-7-74" name="__codelineno-7-74" href="#__codelineno-7-74"></a><span class="s">    - port: {{ .Values.service.port }}</span>
+</span><span id="__span-7-75"><a id="__codelineno-7-75" name="__codelineno-7-75" href="#__codelineno-7-75"></a><span class="s">      targetPort: 8000</span>
+</span><span id="__span-7-76"><a id="__codelineno-7-76" name="__codelineno-7-76" href="#__codelineno-7-76"></a><span class="s">---</span>
+</span><span id="__span-7-77"><a id="__codelineno-7-77" name="__codelineno-7-77" href="#__codelineno-7-77"></a><span class="s">{{- if .Values.autoscaling.enabled }}</span>
+</span><span id="__span-7-78"><a id="__codelineno-7-78" name="__codelineno-7-78" href="#__codelineno-7-78"></a><span class="s">apiVersion: autoscaling/v2</span>
+</span><span id="__span-7-79"><a id="__codelineno-7-79" name="__codelineno-7-79" href="#__codelineno-7-79"></a><span class="s">kind: HorizontalPodAutoscaler</span>
+</span><span id="__span-7-80"><a id="__codelineno-7-80" name="__codelineno-7-80" href="#__codelineno-7-80"></a><span class="s">metadata:</span>
+</span><span id="__span-7-81"><a id="__codelineno-7-81" name="__codelineno-7-81" href="#__codelineno-7-81"></a><span class="s">  name: {{ .Release.Name }}-hpa</span>
+</span><span id="__span-7-82"><a id="__codelineno-7-82" name="__codelineno-7-82" href="#__codelineno-7-82"></a><span class="s">spec:</span>
+</span><span id="__span-7-83"><a id="__codelineno-7-83" name="__codelineno-7-83" href="#__codelineno-7-83"></a><span class="s">  scaleTargetRef:</span>
+</span><span id="__span-7-84"><a id="__codelineno-7-84" name="__codelineno-7-84" href="#__codelineno-7-84"></a><span class="s">    apiVersion: apps/v1</span>
+</span><span id="__span-7-85"><a id="__codelineno-7-85" name="__codelineno-7-85" href="#__codelineno-7-85"></a><span class="s">    kind: Deployment</span>
+</span><span id="__span-7-86"><a id="__codelineno-7-86" name="__codelineno-7-86" href="#__codelineno-7-86"></a><span class="s">    name: {{ .Release.Name }}-backend</span>
+</span><span id="__span-7-87"><a id="__codelineno-7-87" name="__codelineno-7-87" href="#__codelineno-7-87"></a><span class="s">  minReplicas: {{ .Values.autoscaling.minReplicas }}</span>
+</span><span id="__span-7-88"><a id="__codelineno-7-88" name="__codelineno-7-88" href="#__codelineno-7-88"></a><span class="s">  maxReplicas: {{ .Values.autoscaling.maxReplicas }}</span>
+</span><span id="__span-7-89"><a id="__codelineno-7-89" name="__codelineno-7-89" href="#__codelineno-7-89"></a><span class="s">  metrics:</span>
+</span><span id="__span-7-90"><a id="__codelineno-7-90" name="__codelineno-7-90" href="#__codelineno-7-90"></a><span class="s">    - type: Resource</span>
+</span><span id="__span-7-91"><a id="__codelineno-7-91" name="__codelineno-7-91" href="#__codelineno-7-91"></a><span class="s">      resource:</span>
+</span><span id="__span-7-92"><a id="__codelineno-7-92" name="__codelineno-7-92" href="#__codelineno-7-92"></a><span class="s">        name: cpu</span>
+</span><span id="__span-7-93"><a id="__codelineno-7-93" name="__codelineno-7-93" href="#__codelineno-7-93"></a><span class="s">        target:</span>
+</span><span id="__span-7-94"><a id="__codelineno-7-94" name="__codelineno-7-94" href="#__codelineno-7-94"></a><span class="s">          type: Utilization</span>
+</span><span id="__span-7-95"><a id="__codelineno-7-95" name="__codelineno-7-95" href="#__codelineno-7-95"></a><span class="s">          averageUtilization: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}</span>
+</span><span id="__span-7-96"><a id="__codelineno-7-96" name="__codelineno-7-96" href="#__codelineno-7-96"></a><span class="s">{{- end }}</span>
+</span><span id="__span-7-97"><a id="__codelineno-7-97" name="__codelineno-7-97" href="#__codelineno-7-97"></a><span class="s">---</span>
+</span><span id="__span-7-98"><a id="__codelineno-7-98" name="__codelineno-7-98" href="#__codelineno-7-98"></a><span class="s"># Микросегментация сети (NetworkPolicy): разрешаем подключение к порту Redis 6379 ТОЛЬКО подам нашего бэкенда!</span>
+</span><span id="__span-7-99"><a id="__codelineno-7-99" name="__codelineno-7-99" href="#__codelineno-7-99"></a><span class="s">apiVersion: networking.k8s.io/v1</span>
+</span><span id="__span-7-100"><a id="__codelineno-7-100" name="__codelineno-7-100" href="#__codelineno-7-100"></a><span class="s">kind: NetworkPolicy</span>
+</span><span id="__span-7-101"><a id="__codelineno-7-101" name="__codelineno-7-101" href="#__codelineno-7-101"></a><span class="s">metadata:</span>
+</span><span id="__span-7-102"><a id="__codelineno-7-102" name="__codelineno-7-102" href="#__codelineno-7-102"></a><span class="s">  name: {{ .Release.Name }}-redis-netpol</span>
+</span><span id="__span-7-103"><a id="__codelineno-7-103" name="__codelineno-7-103" href="#__codelineno-7-103"></a><span class="s">spec:</span>
+</span><span id="__span-7-104"><a id="__codelineno-7-104" name="__codelineno-7-104" href="#__codelineno-7-104"></a><span class="s">  podSelector:</span>
+</span><span id="__span-7-105"><a id="__codelineno-7-105" name="__codelineno-7-105" href="#__codelineno-7-105"></a><span class="s">    matchLabels:</span>
+</span><span id="__span-7-106"><a id="__codelineno-7-106" name="__codelineno-7-106" href="#__codelineno-7-106"></a><span class="s">      app: {{ .Release.Name }}-redis</span>
+</span><span id="__span-7-107"><a id="__codelineno-7-107" name="__codelineno-7-107" href="#__codelineno-7-107"></a><span class="s">  policyTypes:</span>
+</span><span id="__span-7-108"><a id="__codelineno-7-108" name="__codelineno-7-108" href="#__codelineno-7-108"></a><span class="s">    - Ingress</span>
+</span><span id="__span-7-109"><a id="__codelineno-7-109" name="__codelineno-7-109" href="#__codelineno-7-109"></a><span class="s">  ingress:</span>
+</span><span id="__span-7-110"><a id="__codelineno-7-110" name="__codelineno-7-110" href="#__codelineno-7-110"></a><span class="s">    - from:</span>
+</span><span id="__span-7-111"><a id="__codelineno-7-111" name="__codelineno-7-111" href="#__codelineno-7-111"></a><span class="s">        - podSelector:</span>
+</span><span id="__span-7-112"><a id="__codelineno-7-112" name="__codelineno-7-112" href="#__codelineno-7-112"></a><span class="s">            matchLabels:</span>
+</span><span id="__span-7-113"><a id="__codelineno-7-113" name="__codelineno-7-113" href="#__codelineno-7-113"></a><span class="s">              app: {{ .Release.Name }}-backend</span>
+</span><span id="__span-7-114"><a id="__codelineno-7-114" name="__codelineno-7-114" href="#__codelineno-7-114"></a><span class="s">      ports:</span>
+</span><span id="__span-7-115"><a id="__codelineno-7-115" name="__codelineno-7-115" href="#__codelineno-7-115"></a><span class="s">        - protocol: TCP</span>
+</span><span id="__span-7-116"><a id="__codelineno-7-116" name="__codelineno-7-116" href="#__codelineno-7-116"></a><span class="s">          port: 6379</span>
+</span><span id="__span-7-117"><a id="__codelineno-7-117" name="__codelineno-7-117" href="#__codelineno-7-117"></a><span class="s">---</span>
+</span><span id="__span-7-118"><a id="__codelineno-7-118" name="__codelineno-7-118" href="#__codelineno-7-118"></a><span class="s"># Правило внешней HTTP-маршрутизации (Ingress)</span>
+</span><span id="__span-7-119"><a id="__codelineno-7-119" name="__codelineno-7-119" href="#__codelineno-7-119"></a><span class="s">apiVersion: networking.k8s.io/v1</span>
+</span><span id="__span-7-120"><a id="__codelineno-7-120" name="__codelineno-7-120" href="#__codelineno-7-120"></a><span class="s">kind: Ingress</span>
+</span><span id="__span-7-121"><a id="__codelineno-7-121" name="__codelineno-7-121" href="#__codelineno-7-121"></a><span class="s">metadata:</span>
+</span><span id="__span-7-122"><a id="__codelineno-7-122" name="__codelineno-7-122" href="#__codelineno-7-122"></a><span class="s">  name: {{ .Release.Name }}-ingress</span>
+</span><span id="__span-7-123"><a id="__codelineno-7-123" name="__codelineno-7-123" href="#__codelineno-7-123"></a><span class="s">spec:</span>
+</span><span id="__span-7-124"><a id="__codelineno-7-124" name="__codelineno-7-124" href="#__codelineno-7-124"></a><span class="s">  rules:</span>
+</span><span id="__span-7-125"><a id="__codelineno-7-125" name="__codelineno-7-125" href="#__codelineno-7-125"></a><span class="s">    - host: "app.local"</span>
+</span><span id="__span-7-126"><a id="__codelineno-7-126" name="__codelineno-7-126" href="#__codelineno-7-126"></a><span class="s">      http:</span>
+</span><span id="__span-7-127"><a id="__codelineno-7-127" name="__codelineno-7-127" href="#__codelineno-7-127"></a><span class="s">        paths:</span>
+</span><span id="__span-7-128"><a id="__codelineno-7-128" name="__codelineno-7-128" href="#__codelineno-7-128"></a><span class="s">          - path: /</span>
+</span><span id="__span-7-129"><a id="__codelineno-7-129" name="__codelineno-7-129" href="#__codelineno-7-129"></a><span class="s">            pathType: Prefix</span>
+</span><span id="__span-7-130"><a id="__codelineno-7-130" name="__codelineno-7-130" href="#__codelineno-7-130"></a><span class="s">            backend:</span>
+</span><span id="__span-7-131"><a id="__codelineno-7-131" name="__codelineno-7-131" href="#__codelineno-7-131"></a><span class="s">              service:</span>
+</span><span id="__span-7-132"><a id="__codelineno-7-132" name="__codelineno-7-132" href="#__codelineno-7-132"></a><span class="s">                name: {{ .Release.Name }}-backend-svc</span>
+</span><span id="__span-7-133"><a id="__codelineno-7-133" name="__codelineno-7-133" href="#__codelineno-7-133"></a><span class="s">                port:</span>
+</span><span id="__span-7-134"><a id="__codelineno-7-134" name="__codelineno-7-134" href="#__codelineno-7-134"></a><span class="s">                  number: {{ .Values.service.port }}</span>
+</span><span id="__span-7-135"><a id="__codelineno-7-135" name="__codelineno-7-135" href="#__codelineno-7-135"></a><span class="s">EOF</span>
 </span></code></pre></div>
 <hr />
-<h3 id="4-helm-rollback">Этап 4. Валидация Helm-чарта, деплой в кластер, обновление и откат (Rollback)!</h3>
+<h3 id="4-helm-">Этап 4. Валидация Helm-чарта, выкатка релиза в кластер и инспекция ресурсов</h3>
 <ol>
-<li>
-<p><strong>Проверим наш чарт линтером <code>helm lint</code> и посмотрим сгенерированный YAML:</strong>
+<li>Проверим наш свежесозданный чарт встроенным синтаксическим анализатором <code>helm lint</code>:</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/k8s-practice
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>helm<span class="w"> </span>lint<span class="w"> </span>./charts/webapp
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Развернем релиз <code>prod-app</code> в изолированном неймспейсе <code>production</code>:</strong>
+</span></code></pre></div>
+<ol>
+<li>Установим релиз под именем <code>prod-app</code> в выделенный неймспейс <code>production</code> (флаг <code>--wait</code> прикажет Helm дождаться момента, когда все поды и диски реально перейдут в статус <code>Ready</code>!):</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>prod-app<span class="w"> </span>./charts/webapp<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--namespace<span class="w"> </span>production<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span>--wait
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Диагностика развернутых ресурсов через <code>kubectl</code>:</strong>
-Посмотри, как одна команда Helm создала и связала все объекты в кластере:
+</span></code></pre></div>
+<ol>
+<li>Выведем полную картину созданных в неймспейсе <code>production</code> объектов одной командой <code>kubectl</code>:</li>
+</ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all,pvc,ingress,networkpolicy,hpa<span class="w"> </span>-n<span class="w"> </span>production
 </span></code></pre></div>
-<em>Обрати внимание:</em></p>
-</li>
-<li>У <code>StatefulSet</code> создался под со строгим именем <code>pod/prod-app-redis-0</code> и автоматически привязался диск <code>persistentvolumeclaim/redis-data-prod-app-redis-0</code> в статусе <strong><code>Bound</code></strong>!</li>
-<li>У <code>Deployment</code> запущены 2 реплики <code>prod-app-backend-...</code> в статусе <strong><code>1/1 Running</code></strong>.</li>
-</ol>
+<p>Обрати внимание на красоту инженерной оркестрации в выводе терминала:
+* Контроллер <code>StatefulSet</code> поднял под базы со строгим предсказуемым именем <code>pod/prod-app-redis-0</code> и автоматически создал и привязал к нему постоянный диск <code>persistentvolumeclaim/redis-data-prod-app-redis-0</code> в статусе <strong><code>Bound</code></strong>!
+* Контроллер <code>Deployment</code> запустил 2 реплики бэкенда <code>prod-app-backend-...</code> в статусе <strong><code>1/1 Running</code></strong>, которые успешно прошли проверки <code>readinessProbe</code> и встали за виртуальный балансировщик <code>service/prod-app-backend-svc</code>.</p>
 <hr />
-<h3 id="-10">✅ Чек-лист самопроверки по Модулю 10</h3>
-<p>Выполни эти 3 испытания в терминале:</p>
+<h3 id="-rollingupdate-rollback-10">✅ Чек-лист самопроверки и испытания RollingUpdate / Rollback по Модулю 10</h3>
+<p>Выполни три финальных испытания в терминале:</p>
 <ol>
 <li>
-<p><strong>Проверка ответов сервиса и балансировки между подами через <code>Service</code>:</strong>
-   Пробросим порт сервиса <code>prod-app-backend-svc</code> на локальный порт <code>8085</code> и отправим запрос:
+<p><strong>Проверка работы сервиса, чтения <code>ConfigMap</code>/<code>Secret</code> и балансировки трафика через <code>Service</code>:</strong>
+   Откроем защищенный туннель (<code>port-forward</code>) от локального порта <code>8085</code> напрямую в виртуальный сервис кластера <code>svc/prod-app-backend-svc</code> и сделаем запрос:
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>-n<span class="w"> </span>production<span class="w"> </span>svc/prod-app-backend-svc<span class="w"> </span><span class="m">8085</span>:8000<span class="w"> </span><span class="p">&amp;</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">PF_PID</span><span class="o">=</span><span class="nv">$!</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>sleep<span class="w"> </span><span class="m">2</span>
@@ -1935,11 +1999,11 @@
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8085/api/info<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">kill</span><span class="w"> </span><span class="nv">$PF_PID</span>
 </span></code></pre></div>
-   <em>Ожидаемый результат:</em> JSON-ответ с версией <code>"2.0.0"</code>, <code>"environment": "production"</code> и <code>"secret_loaded": true</code>.</p>
+   <em>Ожидаемый результат:</em> Чистый JSON-ответ от одного из подов кластера с версией <code>"2.0.0"</code>, окружением <code>"production"</code> из <code>ConfigMap</code> и подтверждением <code>"secret_loaded": true</code> из <code>Secret</code>!</p>
 </li>
 <li>
-<p><strong>Испытание бесперебойного обновления (Zero-Downtime RollingUpdate) до версии <code>2.1.0</code> через Helm:</strong>
-   Обновим тег образа прямо из командной строки Helm и проследим за плавной заменой подов:
+<p><strong>Испытание бесперебойного обновления (<code>Zero-Downtime RollingUpdate</code>) до версии <code>2.1.0</code> через Helm:</strong>
+   Переопределим версию образа на лету флагом <code>--set image.tag="2.1.0"</code>. Благодаря нашим настройкам <code>maxUnavailable: 0</code> и <code>readinessProbe</code>, Kubernetes сначала поднимет новые поды <code>2.1.0</code>, убедится в их здоровье и только потом погасит старые:
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>prod-app<span class="w"> </span>./charts/webapp<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span>-n<span class="w"> </span>production<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--set<span class="w"> </span>image.tag<span class="o">=</span><span class="s2">"2.1.0"</span><span class="w"> </span><span class="se">\</span>
@@ -1949,13 +2013,13 @@
 </span></code></pre></div></p>
 </li>
 <li>
-<p><strong>Испытание мгновенного отката релиза (<code>helm rollback</code>) и просмотр истории ревизий:</strong>
-   Посмотрим историю ревизий нашего релиза в Kubernetes и откатимся на ревизию <code>1</code> (версия <code>2.0.0</code>):
+<p><strong>Испытание машины времени <code>helm rollback</code> (мгновенный откат релиза по истории ревизий):</strong>
+   Выведем журнал ревизий нашего релиза в кластере, а затем одной командой откатим весь стек назад на ревизию <code>1</code> (версию <code>2.0.0</code>):
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>helm<span class="w"> </span><span class="nb">history</span><span class="w"> </span>prod-app<span class="w"> </span>-n<span class="w"> </span>production
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>helm<span class="w"> </span>rollback<span class="w"> </span>prod-app<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span>production<span class="w"> </span>--wait
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>helm<span class="w"> </span><span class="nb">history</span><span class="w"> </span>prod-app<span class="w"> </span>-n<span class="w"> </span>production
 </span></code></pre></div>
-   <em>Ожидаемый результат:</em> Появилась ревизия <code>3</code> со статусом <code>deployed</code> и описанием <code>Rollback to 1</code> — кластер за 3 секунды без единого разрыва соединения вернулся на версию <code>2.0.0</code>!</p>
+   <em>Ожидаемый результат:</em> В таблице истории появилась новая запись ревизии <code>3</code> со статусом <code>deployed</code> и комментарием <code>Rollback to 1</code> — кластер за 3 секунды без единого разрыва соединения вернул все поды на стабильную версию <code>2.0.0</code>!</p>
 </li>
 </ol>
 

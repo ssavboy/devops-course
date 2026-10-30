@@ -351,7 +351,7 @@
   <span class="md-ellipsis">
     
   
-    Реляционные базы данных (SQL и администрирование СУБД для DevOps)
+    Реляционные базы данных (SQL и администрирование СУБД)
   
 
     
@@ -1316,7 +1316,7 @@
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
 </span></code></pre></div>
 <h4 id="secrets-docker-compose">Безопасная доставка паролей через механизм <code>secrets</code> в Docker Compose</h4>
-<p>Как мы помним из второго модуля, передавать боевой пароль от базы данных через обычную переменную окружения (<code>POSTGRES_PASSWORD=secret</code>) небезопасно — он виден в открытом виде любому пользователю с доступом к <code>docker inspect</code>[cite: 3, 5]. </p>
+<p>Как мы помним из второго модуля, передавать боевой пароль от базы данных через обычную переменную окружения (<code>POSTGRES_PASSWORD=secret</code>) небезопасно — он виден в открытом виде любому пользователю с доступом к <code>docker inspect</code>. </p>
 <p>В Docker Compose для этого предусмотрен нативный блок <strong><code>secrets:</code></strong>. Он берет защищенный текстовый файл с паролем с хоста и монтирует его напрямую во временную файловую систему в оперативной памяти (<code>tmpfs</code>) внутри контейнера по стандартному пути <strong><code>/run/secrets/&lt;имя_секрета&gt;</code></strong>. Ни в <code>docker inspect</code>, ни в переменных окружения <code>env</code> этот пароль не светится, а официальные образы (включая PostgreSQL, MySQL, Redis) умеют читать такие секреты из коробки при помощи суффикса <code>_FILE</code> (<code>POSTGRES_PASSWORD_FILE: /run/secrets/db_password</code>):</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">secrets</span><span class="p">:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">db_password</span><span class="p">:</span>
@@ -1372,10 +1372,12 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--scale<span class="w"> </span><span class="nv">backend</span><span class="o">=</span><span class="m">3</span>
 </span></code></pre></div>
 Здесь возникает классическая архитектурная задача: если бы мы прописали у сервиса <code>backend</code> жесткий проброс портов на хост <code>ports: ["8000:8000"]</code>, то первый контейнер успешно занял бы порт <code>8000</code> сервера, а <strong>вторая и третья реплики мгновенно упали бы при старте с ошибкой <code>Bind for 0.0.0.0:8000 failed: port is already allocated</code></strong>!</p>
-<p>Как это решается в промышленной архитектуре Docker Compose + Nginx:
-1. У масштабируемого сервиса <code>backend</code> мы <strong>никогда не используем <code>ports:</code></strong> и не задаем жесткое имя <code>container_name:</code> — вместо этого мы открываем порт только внутри виртуальной сети через <strong><code>expose: ["8000"]</code></strong>.
-2. Когда Docker Compose поднимает 3 реплики сервиса <code>backend</code>, его внутренний DNS-сервер (работающий в каждом контейнере по зарезервированному адресу <strong><code>127.0.0.11</code></strong>) автоматически регистрирует все три новых IP-адреса под одним общим доменным именем <code>backend</code>!
-3. Чтобы Nginx не закэшировал один IP-адрес навсегда при старте, а динамически подхватывал новые реплики при масштабировании кластера на лету, мы прописываем в <code>nginx.conf</code> директиву внутреннего резолвера <strong><code>resolver 127.0.0.11 valid=5s;</code></strong>.</p>
+<p>Как это решается в промышленной архитектуре Docker Compose + Nginx:</p>
+<ul>
+<li><strong>Изоляция портов (<code>expose</code> вместо <code>ports</code>):</strong> У масштабируемого сервиса <code>backend</code> мы <strong>никогда не используем <code>ports:</code></strong> и не задаем жесткое имя <code>container_name:</code>. Вместо этого порт открывается только внутри виртуальной сети через <code>expose: ["8000"]</code>.</li>
+<li><strong>Встроенный DNS Docker (<code>127.0.0.11</code>):</strong> Когда Docker Compose поднимает несколько реплик сервиса <code>backend</code>, его внутренний DNS-сервер (работающий по зарезервированному адресу <code>127.0.0.11</code>) автоматически регистрирует все IP-адреса новых реплик под единым общим доменным именем <code>backend</code>.</li>
+<li><strong>Динамический резолвинг в Nginx (<code>resolver</code>):</strong> Чтобы Nginx не кэшировал IP-адрес навсегда при старте, а умел на лету находить новые реплики при масштабировании кластера, в <code>nginx.conf</code> прописывается директива внутреннего резолвера: <code>resolver 127.0.0.11 valid=5s;</code>.</li>
+</ul>
 <h4 id="reverse-proxy-headers">Обязательные заголовки обратного проксирования (Reverse Proxy Headers)</h4>
 <p>Когда клиент из интернета обращается к вашему сайту, он устанавливает соединение с Nginx, а уже Nginx от своего имени открывает внутреннее соединение к контейнеру бэкенда. Из-за этого для Python-приложения источником всех запросов (<code>remote_addr</code>) начинает выглядеть внутренний IP-адрес самого контейнера Nginx (например, <code>172.18.0.5</code>), а реальный IP клиента теряется! Чтобы бэкенд видел настоящий IP пользователя, оригинальный домен и протокол (<code>http</code>/<code>https</code>), в блок <code>location</code> всегда добавляют стандартный набор прокси-заголовков:</p>
 <div class="language-nginx highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
